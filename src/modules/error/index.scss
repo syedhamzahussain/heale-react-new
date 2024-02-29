@@ -1,0 +1,78 @@
+@import "src/styles/mixins";
+
+.error-wrapper {
+    background-color: #111217;
+    height: 100vh;
+}
+.error-container {
+    left: 50%;
+    position: absolute;
+    text-align: center;
+    top: 50%;
+    width: 90%;
+    transform: translate(-50%, -50%);
+
+    .error-title {
+        font-weight: 700;
+        font-size: 5em;
+        font-family: Poppins, sans-serif;
+
+        @include respond-below(md) {
+            font-size: 3em;
+        }
+        @include respond-below(xs) {
+            font-size: 2em;
+        }
+
+        &__text {
+            background: linear-gradient(270deg, #f9063b 0, #f9a90d);
+            background-clip: text;
+            -webkit-background-clip: text;
+            background-size: 350%;
+            -webkit-text-fill-color: transparent;
+            animation: gradientText 3s ease infinite;
+            -webkit-animation: gradientText 3s ease infinite;
+        }
+        &__normal {
+            -webkit-text-stroke: 0.8px #f4f6fb;
+            color: transparent;
+        }
+    }
+    .error-message {
+        font-size: 1.5em;
+        font-weight: 300;
+        line-height: 1em;
+        line-height: 1.5em;
+        color: #d1d1d1;
+    }
+
+    .btn-go-back {
+        border-radius: 0.5rem;
+        box-sizing: border-box;
+        color: #f4f6fb;
+        cursor: pointer;
+        display: inline-block;
+        font-size: 1.2rem;
+        font-weight: 300;
+        margin-top: 1.25rem;
+        padding: 0.5rem 1.25rem;
+        text-align: center;
+        transition: all 0.3s;
+        width: -webkit-fit-content;
+        width: -moz-fit-content;
+        width: fit-content;
+        background: #f9063b;
+        box-shadow: 0 3px 13px 3px #f9063b4d;
+    }
+}
+@keyframes gradientText {
+    0% {
+        background-position: 0 50%;
+    }
+    50% {
+        background-position: 100% 50%;
+    }
+    100% {
+        background-position: 0 50%;
+    }
+}
