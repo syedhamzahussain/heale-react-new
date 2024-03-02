@@ -48,7 +48,7 @@ const Welcome = () => {
     })
     const group = getRootProps()
     return (
-        <Container maxW={"85%"}>
+        <Container maxW={"80%"}>
             <Heading mb={4} as={"h4"} fontSize={"3xl"} color={"Primary.Navy"}>Welcome to HEALE</Heading>
             <Text mb={8} color={"Neutral.800"}>Choose your Account Type</Text>
             <Grid gridTemplateColumns={"repeat(2,1fr)"} gap={16}>
