@@ -42,7 +42,7 @@ const StepFormHeader = () => {
                     <Box>
                         {isCompleted ? <CheckIcon /> : isActive ? <RadioIconChecked /> : <RadioIcon mb={1} />}
                     </Box>
-                    <Text color={isActive ? "Primary.Blue" : "Neutral.700"}>{stepNames[i]}</Text>
+                    <Text color={isCompleted ? "Primary.Navy" : isActive ? "Primary.Blue" : "Neutral.700"}>{stepNames[i]}</Text>
                 </Flex>
             );
         }
