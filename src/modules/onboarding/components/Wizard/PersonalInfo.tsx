@@ -1,7 +1,7 @@
 import { Box, Checkbox, FormControl, FormLabel, Grid, Heading, Icon, Input, InputGroup, InputRightElement, Link, Text } from '@chakra-ui/react'
-import ButtonTheme from 'components/ButtonTheme';
-import { EyeCloseIcon, EyeIcon } from 'components/Icons';
 import useToggle from 'hooks/useToggle';
+import ButtonTheme from 'modules/shared/ButtonTheme';
+import { EyeCloseIcon, EyeIcon } from 'modules/shared/Icons';
 import React from 'react'
 import { useWizard } from 'react-use-wizard';
 

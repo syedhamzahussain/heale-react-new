@@ -1,7 +1,7 @@
 import { Box, Container, Flex } from '@chakra-ui/react'
-import ButtonTheme from 'components/ButtonTheme'
-import { HealeLogo } from 'components/Icons'
 import React from 'react'
+import { HealeLogo } from '../Icons'
+import ButtonTheme from '../ButtonTheme'
 
 const AuthHeader = () => {
     return (

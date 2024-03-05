@@ -1,9 +1,10 @@
 import { Box, Container, Flex, Grid, Heading, Icon, List, ListItem, Text, useRadio, useRadioGroup } from '@chakra-ui/react'
-import ButtonTheme from 'components/ButtonTheme';
-import { CheckIcon } from 'components/Icons';
+
 import { options } from 'dummyData/data';
 import React from 'react'
 import { RadioCardProps } from 'type';
+import ButtonTheme from './shared/ButtonTheme';
+import { CheckIcon } from './shared/Icons';
 
 const RadioCard: React.FC<RadioCardProps> = ({ ...props }) => {
     const { getInputProps, getRadioProps } = useRadio(props);
