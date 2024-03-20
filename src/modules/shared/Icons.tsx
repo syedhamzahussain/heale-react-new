@@ -135,11 +135,11 @@ export const EyeCloseIcon = createIcon({
   viewBox: "0 0 20 20",
   path: (
     <>
-      <path d="M17.557 7.71436C18.0999 8.20007 18.557 8.6715 18.8999 9.04293C19.1368 9.30543 19.2679 9.64647 19.2679 10.0001C19.2679 10.3537 19.1368 10.6947 18.8999 10.9572C17.3999 12.5715 13.9856 15.7144 9.9999 15.7144H9.42847" stroke="rgba(132, 132, 161, 1)" fill="none" stroke-linecap="round" stroke-linejoin="round" />
-      <path d="M5.52856 14.4714C3.87375 13.5446 2.37852 12.358 1.09999 10.9571C0.863075 10.6946 0.731934 10.3535 0.731934 9.99993C0.731934 9.64633 0.863075 9.30529 1.09999 9.04279C2.59999 7.4285 6.01428 4.28564 9.99999 4.28564C11.5711 4.31848 13.1087 4.74587 14.4714 5.5285" stroke="rgba(132, 132, 161, 1)" fill="none" stroke-linecap="round" stroke-linejoin="round" />
-      <path d="M17.8571 2.14282L2.14282 17.8571" stroke="rgba(132, 132, 161, 1)" fill="none" stroke-linecap="round" stroke-linejoin="round" />
-      <path d="M7.98568 12.0143C7.44913 11.4809 7.14601 10.7565 7.14282 9.99996C7.14282 9.2422 7.44384 8.51548 7.97966 7.97966C8.51548 7.44384 9.2422 7.14282 9.99996 7.14282C10.7565 7.14601 11.4809 7.44913 12.0143 7.98568" stroke="rgba(132, 132, 161, 1)" fill="none" stroke-linecap="round" stroke-linejoin="round" />
-      <path d="M12.4856 11.4285C12.2313 11.8632 11.8666 12.223 11.4285 12.4713" stroke="rgba(132, 132, 161, 1)" fill="none" stroke-linecap="round" stroke-linejoin="round" />
+      <path d="M17.557 7.71436C18.0999 8.20007 18.557 8.6715 18.8999 9.04293C19.1368 9.30543 19.2679 9.64647 19.2679 10.0001C19.2679 10.3537 19.1368 10.6947 18.8999 10.9572C17.3999 12.5715 13.9856 15.7144 9.9999 15.7144H9.42847" stroke="rgba(132, 132, 161, 1)" fill="none" strokeLinecap="round" strokeLinejoin="round" />
+      <path d="M5.52856 14.4714C3.87375 13.5446 2.37852 12.358 1.09999 10.9571C0.863075 10.6946 0.731934 10.3535 0.731934 9.99993C0.731934 9.64633 0.863075 9.30529 1.09999 9.04279C2.59999 7.4285 6.01428 4.28564 9.99999 4.28564C11.5711 4.31848 13.1087 4.74587 14.4714 5.5285" stroke="rgba(132, 132, 161, 1)" fill="none" strokeLinecap="round" strokeLinejoin="round" />
+      <path d="M17.8571 2.14282L2.14282 17.8571" stroke="rgba(132, 132, 161, 1)" fill="none" strokeLinecap="round" strokeLinejoin="round" />
+      <path d="M7.98568 12.0143C7.44913 11.4809 7.14601 10.7565 7.14282 9.99996C7.14282 9.2422 7.44384 8.51548 7.97966 7.97966C8.51548 7.44384 9.2422 7.14282 9.99996 7.14282C10.7565 7.14601 11.4809 7.44913 12.0143 7.98568" stroke="rgba(132, 132, 161, 1)" fill="none" strokeLinecap="round" strokeLinejoin="round" />
+      <path d="M12.4856 11.4285C12.2313 11.8632 11.8666 12.223 11.4285 12.4713" stroke="rgba(132, 132, 161, 1)" fill="none" strokeLinecap="round" strokeLinejoin="round" />
     </>
   ),
 });
@@ -149,38 +149,107 @@ export const FlyEnvelopeIcon = createIcon({
   viewBox: "0 0 62 62",
   path: (
     <>
-      <path fill="none" xmlns="http://www.w3.org/2000/svg" d="M25.6059 49.2857L35.5717 59.2057C36.1831 59.8324 36.9476 60.2885 37.7895 60.5291C38.6313 60.7696 39.5214 60.7862 40.3717 60.5771C41.2272 60.3782 42.0172 59.9626 42.6657 59.3701C43.3141 58.7777 43.7993 58.0284 44.0745 57.1942L60.4402 8.14281C60.7818 7.22373 60.8523 6.22591 60.6433 5.26795C60.4343 4.30999 59.9546 3.43218 59.2613 2.73887C58.568 2.04556 57.6902 1.5659 56.7322 1.35692C55.7743 1.14793 54.7764 1.2184 53.8574 1.55995L4.80594 17.9257C3.94309 18.2204 3.17459 18.7402 2.57988 19.4313C1.98516 20.1225 1.58581 20.9599 1.42309 21.8571C1.25513 22.673 1.29252 23.518 1.5319 24.3159C1.77128 25.1138 2.20514 25.8398 2.79452 26.4285L15.3202 38.9542L14.9088 54.8171L25.6059 49.2857Z" stroke="#3446EE" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
-      <path xmlns="http://www.w3.org/2000/svg" d="M58.9775 2.56567L15.3203 38.9542" stroke="#3446EE" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+      <path fill="none" xmlns="http://www.w3.org/2000/svg" d="M25.6059 49.2857L35.5717 59.2057C36.1831 59.8324 36.9476 60.2885 37.7895 60.5291C38.6313 60.7696 39.5214 60.7862 40.3717 60.5771C41.2272 60.3782 42.0172 59.9626 42.6657 59.3701C43.3141 58.7777 43.7993 58.0284 44.0745 57.1942L60.4402 8.14281C60.7818 7.22373 60.8523 6.22591 60.6433 5.26795C60.4343 4.30999 59.9546 3.43218 59.2613 2.73887C58.568 2.04556 57.6902 1.5659 56.7322 1.35692C55.7743 1.14793 54.7764 1.2184 53.8574 1.55995L4.80594 17.9257C3.94309 18.2204 3.17459 18.7402 2.57988 19.4313C1.98516 20.1225 1.58581 20.9599 1.42309 21.8571C1.25513 22.673 1.29252 23.518 1.5319 24.3159C1.77128 25.1138 2.20514 25.8398 2.79452 26.4285L15.3202 38.9542L14.9088 54.8171L25.6059 49.2857Z" stroke="#3446EE" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" />
+      <path xmlns="http://www.w3.org/2000/svg" d="M58.9775 2.56567L15.3203 38.9542" stroke="#3446EE" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" />
     </>
   ),
 });
+
 export const alertIcon = createIcon({
   displayName: "alertIcon",
-  viewBox:"0 0 62 58",
+  viewBox: "0 0 62 58",
   path: (
     <>
-      <path fill="none" d="M14.9999 4.14282H3.57136C2.96515 4.14282 2.38377 4.38364 1.95511 4.81229C1.52646 5.24095 1.28564 5.82233 1.28564 6.42854V43C1.28564 43.6062 1.52646 44.1876 1.95511 44.6162C2.38377 45.0449 2.96515 45.2857 3.57136 45.2857H58.4285C59.0347 45.2857 59.6161 45.0449 60.0448 44.6162C60.4734 44.1876 60.7142 43.6062 60.7142 43V6.42854C60.7142 5.82233 60.4734 5.24095 60.0448 4.81229C59.6161 4.38364 59.0347 4.14282 58.4285 4.14282H46.9999" stroke="#E70642" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
-      <path d="M26.4284 45.2856L21.8569 56.7142" stroke="#E70642" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
-      <path d="M35.5713 45.2856L40.1427 56.7142" stroke="#E70642" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
-      <path d="M17.2856 56.7144H44.7142" stroke="#E70642" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
-      <path d="M31 1.85718V17.8572" stroke="#E70642" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
-      <path d="M31.0001 33.8571C32.2624 33.8571 33.2858 32.8337 33.2858 31.5714C33.2858 30.309 32.2624 29.2856 31.0001 29.2856C29.7377 29.2856 28.7144 30.309 28.7144 31.5714C28.7144 32.8337 29.7377 33.8571 31.0001 33.8571Z" stroke="#E70642" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+      <path fill="none" d="M14.9999 4.14282H3.57136C2.96515 4.14282 2.38377 4.38364 1.95511 4.81229C1.52646 5.24095 1.28564 5.82233 1.28564 6.42854V43C1.28564 43.6062 1.52646 44.1876 1.95511 44.6162C2.38377 45.0449 2.96515 45.2857 3.57136 45.2857H58.4285C59.0347 45.2857 59.6161 45.0449 60.0448 44.6162C60.4734 44.1876 60.7142 43.6062 60.7142 43V6.42854C60.7142 5.82233 60.4734 5.24095 60.0448 4.81229C59.6161 4.38364 59.0347 4.14282 58.4285 4.14282H46.9999" stroke="#E70642" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" />
+      <path d="M26.4284 45.2856L21.8569 56.7142" stroke="#E70642" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" />
+      <path d="M35.5713 45.2856L40.1427 56.7142" stroke="#E70642" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" />
+      <path d="M17.2856 56.7144H44.7142" stroke="#E70642" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" />
+      <path d="M31 1.85718V17.8572" stroke="#E70642" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" />
+      <path d="M31.0001 33.8571C32.2624 33.8571 33.2858 32.8337 33.2858 31.5714C33.2858 30.309 32.2624 29.2856 31.0001 29.2856C29.7377 29.2856 28.7144 30.309 28.7144 31.5714C28.7144 32.8337 29.7377 33.8571 31.0001 33.8571Z" stroke="#E70642" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" />
     </>
   ),
 });
+
 export const trustIcon = createIcon({
   displayName: "trustIcon",
   viewBox: "0 0 64 64",
   path: (
     <>
-      <path fill="none" d="M54.8571 9.14294H59.4285C60.0347 9.14294 60.6161 9.38376 61.0448 9.81242C61.4734 10.2411 61.7142 10.8224 61.7142 11.4287V48.0001C61.7142 48.6063 61.4734 49.1877 61.0448 49.6163C60.6161 50.045 60.0347 50.2858 59.4285 50.2858H4.57136C3.96515 50.2858 3.38377 50.045 2.95511 49.6163C2.52646 49.1877 2.28564 48.6063 2.28564 48.0001V11.4287C2.28564 10.8224 2.52646 10.2411 2.95511 9.81242C3.38377 9.38376 3.96515 9.14294 4.57136 9.14294H9.14279" stroke="#3446EE" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
-      <path d="M27.4284 50.2858L22.8569 61.7143" stroke="#3446EE" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
-      <path d="M36.5713 50.2858L41.1427 61.7143" stroke="#3446EE" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
-      <path d="M18.2856 61.7144H45.7142" stroke="#3446EE" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
-      <path fill="none" d="M22.8569 11.4286C22.8569 9.62034 23.3932 7.85266 24.3978 6.34913C25.4024 4.84559 26.8303 3.67373 28.501 2.98173C30.1716 2.28973 32.0099 2.10867 33.7835 2.46145C35.557 2.81423 37.1861 3.685 38.4648 4.96365C39.7434 6.2423 40.6142 7.87141 40.967 9.64495C41.3197 11.4185 41.1387 13.2568 40.4467 14.9274C39.7547 16.5981 38.5828 18.026 37.0793 19.0306C35.5758 20.0353 33.8081 20.5715 31.9998 20.5715V25.1429" stroke="#3446EE" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
-      <path d="M31.9998 38.8573C31.3686 38.8573 30.8569 38.3456 30.8569 37.7144C30.8569 37.0832 31.3686 36.5715 31.9998 36.5715" stroke="#3446EE" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
-      <path d="M32 38.8573C32.6312 38.8573 33.1429 38.3456 33.1429 37.7144C33.1429 37.0832 32.6312 36.5715 32 36.5715" stroke="#3446EE" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+      <path fill="none" d="M54.8571 9.14294H59.4285C60.0347 9.14294 60.6161 9.38376 61.0448 9.81242C61.4734 10.2411 61.7142 10.8224 61.7142 11.4287V48.0001C61.7142 48.6063 61.4734 49.1877 61.0448 49.6163C60.6161 50.045 60.0347 50.2858 59.4285 50.2858H4.57136C3.96515 50.2858 3.38377 50.045 2.95511 49.6163C2.52646 49.1877 2.28564 48.6063 2.28564 48.0001V11.4287C2.28564 10.8224 2.52646 10.2411 2.95511 9.81242C3.38377 9.38376 3.96515 9.14294 4.57136 9.14294H9.14279" stroke="#3446EE" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" />
+      <path d="M27.4284 50.2858L22.8569 61.7143" stroke="#3446EE" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" />
+      <path d="M36.5713 50.2858L41.1427 61.7143" stroke="#3446EE" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" />
+      <path d="M18.2856 61.7144H45.7142" stroke="#3446EE" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" />
+      <path fill="none" d="M22.8569 11.4286C22.8569 9.62034 23.3932 7.85266 24.3978 6.34913C25.4024 4.84559 26.8303 3.67373 28.501 2.98173C30.1716 2.28973 32.0099 2.10867 33.7835 2.46145C35.557 2.81423 37.1861 3.685 38.4648 4.96365C39.7434 6.2423 40.6142 7.87141 40.967 9.64495C41.3197 11.4185 41.1387 13.2568 40.4467 14.9274C39.7547 16.5981 38.5828 18.026 37.0793 19.0306C35.5758 20.0353 33.8081 20.5715 31.9998 20.5715V25.1429" stroke="#3446EE" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" />
+      <path d="M31.9998 38.8573C31.3686 38.8573 30.8569 38.3456 30.8569 37.7144C30.8569 37.0832 31.3686 36.5715 31.9998 36.5715" stroke="#3446EE" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" />
+      <path d="M32 38.8573C32.6312 38.8573 33.1429 38.3456 33.1429 37.7144C33.1429 37.0832 32.6312 36.5715 32 36.5715" stroke="#3446EE" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" />
     </>
   ),
 });
 
+export const VerifyInfoIcon = createIcon({
+  displayName: "VerifyInfoIcon",
+  viewBox: "0 0 61.429 45.805",
+  path: (
+    <g id="Group_40465" data-name="Group 40465" transform="translate(-1.285 -8.909)">
+      <path id="Path_91505" data-name="Path 91505" d="M20.57,33.143l7.086,5.211a2.194,2.194,0,0,0,1.829.457,2.286,2.286,0,0,0,1.554-1.1L48,10.286" fill="none" stroke="#3446ee" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" />
+      <path id="Path_91506" data-name="Path 91506" d="M54.171,24a63.63,63.63,0,0,1,7.543,9.143S48.411,53.714,32,53.714,2.285,33.143,2.285,33.143,15.588,12.571,32,12.571" fill="none" stroke="#3446ee" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" />
+    </g>
+  ),
+});
+
+export const LoaderIcon = createIcon({
+  displayName: "LoaderIcon",
+  viewBox: "0 0 32 32",
+  path: (
+    <>
+      <g clip-path="url(#clip0_1182_47083)">
+        <path d="M4.5731 16H1.14453" stroke="#3446EE" stroke-linecap="round" stroke-linejoin="round" />
+        <path d="M7.91114 7.90857L5.48828 5.48572" stroke="#3446EE" stroke-linecap="round" stroke-linejoin="round" />
+        <path d="M7.91114 24.0914L5.48828 26.5143" stroke="#3446EE" stroke-linecap="round" stroke-linejoin="round" />
+        <path d="M27.4297 16H30.8583" stroke="#3446EE" stroke-linecap="round" stroke-linejoin="round" />
+        <path d="M24.0938 24.0914L26.5166 26.5143" stroke="#3446EE" stroke-linecap="round" stroke-linejoin="round" />
+        <path d="M16 27.4286V30.8572" stroke="#3446EE" stroke-linecap="round" stroke-linejoin="round" />
+        <path d="M24.0938 7.90857L26.5166 5.48572" stroke="#3446EE" stroke-linecap="round" stroke-linejoin="round" />
+        <path d="M16 4.57139V1.14282" stroke="#3446EE" stroke-linecap="round" stroke-linejoin="round" />
+      </g>
+      <defs>
+        <clipPath id="clip0_1182_47083">
+          <rect width="32" height="32" fill="white" />
+        </clipPath>
+      </defs>
+    </>
+  ),
+});
+
+export const VerifyBusinessIcon = createIcon({
+  displayName: "VerifyBusinessIcon",
+  viewBox: "0 0 61.329 61.429",
+  path: (
+    <g id="Group_40435" data-name="Group 40435" transform="translate(-0.785 -0.286)">
+      <path id="Path_91495" data-name="Path 91495" d="M60.714,35.571,41.88,60.714,29.309,51.3" fill="none" stroke="#3446ee" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" />
+      <path id="Path_91496" data-name="Path 91496" d="M21.856,21.857A10.286,10.286,0,1,0,11.57,11.571,10.286,10.286,0,0,0,21.856,21.857Z" fill="none" stroke="#3446ee" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" />
+      <path id="Path_91497" data-name="Path 91497" d="M12.714,56.143H1.285V49.286A20.571,20.571,0,0,1,36.394,34.749" fill="none" stroke="#3446ee" stroke-linecap="round" stroke-linejoin="round" stroke-width="1" />
+    </g>
+  ),
+});
+
+export const OfficeIcon = createIcon({
+  displayName: "OfficeIcon",
+  viewBox: "0 0 24 24",
+  path: (
+    <>
+      <defs>
+        <clipPath id="clip-path">
+          <rect id="Rectangle_23050" data-name="Rectangle 23050" width="24" height="24" fill="#fff" />
+        </clipPath>
+      </defs>
+      <g id="Group_40436" data-name="Group 40436" clip-path="url(#clip-path)">
+        <path id="Path_91498" data-name="Path 91498" d="M14.57,23.143H.855V6.857l6.857-6,6.857,6Z" fill="none" stroke="#3446ee" stroke-linecap="round" stroke-linejoin="round" stroke-width="1" />
+        <path id="Path_91499" data-name="Path 91499" d="M14.57,23.143h8.571v-12H14.57" fill="none" stroke="#3446ee" stroke-linecap="round" stroke-linejoin="round" stroke-width="1" />
+        <path id="Path_91500" data-name="Path 91500" d="M7.711,23.143V19.714" fill="none" stroke="#3446ee" stroke-linecap="round" stroke-linejoin="round" stroke-width="1" />
+        <path id="Path_91501" data-name="Path 91501" d="M5.141,14.571h5.143" fill="none" stroke="#3446ee" stroke-linecap="round" stroke-linejoin="round" stroke-width="1" />
+        <path id="Path_91502" data-name="Path 91502" d="M5.141,9.429h5.143" fill="none" stroke="#3446ee" stroke-linecap="round" stroke-linejoin="round" stroke-width="1" />
+      </g>
+    </>
+  ),
+});

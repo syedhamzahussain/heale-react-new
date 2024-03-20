@@ -4,6 +4,7 @@ import AuthLayout from "modules/shared/AuthLayout";
 import Welcome from "modules/welcome";
 import { BrowserRouter, Route, Routes } from "react-router-dom";
 import theme from "theme";
+import "App.css"
 
 function App() {
   return (
