@@ -11,8 +11,11 @@ const StepFormHeader = () => {
         "Personal Info",
         "2 Factor Authentication",
         "Verify Identity",
+        "Business Info",
+        "Application",
         "Connect Account",
         "Receive Card",
+        "Team Info"
     ];
 
     const renderSteps = () => {
