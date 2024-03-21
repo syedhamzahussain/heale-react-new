@@ -1,10 +1,10 @@
 import { ChakraProvider } from "@chakra-ui/react";
-import AuthLayout from "components/AuthLayout";
-import PersonalAccount from "pages/personal-account";
-import Welcome from "pages/welcome";
+import PersonalAccount from "modules/onboarding/personal/personal-account";
+import AuthLayout from "modules/shared/AuthLayout";
+import Welcome from "modules/welcome";
 import { BrowserRouter, Route, Routes } from "react-router-dom";
 import theme from "theme";
-
+import "App.css"
 
 function App() {
   return (

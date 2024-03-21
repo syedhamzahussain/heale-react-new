@@ -1,17 +1,13 @@
-import { Button, ButtonProps } from "@chakra-ui/react";
+import { Button } from "@chakra-ui/react";
 import React from "react";
+import { ButtonThemeType } from "type";
 
 const ButtonTheme = ({
     btnText,
     chakraProps,
     primary,
     invert,
-}: {
-    btnText: string;
-    chakraProps?: ButtonProps;
-    invert?: boolean;
-    primary?: boolean;
-}) => {
+}: ButtonThemeType) => {
     return (
         <Button
             {...chakraProps}

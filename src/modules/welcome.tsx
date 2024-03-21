@@ -1,9 +1,10 @@
 import { Box, Container, Flex, Grid, Heading, Icon, List, ListItem, Text, useRadio, useRadioGroup } from '@chakra-ui/react'
-import ButtonTheme from 'components/ButtonTheme';
-import { CheckIcon } from 'components/Icons';
 import { options } from 'dummyData/data';
 import React from 'react'
 import { RadioCardProps } from 'type';
+import ButtonTheme from './shared/ButtonTheme';
+import { CheckIcon } from './shared/Icons';
+import { Link } from 'react-router-dom';
 
 const RadioCard: React.FC<RadioCardProps> = ({ ...props }) => {
     const { getInputProps, getRadioProps } = useRadio(props);
@@ -39,14 +40,16 @@ const RadioCard: React.FC<RadioCardProps> = ({ ...props }) => {
 };
 
 const Welcome = () => {
-    const { getRootProps, getRadioProps, setValue } = useRadioGroup({
+    const { getRootProps, getRadioProps, setValue: setRadioValue, value: radioValue } = useRadioGroup({
         name: 'accountType',
         defaultValue: 'Personal',
         onChange: (value) => {
-            setValue(value)
+            setRadioValue(value);
         },
     })
     const group = getRootProps()
+    console.log(radioValue);
+
     return (
         <Container maxW={"80%"}>
             <Heading mb={4} as={"h4"} fontSize={"3xl"} color={"Primary.Navy"}>Welcome to HEALE</Heading>
@@ -59,10 +62,12 @@ const Welcome = () => {
                             <RadioCard children id={value?.id} key={value?.id} value={value?.title} icon={value?.icon} title={value?.title} desc={value?.desc} {...radio} />
                         )
                     })}
-                    <ButtonTheme btnText='Get Started' primary chakraProps={{
-                        mt: 4,
-                        w: "100%"
-                    }} />
+                    <Link to={radioValue === "0" ? "/personal" : "#"}>
+                        <ButtonTheme btnText='Get Started' primary chakraProps={{
+                            mt: 4,
+                            w: "100%"
+                        }} />
+                    </Link>
                 </Box>
                 <Flex flexDir={"column"} w={"80%"} marginLeft={"auto"}>
                     <Heading fontSize={"xl"} color={"Primary.Navy"} as={"h6"} mb={8}>Title goes here</Heading>

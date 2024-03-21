@@ -1,4 +1,4 @@
-import { BusinessIcon, PersonalIcon } from "components/Icons";
+import { BusinessIcon, PersonalIcon } from "modules/shared/Icons";
 
 export const options = [
   {

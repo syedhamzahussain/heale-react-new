@@ -1,19 +1,21 @@
 import React from "react";
 import { useWizard } from "react-use-wizard";
-import { FaCheck } from "react-icons/fa6";
 import { Box, Flex, Text } from "@chakra-ui/react";
-import { CheckIcon, RadioIcon, RadioIconChecked } from "components/Icons";
+import { CheckIcon, RadioIcon, RadioIconChecked } from "../../../shared/Icons";
 
 
 const StepFormHeader = () => {
-    const { nextStep, isLastStep, goToStep, activeStep, stepCount } = useWizard();
+    const { activeStep, stepCount } = useWizard();
 
     const stepNames = [
         "Personal Info",
         "2 Factor Authentication",
         "Verify Identity",
+        "Business Info",
+        "Application",
         "Connect Account",
         "Receive Card",
+        "Team Info"
     ];
 
     const renderSteps = () => {
