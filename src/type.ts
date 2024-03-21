@@ -13,6 +13,7 @@ export interface ButtonThemeType {
   chakraProps?: ButtonProps;
   invert?: boolean;
   primary?: boolean;
+  primaryOutline?: boolean;
 }
 
 export interface MessageBoxType {
