@@ -51,7 +51,7 @@ const StepFormHeader = () => {
         return steps;
     };
     return (
-        <Flex flexDir={"column"} w={"20%"}>
+        <Flex flexDir={"column"} minW={"20%"}>
             {renderSteps()}
         </Flex>
     );

@@ -7,7 +7,7 @@ const AuthLayout = () => {
     return (
         <>
             <AuthHeader />
-            <Box as='main' mt={20}>
+            <Box as='main' mt={20} mb={8}>
                 <Outlet />
             </Box>
         </>

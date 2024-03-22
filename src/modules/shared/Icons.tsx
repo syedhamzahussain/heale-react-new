@@ -191,8 +191,8 @@ export const VerifyInfoIcon = createIcon({
   viewBox: "0 0 61.429 45.805",
   path: (
     <g id="Group_40465" data-name="Group 40465" transform="translate(-1.285 -8.909)">
-      <path id="Path_91505" data-name="Path 91505" d="M20.57,33.143l7.086,5.211a2.194,2.194,0,0,0,1.829.457,2.286,2.286,0,0,0,1.554-1.1L48,10.286" fill="none" stroke="#3446ee" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" />
-      <path id="Path_91506" data-name="Path 91506" d="M54.171,24a63.63,63.63,0,0,1,7.543,9.143S48.411,53.714,32,53.714,2.285,33.143,2.285,33.143,15.588,12.571,32,12.571" fill="none" stroke="#3446ee" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" />
+      <path id="Path_91505" data-name="Path 91505" d="M20.57,33.143l7.086,5.211a2.194,2.194,0,0,0,1.829.457,2.286,2.286,0,0,0,1.554-1.1L48,10.286" fill="none" stroke="#3446ee" strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" />
+      <path id="Path_91506" data-name="Path 91506" d="M54.171,24a63.63,63.63,0,0,1,7.543,9.143S48.411,53.714,32,53.714,2.285,33.143,2.285,33.143,15.588,12.571,32,12.571" fill="none" stroke="#3446ee" strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" />
     </g>
   ),
 });
@@ -203,14 +203,14 @@ export const LoaderIcon = createIcon({
   path: (
     <>
       <g clip-path="url(#clip0_1182_47083)">
-        <path d="M4.5731 16H1.14453" stroke="#3446EE" stroke-linecap="round" stroke-linejoin="round" />
-        <path d="M7.91114 7.90857L5.48828 5.48572" stroke="#3446EE" stroke-linecap="round" stroke-linejoin="round" />
-        <path d="M7.91114 24.0914L5.48828 26.5143" stroke="#3446EE" stroke-linecap="round" stroke-linejoin="round" />
-        <path d="M27.4297 16H30.8583" stroke="#3446EE" stroke-linecap="round" stroke-linejoin="round" />
-        <path d="M24.0938 24.0914L26.5166 26.5143" stroke="#3446EE" stroke-linecap="round" stroke-linejoin="round" />
-        <path d="M16 27.4286V30.8572" stroke="#3446EE" stroke-linecap="round" stroke-linejoin="round" />
-        <path d="M24.0938 7.90857L26.5166 5.48572" stroke="#3446EE" stroke-linecap="round" stroke-linejoin="round" />
-        <path d="M16 4.57139V1.14282" stroke="#3446EE" stroke-linecap="round" stroke-linejoin="round" />
+        <path d="M4.5731 16H1.14453" stroke="#3446EE" strokeLinecap="round" strokeLinejoin="round" />
+        <path d="M7.91114 7.90857L5.48828 5.48572" stroke="#3446EE" strokeLinecap="round" strokeLinejoin="round" />
+        <path d="M7.91114 24.0914L5.48828 26.5143" stroke="#3446EE" strokeLinecap="round" strokeLinejoin="round" />
+        <path d="M27.4297 16H30.8583" stroke="#3446EE" strokeLinecap="round" strokeLinejoin="round" />
+        <path d="M24.0938 24.0914L26.5166 26.5143" stroke="#3446EE" strokeLinecap="round" strokeLinejoin="round" />
+        <path d="M16 27.4286V30.8572" stroke="#3446EE" strokeLinecap="round" strokeLinejoin="round" />
+        <path d="M24.0938 7.90857L26.5166 5.48572" stroke="#3446EE" strokeLinecap="round" strokeLinejoin="round" />
+        <path d="M16 4.57139V1.14282" stroke="#3446EE" strokeLinecap="round" strokeLinejoin="round" />
       </g>
       <defs>
         <clipPath id="clip0_1182_47083">
@@ -226,9 +226,9 @@ export const VerifyBusinessIcon = createIcon({
   viewBox: "0 0 61.329 61.429",
   path: (
     <g id="Group_40435" data-name="Group 40435" transform="translate(-0.785 -0.286)">
-      <path id="Path_91495" data-name="Path 91495" d="M60.714,35.571,41.88,60.714,29.309,51.3" fill="none" stroke="#3446ee" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" />
-      <path id="Path_91496" data-name="Path 91496" d="M21.856,21.857A10.286,10.286,0,1,0,11.57,11.571,10.286,10.286,0,0,0,21.856,21.857Z" fill="none" stroke="#3446ee" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" />
-      <path id="Path_91497" data-name="Path 91497" d="M12.714,56.143H1.285V49.286A20.571,20.571,0,0,1,36.394,34.749" fill="none" stroke="#3446ee" stroke-linecap="round" stroke-linejoin="round" stroke-width="1" />
+      <path id="Path_91495" data-name="Path 91495" d="M60.714,35.571,41.88,60.714,29.309,51.3" fill="none" stroke="#3446ee" strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" />
+      <path id="Path_91496" data-name="Path 91496" d="M21.856,21.857A10.286,10.286,0,1,0,11.57,11.571,10.286,10.286,0,0,0,21.856,21.857Z" fill="none" stroke="#3446ee" strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" />
+      <path id="Path_91497" data-name="Path 91497" d="M12.714,56.143H1.285V49.286A20.571,20.571,0,0,1,36.394,34.749" fill="none" stroke="#3446ee" strokeLinecap="round" strokeLinejoin="round" strokeWidth="1" />
     </g>
   ),
 });
@@ -243,12 +243,77 @@ export const OfficeIcon = createIcon({
           <rect id="Rectangle_23050" data-name="Rectangle 23050" width="24" height="24" fill="#fff" />
         </clipPath>
       </defs>
-      <g id="Group_40436" data-name="Group 40436" clip-path="url(#clip-path)">
-        <path id="Path_91498" data-name="Path 91498" d="M14.57,23.143H.855V6.857l6.857-6,6.857,6Z" fill="none" stroke="#3446ee" stroke-linecap="round" stroke-linejoin="round" stroke-width="1" />
-        <path id="Path_91499" data-name="Path 91499" d="M14.57,23.143h8.571v-12H14.57" fill="none" stroke="#3446ee" stroke-linecap="round" stroke-linejoin="round" stroke-width="1" />
-        <path id="Path_91500" data-name="Path 91500" d="M7.711,23.143V19.714" fill="none" stroke="#3446ee" stroke-linecap="round" stroke-linejoin="round" stroke-width="1" />
-        <path id="Path_91501" data-name="Path 91501" d="M5.141,14.571h5.143" fill="none" stroke="#3446ee" stroke-linecap="round" stroke-linejoin="round" stroke-width="1" />
-        <path id="Path_91502" data-name="Path 91502" d="M5.141,9.429h5.143" fill="none" stroke="#3446ee" stroke-linecap="round" stroke-linejoin="round" stroke-width="1" />
+      <g id="Group_40436" data-name="Group 40436" clipPath="url(#clip-path)">
+        <path id="Path_91498" data-name="Path 91498" d="M14.57,23.143H.855V6.857l6.857-6,6.857,6Z" fill="none" stroke="#3446ee" strokeLinecap="round" strokeLinejoin="round" strokeWidth="1" />
+        <path id="Path_91499" data-name="Path 91499" d="M14.57,23.143h8.571v-12H14.57" fill="none" stroke="#3446ee" strokeLinecap="round" strokeLinejoin="round" strokeWidth="1" />
+        <path id="Path_91500" data-name="Path 91500" d="M7.711,23.143V19.714" fill="none" stroke="#3446ee" strokeLinecap="round" strokeLinejoin="round" strokeWidth="1" />
+        <path id="Path_91501" data-name="Path 91501" d="M5.141,14.571h5.143" fill="none" stroke="#3446ee" strokeLinecap="round" strokeLinejoin="round" strokeWidth="1" />
+        <path id="Path_91502" data-name="Path 91502" d="M5.141,9.429h5.143" fill="none" stroke="#3446ee" strokeLinecap="round" strokeLinejoin="round" strokeWidth="1" />
+      </g>
+    </>
+  ),
+});
+
+export const UsFlagIcon = createIcon({
+  displayName: "UsFlagIcon",
+  viewBox: "0 0 20 20",
+  path: (
+    <>
+      <g opacity="0.2" clipPath="url(#clip0_2339_233024)">
+        <path d="M10 20C15.5228 20 20 15.5228 20 10C20 4.47715 15.5228 0 10 0C4.47715 0 0 4.47715 0 10C0 15.5228 4.47715 20 10 20Z" fill="#F0F0F0" />
+        <path d="M9.56641 9.99982H20.0012C20.0012 9.09725 19.8809 8.22287 19.6567 7.39111H9.56641V9.99982Z" fill="#D80027" />
+        <path d="M9.56641 4.78254H18.5334C17.9213 3.78363 17.1386 2.9007 16.226 2.17383H9.56641V4.78254Z" fill="#D80027" />
+        <path d="M9.99828 19.9998C12.3518 19.9998 14.5149 19.1864 16.2231 17.8259H3.77344C5.48164 19.1864 7.6448 19.9998 9.99828 19.9998Z" fill="#D80027" />
+        <path d="M1.46699 15.2174H18.5315C19.023 14.4154 19.4041 13.5389 19.6548 12.6086H0.34375C0.594414 13.5389 0.975547 14.4154 1.46699 15.2174Z" fill="#D80027" />
+        <path d="M4.63219 1.56164H5.54348L4.69582 2.17746L5.01961 3.17391L4.17199 2.55809L3.32437 3.17391L3.60406 2.31309C2.85773 2.93477 2.20359 3.66313 1.66453 4.47469H1.95652L1.41695 4.86668C1.33289 5.00691 1.25227 5.14937 1.175 5.29395L1.43266 6.08695L0.951953 5.7377C0.832461 5.99086 0.723164 6.24973 0.624922 6.51398L0.908789 7.38773H1.95652L1.10887 8.00356L1.43266 9L0.585039 8.38418L0.0773047 8.75309C0.0264844 9.1616 0 9.57769 0 10H10C10 4.47719 10 3.82609 10 0C8.02453 0 6.18301 0.573047 4.63219 1.56164ZM5.01961 9L4.17199 8.38418L3.32437 9L3.64816 8.00356L2.80051 7.38773H3.84824L4.17199 6.39129L4.49574 7.38773H5.54348L4.69582 8.00356L5.01961 9ZM4.69582 5.09051L5.01961 6.08695L4.17199 5.47113L3.32437 6.08695L3.64816 5.09051L2.80051 4.47469H3.84824L4.17199 3.47824L4.49574 4.47469H5.54348L4.69582 5.09051ZM8.60656 9L7.75895 8.38418L6.91133 9L7.23512 8.00356L6.38746 7.38773H7.4352L7.75895 6.39129L8.0827 7.38773H9.13043L8.28277 8.00356L8.60656 9ZM8.28277 5.09051L8.60656 6.08695L7.75895 5.47113L6.91133 6.08695L7.23512 5.09051L6.38746 4.47469H7.4352L7.75895 3.47824L8.0827 4.47469H9.13043L8.28277 5.09051ZM8.28277 2.17746L8.60656 3.17391L7.75895 2.55809L6.91133 3.17391L7.23512 2.17746L6.38746 1.56164H7.4352L7.75895 0.565195L8.0827 1.56164H9.13043L8.28277 2.17746Z" fill="#0052B4" />
+      </g>
+      <defs>
+        <clipPath id="clip0_2339_233024">
+          <rect width="20" height="20" fill="white" />
+        </clipPath>
+      </defs>
+    </>
+  ),
+});
+
+export const UploadIcon = createIcon({
+  displayName: "UploadIcon",
+  viewBox: "0 0 26 26",
+  path: (
+    <g id="Group_40465" data-name="Group 40465" transform="translate(0 0)">
+      <path id="Path_91505" data-name="Path 91505" d="M13,9V25" fill="none" stroke="#3446ee" strokeLinecap="round" strokeWidth="2" />
+      <path id="Path_91506" data-name="Path 91506" d="M21,14.333l-8-8-8,8" fill="none" stroke="#3446ee" strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" />
+      <path id="Path_91507" data-name="Path 91507" d="M1,5.082V2.337A1.331,1.331,0,0,1,2.325,1H23.676A1.333,1.333,0,0,1,25,2.337V5.082" fill="none" stroke="#3446ee" strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" />
+    </g>
+  ),
+});
+
+export const LockIcon = createIcon({
+  displayName: "LockIcon",
+  viewBox: "0 0 15.286 19.572",
+  path: (
+    <g id="Group_40465" data-name="Group 40465" transform="translate(-2.355 -0.214)">
+      <path id="Path_91505" data-name="Path 91505" d="M15.713,7.857H4.284A1.429,1.429,0,0,0,2.855,9.286v8.571a1.429,1.429,0,0,0,1.429,1.429H15.713a1.429,1.429,0,0,0,1.429-1.429V9.286A1.429,1.429,0,0,0,15.713,7.857Z" fill="none" stroke="#03103d" stroke-linecap="round" stroke-linejoin="round" stroke-width="1" />
+      <path id="Path_91506" data-name="Path 91506" d="M15,7.857V5.714a5,5,0,1,0-10,0V7.857" fill="none" stroke="#03103d" stroke-linecap="round" stroke-linejoin="round" stroke-width="1" />
+      <path id="Path_91507" data-name="Path 91507" d="M10,14.286a.714.714,0,1,0-.714-.714A.714.714,0,0,0,10,14.286Z" fill="none" stroke="#03103d" stroke-linecap="round" stroke-linejoin="round" stroke-width="1" />
+    </g>
+  ),
+});
+
+export const InfoIcon = createIcon({
+  displayName: "InfoIcon",
+  viewBox: "0 0 24 24",
+  path: (
+    <>
+      <defs>
+        <clipPath id="clip-path">
+          <rect id="Rectangle_23055" data-name="Rectangle 23055" width="24" height="24" fill="#fff" />
+        </clipPath>
+      </defs>
+      <g id="Group_40465" data-name="Group 40465" clip-path="url(#clip-path)">
+        <path id="Path_91505" data-name="Path 91505" d="M12,23.143A11.143,11.143,0,1,0,.855,12,11.143,11.143,0,0,0,12,23.143Z" fill="none" stroke="#3446ee" stroke-linecap="round" stroke-linejoin="round" stroke-width="0.833" />
+        <path id="Path_91506" data-name="Path 91506" d="M12,12v6" fill="none" stroke="#3446ee" stroke-linecap="round" stroke-linejoin="round" stroke-width="0.833" />
+        <path id="Path_91507" data-name="Path 91507" d="M12,8.571a.857.857,0,1,0-.857-.857A.857.857,0,0,0,12,8.571Z" fill="none" stroke="#3446ee" stroke-linecap="round" stroke-linejoin="round" stroke-width="0.833" />
       </g>
     </>
   ),
