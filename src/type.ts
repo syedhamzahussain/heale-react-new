@@ -24,3 +24,13 @@ export interface MessageBoxType {
   title: string;
   icon: ComponentWithAs<'svg', IconProps>;
 }
+
+export interface VerificationBoxType {
+  title: string;
+  status?: boolean;
+}
+
+export interface ApplicationCollabType {
+  onClose: () => void;
+  isOpen: boolean;
+}
