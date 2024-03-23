@@ -68,6 +68,74 @@ export const HealeLogo = createIcon({
   ),
 });
 
+export const HealeLogoWhite = createIcon({
+  displayName: "HealeLogoWhite",
+  viewBox: "0 0 173 64",
+  path: (
+    <>
+      <path d="M72.0114 22.6056V41.3748H70.1374C69.3024 41.3748 68.8848 40.9573 68.8848 40.1247V33.2428H56.3712V40.1247C56.3712 40.9597 55.9561 41.3773 55.1211 41.3773H53.2446L53.2422 22.608H55.1186C55.9537 22.608 56.3712 23.0256 56.3712 23.8582V30.7401H68.8848V23.8582C68.8848 23.0231 69.2999 22.6056 70.135 22.6056H72.0114Z" fill="white" />
+      <path d="M93.4975 40.1197V41.3698L79.8762 41.3722C77.5503 41.3722 75.6665 39.4884 75.6641 37.1626V22.603L93.1807 22.6006V23.8507C93.1807 24.5409 92.6207 25.1033 91.9305 25.1033H78.7906V30.7375H92.2425V33.2378H78.7906V36.9563C78.7906 38.0124 79.6478 38.8695 80.7064 38.8695H92.2449C92.9351 38.8695 93.4975 39.427 93.4975 40.1197Z" fill="white" />
+      <path d="M155.388 40.1099V41.36L141.767 41.3625C139.441 41.3625 137.557 39.4787 137.555 37.1528V22.5933L155.071 22.5908V23.841C155.071 24.5311 154.511 25.0935 153.821 25.0935H140.681V30.7277H154.133V33.228H140.681V36.9465C140.681 38.0026 141.538 38.8598 142.597 38.8598H154.136C154.826 38.8598 155.388 39.4173 155.388 40.1099Z" fill="white" />
+      <path d="M115.971 41.3673H114.119C113.284 41.3673 112.66 40.9498 112.267 40.1172L110.806 36.9882H100.483L99.024 40.1197C98.6335 40.9547 98.0072 41.3722 97.1722 41.3722H95.3203L104.076 22.6006H107.205L115.968 41.3673H115.971ZM109.661 34.4855L105.646 25.9089L101.632 34.4855H109.661Z" fill="white" />
+      <path d="M135.213 40.1123V41.3624L118.32 41.3649V22.5981H120.194C121.029 22.5981 121.447 23.0157 121.447 23.8483V38.8646H133.963C134.798 38.8646 135.216 39.2822 135.216 40.1148L135.213 40.1123Z" fill="white" />
+      <path d="M30.0938 24.6318L36.4746 28.3135L30.0938 32V24.6318Z" fill="#5672FF" />
+      <path d="M36.4746 35.6816L30.0938 39.3657V32L36.4746 35.6816Z" fill="#3446EE" />
+      <path d="M36.4746 35.6817L30.0938 32L36.4746 28.3135V35.6817Z" fill="#778CFF" />
+      <path d="M36.477 28.3135L30.0962 24.6318L30.0938 16.5735L43.4547 24.2831L36.477 28.3135Z" fill="url(#paint0_linear_1182_47616)" />
+      <path d="M36.4721 35.6816L30.0938 39.3657V47.4241L43.4523 39.7096L36.4721 35.6816Z" fill="url(#paint1_linear_1182_47616)" />
+      <path d="M43.4489 39.7096L36.4688 35.6817L36.4712 28.3135L43.4489 24.2831V39.7096Z" fill="url(#paint2_linear_1182_47616)" />
+      <path d="M30.0918 39.3657L23.7109 35.6841L30.0918 32V39.3657Z" fill="#5672FF" />
+      <path d="M23.7109 28.3159L30.0893 24.6318L30.0918 32L23.7109 28.3159Z" fill="#3446EE" />
+      <path d="M23.7109 28.3159L30.0918 32L23.7109 35.6841V28.3159Z" fill="#778CFF" />
+      <path d="M23.712 35.6841L30.0929 39.3657V47.424L16.7344 39.7145L23.712 35.6841Z" fill="url(#paint3_linear_1182_47616)" />
+      <path d="M23.712 28.3159L30.0929 24.6318L30.0904 16.5735L16.7344 24.288L23.712 28.3159Z" fill="url(#paint4_linear_1182_47616)" />
+      <path d="M16.7344 24.288L23.712 28.3159V35.6841L16.7344 39.7145V24.288Z" fill="url(#paint5_linear_1182_47616)" />
+      <defs>
+        <linearGradient id="paint0_linear_1182_47616" x1="36.7742" y1="16.4728" x2="36.7742" y2="27.9082" gradientUnits="userSpaceOnUse">
+          <stop stopColor="#627DFF" />
+          <stop offset="0.23" stopColor="#6881FF" />
+          <stop offset="0.55" stopColor="#798FFF" />
+          <stop offset="0.91" stopColor="#95A6FF" />
+          <stop offset="1" stopColor="#9EAEFF" />
+        </linearGradient>
+        <linearGradient id="paint1_linear_1182_47616" x1="36.7718" y1="46.5694" x2="36.7718" y2="35.8953" gradientUnits="userSpaceOnUse">
+          <stop stopColor="#474FF6" />
+          <stop offset="0.17" stopColor="#4D54F6" />
+          <stop offset="0.41" stopColor="#5E64F7" />
+          <stop offset="0.68" stopColor="#7A7FF8" />
+          <stop offset="0.9" stopColor="#979AFA" />
+        </linearGradient>
+        <linearGradient id="paint2_linear_1182_47616" x1="43.2475" y1="31.9951" x2="36.8077" y2="31.9951" gradientUnits="userSpaceOnUse">
+          <stop stopColor="#B3BFFF" />
+          <stop offset="0.3" stopColor="#B9C3FF" />
+          <stop offset="0.71" stopColor="#CAD1FF" />
+          <stop offset="1" stopColor="#DBDFFF" />
+        </linearGradient>
+        <linearGradient id="paint3_linear_1182_47616" x1="23.4149" y1="47.5247" x2="23.4149" y2="36.0893" gradientUnits="userSpaceOnUse">
+          <stop stopColor="#627DFF" />
+          <stop offset="0.23" stopColor="#6881FF" />
+          <stop offset="0.55" stopColor="#798FFF" />
+          <stop offset="0.91" stopColor="#95A6FF" />
+          <stop offset="1" stopColor="#9EAEFF" />
+        </linearGradient>
+        <linearGradient id="paint4_linear_1182_47616" x1="23.4149" y1="17.4257" x2="23.4149" y2="28.1022" gradientUnits="userSpaceOnUse">
+          <stop stopColor="#474FF6" />
+          <stop offset="0.17" stopColor="#4D54F6" />
+          <stop offset="0.41" stopColor="#5E64F7" />
+          <stop offset="0.68" stopColor="#7A7FF8" />
+          <stop offset="0.9" stopColor="#979AFA" />
+        </linearGradient>
+        <linearGradient id="paint5_linear_1182_47616" x1="16.9358" y1="32.0024" x2="23.3756" y2="32.0024" gradientUnits="userSpaceOnUse">
+          <stop stopColor="#B3BFFF" />
+          <stop offset="0.3" stopColor="#B9C3FF" />
+          <stop offset="0.71" stopColor="#CAD1FF" />
+          <stop offset="1" stopColor="#DBDFFF" />
+        </linearGradient>
+      </defs>
+    </>
+  ),
+});
+
 export const PersonalIcon = createIcon({
   displayName: "PersonalIcon",
   viewBox: "0 0 24 24",
@@ -316,5 +384,26 @@ export const InfoIcon = createIcon({
         <path id="Path_91507" data-name="Path 91507" d="M12,8.571a.857.857,0,1,0-.857-.857A.857.857,0,0,0,12,8.571Z" fill="none" stroke="#3446ee" stroke-linecap="round" stroke-linejoin="round" stroke-width="0.833" />
       </g>
     </>
+  ),
+});
+
+export const RightIcon = createIcon({
+  displayName: "RightIcon",
+  viewBox: "0 0 12.01 23.7",
+  path: (
+    <path id="Path_91505" data-name="Path 91505" d="M6.6.857,17.144,11.4a.823.823,0,0,1,0,1.2L6.6,23.143" transform="translate(-5.894 -0.15)" fill="none" stroke="#03103d" stroke-linecap="round" stroke-linejoin="round" stroke-width="1" />
+  ),
+});
+
+export const WifiIcon = createIcon({
+  displayName: "WifiIcon",
+  viewBox: "0 0 29.336 39.528",
+  path: (
+    <g id="Group_40465" data-name="Group 40465" transform="translate(-5 -0.226)">
+      <path id="Path_91505" data-name="Path 91505" d="M5,20a2.5,2.5,0,1,1,2.5,2.5A2.5,2.5,0,0,1,5,20Z" fill="#fff" />
+      <path id="Path_91506" data-name="Path 91506" d="M13.752,12.938a10,10,0,0,1-.028,14.153" fill="none" stroke="#fff" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" />
+      <path id="Path_91507" data-name="Path 91507" d="M19.6,7a18.333,18.333,0,0,1,.016,25.975" fill="none" stroke="#fff" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" />
+      <path id="Path_91508" data-name="Path 91508" d="M26.008,1.639a26.667,26.667,0,0,1,.02,36.7" fill="none" stroke="#fff" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" />
+    </g>
   ),
 });

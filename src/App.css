@@ -1,3 +1,11 @@
+@font-face {
+    font-family: "Aeonik Regular";
+    font-style: normal;
+    font-weight: normal;
+    font-display: swap;
+    src: url("../src/assets/fonts/Aeonik-Regular.otf") format("truetype");
+}
+
 input,
 select {
     height: 2.75rem !important;

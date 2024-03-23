@@ -4,9 +4,11 @@ import { InfoIcon } from 'modules/shared/Icons'
 import React from 'react'
 import VerificationBox from '../VerificationBox'
 import ApplicationCollabModal from '../ApplicationCollabModal'
+import { useWizard } from 'react-use-wizard'
 
 const Application = () => {
     const { isOpen, onOpen, onClose } = useDisclosure()
+    const { nextStep, previousStep } = useWizard();
     return (
         <Grid gridTemplateColumns={"repeat(3,1fr)"} gap={16}>
             <GridItem colSpan={2}>
@@ -35,6 +37,16 @@ const Application = () => {
                     <VerificationBox title='Carrier' />
                     <VerificationBox title='Lender' />
                 </Grid>
+                <Flex gap={4} mt={8}>
+                    <ButtonTheme btnText='Back' chakraProps={{
+                        w: "100%",
+                        onClick: () => previousStep(),
+                    }} />
+                    <ButtonTheme btnText='Submit Application' primary chakraProps={{
+                        w: "100%",
+                        onClick: () => nextStep(),
+                    }} />
+                </Flex>
             </GridItem>
             <Flex h={"172px"} gap={8} flexDir='column' bgColor={"white"} borderRadius={8} p={4} border={"1px solid"} borderColor={"Neutral.200"}>
                 <Box>

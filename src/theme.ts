@@ -15,11 +15,12 @@ const theme = extendTheme({
     },
     Secondary: {
       Turquoise: 'rgba(3, 204, 176, 1)',
+      Red: 'rgba(231, 6, 66, 1)',
     },
   },
   fonts: {
-    body: `'Gotham A', sans-serif`,
-    heading: `'Larken', sans-serif`,
+    body: `'Aeonik Regular', sans-serif`,
+    heading: `'Aeonik Regular', sans-serif`,
   },
   components: {
     Heading: {
