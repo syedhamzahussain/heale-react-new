@@ -1,11 +1,16 @@
 import { Box, Checkbox, Flex, Heading, Text } from '@chakra-ui/react'
 import ButtonTheme from 'modules/shared/ButtonTheme';
 import { HealeLogoWhite, WifiIcon } from 'modules/shared/Icons';
-import React from 'react'
+import React, { useState } from 'react';
 import { useWizard } from 'react-use-wizard';
 
 const RecieveCard = () => {
     const { nextStep, previousStep } = useWizard();
+    const [showShippingAddress, setShowShippingAddress] = useState(false);
+
+    const handleCheckboxChange = () => {
+        setShowShippingAddress(!showShippingAddress);
+    };
     return (
         <Box w={"50%"} >
             <Box textAlign={"center"}>
@@ -21,19 +26,21 @@ const RecieveCard = () => {
                     <WifiIcon w={10} h={10} />
                 </Flex>
             </Flex>
-            <Checkbox color={"Primary.Navy"} size={"sm"}>Option to order a physical copy of your personal & business cards</Checkbox>
-            <Box p={6} my={8} borderRadius={8} border={"1px solid"} borderColor={"Neutral.200"}>
-                <Flex justifyContent={"space-between"}>
-                    <Heading fontSize={"md"} color={"Primary.Navy"}>Shipping Address</Heading>
-                    <ButtonTheme btnText='Edit' chakraProps={{
-                        fontSize: "xs",
-                        h: 8
-                    }} />
-                </Flex>
-                <Text w={"170px"} color={"Primary.Navy"} fontSize={"sm"}>525 Brannon Street Unit 24
-                    Los Angeles, CA 90026</Text>
-            </Box>
-            <Flex gap={4}>
+            <Checkbox color={"Primary.Navy"} size={"sm"} onChange={handleCheckboxChange}>Option to order a physical copy of your personal & business cards</Checkbox>
+            {showShippingAddress && (
+                <Box p={6} my={8} borderRadius={8} border={"1px solid"} borderColor={"Neutral.200"}>
+                    <Flex justifyContent={"space-between"}>
+                        <Heading fontSize={"md"} color={"Primary.Navy"}>Shipping Address</Heading>
+                        <ButtonTheme btnText='Edit' chakraProps={{
+                            fontSize: "xs",
+                            h: 8
+                        }} />
+                    </Flex>
+                    <Text w={"170px"} color={"Primary.Navy"} fontSize={"sm"}>525 Brannon Street Unit 24
+                        Los Angeles, CA 90026</Text>
+                </Box>
+            )}
+            <Flex gap={4} mt={!showShippingAddress ? 8 : 0}>
                 <ButtonTheme btnText='Back' chakraProps={{
                     w: "100%",
                     onClick: () => previousStep(),

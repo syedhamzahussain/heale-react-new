@@ -29,8 +29,12 @@ const RadioCard: React.FC<RadioCardProps> = ({ ...props }) => {
                     }
                 }}
             >
-                <Flex justifyContent={"center"} alignItems={"center"} w={"56px"} h={"56px"} bgColor={"Neutral.100"} borderRadius={"full"}>
-                    <Icon as={props.icon} w={6} h={6} />
+                <Flex p={4} justifyContent={"center"} alignItems={"center"} w={"56px"} h={"56px"} bgColor={"Neutral.100"} borderRadius={"full"}>
+                    <Icon as={props.icon} w={6} h={6} sx={{
+                        "path": {
+                            stroke: "Primary.Blue"
+                        }
+                    }} />
                 </Flex>
                 <Box w={"90%"} h={"100px"}>
                     <Heading color={"Primary.Navy"} fontSize={"xl"} mb={4} as={"h6"}>{props.title}</Heading>
@@ -53,10 +57,10 @@ const ConnectAccount = () => {
     })
     const group = getRootProps()
     return (
-        <Box w={"60%"}>
+        <Box w={"50%"}>
             <Heading as={"h4"} mb={4} fontSize={"3xl"} color={"Primary.Navy"}>Add bank account</Heading>
             <Text mb={8} color={"Neutral.800"}>Choose your Account Type</Text>
-            <Box {...group} w={"80%"}>
+            <Box {...group} w={"100%"}>
                 {bankOptions.map((value) => {
                     const radio = getRadioProps({ value: String(value?.id) });
                     return (
