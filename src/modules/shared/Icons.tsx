@@ -425,9 +425,72 @@ export const DownloadIcon = createIcon({
   viewBox: "0 0 20 20",
   path: (
     <g id="Group_40465" data-name="Group 40465" clip-path="url(#clip0_2440_194831)">
-      <path d="M0.710938 15V16.4286C0.710938 17.1863 1.01196 17.9131 1.54778 18.4489C2.08359 18.9847 2.81032 19.2857 3.56808 19.2857H16.4252C17.183 19.2857 17.9097 18.9847 18.4455 18.4489C18.9813 17.9131 19.2824 17.1863 19.2824 16.4286V15" stroke="#3446EE" stroke-linecap="round" stroke-linejoin="round"/>
-      <path d="M5.71094 8.57141L9.99665 13.5714L14.2824 8.57141" stroke="#3446EE" stroke-linecap="round" stroke-linejoin="round"/>
-      <path d="M10 13.5714V0.714233" stroke="#3446EE" stroke-linecap="round" stroke-linejoin="round"/>
+      <path d="M0.710938 15V16.4286C0.710938 17.1863 1.01196 17.9131 1.54778 18.4489C2.08359 18.9847 2.81032 19.2857 3.56808 19.2857H16.4252C17.183 19.2857 17.9097 18.9847 18.4455 18.4489C18.9813 17.9131 19.2824 17.1863 19.2824 16.4286V15" stroke="#3446EE" fill="#fff" stroke-linecap="round" stroke-linejoin="round"/>
+      <path d="M5.71094 8.57141L9.99665 13.5714L14.2824 8.57141" fill="#fff" stroke="#3446EE" stroke-linecap="round" stroke-linejoin="round"/>
+      <path d="M10 13.5714V0.714233" stroke="#3446EE" fill="#fff" stroke-linecap="round" stroke-linejoin="round"/>
     </g>
+  ),
+});
+
+export const HealLogoHexagonIcon = createIcon({
+  displayName: "HealLogoHexagonIcon",
+  viewBox: "0 0 298 300",
+  path: (
+    <>
+    <path d="M148.89 102.043L190.424 126.01L148.883 150L148.89 102.043Z" fill="#5672FF"/>
+    <path d="M190.417 173.975L148.89 197.957L148.883 150L190.417 173.975Z" fill="#3446EE"/>
+    <path d="M190.417 173.975L148.883 150L190.417 126.01V173.975Z" fill="#778CFF"/>
+    <path d="M190.424 126.018L148.89 102.043L148.883 49.5945L235.837 99.7789L190.424 126.018Z" fill="url(#paint0_linear_1349_38372)"/>
+    <path d="M190.409 173.975L148.883 197.957L148.89 250.406L235.83 200.192L190.409 173.975Z" fill="url(#paint1_linear_1349_38372)"/>
+    <path d="M235.834 200.192L190.414 173.975L190.421 126.01L235.834 99.7788V200.192Z" fill="url(#paint2_linear_1349_38372)"/>
+    <path d="M148.885 197.957L107.352 173.99L148.885 150V197.957Z" fill="#5672FF"/>
+    <path d="M107.352 126.032L148.878 102.043L148.885 150L107.352 126.032Z" fill="#3446EE"/>
+    <path d="M107.352 126.032L148.885 150L107.352 173.99V126.032Z" fill="#778CFF"/>
+    <path d="M107.343 173.99H107.35L148.884 197.957L148.892 250.406L61.9375 200.221L107.343 173.99Z" fill="url(#paint3_linear_1349_38372)"/>
+    <path d="M107.358 126.033L148.884 102.043L148.877 49.5945L61.9375 99.8157L107.358 126.033Z" fill="url(#paint4_linear_1349_38372)"/>
+    <path d="M61.9375 99.8157L107.358 126.032L107.35 173.99L61.9375 200.221V99.8157Z" fill="url(#paint5_linear_1349_38372)"/>
+    <defs>
+    <linearGradient id="paint0_linear_1349_38372" x1="192.364" y1="48.9381" x2="192.364" y2="123.378" gradientUnits="userSpaceOnUse">
+    <stop stop-color="#627DFF"/>
+    <stop offset="0.23" stop-color="#6881FF"/>
+    <stop offset="0.55" stop-color="#798FFF"/>
+    <stop offset="0.91" stop-color="#95A6FF"/>
+    <stop offset="1" stop-color="#9EAEFF"/>
+    </linearGradient>
+    <linearGradient id="paint1_linear_1349_38372" x1="192.356" y1="244.852" x2="192.356" y2="175.361" gradientUnits="userSpaceOnUse">
+    <stop stop-color="#474FF6"/>
+    <stop offset="0.17" stop-color="#4D54F6"/>
+    <stop offset="0.41" stop-color="#5E64F7"/>
+    <stop offset="0.68" stop-color="#7A7FF8"/>
+    <stop offset="0.9" stop-color="#979AFA"/>
+    </linearGradient>
+    <linearGradient id="paint2_linear_1349_38372" x1="234.529" y1="149.985" x2="192.604" y2="149.985" gradientUnits="userSpaceOnUse">
+    <stop stop-color="#B3BFFF"/>
+    <stop offset="0.3" stop-color="#B9C3FF"/>
+    <stop offset="0.71" stop-color="#CAD1FF"/>
+    <stop offset="1" stop-color="#DBDFFF"/>
+    </linearGradient>
+    <linearGradient id="paint3_linear_1349_38372" x1="105.411" y1="251.062" x2="105.411" y2="176.63" gradientUnits="userSpaceOnUse">
+    <stop stop-color="#627DFF"/>
+    <stop offset="0.23" stop-color="#6881FF"/>
+    <stop offset="0.55" stop-color="#798FFF"/>
+    <stop offset="0.91" stop-color="#95A6FF"/>
+    <stop offset="1" stop-color="#9EAEFF"/>
+    </linearGradient>
+    <linearGradient id="paint4_linear_1349_38372" x1="105.411" y1="55.1476" x2="105.411" y2="124.639" gradientUnits="userSpaceOnUse">
+    <stop stop-color="#474FF6"/>
+    <stop offset="0.17" stop-color="#4D54F6"/>
+    <stop offset="0.41" stop-color="#5E64F7"/>
+    <stop offset="0.68" stop-color="#7A7FF8"/>
+    <stop offset="0.9" stop-color="#979AFA"/>
+    </linearGradient>
+    <linearGradient id="paint5_linear_1349_38372" x1="63.2428" y1="150.015" x2="105.168" y2="150.015" gradientUnits="userSpaceOnUse">
+    <stop stop-color="#B3BFFF"/>
+    <stop offset="0.3" stop-color="#B9C3FF"/>
+    <stop offset="0.71" stop-color="#CAD1FF"/>
+    <stop offset="1" stop-color="#DBDFFF"/>
+    </linearGradient>
+    </defs>
+    </>
   ),
 });

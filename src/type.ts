@@ -34,3 +34,11 @@ export interface ApplicationCollabType {
   onClose: () => void;
   isOpen: boolean;
 }
+
+
+export interface SuccessType {
+  desc: string;
+  percentage:string;
+  title: string;
+  icon: ComponentWithAs<'svg', IconProps>;
+}

@@ -1,10 +1,12 @@
-import { Box, Center, Container, Flex, Grid, Heading, Icon, Image, List, ListItem, Text, useRadio, useRadioGroup } from '@chakra-ui/react'
+import { Box, Center, Container, Flex, Link, Grid, Heading, Icon, Image, List, ListItem, Text, useRadio, useRadioGroup } from '@chakra-ui/react'
 import { options } from 'dummyData/data';
 import React from 'react'
 import { RadioCardProps } from 'type';
 import ButtonTheme from './shared/ButtonTheme';
 import { DesktopIcon } from './shared/Icons';
-import { Link } from 'react-router-dom';
+import { DownloadIcon } from './shared/Icons';
+import Success from './onboarding/components/Success';
+import { HealLogoHexagonIcon } from 'modules/shared/Icons';
 
 
 const browserExtension = () => {
@@ -19,7 +21,7 @@ const browserExtension = () => {
           <Box w={'550px'} margin={"0 auto"} textAlign={'left'}>
              <Heading color={"Primary.Navy"} fontSize={"3xl"} my={30} as={"h4"}>Download Chrome browser Extension</Heading>
              <Text color={"Neutral.800"} fontSize={"md"}>We recommend installing the HEALE browser extension. It's an easy, fast, and secure way to interact with the HEALE network.</Text>
-                <List spacing={5} color={"Neutral.800"} fontSize={"sm"}>
+             <List spacing={5} color={"Neutral.800"} fontSize={"sm"} mt={10}>
                   <ListItem display={"flex"} gap={3}>
                       <DesktopIcon w={5} h={5} />
                       <Text as={"span"}>
@@ -38,7 +40,25 @@ const browserExtension = () => {
                          Get quick access to the information you most need.
                       </Text>
                   </ListItem>
-              </List>
+             </List>
+            <Flex py={5} borderBottom={'1px solid'} borderColor={'Neutral.200'} flexDirection={'row'} justifyContent={'space-between'} alignItems={'center'}>
+                <Heading color={"Primary.Navy"} fontSize={"sm"}  as={"h6"}>Don't have Chrome?</Heading>
+               <Link gap={3} fontSize={"xs"} color={"Primary.Blue"} display={'flex'} flexDirection={'row'} alignItems={'center'}  >
+                  <DownloadIcon  w={4} h={4}/> 
+                  Download Chrome
+               </Link>
+            </Flex>
+            <Box py={5}>
+              <ButtonTheme btnText={"Download Browser Extension"} chakraProps={{
+                    width: "full",
+                }} primary />
+              <Box textAlign="center" py={5} >
+                 <Link href="#" color='Primary.Blue' display={'inline-block'} >Continue</Link>
+              </Box>
+            </Box>
+            <Success icon={HealLogoHexagonIcon} percentage="48% complete" title="Creating Account" desc="We're creating your HEALE Network account"/>
+            <Success icon={HealLogoHexagonIcon} percentage="53% complete" title="Minting badge" desc="We're minting your unique, secure, network identity"/>
+            <Success icon={HealLogoHexagonIcon} percentage="72% complete" title="Filling your wallet" desc="We're filling your HEALE wallet with funds and rewards"/>
           </Box>
         </Container>
     )
