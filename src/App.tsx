@@ -5,6 +5,7 @@ import Welcome from "modules/welcome";
 import { BrowserRouter, Route, Routes } from "react-router-dom";
 import theme from "theme";
 import "App.css"
+import BusinessAccount from "modules/onboarding/business/business-account";
 
 function App() {
   return (
@@ -14,6 +15,7 @@ function App() {
           <Route element={<AuthLayout />}>
             <Route path="welcome" element={<Welcome />} />
             <Route path="personal" element={<PersonalAccount />} />
+            <Route path="business" element={<BusinessAccount />} />
           </Route>
         </Routes>
       </BrowserRouter>

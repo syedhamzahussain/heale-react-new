@@ -2,21 +2,30 @@ import React from "react";
 import { useWizard } from "react-use-wizard";
 import { Box, Flex, Text } from "@chakra-ui/react";
 import { CheckIcon, RadioIcon, RadioIconChecked } from "../../../shared/Icons";
+import { useLocation } from "react-router-dom";
 
 
 const StepFormHeader = () => {
     const { activeStep, stepCount } = useWizard();
-
-    const stepNames = [
-        "Personal Info",
-        "2 Factor Authentication",
-        "Verify Identity",
-        "Business Info",
-        "Application",
-        "Connect Account",
-        "Receive Card",
-        "Team Info"
-    ];
+    const location = useLocation();
+    const stepNames = location.pathname.includes("business")
+        ? [
+            "Personal Info",
+            "2 Factor Authentication",
+            "Verify Identity",
+            "Business Info", // Show Business Info step
+            "Application",
+            "Connect Account",
+            "Receive Card",
+            "Team Info"
+        ]
+        : [
+            "Personal Info",
+            "2 Factor Authentication",
+            "Verify Identity",
+            "Connect Account",
+            "Receive Card",
+        ];
 
     const renderSteps = () => {
         const steps = [];
