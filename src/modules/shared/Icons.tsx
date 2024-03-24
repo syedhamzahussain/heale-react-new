@@ -407,3 +407,27 @@ export const WifiIcon = createIcon({
     </g>
   ),
 });
+export const DesktopIcon = createIcon({
+  displayName: "DesktopIcon",
+  viewBox: "0 0 24 24",
+  path: (
+    <g id="Group_40465" data-name="Group 40465">
+      <path d="M22.2879 3.42859H1.71652C1.24313 3.42859 0.859375 3.81234 0.859375 4.28573V18C0.859375 18.4734 1.24313 18.8572 1.71652 18.8572H22.2879C22.7613 18.8572 23.1451 18.4734 23.1451 18V4.28573C23.1451 3.81234 22.7613 3.42859 22.2879 3.42859Z" stroke="#3446EE" fill="#fff" stroke-linecap="round" stroke-linejoin="round"/>
+      <path d="M10.2846 18.8572L8.57031 23.1429" stroke="#3446EE" stroke-linecap="round" stroke-linejoin="round"/>
+      <path d="M13.7188 18.8572L15.433 23.1429" stroke="#3446EE" stroke-linecap="round" stroke-linejoin="round"/>
+      <path d="M6.85938 23.1428H17.1451" stroke="#3446EE" stroke-linecap="round" stroke-linejoin="round"/>
+      <path d="M7.71875 12.0001L11.1473 14.5715L17.1473 7.71436" fill="#fff" stroke="#3446EE" stroke-linecap="round" stroke-linejoin="round"/>
+    </g>
+  ),
+});
+export const DownloadIcon = createIcon({
+  displayName: "DownloadIcon",
+  viewBox: "0 0 20 20",
+  path: (
+    <g id="Group_40465" data-name="Group 40465" clip-path="url(#clip0_2440_194831)">
+      <path d="M0.710938 15V16.4286C0.710938 17.1863 1.01196 17.9131 1.54778 18.4489C2.08359 18.9847 2.81032 19.2857 3.56808 19.2857H16.4252C17.183 19.2857 17.9097 18.9847 18.4455 18.4489C18.9813 17.9131 19.2824 17.1863 19.2824 16.4286V15" stroke="#3446EE" stroke-linecap="round" stroke-linejoin="round"/>
+      <path d="M5.71094 8.57141L9.99665 13.5714L14.2824 8.57141" stroke="#3446EE" stroke-linecap="round" stroke-linejoin="round"/>
+      <path d="M10 13.5714V0.714233" stroke="#3446EE" stroke-linecap="round" stroke-linejoin="round"/>
+    </g>
+  ),
+});
