@@ -6,6 +6,7 @@ import BrowserExtension from "modules/browserExtension";
 import { BrowserRouter, Route, Routes } from "react-router-dom";
 import theme from "theme";
 import "App.css"
+import BusinessAccount from "modules/onboarding/business/business-account";
 
 function App() {
   return (
@@ -16,6 +17,7 @@ function App() {
             <Route path="welcome" element={<Welcome />} />
             <Route path="personal" element={<PersonalAccount />} />
             <Route path="extension" element={<BrowserExtension />} />
+            <Route path="business" element={<BusinessAccount />} />
           </Route>
         </Routes>
       </BrowserRouter>

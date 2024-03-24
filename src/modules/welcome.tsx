@@ -42,7 +42,7 @@ const RadioCard: React.FC<RadioCardProps> = ({ ...props }) => {
 const Welcome = () => {
     const { getRootProps, getRadioProps, setValue: setRadioValue, value: radioValue } = useRadioGroup({
         name: 'accountType',
-        defaultValue: 'Personal',
+        defaultValue: '0',
         onChange: (value) => {
             setRadioValue(value);
         },
@@ -62,7 +62,7 @@ const Welcome = () => {
                             <RadioCard children id={value?.id} key={value?.id} value={value?.title} icon={value?.icon} title={value?.title} desc={value?.desc} {...radio} />
                         )
                     })}
-                    <Link to={radioValue === "0" ? "/personal" : "#"}>
+                    <Link to={radioValue === "0" ? "/personal" : "/business"}>
                         <ButtonTheme btnText='Get Started' primary chakraProps={{
                             mt: 4,
                             w: "100%"
@@ -70,27 +70,55 @@ const Welcome = () => {
                     </Link>
                 </Box>
                 <Flex flexDir={"column"} w={"80%"} marginLeft={"auto"}>
-                    <Heading fontSize={"xl"} color={"Primary.Navy"} as={"h6"} mb={8}>Title goes here</Heading>
-                    <List spacing={8} color={"Primary.Navy"} fontSize={"sm"}>
-                        <ListItem display={"flex"} gap={3}>
-                            <CheckIcon w={5} h={5} />
-                            <Text as={"span"}>
-                                Personal Users can access company logistics tools for efficient task management and enhanced team collaboration.
-                            </Text>
-                        </ListItem>
-                        <ListItem display={"flex"} gap={3}>
-                            <CheckIcon w={5} h={5} />
-                            <Text as={"span"}>
-                                Businesses and Owner Operators, streamline your logistics with shipment tracking and finance tools for complete operational control.
-                            </Text>
-                        </ListItem>
-                        <ListItem display={"flex"} gap={3}>
-                            <CheckIcon w={5} h={5} />
-                            <Text as={"span"}>
-                                Choose your account to fit your role: earn rewards for yourself and your business, whether you’re an individual contributor or managing your own logistics operations.
-                            </Text>
-                        </ListItem>
-                    </List>
+                    {radioValue === "0" ?
+                        <>
+                            <Heading fontSize={"xl"} color={"Primary.Navy"} as={"h6"} mb={8}>Title goes here</Heading>
+                            <List spacing={8} color={"Primary.Navy"} fontSize={"sm"}>
+                                <ListItem display={"flex"} gap={3}>
+                                    <CheckIcon w={5} h={5} />
+                                    <Text as={"span"}>
+                                        Personal Users can access company logistics tools for efficient task management and enhanced team collaboration.
+                                    </Text>
+                                </ListItem>
+                                <ListItem display={"flex"} gap={3}>
+                                    <CheckIcon w={5} h={5} />
+                                    <Text as={"span"}>
+                                        Businesses and Owner Operators, streamline your logistics with shipment tracking and finance tools for complete operational control.
+                                    </Text>
+                                </ListItem>
+                                <ListItem display={"flex"} gap={3}>
+                                    <CheckIcon w={5} h={5} />
+                                    <Text as={"span"}>
+                                        Choose your account to fit your role: earn rewards for yourself and your business, whether you’re an individual contributor or managing your own logistics operations.
+                                    </Text>
+                                </ListItem>
+                            </List>
+                        </>
+                        :
+                        <>
+                            <Heading fontSize={"xl"} color={"Primary.Navy"} as={"h6"} mb={8}>What a Business Profile Offers</Heading>
+                            <List spacing={8} color={"Primary.Navy"} fontSize={"sm"}>
+                                <ListItem display={"flex"} gap={3}>
+                                    <CheckIcon w={5} h={5} />
+                                    <Text as={"span"}>
+                                        Personal Users can access company logistics tools for efficient task management and enhanced team collaboration.
+                                    </Text>
+                                </ListItem>
+                                <ListItem display={"flex"} gap={3}>
+                                    <CheckIcon w={5} h={5} />
+                                    <Text as={"span"}>
+                                        Businesses and Owner Operators, streamline your logistics with shipment tracking and finance tools for complete operational control.
+                                    </Text>
+                                </ListItem>
+                                <ListItem display={"flex"} gap={3}>
+                                    <CheckIcon w={5} h={5} />
+                                    <Text as={"span"}>
+                                        Choose your account to fit your role: earn rewards for yourself and your business, whether you’re an individual contributor or managing your own logistics operations.
+                                    </Text>
+                                </ListItem>
+                            </List>
+                        </>
+                    }
                 </Flex>
             </Grid>
         </Container>
