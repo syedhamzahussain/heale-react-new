@@ -19,7 +19,7 @@ const browserExtension = () => {
           <Box w={'550px'} margin={"0 auto"} textAlign={'left'}>
              <Heading color={"Primary.Navy"} fontSize={"3xl"} my={30} as={"h4"}>Download Chrome browser Extension</Heading>
              <Text color={"Neutral.800"} fontSize={"md"}>We recommend installing the HEALE browser extension. It's an easy, fast, and secure way to interact with the HEALE network.</Text>
-                <List spacing={8} color={"Neutral.800"} fontSize={"sm"}>
+                <List spacing={5} color={"Neutral.800"} fontSize={"sm"}>
                   <ListItem display={"flex"} gap={3}>
                       <DesktopIcon w={5} h={5} />
                       <Text as={"span"}>
