@@ -7,7 +7,7 @@ import Success from './onboarding/components/Success';
 import { HealLogoHexagonIcon } from 'modules/shared/Icons';
 
 
-const browserExtension = () => {
+const BrowserExtension = () => {
 
 
 
@@ -62,4 +62,4 @@ const browserExtension = () => {
   )
 }
 
-export default browserExtension
+export default BrowserExtension

@@ -33,9 +33,9 @@ const Application = () => {
                     </Box>
                 </Flex>
                 <Grid gridTemplateColumns={"repeat(2,1fr)"} gap={6}>
-                    <VerificationBox status={true} title='Broker' />
-                    <VerificationBox title='Carrier' />
-                    <VerificationBox title='Lender' />
+                    <VerificationBox link='/business/broker' title='Broker' />
+                    <VerificationBox link='/business/carrier' title='Carrier' />
+                    <VerificationBox link='/business/lender' title='Lender' />
                 </Grid>
                 <Flex gap={4} mt={8}>
                     <ButtonTheme btnText='Back' chakraProps={{
