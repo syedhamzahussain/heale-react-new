@@ -1,7 +1,4 @@
-import { Box, Center, Container, Flex, Link, Grid, Heading, Icon, Image, List, ListItem, Text, useRadio, useRadioGroup } from '@chakra-ui/react'
-import { options } from 'dummyData/data';
-import React from 'react'
-import { RadioCardProps } from 'type';
+import { Box,  Container, Flex, Link,  Heading, Image, List, ListItem, Text } from '@chakra-ui/react';
 import ButtonTheme from './shared/ButtonTheme';
 import { DesktopIcon } from './shared/Icons';
 import { DownloadIcon } from './shared/Icons';

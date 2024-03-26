@@ -1,14 +1,5 @@
-import { Box, Heading, Icon, Progress, Flex, Link, Text, keyframes } from '@chakra-ui/react'
-import ButtonTheme from 'modules/shared/ButtonTheme'
-import { HealeLogo } from 'modules/shared/Icons';
-import React from 'react'
-import { useWizard } from 'react-use-wizard';
+import { Box, Heading, Icon, Progress, Text} from '@chakra-ui/react'
 import { SuccessType } from 'type';
-
-const spin = keyframes`
-  from {transform: rotate(0deg);}
-  to {transform: rotate(360deg)}
-`;
 
 const Success = ({ icon, title, desc,percentage}: SuccessType) => {
     return (
