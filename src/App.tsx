@@ -14,7 +14,7 @@ function App() {
       <BrowserRouter>
         <Routes>
           <Route element={<AuthLayout />}>
-            <Route path="welcome" element={<Welcome />} />
+            <Route path="/" element={<Welcome />} />
             <Route path="personal" element={<PersonalAccount />} />
             <Route path="extension" element={<BrowserExtension />} />
             <Route path="business" element={<BusinessAccount />} />
