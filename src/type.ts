@@ -27,6 +27,7 @@ export interface MessageBoxType {
 
 export interface VerificationBoxType {
   title: string;
+  link: string;
   status?: boolean;
 }
 
@@ -35,10 +36,9 @@ export interface ApplicationCollabType {
   isOpen: boolean;
 }
 
-
 export interface SuccessType {
   desc: string;
-  percentage:string;
+  percentage: string;
   title: string;
   icon: ComponentWithAs<'svg', IconProps>;
 }

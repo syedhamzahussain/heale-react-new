@@ -1,9 +1,10 @@
 import { Box, Flex, Heading, Text } from '@chakra-ui/react'
 import ButtonTheme from 'modules/shared/ButtonTheme'
 import React from 'react'
+import { Link } from 'react-router-dom'
 import { VerificationBoxType } from 'type'
 
-const VerificationBox = ({ status, title }: VerificationBoxType) => {
+const VerificationBox = ({ status, title, link }: VerificationBoxType) => {
     return (
         <Flex gap={8} flexDir='column' bgColor={"white"} borderRadius={8} p={4} border={"1px solid"} borderColor={"Neutral.200"}>
             {status ?
@@ -13,10 +14,12 @@ const VerificationBox = ({ status, title }: VerificationBoxType) => {
                 <Heading fontSize={"sm"} color={"Primary.Navy"}>{title}</Heading>
                 <Text fontSize={"sm"} color={"Neutral.700"}>0 / 5 questions completed</Text>
             </Box>
-            <ButtonTheme primary btnText={!status ? 'Start' : 'Edit'} chakraProps={{
-                fontSize: "sm",
-                w: "max-content"
-            }} />
+            <Link to={link}>
+                <ButtonTheme primary btnText={!status ? 'Start' : 'Edit'} chakraProps={{
+                    fontSize: "sm",
+                    w: "max-content"
+                }} />
+            </Link>
         </Flex>
     )
 }

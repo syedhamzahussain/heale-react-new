@@ -7,6 +7,9 @@ import { BrowserRouter, Route, Routes } from "react-router-dom";
 import theme from "theme";
 import "App.css"
 import BusinessAccount from "modules/onboarding/business/business-account";
+import Broker from "modules/onboarding/business/broker";
+import Lender from "modules/onboarding/business/lender";
+import Carrier from "modules/onboarding/business/Carrier";
 
 function App() {
   return (
@@ -18,6 +21,9 @@ function App() {
             <Route path="personal" element={<PersonalAccount />} />
             <Route path="extension" element={<BrowserExtension />} />
             <Route path="business" element={<BusinessAccount />} />
+            <Route path="business/broker" element={<Broker />} />
+            <Route path="business/lender" element={<Lender />} />
+            <Route path="business/carrier" element={<Carrier />} />
           </Route>
         </Routes>
       </BrowserRouter>
