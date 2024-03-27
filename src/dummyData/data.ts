@@ -9,7 +9,7 @@ export const options = [
   },
   {
     id: 1,
-    title: 'Personal',
+    title: 'Business',
     desc: "I'm setting up my business account to manage logistics operations and team collaboration. This includes Owner Operators.",
     icon: BusinessIcon,
   },

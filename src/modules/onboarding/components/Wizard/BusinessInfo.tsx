@@ -1,11 +1,16 @@
 import { Box, FormControl, FormLabel, Grid, GridItem, Heading, Input, Select, Text, Flex, Link } from '@chakra-ui/react'
 import ButtonTheme from 'modules/shared/ButtonTheme'
 import { LockIcon, UploadIcon } from 'modules/shared/Icons'
+import { useDropzone } from 'react-dropzone'
 import PhoneInput from 'react-phone-input-2'
 import { useWizard } from 'react-use-wizard'
 
 const BusinessInfo = () => {
     const { nextStep, previousStep } = useWizard();
+    const {
+        getRootProps,
+        getInputProps,
+    } = useDropzone();
     return (
         <Box w={"50%"}>
             <Heading as={"h4"} mb={4} fontSize={"3xl"} color={"Primary.Navy"}>Create an account</Heading>
@@ -125,7 +130,8 @@ const BusinessInfo = () => {
                         <FormLabel>DUNS Number</FormLabel>
                         <Input type='text' placeholder='Enter name' />
                     </FormControl>
-                    <Flex gap={3} bgColor={"Neutral.100"} direction="column" width="100%" height="120px" border="2px dashed rgba(52, 70, 238, 1)" borderRadius={20} alignItems="center" justifyContent="center">
+                    <Flex cursor={"pointer"} {...getRootProps()} gap={3} bgColor={"Neutral.100"} direction="column" width="100%" height="120px" border="2px dashed rgba(52, 70, 238, 1)" borderRadius={20} alignItems="center" justifyContent="center">
+                        <input {...getInputProps()} />
                         <UploadIcon w={6} h={6} />
                         <Text>Drag and drop your W9 files here, or click to browse</Text>
                     </Flex>
