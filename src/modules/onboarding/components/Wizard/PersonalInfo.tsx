@@ -62,7 +62,7 @@ const PersonalInfo = () => {
     console.log('values', values);
     nextStep();
   }
-  
+
   return (
     <Box w={'50%'}>
       <Heading as={'h4'} mb={4} fontSize={'3xl'} color={'Primary.Navy'}>
@@ -89,6 +89,8 @@ const PersonalInfo = () => {
               <FormLabel htmlFor="first_name">First name</FormLabel>
               <Input
                 type="text"
+                isInvalid={errors?.first_name?.message ? true : false}
+                errorBorderColor='Secondary.Red'
                 placeholder="Your first name"
                 {...register('first_name', {
                   required: 'This field is required',
@@ -104,6 +106,8 @@ const PersonalInfo = () => {
               <FormLabel htmlFor="last_name">Last name</FormLabel>
               <Input
                 type="text"
+                isInvalid={errors?.last_name?.message ? true : false}
+                errorBorderColor='Secondary.Red'
                 placeholder="Your Last name"
                 {...register('last_name', {
                   required: 'This field is required',
@@ -121,6 +125,8 @@ const PersonalInfo = () => {
               <FormLabel htmlFor="email">Email</FormLabel>
               <Input
                 type="email"
+                isInvalid={errors?.email?.message ? true : false}
+                errorBorderColor='Secondary.Red'
                 placeholder="Email address"
                 {...register('email', {
                   required: 'This field is required',
@@ -136,6 +142,8 @@ const PersonalInfo = () => {
               <FormLabel htmlFor="handle">@ Handle</FormLabel>
               <Input
                 type="text"
+                isInvalid={errors?.handle?.message ? true : false}
+                errorBorderColor='Secondary.Red'
                 placeholder="Enter a unique name"
                 {...register('handle', {
                   required: 'This field is required',
@@ -148,6 +156,8 @@ const PersonalInfo = () => {
               <InputGroup>
                 <Input
                   type={statePass ? 'text' : 'password'}
+                  isInvalid={errors?.password?.message ? true : false}
+                  errorBorderColor='Secondary.Red'
                   placeholder="Minimum 8 characters"
                   {...register('password', {
                     required: 'This field is required',
@@ -172,6 +182,8 @@ const PersonalInfo = () => {
               <InputGroup>
                 <Input
                   type={stateCPass ? 'text' : 'password'}
+                  isInvalid={errors?.confirm_password?.message ? true : false}
+                  errorBorderColor='Secondary.Red'
                   placeholder="Enter password again"
                   {...register('confirm_password', {
                     required: 'This field is required',

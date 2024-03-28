@@ -84,6 +84,8 @@ const VerifyIdentity = () => {
               <FormLabel htmlFor="legal_first_name">Legal First Name</FormLabel>
               <Input
                 type="text"
+                isInvalid={errors?.legal_first_name?.message ? true : false}
+                errorBorderColor='Secondary.Red'
                 placeholder="Legal First Name"
                 {...register('legal_first_name', {
                   required: 'This field is required',
@@ -99,6 +101,8 @@ const VerifyIdentity = () => {
               <FormLabel htmlFor="legal_last_name">Legal Last Name</FormLabel>
               <Input
                 type="text"
+                isInvalid={errors?.legal_last_name?.message ? true : false}
+                errorBorderColor='Secondary.Red'
                 placeholder="Your Last Name"
                 {...register('legal_last_name', {
                   required: 'This field is required',
