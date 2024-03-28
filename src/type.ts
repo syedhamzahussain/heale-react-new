@@ -9,11 +9,13 @@ export interface RadioCardProps {
 }
 
 export interface ButtonThemeType {
+  type?: string;
   btnText: string;
   chakraProps?: ButtonProps;
   invert?: boolean;
   primary?: boolean;
   primaryOutline?: boolean;
+  isLoading?: boolean;
 }
 
 export interface MessageBoxType {
