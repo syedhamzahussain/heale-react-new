@@ -5,11 +5,13 @@ import Welcome from "modules/welcome";
 import BrowserExtension from "modules/browserExtension";
 import { BrowserRouter, Route, Routes } from "react-router-dom";
 import theme from "theme";
-import "App.css"
 import BusinessAccount from "modules/onboarding/business/business-account";
 import Broker from "modules/onboarding/business/broker";
 import Lender from "modules/onboarding/business/lender";
 import Carrier from "modules/onboarding/business/carrier";
+import "App.css"
+import DashboardLayout from "modules/shared/DashboardLayout";
+import Dashboard from "modules/dashboard";
 
 function App() {
   return (
@@ -24,6 +26,9 @@ function App() {
             <Route path="business/broker" element={<Broker />} />
             <Route path="business/lender" element={<Lender />} />
             <Route path="business/carrier" element={<Carrier />} />
+          </Route>
+          <Route element={<DashboardLayout />}>
+            <Route path="dashboard" element={<Dashboard />} />
           </Route>
         </Routes>
       </BrowserRouter>

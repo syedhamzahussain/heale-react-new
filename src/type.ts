@@ -44,3 +44,13 @@ export interface SuccessType {
   title: string;
   icon: ComponentWithAs<'svg', IconProps>;
 }
+
+export type INavLayout = {
+  title: string;
+  icon: ComponentWithAs<'svg', IconProps>;
+  link?: string;
+  hasDropdown?: boolean;
+  isSubItem?: boolean;
+  isActive?: boolean;
+  subItems?: { id: number; title: string; link: string }[];
+};
