@@ -1,8 +1,8 @@
 import React, { useState } from "react";
-import { ChevronDownIcon } from "@chakra-ui/icons";
 import { ListItem, Icon, List, Box, Flex, Text } from "@chakra-ui/react";
 import { INavLayout } from "type";
 import { Link, useLocation } from "react-router-dom";
+import { UpIcon } from "../Icons";
 
 const NavItem = ({
     hasDropdown,
@@ -30,16 +30,19 @@ const NavItem = ({
                     <Flex
                         _hover={{
                             textDecor: "none",
+                            bg: "Neutral.100",
+                            path: {
+                                stroke: "Primary.Blue",
+                            },
+                            ".chakra-text": {
+                                color: "Primary.Blue"
+                            }
                         }}
                         onClick={() => setActive(!active)}
-                        px={2}
-                        py={3}
+                        p={3}
                         alignItems={"center"}
                         justifyContent={"space-between"}
-                        borderBottom={"1px solid"}
-                        borderBottomColor={"brand.borderBottom"}
-                        bg={nestedItem ? "" : ""}
-
+                        bg={nestedItem ? "Neutral.100" : ""}
                         borderRadius={"5px"}
                         pos={"relative"}
                         overflow={"hidden"}
@@ -49,13 +52,18 @@ const NavItem = ({
                                 w={6}
                                 h={6}
                                 as={icon}
+                                sx={{
+                                    path: {
+                                        stroke: nestedItem ? "Primary.Blue" : "",
+                                    },
+                                }}
                             />
-                            <Text fontWeight={"600"} color={"Primary.Navy"}>
+                            <Text fontWeight={"600"} color={nestedItem ? "Primary.Blue" : "Primary.Navy"}>
                                 {title}
                             </Text>
                         </Flex>
                         {hasDropdown && (
-                            <ChevronDownIcon
+                            <UpIcon
                                 transform={
                                     active || nestedItem ? "rotate(180deg)" : "rotate(0deg)"
                                 }
@@ -70,21 +78,18 @@ const NavItem = ({
                         maxH={active || nestedItem ? "300px" : "0px"}
                         transition={active || nestedItem ? "all 1s" : "all .2s"}
                         mt={active || nestedItem ? 2 : 0}
-                        fontSize={"xs"}
-                        ps={10}
-                        spacing={2}
+                        ps={12}
+                        mb={active ? 4 : 0}
+                        spacing={5}
                     >
                         {subItems?.map((items) => {
-                            const highlight =
-                                items.link === location.pathname
                             return (
                                 <ListItem
                                     key={items.id}
-                                    color={highlight ? "black" : highlight ? "brand.golden" : "#979797"}
                                     display={"flex"}
                                     alignItems={"center"}
                                 >
-                                    <Link to={items.link}>{items.title}</Link>
+                                    <Link to={items.link}><Text fontWeight={"600"}>{items.title}</Text></Link>
                                 </ListItem>
                             );
                         })}

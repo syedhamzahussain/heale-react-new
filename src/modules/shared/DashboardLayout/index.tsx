@@ -6,11 +6,11 @@ import { Outlet } from 'react-router-dom'
 
 const DashboardLayout = () => {
     return (
-        <Flex gap={6}>
+        <Flex >
             <Box w={"18%"}>
                 <Sidebar />
             </Box>
-            <Box flexGrow={1} pe={6} w={"82%"} pos={"relative"}>
+            <Box flexGrow={1} w={"82%"} pos={"relative"}>
                 <Header />
                 <Box mb={12}><Outlet /></Box>
             </Box>

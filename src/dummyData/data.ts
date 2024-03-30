@@ -81,7 +81,7 @@ export const SidebarNav = [
     hasDropdown: false,
   },
   {
-    id: 3,
+    id: 4,
     title: 'Cards',
     link: '/',
     icon: CardIcon,
