@@ -704,3 +704,25 @@ export const BellIcon = createIcon({
     </>
   ),
 });
+
+export const LowIcon = createIcon({
+  displayName: "LowIcon",
+  viewBox: "0 0 9.414 15.857",
+  path: (
+    <g id="Group_40466" data-name="Group 40466" transform="translate(-3.293 -0.071)">
+      <path id="Path_91507" data-name="Path 91507" d="M8,.571V15.428" fill="none" stroke="#03103d" stroke-linecap="round" stroke-linejoin="round" stroke-width="1" />
+      <path id="Path_91508" data-name="Path 91508" d="M12,11.429l-4,4-4-4" fill="none" stroke="#03103d" stroke-linecap="round" stroke-linejoin="round" stroke-width="1" />
+    </g>
+  ),
+});
+
+export const HighIcon = createIcon({
+  displayName: "HighIcon",
+  viewBox: "0 0 9.414 15.857",
+  path: (
+    <g id="Group_40465" data-name="Group 40465" transform="translate(-3.293 -0.071)">
+      <path id="Path_91505" data-name="Path 91505" d="M8,15.428V.571" fill="none" stroke="#03103d" stroke-linecap="round" stroke-linejoin="round" stroke-width="1" />
+      <path id="Path_91506" data-name="Path 91506" d="M12,4.571l-4-4-4,4" fill="none" stroke="#03103d" stroke-linecap="round" stroke-linejoin="round" stroke-width="1" />
+    </g>
+  ),
+});

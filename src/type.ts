@@ -1,4 +1,5 @@
 import { ButtonProps, ComponentWithAs, IconProps } from '@chakra-ui/react';
+import { ReactNode } from 'react';
 
 export interface RadioCardProps {
   children: React.ReactNode;
@@ -45,7 +46,7 @@ export interface SuccessType {
   icon: ComponentWithAs<'svg', IconProps>;
 }
 
-export type INavLayout = {
+export interface INavLayout {
   title: string;
   icon: ComponentWithAs<'svg', IconProps>;
   link?: string;
@@ -53,4 +54,8 @@ export type INavLayout = {
   isSubItem?: boolean;
   isActive?: boolean;
   subItems?: { id: number; title: string; link: string }[];
-};
+}
+
+export interface IChildren {
+  children: ReactNode;
+}
