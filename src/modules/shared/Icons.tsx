@@ -669,3 +669,38 @@ export const SearchIcon = createIcon({
     </>
   ),
 });
+
+export const DownIcon = createIcon({
+  displayName: "DownIcon",
+  viewBox: "0 0 16 16",
+  path: (
+    <>
+      <defs>
+        <clipPath id="clip-path">
+          <rect id="Rectangle_23055" data-name="Rectangle 23055" width="16" height="16" fill="#fff" />
+        </clipPath>
+      </defs>
+      <g id="Group_40465" data-name="Group 40465" clipPath="url(#clip-path)">
+        <path id="Path_91505" data-name="Path 91505" d="M.668,4.667l7.023,7.039a.579.579,0,0,0,.813,0l7.023-7.039" fill="none" stroke="#fff" strokeLinecap="round" strokeLinejoin="round" strokeWidth="1" />
+      </g>
+    </>
+  ),
+});
+
+export const BellIcon = createIcon({
+  displayName: "BellIcon",
+  viewBox: "0 0 20 20",
+  path: (
+    <>
+      <defs>
+        <clipPath id="clip-path">
+          <rect id="Rectangle_23055" data-name="Rectangle 23055" width="20" height="20" fill="#fff" />
+        </clipPath>
+      </defs>
+      <g id="Group_40465" data-name="Group 40465" clipPath="url(#clip-path)">
+        <path id="Path_91505" data-name="Path 91505" d="M10,.714a6.129,6.129,0,0,1,6.129,6.129c0,6.814,2.486,8.157,3.157,8.157H.715c.686,0,3.157-1.357,3.157-8.157A6.129,6.129,0,0,1,10,.714Z" fill="none" stroke="#9696b3" strokeLinecap="round" strokeLinejoin="round" strokeWidth="1" />
+        <path id="Path_91506" data-name="Path 91506" d="M7.859,17.614a2.214,2.214,0,0,0,4.286,0" fill="none" stroke="#9696b3" strokeLinecap="round" strokeLinejoin="round" strokeWidth="1" />
+      </g>
+    </>
+  ),
+});

@@ -12,7 +12,7 @@ const DashboardLayout = () => {
             </Box>
             <Box flexGrow={1} w={"82%"} pos={"relative"}>
                 <Header />
-                <Box mb={12}><Outlet /></Box>
+                <Box p={6}><Outlet /></Box>
             </Box>
         </Flex>
     )

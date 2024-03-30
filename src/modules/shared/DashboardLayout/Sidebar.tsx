@@ -26,12 +26,12 @@ const Sidebar = () => {
                         <Avatar w={10} h={10} bgColor={"Primary.Blue"} color={"white"} name='Knight-Swift' />
                         <Box>
                             <Heading fontSize={"md"} color={"Primary.Navy"}>Knight-Swift</Heading>
-                            <Text fontSize={"sm"} color={"Neutral.700"}>@knight-swift</Text>
+                            <Text fontFamily={"CourierPrime"} fontSize={"sm"} color={"Neutral.700"}>@knight-swift</Text>
                         </Box>
                     </Flex>
                 </Box>
                 <Box>
-                    <List my={10} px={2} spacing={2}>
+                    <List my={10} px={4} spacing={2}>
                         {SidebarNav.map((items) => {
                             return (
                                 <NavItem

@@ -65,7 +65,7 @@ const NavItem = ({
                         {hasDropdown && (
                             <UpIcon
                                 transform={
-                                    active || nestedItem ? "rotate(180deg)" : "rotate(0deg)"
+                                    !active || nestedItem ? "rotate(180deg)" : "rotate(0deg)"
                                 }
                                 transition={"all .5s"}
                             />
