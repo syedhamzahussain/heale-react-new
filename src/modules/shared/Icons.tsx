@@ -710,8 +710,8 @@ export const LowIcon = createIcon({
   viewBox: "0 0 9.414 15.857",
   path: (
     <g id="Group_40466" data-name="Group 40466" transform="translate(-3.293 -0.071)">
-      <path id="Path_91507" data-name="Path 91507" d="M8,.571V15.428" fill="none" stroke="#03103d" stroke-linecap="round" stroke-linejoin="round" stroke-width="1" />
-      <path id="Path_91508" data-name="Path 91508" d="M12,11.429l-4,4-4-4" fill="none" stroke="#03103d" stroke-linecap="round" stroke-linejoin="round" stroke-width="1" />
+      <path id="Path_91507" data-name="Path 91507" d="M8,.571V15.428" fill="none" stroke="#03103d" strokeLinecap="round" strokeLinejoin="round" strokeWidth="1" />
+      <path id="Path_91508" data-name="Path 91508" d="M12,11.429l-4,4-4-4" fill="none" stroke="#03103d" strokeLinecap="round" strokeLinejoin="round" strokeWidth="1" />
     </g>
   ),
 });
@@ -721,8 +721,32 @@ export const HighIcon = createIcon({
   viewBox: "0 0 9.414 15.857",
   path: (
     <g id="Group_40465" data-name="Group 40465" transform="translate(-3.293 -0.071)">
-      <path id="Path_91505" data-name="Path 91505" d="M8,15.428V.571" fill="none" stroke="#03103d" stroke-linecap="round" stroke-linejoin="round" stroke-width="1" />
-      <path id="Path_91506" data-name="Path 91506" d="M12,4.571l-4-4-4,4" fill="none" stroke="#03103d" stroke-linecap="round" stroke-linejoin="round" stroke-width="1" />
+      <path id="Path_91505" data-name="Path 91505" d="M8,15.428V.571" fill="none" stroke="#03103d" strokeLinecap="round" strokeLinejoin="round" strokeWidth="1" />
+      <path id="Path_91506" data-name="Path 91506" d="M12,4.571l-4-4-4,4" fill="none" stroke="#03103d" strokeLinecap="round" strokeLinejoin="round" strokeWidth="1" />
+    </g>
+  ),
+});
+
+export const SwitchIcon = createIcon({
+  displayName: "SwitchIcon",
+  viewBox: "0 0 12.414 14.414",
+  path: (
+    <g id="Group_40465" data-name="Group 40465" transform="translate(-0.793 0.207)">
+      <path id="Path_91505" data-name="Path 91505" d="M1.5,8.5l8-8" fill="none" stroke="#3446ee" strokeLinecap="round" strokeLinejoin="round" strokeWidth="1" />
+      <path id="Path_91506" data-name="Path 91506" d="M9.5,4V.5H6" fill="none" stroke="#3446ee" strokeLinecap="round" strokeLinejoin="round" strokeWidth="1" />
+      <path id="Path_91507" data-name="Path 91507" d="M12.5,5.5l-8,8" fill="none" stroke="#3446ee" strokeLinecap="round" strokeLinejoin="round" strokeWidth="1" />
+      <path id="Path_91508" data-name="Path 91508" d="M4.5,10v3.5H8" fill="none" stroke="#3446ee" strokeLinecap="round" strokeLinejoin="round" strokeWidth="1" />
+    </g>
+  ),
+});
+
+export const RightArrow = createIcon({
+  displayName: "RightArrow",
+  viewBox: "0 0 19.571 11.414",
+  path: (
+    <g id="Group_40465" data-name="Group 40465" transform="translate(-0.215 -4.293)">
+      <path id="Path_91505" data-name="Path 91505" d="M.715,10H19.286" fill="none" stroke="#3446ee" strokeLinecap="round" strokeLinejoin="round" strokeWidth="1" />
+      <path id="Path_91506" data-name="Path 91506" d="M14.285,15l5-5-5-5" fill="none" stroke="#3446ee" strokeLinecap="round" strokeLinejoin="round" strokeWidth="1" />
     </g>
   ),
 });
