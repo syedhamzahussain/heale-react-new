@@ -8,7 +8,7 @@ import theme from "theme";
 import BusinessAccount from "modules/onboarding/business/business-account";
 import Broker from "modules/onboarding/business/broker";
 import Lender from "modules/onboarding/business/lender";
-import Carrier from "modules/onboarding/business/carrier";
+import Carrier from "modules/onboarding/business/Carrier";
 import "App.css"
 import DashboardLayout from "modules/shared/DashboardLayout";
 import Dashboard from "modules/dashboard";
