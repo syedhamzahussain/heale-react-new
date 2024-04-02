@@ -10,11 +10,13 @@ const ButtonTheme = ({
   primaryOutline,
   type,
   isLoading,
+  isDisabled
 }: ButtonThemeType) => {
   return (
     <Button
     isLoading={isLoading}
     type='submit'
+    isDisabled={isDisabled}
     //   type={type || 'button'}
       {...chakraProps}
       bg={

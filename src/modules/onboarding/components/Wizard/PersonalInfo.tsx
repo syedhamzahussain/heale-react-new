@@ -16,11 +16,15 @@ import { useForm } from 'react-hook-form';
 import useToggle from 'hooks/useToggle';
 import ButtonTheme from 'modules/shared/ButtonTheme';
 import { EyeCloseIcon, EyeIcon } from 'modules/shared/Icons';
-import React from 'react';
+import React, { useState, useEffect } from 'react';
 import { useWizard } from 'react-use-wizard';
 import FormErrorMessage from 'modules/shared/FormErrorMessage';
+import { signUp } from 'services/auth.service';
+import { getTokenFromLocalStorage, saveTokenToLocalStorage } from 'services/localStorage.sevice';
+import { toastSuccess, validatePasswords } from 'utils/helpers';
 
 const PersonalInfo = () => {
+  const [isAgreed, setIsAgreed] = useState(false);
   const [statePass, togglePass] = useToggle(false);
   const [stateCPass, toggleCPass] = useToggle(false);
   const { nextStep } = useWizard();
@@ -32,36 +36,35 @@ const PersonalInfo = () => {
     formState: { errors, isSubmitting },
   } = useForm();
 
-  const validatePasswords = (password: string, confirm_password: string) => {
-    if (password !== confirm_password) {
-      setError('confirm_password', {
-        type: 'manual',
-        message: 'Passwords do not match',
-      });
-      return false;
-    }
-    return true;
-  };
+ 
 
-  const onSubmit = (values: any) => {
+  useEffect(() => {
+    if (getTokenFromLocalStorage()) nextStep();
+  }, []);
+
+  const onSubmit = async (values: any) => {
     const { first_name, last_name, email, handle, password, confirm_password } =
       values;
 
-    const isPasswordValidated = validatePasswords(password, confirm_password);
+    const isPasswordValidated = validatePasswords(password, confirm_password, setError);
     if (!isPasswordValidated) return; // Early return if there's a password mismatch
 
-    const data = {
+    const user: any = {
       first_name,
       last_name,
       email,
       handle,
       password,
     };
-    console.log('data', data);
-
-    console.log('values', values);
-    nextStep();
-  }
+    const response = await signUp(user);
+    if (response?.status) {
+      toastSuccess(response?.data?.message);
+      saveTokenToLocalStorage(
+        `${response?.data?.token_type} ${response?.data?.access_token}`
+      );
+      nextStep();
+    }
+  };
 
   return (
     <Box w={'50%'}>
@@ -90,14 +93,14 @@ const PersonalInfo = () => {
               <Input
                 type="text"
                 isInvalid={errors?.first_name?.message ? true : false}
-                errorBorderColor='Secondary.Red'
+                errorBorderColor="Secondary.Red"
                 placeholder="Your first name"
                 {...register('first_name', {
                   required: 'This field is required',
-                  minLength: {
-                    value: 4,
-                    message: 'Minimum length should be 4',
-                  },
+                  // minLength: {
+                  //   value: 4,
+                  //   message: 'Minimum length should be 4',
+                  // },
                 })}
               />
               <FormErrorMessage message={errors?.first_name?.message} />
@@ -107,7 +110,7 @@ const PersonalInfo = () => {
               <Input
                 type="text"
                 isInvalid={errors?.last_name?.message ? true : false}
-                errorBorderColor='Secondary.Red'
+                errorBorderColor="Secondary.Red"
                 placeholder="Your Last name"
                 {...register('last_name', {
                   required: 'This field is required',
@@ -126,7 +129,7 @@ const PersonalInfo = () => {
               <Input
                 type="email"
                 isInvalid={errors?.email?.message ? true : false}
-                errorBorderColor='Secondary.Red'
+                errorBorderColor="Secondary.Red"
                 placeholder="Email address"
                 {...register('email', {
                   required: 'This field is required',
@@ -143,7 +146,7 @@ const PersonalInfo = () => {
               <Input
                 type="text"
                 isInvalid={errors?.handle?.message ? true : false}
-                errorBorderColor='Secondary.Red'
+                errorBorderColor="Secondary.Red"
                 placeholder="Enter a unique name"
                 {...register('handle', {
                   required: 'This field is required',
@@ -157,7 +160,7 @@ const PersonalInfo = () => {
                 <Input
                   type={statePass ? 'text' : 'password'}
                   isInvalid={errors?.password?.message ? true : false}
-                  errorBorderColor='Secondary.Red'
+                  errorBorderColor="Secondary.Red"
                   placeholder="Minimum 8 characters"
                   {...register('password', {
                     required: 'This field is required',
@@ -183,7 +186,7 @@ const PersonalInfo = () => {
                 <Input
                   type={stateCPass ? 'text' : 'password'}
                   isInvalid={errors?.confirm_password?.message ? true : false}
-                  errorBorderColor='Secondary.Red'
+                  errorBorderColor="Secondary.Red"
                   placeholder="Enter password again"
                   {...register('confirm_password', {
                     required: 'This field is required',
@@ -203,7 +206,12 @@ const PersonalInfo = () => {
               </InputGroup>
               <FormErrorMessage message={errors?.confirm_password?.message} />
             </FormControl>
-            <Checkbox color={'Primary.Navy'} size={'sm'}>
+            <Checkbox
+              color={'Primary.Navy'}
+              size={'sm'}
+              isChecked={isAgreed}
+              onChange={(e) => setIsAgreed(e.target.checked)}
+            >
               I agree to the{' '}
               <Link color="Primary.Blue"> Terms & Conditions</Link>, and I have
               read the <Link color="Primary.Blue"> Privacy Policy</Link>.
@@ -211,6 +219,7 @@ const PersonalInfo = () => {
             <ButtonTheme
               isLoading={isSubmitting}
               type="submit"
+              isDisabled={!isAgreed}
               btnText="Create personal account"
               // chakraProps={{
               //   onClick: () => nextStep(),

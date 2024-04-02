@@ -16,6 +16,7 @@ export interface ButtonThemeType {
   primary?: boolean;
   primaryOutline?: boolean;
   isLoading?: boolean;
+  isDisabled?: boolean;
 }
 
 export interface MessageBoxType {

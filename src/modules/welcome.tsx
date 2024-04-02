@@ -5,6 +5,7 @@ import { RadioCardProps } from 'type';
 import ButtonTheme from './shared/ButtonTheme';
 import { CheckIcon } from './shared/Icons';
 import { Link } from 'react-router-dom';
+import { saveAccountTypeToLocalStorage } from 'services/localStorage.sevice';
 
 const RadioCard: React.FC<RadioCardProps> = ({ ...props }) => {
     const { getInputProps, getRadioProps } = useRadio(props);
@@ -48,6 +49,7 @@ const Welcome = () => {
         },
     })
     const group = getRootProps()
+    saveAccountTypeToLocalStorage(radioValue);
     console.log(radioValue);
 
     return (
