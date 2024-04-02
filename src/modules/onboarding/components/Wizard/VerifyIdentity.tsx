@@ -34,6 +34,7 @@ import {
 import { formatDateToISO, toastSuccess } from 'utils/helpers';
 import { getAccountTypeFromLocalStorage } from 'services/localStorage.sevice';
 import { saveProfile } from 'services/user.service';
+import { useEffect } from 'react';
 
 //             'dob' => 'required|date',
 //             'heal_usage' => 'required|string',
@@ -95,13 +96,12 @@ const VerifyIdentity = () => {
       address_1,
       address_2,
     };
-    console.log('userProfile', userProfile);
-    const response = await saveProfile(userProfile);
-    console.log("resposneeeee: ", response)
-    if (response?.status) {
-      toastSuccess(response?.data?.message);
+    // const response = await saveProfile(userProfile);
+    // console.log("resposneeeee: ", response)
+    // if (response?.status) {
+    //   toastSuccess(response?.data?.message);
       nextStep();
-    }
+    // }
   };
   return (
     <Box>

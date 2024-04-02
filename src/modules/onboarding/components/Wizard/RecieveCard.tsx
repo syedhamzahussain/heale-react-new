@@ -11,6 +11,8 @@ const RecieveCard = () => {
     const handleCheckboxChange = () => {
         setShowShippingAddress(!showShippingAddress);
     };
+
+
     return (
         <Box w={"50%"} >
             <Box textAlign={"center"}>
@@ -47,7 +49,8 @@ const RecieveCard = () => {
                 }} />
                 <ButtonTheme btnText='Get started' primary chakraProps={{
                     w: "100%",
-                    onClick: () => nextStep(),
+                    onClick: () => window.location.href = '/extension',
+                    // onClick: () => nextStep(),
                 }} />
             </Flex>
         </ Box>
