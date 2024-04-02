@@ -214,11 +214,13 @@ const VerifyIdentity = () => {
                         required: 'This field is required',
                       })}
                     >
-                      {Array.from({ length: 31 }, (_, i) => i + 1).map((day) => (
-                        <option key={day} value={day}>
-                          {day}
-                        </option>
-                      ))}
+                      {Array.from({ length: 31 }, (_, i) => i + 1).map(
+                        (day) => (
+                          <option key={day} value={day}>
+                            {day}
+                          </option>
+                        )
+                      )}
                     </Select>
                     <FormErrorMessage message={errors?.day?.message} />
                   </Box>
@@ -231,7 +233,7 @@ const VerifyIdentity = () => {
                         required: 'This field is required',
                       })}
                     >
-                      {Array.from({ length: 100 }, (_, i) => i + 1920).map(
+                      {Array.from({ length: 100 }, (_, i) => 2020 - i).map(
                         (year) => (
                           <option key={year} value={year}>
                             {year}
@@ -283,14 +285,10 @@ const VerifyIdentity = () => {
                   <GridItem colSpan={3}>
                     <Input
                       type="text"
-                      isInvalid={errors?.address_2?.message ? true : false}
-                      errorBorderColor="Secondary.Red"
+                      // errorBorderColor="Secondary.Red"
                       placeholder="Address line 2"
-                      {...register('address_2', {
-                        required: 'This field is required',
-                      })}
+                      {...register('address_2')}
                     />
-                    <FormErrorMessage message={errors?.address_2?.message} />
                   </GridItem>
                   <GridItem colSpan={2}>
                     <Input

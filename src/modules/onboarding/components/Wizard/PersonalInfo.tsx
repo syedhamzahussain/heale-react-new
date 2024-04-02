@@ -20,7 +20,10 @@ import React, { useState, useEffect } from 'react';
 import { useWizard } from 'react-use-wizard';
 import FormErrorMessage from 'modules/shared/FormErrorMessage';
 import { signUp } from 'services/auth.service';
-import { getTokenFromLocalStorage, saveTokenToLocalStorage } from 'services/localStorage.sevice';
+import {
+  getTokenFromLocalStorage,
+  saveTokenToLocalStorage,
+} from 'services/localStorage.sevice';
 import { toastSuccess, validatePasswords } from 'utils/helpers';
 
 const PersonalInfo = () => {
@@ -46,7 +49,11 @@ const PersonalInfo = () => {
     const { first_name, last_name, email, handle, password, confirm_password } =
       values;
 
-    const isPasswordValidated = validatePasswords(password, confirm_password, setError);
+    const isPasswordValidated = validatePasswords(
+      password,
+      confirm_password,
+      setError
+    );
     if (!isPasswordValidated) return; // Early return if there's a password mismatch
 
     const user: any = {
@@ -56,14 +63,14 @@ const PersonalInfo = () => {
       handle,
       password,
     };
-    // const response = await signUp(user);
-    // if (response?.status) {
-    //   toastSuccess(response?.data?.message);
-    //   saveTokenToLocalStorage(
-    //     `${response?.data?.token_type} ${response?.data?.access_token}`
-    //   );
-    nextStep();
-    // }
+    const response = await signUp(user);
+    if (response?.status) {
+      toastSuccess(response?.data?.message);
+      saveTokenToLocalStorage(
+        `${response?.data?.token_type} ${response?.data?.access_token}`
+      );
+      nextStep();
+    }
   };
 
   return (
