@@ -36,7 +36,7 @@ const PersonalInfo = () => {
     formState: { errors, isSubmitting },
   } = useForm();
 
- 
+
 
   useEffect(() => {
     if (getTokenFromLocalStorage()) nextStep();
@@ -56,14 +56,14 @@ const PersonalInfo = () => {
       handle,
       password,
     };
-    const response = await signUp(user);
-    if (response?.status) {
-      toastSuccess(response?.data?.message);
-      saveTokenToLocalStorage(
-        `${response?.data?.token_type} ${response?.data?.access_token}`
-      );
-      nextStep();
-    }
+    // const response = await signUp(user);
+    // if (response?.status) {
+    //   toastSuccess(response?.data?.message);
+    //   saveTokenToLocalStorage(
+    //     `${response?.data?.token_type} ${response?.data?.access_token}`
+    //   );
+    nextStep();
+    // }
   };
 
   return (
