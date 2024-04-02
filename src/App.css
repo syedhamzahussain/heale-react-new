@@ -6,6 +6,12 @@
     src: url("../src/assets/fonts/Aeonik-Regular.otf") format("truetype");
 }
 
+.courier-prime-regular {
+    font-family: "Courier Prime", monospace;
+    font-weight: 400;
+    font-style: normal;
+}
+
 input,
 select {
     height: 2.75rem !important;
