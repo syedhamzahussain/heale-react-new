@@ -3,6 +3,7 @@ import ButtonTheme from 'modules/shared/ButtonTheme';
 import { HealeLogoWhite, WifiIcon } from 'modules/shared/Icons';
 import React, { useState } from 'react';
 import { useWizard } from 'react-use-wizard';
+import { removeTokenFromLocalStorage } from 'services/localStorage.sevice';
 
 const RecieveCard = () => {
     const { nextStep, previousStep } = useWizard();
@@ -11,6 +12,8 @@ const RecieveCard = () => {
     const handleCheckboxChange = () => {
         setShowShippingAddress(!showShippingAddress);
     };
+
+
     return (
         <Box w={"50%"} >
             <Box textAlign={"center"}>
@@ -47,7 +50,11 @@ const RecieveCard = () => {
                 }} />
                 <ButtonTheme btnText='Get started' primary chakraProps={{
                     w: "100%",
-                    onClick: () => nextStep(),
+                    onClick: () => {
+                        removeTokenFromLocalStorage();
+                        window.location.href = '/extension'
+                    }
+                    // onClick: () => nextStep(),
                 }} />
             </Flex>
         </ Box>
