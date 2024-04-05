@@ -3,7 +3,7 @@ import ButtonTheme from 'modules/shared/ButtonTheme';
 import { HealeLogoWhite, WifiIcon } from 'modules/shared/Icons';
 import React, { useState } from 'react';
 import { useWizard } from 'react-use-wizard';
-import { removeTokenFromLocalStorage } from 'services/localStorage.sevice';
+import { getAccountTypeFromLocalStorage, removeTokenFromLocalStorage } from 'services/localStorage.sevice';
 
 const RecieveCard = () => {
     const { nextStep, previousStep } = useWizard();
@@ -51,8 +51,11 @@ const RecieveCard = () => {
                 <ButtonTheme btnText='Get started' primary chakraProps={{
                     w: "100%",
                     onClick: () => {
+                        let type = getAccountTypeFromLocalStorage();
                         removeTokenFromLocalStorage();
-                        window.location.href = '/extension'
+                        if(type === 'Personal'){
+                            window.location.href = '/extension'
+                        }
                     }
                     // onClick: () => nextStep(),
                 }} />
