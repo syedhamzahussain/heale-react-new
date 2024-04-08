@@ -126,3 +126,27 @@ export const sourceOfFunds = [
     "Option 2",
     "Option 3",
 ]
+
+export const businessEntityTypes = [
+    "Option 1",
+    "Option 2",
+    "Option 3",
+]
+
+export const businessTypes = [
+    "Option 1",
+    "Option 2",
+    "Option 3",
+]
+
+export const phoneTypes = [
+    "Option 1",
+    "Option 2",
+    "Option 3",
+]
+
+export const businessIncorporationState = [
+    "Option 1",
+    "Option 2",
+    "Option 3",
+]

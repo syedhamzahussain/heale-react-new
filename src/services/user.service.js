@@ -5,3 +5,9 @@ export const saveProfile = async (userProfile) => {
   const response = await POST(`${apiUrl.user}/profile`, userProfile);
   return response;
 };
+
+
+export const saveUserBusiness = async (userBusiness) => {
+  const response = await POST(`${apiUrl.user}/business`, userBusiness);
+  return response;
+};
