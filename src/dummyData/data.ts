@@ -118,3 +118,20 @@ export const SidebarNav = [
     hasDropdown: false,
   },
 ];
+
+export const NotiData = [
+  {
+    id: 0,
+    title: 'NexGen Transport',
+    desc: 'sent you a payment',
+    time: '18 hours ago',
+    status: 'unread',
+  },
+  {
+    id: 0,
+    title: 'Floyd Miles',
+    desc: 'request a payment',
+    time: '1 day ago',
+    status: 'read',
+  },
+];
