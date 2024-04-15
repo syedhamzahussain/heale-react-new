@@ -1,6 +1,7 @@
 import { toast } from 'react-toastify';
 
 export const getErrorMessage = (error) => {
+  console.log('error', error);
   if (error?.response?.status === 404) return 'Not Found';
 
   if (error?.response?.data?.message) return error.response.data.message;

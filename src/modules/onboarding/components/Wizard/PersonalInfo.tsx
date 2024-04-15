@@ -23,6 +23,7 @@ import { signUp } from 'services/auth.service';
 import {
   getTokenFromLocalStorage,
   saveTokenToLocalStorage,
+  saveUserToLocalStorage,
 } from 'services/localStorage.sevice';
 import { toastSuccess, validatePasswords } from 'utils/helpers';
 
@@ -69,6 +70,7 @@ const PersonalInfo = () => {
       saveTokenToLocalStorage(
         `${response?.data?.token_type} ${response?.data?.access_token}`
       );
+      saveUserToLocalStorage(response?.data?.user);
       nextStep();
     }
   };

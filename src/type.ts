@@ -27,6 +27,7 @@ export interface MessageBoxType {
   desc: string;
   title: string;
   icon: ComponentWithAs<'svg', IconProps>;
+  handleClick?: () => void;
 }
 
 export interface VerificationBoxType {

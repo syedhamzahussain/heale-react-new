@@ -49,6 +49,8 @@ api.interceptors.response.use(
         // window.location.href = "/login";
         toastError(errorMessage);
         break;
+      case 400:
+        break;
       default:
         toastError(errorMessage);
         break;

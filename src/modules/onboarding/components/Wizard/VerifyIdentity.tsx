@@ -36,20 +36,6 @@ import { getAccountTypeFromLocalStorage } from 'services/localStorage.sevice';
 import { saveProfile } from 'services/user.service';
 import { useEffect } from 'react';
 
-//             'dob' => 'required|date',
-//             'heal_usage' => 'required|string',
-//             'citizenship' => 'required|string',
-//             'source_of_funds' => 'required|string',
-//             'employment_status' => 'required|string',
-//             'ssn' => 'required|string',
-
-//             'account_type' => 'required|string',
-//             'driver_license_no' => 'required|string',
-//             'driver_license_status' => 'required|string',
-//             'driver_license_class' => 'required|string',
-//             'is_verified' => 'sometimes|boolean',
-//             'plaid_id' => 'sometimes|string',
-//             'plaid_token' => 'sometimes|string',
 const VerifyIdentity = () => {
   const { nextStep, previousStep } = useWizard();
   const {
@@ -96,12 +82,11 @@ const VerifyIdentity = () => {
       address_1,
       address_2,
     };
-    // const response = await saveProfile(userProfile);
-    // console.log("resposneeeee: ", response)
-    // if (response?.status) {
-    //   toastSuccess(response?.data?.message);
+    const response = await saveProfile(userProfile);
+    if (response?.status) {
+      toastSuccess(response?.data?.message);
       nextStep();
-    // }
+    }
   };
   return (
     <Box>
