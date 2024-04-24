@@ -58,6 +58,7 @@ export const SidebarNav = [
   {
     id: 2,
     title: 'Payments',
+    link: '/payments',
     icon: PaymentIcon,
     hasDropdown: true,
     subItems: [

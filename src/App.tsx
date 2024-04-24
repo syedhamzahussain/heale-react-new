@@ -15,6 +15,7 @@ import BrowserExtension from "modules/browserExtension";
 import "App.css"
 import DashboardLayout from "modules/shared/DashboardLayout";
 import Dashboard from "modules/dashboard";
+import Payment from "modules/Payment";
 
 function App() {
   return (
@@ -33,6 +34,7 @@ function App() {
           </Route>
           <Route element={<DashboardLayout />}>
             <Route path="dashboard" element={<Dashboard />} />
+            <Route path="payments" element={<Payment />} />
           </Route>
         </Routes>
       </BrowserRouter>
