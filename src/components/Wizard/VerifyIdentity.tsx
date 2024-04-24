@@ -9,7 +9,7 @@ const VerifyIdentity = () => {
     const { nextStep, previousStep } = useWizard();
     return (
         <Box >
-            <Heading as={"h4"} mb={4} fontSize={"3xl"} color={"Primary.Navy"}>Verify your identify</Heading>
+            <Heading as={"h4"} mb={4} fontSize={"3xl"} color={"Primary.Navy"}>Verify your identity</Heading>
             <Text mb={8} color={"Neutral.800"}>We have a few questions to verify your identity for compliance purposes. Your information is transmitted and stored securely.</Text>
             <Box sx={{
                 ".chakra-form__label": {
@@ -153,7 +153,7 @@ const VerifyIdentity = () => {
                 <Link color='Primary.Blue' my={3} display={'inline-block'}>Close</Link>
             </Box>
             <Box w={"60%"}>
-                <Heading as={"h4"} mb={4} fontSize={"3xl"} color={"Primary.Navy"}>Unable to verify your identify</Heading>
+                <Heading as={"h4"} mb={4} fontSize={"3xl"} color={"Primary.Navy"}>Unable to verify your identity</Heading>
                 <Text mb={4} color={"Neutral.800"}>We were unable to verify your identity with our compliance partner. Some reasons for this might include:</Text>
                 <List ms={4} listStyleType={"disc"} color={"Neutral.800"} textAlign={"left"} spacing={4} mb={4}>
                     <ListItem >A typo in entry</ListItem>

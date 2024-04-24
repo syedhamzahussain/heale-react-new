@@ -21,6 +21,7 @@ const theme = extendTheme({
   fonts: {
     body: `'Aeonik Regular', sans-serif`,
     heading: `'Aeonik Regular', sans-serif`,
+    CourierPrime: `"Courier Prime"`,
   },
   components: {
     Heading: {

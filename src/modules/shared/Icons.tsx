@@ -270,7 +270,7 @@ export const LoaderIcon = createIcon({
   viewBox: "0 0 32 32",
   path: (
     <>
-      <g clip-path="url(#clip0_1182_47083)">
+      <g clipPath="url(#clip0_1182_47083)">
         <path d="M4.5731 16H1.14453" stroke="#3446EE" strokeLinecap="round" strokeLinejoin="round" />
         <path d="M7.91114 7.90857L5.48828 5.48572" stroke="#3446EE" strokeLinecap="round" strokeLinejoin="round" />
         <path d="M7.91114 24.0914L5.48828 26.5143" stroke="#3446EE" strokeLinecap="round" strokeLinejoin="round" />
@@ -378,7 +378,7 @@ export const InfoIcon = createIcon({
           <rect id="Rectangle_23055" data-name="Rectangle 23055" width="24" height="24" fill="#fff" />
         </clipPath>
       </defs>
-      <g id="Group_40465" data-name="Group 40465" clip-path="url(#clip-path)">
+      <g id="Group_40465" data-name="Group 40465" clipPath="url(#clip-path)">
         <path id="Path_91505" data-name="Path 91505" d="M12,23.143A11.143,11.143,0,1,0,.855,12,11.143,11.143,0,0,0,12,23.143Z" fill="none" stroke="#3446ee" strokeLinecap="round" strokeLinejoin="round" strokeWidth="0.833" />
         <path id="Path_91506" data-name="Path 91506" d="M12,12v6" fill="none" stroke="#3446ee" strokeLinecap="round" strokeLinejoin="round" strokeWidth="0.833" />
         <path id="Path_91507" data-name="Path 91507" d="M12,8.571a.857.857,0,1,0-.857-.857A.857.857,0,0,0,12,8.571Z" fill="none" stroke="#3446ee" strokeLinecap="round" strokeLinejoin="round" strokeWidth="0.833" />
@@ -407,27 +407,29 @@ export const WifiIcon = createIcon({
     </g>
   ),
 });
+
 export const DesktopIcon = createIcon({
   displayName: "DesktopIcon",
   viewBox: "0 0 24 24",
   path: (
     <g id="Group_40465" data-name="Group 40465">
-      <path d="M22.2879 3.42859H1.71652C1.24313 3.42859 0.859375 3.81234 0.859375 4.28573V18C0.859375 18.4734 1.24313 18.8572 1.71652 18.8572H22.2879C22.7613 18.8572 23.1451 18.4734 23.1451 18V4.28573C23.1451 3.81234 22.7613 3.42859 22.2879 3.42859Z" stroke="#3446EE" fill="#fff" stroke-linecap="round" stroke-linejoin="round"/>
-      <path d="M10.2846 18.8572L8.57031 23.1429" stroke="#3446EE" stroke-linecap="round" stroke-linejoin="round"/>
-      <path d="M13.7188 18.8572L15.433 23.1429" stroke="#3446EE" stroke-linecap="round" stroke-linejoin="round"/>
-      <path d="M6.85938 23.1428H17.1451" stroke="#3446EE" stroke-linecap="round" stroke-linejoin="round"/>
-      <path d="M7.71875 12.0001L11.1473 14.5715L17.1473 7.71436" fill="#fff" stroke="#3446EE" stroke-linecap="round" stroke-linejoin="round"/>
+      <path d="M22.2879 3.42859H1.71652C1.24313 3.42859 0.859375 3.81234 0.859375 4.28573V18C0.859375 18.4734 1.24313 18.8572 1.71652 18.8572H22.2879C22.7613 18.8572 23.1451 18.4734 23.1451 18V4.28573C23.1451 3.81234 22.7613 3.42859 22.2879 3.42859Z" stroke="#3446EE" fill="#fff" strokeLinecap="round" strokeLinejoin="round" />
+      <path d="M10.2846 18.8572L8.57031 23.1429" stroke="#3446EE" strokeLinecap="round" strokeLinejoin="round" />
+      <path d="M13.7188 18.8572L15.433 23.1429" stroke="#3446EE" strokeLinecap="round" strokeLinejoin="round" />
+      <path d="M6.85938 23.1428H17.1451" stroke="#3446EE" strokeLinecap="round" strokeLinejoin="round" />
+      <path d="M7.71875 12.0001L11.1473 14.5715L17.1473 7.71436" fill="#fff" stroke="#3446EE" strokeLinecap="round" strokeLinejoin="round" />
     </g>
   ),
 });
+
 export const DownloadIcon = createIcon({
   displayName: "DownloadIcon",
   viewBox: "0 0 20 20",
   path: (
-    <g id="Group_40465" data-name="Group 40465" clip-path="url(#clip0_2440_194831)">
-      <path d="M0.710938 15V16.4286C0.710938 17.1863 1.01196 17.9131 1.54778 18.4489C2.08359 18.9847 2.81032 19.2857 3.56808 19.2857H16.4252C17.183 19.2857 17.9097 18.9847 18.4455 18.4489C18.9813 17.9131 19.2824 17.1863 19.2824 16.4286V15" stroke="#3446EE" fill="#fff" stroke-linecap="round" stroke-linejoin="round"/>
-      <path d="M5.71094 8.57141L9.99665 13.5714L14.2824 8.57141" fill="#fff" stroke="#3446EE" stroke-linecap="round" stroke-linejoin="round"/>
-      <path d="M10 13.5714V0.714233" stroke="#3446EE" fill="#fff" stroke-linecap="round" stroke-linejoin="round"/>
+    <g id="Group_40465" data-name="Group 40465" clipPath="url(#clip0_2440_194831)">
+      <path d="M0.710938 15V16.4286C0.710938 17.1863 1.01196 17.9131 1.54778 18.4489C2.08359 18.9847 2.81032 19.2857 3.56808 19.2857H16.4252C17.183 19.2857 17.9097 18.9847 18.4455 18.4489C18.9813 17.9131 19.2824 17.1863 19.2824 16.4286V15" stroke="#3446EE" fill="#fff" strokeLinecap="round" strokeLinejoin="round" />
+      <path d="M5.71094 8.57141L9.99665 13.5714L14.2824 8.57141" fill="#fff" stroke="#3446EE" strokeLinecap="round" strokeLinejoin="round" />
+      <path d="M10 13.5714V0.714233" stroke="#3446EE" fill="#fff" strokeLinecap="round" strokeLinejoin="round" />
     </g>
   ),
 });
@@ -437,60 +439,362 @@ export const HealLogoHexagonIcon = createIcon({
   viewBox: "0 0 298 300",
   path: (
     <>
-    <path d="M148.89 102.043L190.424 126.01L148.883 150L148.89 102.043Z" fill="#5672FF"/>
-    <path d="M190.417 173.975L148.89 197.957L148.883 150L190.417 173.975Z" fill="#3446EE"/>
-    <path d="M190.417 173.975L148.883 150L190.417 126.01V173.975Z" fill="#778CFF"/>
-    <path d="M190.424 126.018L148.89 102.043L148.883 49.5945L235.837 99.7789L190.424 126.018Z" fill="url(#paint0_linear_1349_38372)"/>
-    <path d="M190.409 173.975L148.883 197.957L148.89 250.406L235.83 200.192L190.409 173.975Z" fill="url(#paint1_linear_1349_38372)"/>
-    <path d="M235.834 200.192L190.414 173.975L190.421 126.01L235.834 99.7788V200.192Z" fill="url(#paint2_linear_1349_38372)"/>
-    <path d="M148.885 197.957L107.352 173.99L148.885 150V197.957Z" fill="#5672FF"/>
-    <path d="M107.352 126.032L148.878 102.043L148.885 150L107.352 126.032Z" fill="#3446EE"/>
-    <path d="M107.352 126.032L148.885 150L107.352 173.99V126.032Z" fill="#778CFF"/>
-    <path d="M107.343 173.99H107.35L148.884 197.957L148.892 250.406L61.9375 200.221L107.343 173.99Z" fill="url(#paint3_linear_1349_38372)"/>
-    <path d="M107.358 126.033L148.884 102.043L148.877 49.5945L61.9375 99.8157L107.358 126.033Z" fill="url(#paint4_linear_1349_38372)"/>
-    <path d="M61.9375 99.8157L107.358 126.032L107.35 173.99L61.9375 200.221V99.8157Z" fill="url(#paint5_linear_1349_38372)"/>
-    <defs>
-    <linearGradient id="paint0_linear_1349_38372" x1="192.364" y1="48.9381" x2="192.364" y2="123.378" gradientUnits="userSpaceOnUse">
-    <stop stop-color="#627DFF"/>
-    <stop offset="0.23" stop-color="#6881FF"/>
-    <stop offset="0.55" stop-color="#798FFF"/>
-    <stop offset="0.91" stop-color="#95A6FF"/>
-    <stop offset="1" stop-color="#9EAEFF"/>
-    </linearGradient>
-    <linearGradient id="paint1_linear_1349_38372" x1="192.356" y1="244.852" x2="192.356" y2="175.361" gradientUnits="userSpaceOnUse">
-    <stop stop-color="#474FF6"/>
-    <stop offset="0.17" stop-color="#4D54F6"/>
-    <stop offset="0.41" stop-color="#5E64F7"/>
-    <stop offset="0.68" stop-color="#7A7FF8"/>
-    <stop offset="0.9" stop-color="#979AFA"/>
-    </linearGradient>
-    <linearGradient id="paint2_linear_1349_38372" x1="234.529" y1="149.985" x2="192.604" y2="149.985" gradientUnits="userSpaceOnUse">
-    <stop stop-color="#B3BFFF"/>
-    <stop offset="0.3" stop-color="#B9C3FF"/>
-    <stop offset="0.71" stop-color="#CAD1FF"/>
-    <stop offset="1" stop-color="#DBDFFF"/>
-    </linearGradient>
-    <linearGradient id="paint3_linear_1349_38372" x1="105.411" y1="251.062" x2="105.411" y2="176.63" gradientUnits="userSpaceOnUse">
-    <stop stop-color="#627DFF"/>
-    <stop offset="0.23" stop-color="#6881FF"/>
-    <stop offset="0.55" stop-color="#798FFF"/>
-    <stop offset="0.91" stop-color="#95A6FF"/>
-    <stop offset="1" stop-color="#9EAEFF"/>
-    </linearGradient>
-    <linearGradient id="paint4_linear_1349_38372" x1="105.411" y1="55.1476" x2="105.411" y2="124.639" gradientUnits="userSpaceOnUse">
-    <stop stop-color="#474FF6"/>
-    <stop offset="0.17" stop-color="#4D54F6"/>
-    <stop offset="0.41" stop-color="#5E64F7"/>
-    <stop offset="0.68" stop-color="#7A7FF8"/>
-    <stop offset="0.9" stop-color="#979AFA"/>
-    </linearGradient>
-    <linearGradient id="paint5_linear_1349_38372" x1="63.2428" y1="150.015" x2="105.168" y2="150.015" gradientUnits="userSpaceOnUse">
-    <stop stop-color="#B3BFFF"/>
-    <stop offset="0.3" stop-color="#B9C3FF"/>
-    <stop offset="0.71" stop-color="#CAD1FF"/>
-    <stop offset="1" stop-color="#DBDFFF"/>
-    </linearGradient>
-    </defs>
+      <path d="M148.89 102.043L190.424 126.01L148.883 150L148.89 102.043Z" fill="#5672FF" />
+      <path d="M190.417 173.975L148.89 197.957L148.883 150L190.417 173.975Z" fill="#3446EE" />
+      <path d="M190.417 173.975L148.883 150L190.417 126.01V173.975Z" fill="#778CFF" />
+      <path d="M190.424 126.018L148.89 102.043L148.883 49.5945L235.837 99.7789L190.424 126.018Z" fill="url(#paint0_linear_1349_38372)" />
+      <path d="M190.409 173.975L148.883 197.957L148.89 250.406L235.83 200.192L190.409 173.975Z" fill="url(#paint1_linear_1349_38372)" />
+      <path d="M235.834 200.192L190.414 173.975L190.421 126.01L235.834 99.7788V200.192Z" fill="url(#paint2_linear_1349_38372)" />
+      <path d="M148.885 197.957L107.352 173.99L148.885 150V197.957Z" fill="#5672FF" />
+      <path d="M107.352 126.032L148.878 102.043L148.885 150L107.352 126.032Z" fill="#3446EE" />
+      <path d="M107.352 126.032L148.885 150L107.352 173.99V126.032Z" fill="#778CFF" />
+      <path d="M107.343 173.99H107.35L148.884 197.957L148.892 250.406L61.9375 200.221L107.343 173.99Z" fill="url(#paint3_linear_1349_38372)" />
+      <path d="M107.358 126.033L148.884 102.043L148.877 49.5945L61.9375 99.8157L107.358 126.033Z" fill="url(#paint4_linear_1349_38372)" />
+      <path d="M61.9375 99.8157L107.358 126.032L107.35 173.99L61.9375 200.221V99.8157Z" fill="url(#paint5_linear_1349_38372)" />
+      <defs>
+        <linearGradient id="paint0_linear_1349_38372" x1="192.364" y1="48.9381" x2="192.364" y2="123.378" gradientUnits="userSpaceOnUse">
+          <stop stop-color="#627DFF" />
+          <stop offset="0.23" stop-color="#6881FF" />
+          <stop offset="0.55" stop-color="#798FFF" />
+          <stop offset="0.91" stop-color="#95A6FF" />
+          <stop offset="1" stop-color="#9EAEFF" />
+        </linearGradient>
+        <linearGradient id="paint1_linear_1349_38372" x1="192.356" y1="244.852" x2="192.356" y2="175.361" gradientUnits="userSpaceOnUse">
+          <stop stop-color="#474FF6" />
+          <stop offset="0.17" stop-color="#4D54F6" />
+          <stop offset="0.41" stop-color="#5E64F7" />
+          <stop offset="0.68" stop-color="#7A7FF8" />
+          <stop offset="0.9" stop-color="#979AFA" />
+        </linearGradient>
+        <linearGradient id="paint2_linear_1349_38372" x1="234.529" y1="149.985" x2="192.604" y2="149.985" gradientUnits="userSpaceOnUse">
+          <stop stop-color="#B3BFFF" />
+          <stop offset="0.3" stop-color="#B9C3FF" />
+          <stop offset="0.71" stop-color="#CAD1FF" />
+          <stop offset="1" stop-color="#DBDFFF" />
+        </linearGradient>
+        <linearGradient id="paint3_linear_1349_38372" x1="105.411" y1="251.062" x2="105.411" y2="176.63" gradientUnits="userSpaceOnUse">
+          <stop stop-color="#627DFF" />
+          <stop offset="0.23" stop-color="#6881FF" />
+          <stop offset="0.55" stop-color="#798FFF" />
+          <stop offset="0.91" stop-color="#95A6FF" />
+          <stop offset="1" stop-color="#9EAEFF" />
+        </linearGradient>
+        <linearGradient id="paint4_linear_1349_38372" x1="105.411" y1="55.1476" x2="105.411" y2="124.639" gradientUnits="userSpaceOnUse">
+          <stop stop-color="#474FF6" />
+          <stop offset="0.17" stop-color="#4D54F6" />
+          <stop offset="0.41" stop-color="#5E64F7" />
+          <stop offset="0.68" stop-color="#7A7FF8" />
+          <stop offset="0.9" stop-color="#979AFA" />
+        </linearGradient>
+        <linearGradient id="paint5_linear_1349_38372" x1="63.2428" y1="150.015" x2="105.168" y2="150.015" gradientUnits="userSpaceOnUse">
+          <stop stop-color="#B3BFFF" />
+          <stop offset="0.3" stop-color="#B9C3FF" />
+          <stop offset="0.71" stop-color="#CAD1FF" />
+          <stop offset="1" stop-color="#DBDFFF" />
+        </linearGradient>
+      </defs>
     </>
   ),
 });
+
+export const TrashIcon = createIcon({
+  displayName: "TrashIcon",
+  viewBox: "0 0 16.667 18.167",
+  path: (
+    <g id="Group_40466" data-name="Group 40466" transform="translate(-1.668 -0.917)">
+      <path id="Path_91509" data-name="Path 91509" d="M4.168,5.833v10.84a1.665,1.665,0,0,0,1.672,1.66h8.324a1.667,1.667,0,0,0,1.672-1.66V5.833" fill="none" stroke="#9696b3" strokeWidth="1.5" />
+      <path id="Path_91510" data-name="Path 91510" d="M17.5,3.333H2.5A.833.833,0,0,0,2.5,5h15a.833.833,0,0,0,0-1.667Z" fill="#9696b3" />
+      <path id="Path_91511" data-name="Path 91511" d="M7.5,9.164a.833.833,0,0,1,1.667,0v5a.833.833,0,0,1-1.667,0Zm3.333,0a.833.833,0,0,1,1.667,0v5a.833.833,0,0,1-1.667,0Z" fill="#9696b3" fill-rule="evenodd" />
+      <path id="Path_91512" data-name="Path 91512" d="M7.5,4.167V2.5a.833.833,0,0,1,.826-.832h3.349A.827.827,0,0,1,12.5,2.5V4.167" fill="none" stroke="#9696b3" strokeLinejoin="round" strokeWidth="1.5" />
+    </g>
+  ),
+});
+
+export const PencilIcon = createIcon({
+  displayName: "PencilIcon",
+  viewBox: "0 0 16.33 16.303",
+  path: (
+    <g id="Group_40467" data-name="Group 40467" transform="translate(-1.75 -1.947)">
+      <path id="Path_91513" data-name="Path 91513" d="M2.5,17.5V14.167L13.241,3.425a2.5,2.5,0,0,1,3.534,0L16.6,3.251a2.494,2.494,0,0,1,0,3.53L5.833,17.5Z" fill="none" stroke="#9696b3" strokeLinecap="round" strokeLinejoin="round" strokeWidth="1.5" fill-rule="evenodd" />
+      <path id="Path_91514" data-name="Path 91514" d="M12.082,4.583l3.333,3.333" fill="none" stroke="#9696b3" strokeWidth="1.5" />
+    </g>
+  ),
+});
+
+export const PlusIcon = createIcon({
+  displayName: "PlusIcon",
+  viewBox: "0 0 20 20",
+  path: (
+    <>
+      <path d="M10 0.771484V19.3429" stroke="#3446EE" strokeLinecap="round" strokeLinejoin="round" />
+      <path d="M0.714844 10H19.2863" stroke="#3446EE" strokeLinecap="round" strokeLinejoin="round" />
+    </>
+  ),
+});
+
+export const DashboardIcon = createIcon({
+  displayName: "DashboardIcon",
+  viewBox: "0 0 24 24",
+  path: (
+    <>
+      <defs>
+        <clipPath id="clip-path">
+          <rect id="Rectangle_23055" data-name="Rectangle 23055" width="24" height="24" fill="#fff" />
+        </clipPath>
+      </defs>
+      <g id="Group_40466" data-name="Group 40466" clipPath="url(#clip-path)">
+        <path id="Path_91509" data-name="Path 91509" d="M.855,12,12,.857,23.141,12" fill="none" stroke="rgba(3, 16, 61, 1)" strokeLinecap="round" strokeLinejoin="round" strokeWidth="1" />
+        <path id="Path_91510" data-name="Path 91510" d="M4.285,14.571v8.571H19.714V14.571" fill="none" stroke="rgba(3, 16, 61, 1)" strokeLinecap="round" strokeLinejoin="round" strokeWidth="1" />
+      </g>
+    </>
+  ),
+});
+
+export const TransactionIcon = createIcon({
+  displayName: "TransactionIcon",
+  viewBox: "0 0 23.284 18.143",
+  path: (
+    <g id="Group_40466" data-name="Group 40466" transform="translate(-0.355 -2.929)">
+      <path id="Path_91509" data-name="Path 91509" d="M1.713,5.143a.857.857,0,1,0-.857-.857A.857.857,0,0,0,1.713,5.143Z" fill="none" stroke="#03103d" strokeLinecap="round" strokeLinejoin="round" strokeWidth="1" />
+      <path id="Path_91510" data-name="Path 91510" d="M7.711,4.286H23.139" fill="none" stroke="#03103d" strokeLinecap="round" strokeLinejoin="round" strokeWidth="1" />
+      <path id="Path_91511" data-name="Path 91511" d="M1.713,12.857A.857.857,0,1,0,.855,12,.857.857,0,0,0,1.713,12.857Z" fill="none" stroke="#03103d" strokeLinecap="round" strokeLinejoin="round" strokeWidth="1" />
+      <path id="Path_91512" data-name="Path 91512" d="M7.711,12H23.139" fill="none" stroke="#03103d" strokeLinecap="round" strokeLinejoin="round" strokeWidth="1" />
+      <path id="Path_91513" data-name="Path 91513" d="M1.713,20.572a.857.857,0,1,0-.857-.857A.857.857,0,0,0,1.713,20.572Z" fill="none" stroke="#03103d" strokeLinecap="round" strokeLinejoin="round" strokeWidth="1" />
+      <path id="Path_91514" data-name="Path 91514" d="M7.711,19.715H23.139" fill="none" stroke="#03103d" strokeLinecap="round" strokeLinejoin="round" strokeWidth="1" />
+    </g>
+  ),
+});
+
+export const PaymentIcon = createIcon({
+  displayName: "PaymentIcon",
+  viewBox: "0 0 11.313 23.286",
+  path: (
+    <g id="Group_40466" data-name="Group 40466" transform="translate(-6.342 -0.357)">
+      <path id="Path_91509" data-name="Path 91509" d="M7.713,18h6.6a2.829,2.829,0,0,0,.549-5.606l-5.726-.789A2.829,2.829,0,0,1,9.684,6h6.6" fill="none" stroke="#03103d" strokeLinecap="round" strokeLinejoin="round" strokeWidth="1" />
+      <path id="Path_91510" data-name="Path 91510" d="M12,23.143V.857" fill="none" stroke="#03103d" strokeLinecap="round" strokeLinejoin="round" strokeWidth="1" />
+    </g>
+  ),
+});
+
+export const DiamondIcon = createIcon({
+  displayName: "DiamondIcon",
+  viewBox: "0 0 23.296 20.082",
+  path: (
+    <g id="Group_40466" data-name="Group 40466" transform="translate(-0.351 -1.932)">
+      <path id="Path_91509" data-name="Path 91509" d="M18.239,2.641H5.759A1.834,1.834,0,0,0,4.3,3.429l-3.12,4.32a1.8,1.8,0,0,0,.1,2.211l9.36,10.783a1.714,1.714,0,0,0,2.709,0l9.36-10.783a1.8,1.8,0,0,0,.1-2.211L19.7,3.429a1.834,1.834,0,0,0-1.457-.789Z" fill="none" stroke="#03103d" strokeLinecap="round" strokeLinejoin="round" strokeWidth="1" />
+      <path id="Path_91510" data-name="Path 91510" d="M11.109,2.623,6.926,9.1,12,21.36" fill="none" stroke="#03103d" strokeLinecap="round" strokeLinejoin="round" strokeWidth="1" />
+      <path id="Path_91511" data-name="Path 91511" d="M12.943,2.623,17.109,9.1,12,21.36" fill="none" stroke="#03103d" strokeLinecap="round" strokeLinejoin="round" strokeWidth="1" />
+      <path id="Path_91512" data-name="Path 91512" d="M.891,9.1H23.108" fill="none" stroke="#03103d" strokeLinecap="round" strokeLinejoin="round" strokeWidth="1" />
+    </g>
+  ),
+});
+
+export const CardIcon = createIcon({
+  displayName: "CardIcon",
+  viewBox: "0 0 23.286 17.286",
+  path: (
+    <g id="Group_40466" data-name="Group 40466" transform="translate(-0.355 -3.357)">
+      <path id="Path_91509" data-name="Path 91509" d="M21.427,3.857H2.57A1.714,1.714,0,0,0,.855,5.572V18.429A1.714,1.714,0,0,0,2.57,20.143H21.427a1.714,1.714,0,0,0,1.714-1.714V5.572A1.714,1.714,0,0,0,21.427,3.857Z" fill="none" stroke="#03103d" strokeLinecap="round" strokeLinejoin="round" strokeWidth="1" />
+      <path id="Path_91510" data-name="Path 91510" d="M.855,9.857H23.141" fill="none" stroke="#03103d" strokeLinecap="round" strokeLinejoin="round" strokeWidth="1" />
+      <path id="Path_91511" data-name="Path 91511" d="M16.285,15.857h2.571" fill="none" stroke="#03103d" strokeLinecap="round" strokeLinejoin="round" strokeWidth="1" />
+    </g>
+  ),
+});
+
+export const AccountIcon = createIcon({
+  displayName: "AccountIcon",
+  viewBox: "0 0 23.286 17.286",
+  path: (
+    <>
+      <defs>
+        <clipPath id="clip-path">
+          <rect id="Rectangle_23055" data-name="Rectangle 23055" width="24" height="24" fill="#fff" />
+        </clipPath>
+      </defs>
+      <g id="Group_40466" data-name="Group 40466" clipPath="url(#clip-path)">
+        <path id="Path_91509" data-name="Path 91509" d="M22.13,9.428H1.867C.907,9.428.5,8.382,1.25,7.885L11.381,1.251a1.217,1.217,0,0,1,1.234,0L22.747,7.885C23.5,8.382,23.09,9.428,22.13,9.428Z" fill="none" stroke="#03103d" strokeLinecap="round" strokeLinejoin="round" strokeWidth="1" />
+        <path id="Path_91510" data-name="Path 91510" d="M22.284,18.856H1.713a.857.857,0,0,0-.857.857v2.571a.857.857,0,0,0,.857.857H22.284a.857.857,0,0,0,.857-.857V19.714A.857.857,0,0,0,22.284,18.856Z" fill="none" stroke="#03103d" strokeLinecap="round" strokeLinejoin="round" strokeWidth="1" />
+        <path id="Path_91511" data-name="Path 91511" d="M3.426,9.428v9.429" fill="none" stroke="#03103d" strokeLinecap="round" strokeLinejoin="round" strokeWidth="1" />
+        <path id="Path_91512" data-name="Path 91512" d="M7.711,9.428v9.429" fill="none" stroke="#03103d" strokeLinecap="round" strokeLinejoin="round" strokeWidth="1" />
+        <path id="Path_91513" data-name="Path 91513" d="M12,9.428v9.429" fill="none" stroke="#03103d" strokeLinecap="round" strokeLinejoin="round" strokeWidth="1" />
+        <path id="Path_91514" data-name="Path 91514" d="M16.285,9.428v9.429" fill="none" stroke="#03103d" strokeLinecap="round" strokeLinejoin="round" strokeWidth="1" />
+        <path id="Path_91515" data-name="Path 91515" d="M20.57,9.428v9.429" fill="none" stroke="#03103d" strokeLinecap="round" strokeLinejoin="round" strokeWidth="1" />
+      </g>
+    </>
+  ),
+});
+
+export const RefferalIcon = createIcon({
+  displayName: "RefferalIcon",
+  viewBox: "0 0 24 24",
+  path: (
+    <>
+      <defs>
+        <clipPath id="clip-path">
+          <rect id="Rectangle_23055" data-name="Rectangle 23055" width="24" height="24" fill="#fff" />
+        </clipPath>
+      </defs>
+      <g id="Group_40466" data-name="Group 40466" clipPath="url(#clip-path)">
+        <path id="Path_91509" data-name="Path 91509" d="M21.427,5.144H2.57A1.714,1.714,0,0,0,.855,6.858V12A1.714,1.714,0,0,0,2.57,13.715H21.427A1.714,1.714,0,0,0,23.141,12V6.858A1.714,1.714,0,0,0,21.427,5.144Z" fill="none" stroke="#03103d" strokeLinecap="round" strokeLinejoin="round" strokeWidth="1" />
+        <path id="Path_91510" data-name="Path 91510" d="M21.427,13.715v7.714a1.714,1.714,0,0,1-1.714,1.714H4.285A1.714,1.714,0,0,1,2.57,21.429V13.715" fill="none" stroke="#03103d" strokeLinecap="round" strokeLinejoin="round" strokeWidth="1" />
+        <path id="Path_91511" data-name="Path 91511" d="M12,5.144v18" fill="none" stroke="#03103d" strokeLinecap="round" strokeLinejoin="round" strokeWidth="1" />
+        <path id="Path_91512" data-name="Path 91512" d="M17.141.857,12,5.143,6.855.857" fill="none" stroke="#03103d" strokeLinecap="round" strokeLinejoin="round" strokeWidth="1" />
+      </g>
+    </>
+  ),
+});
+
+export const UpIcon = createIcon({
+  displayName: "UpIcon",
+  viewBox: "0 0 16.036 8.208",
+  path: (
+    <path id="Path_91505" data-name="Path 91505" d="M.57,11.6,7.6,4.572a.549.549,0,0,1,.8,0L15.427,11.6" transform="translate(0.019 -3.982)" fill="none" stroke="#9696b3" strokeLinecap="round" strokeLinejoin="round" strokeWidth="0.833" />
+  ),
+});
+
+export const SearchIcon = createIcon({
+  displayName: "SearchIcon",
+  viewBox: "0 0 20 20",
+  path: (
+    <>
+      <defs>
+        <clipPath id="clipPath">
+          <rect id="Rectangle_23055" data-name="Rectangle 23055" width="20" height="20" fill="#fff" />
+        </clipPath>
+      </defs>
+      <g id="Group_40465" data-name="Group 40465" clipPath="url(#clip-path)">
+        <path id="Path_91505" data-name="Path 91505" d="M8.458,16.2A7.743,7.743,0,1,0,.715,8.457,7.743,7.743,0,0,0,8.458,16.2Z" fill="none" stroke="#9696b3" strokeLinecap="round" strokeLinejoin="round" strokeWidth="1" />
+        <path id="Path_91506" data-name="Path 91506" d="M19.287,19.285,13.93,13.928" fill="none" stroke="#9696b3" strokeLinecap="round" strokeLinejoin="round" strokeWidth="1" />
+      </g>
+    </>
+  ),
+});
+
+export const DownIcon = createIcon({
+  displayName: "DownIcon",
+  viewBox: "0 0 16 16",
+  path: (
+    <>
+      <defs>
+        <clipPath id="clip-path">
+          <rect id="Rectangle_23055" data-name="Rectangle 23055" width="16" height="16" fill="#fff" />
+        </clipPath>
+      </defs>
+      <g id="Group_40465" data-name="Group 40465" clipPath="url(#clip-path)">
+        <path id="Path_91505" data-name="Path 91505" d="M.668,4.667l7.023,7.039a.579.579,0,0,0,.813,0l7.023-7.039" fill="none" stroke="#fff" strokeLinecap="round" strokeLinejoin="round" strokeWidth="1" />
+      </g>
+    </>
+  ),
+});
+
+export const BellIcon = createIcon({
+  displayName: "BellIcon",
+  viewBox: "0 0 20 20",
+  path: (
+    <>
+      <defs>
+        <clipPath id="clip-path">
+          <rect id="Rectangle_23055" data-name="Rectangle 23055" width="20" height="20" fill="#fff" />
+        </clipPath>
+      </defs>
+      <g id="Group_40465" data-name="Group 40465" clipPath="url(#clip-path)">
+        <path id="Path_91505" data-name="Path 91505" d="M10,.714a6.129,6.129,0,0,1,6.129,6.129c0,6.814,2.486,8.157,3.157,8.157H.715c.686,0,3.157-1.357,3.157-8.157A6.129,6.129,0,0,1,10,.714Z" fill="none" stroke="#9696b3" strokeLinecap="round" strokeLinejoin="round" strokeWidth="1" />
+        <path id="Path_91506" data-name="Path 91506" d="M7.859,17.614a2.214,2.214,0,0,0,4.286,0" fill="none" stroke="#9696b3" strokeLinecap="round" strokeLinejoin="round" strokeWidth="1" />
+      </g>
+    </>
+  ),
+});
+
+export const LowIcon = createIcon({
+  displayName: "LowIcon",
+  viewBox: "0 0 9.414 15.857",
+  path: (
+    <g id="Group_40466" data-name="Group 40466" transform="translate(-3.293 -0.071)">
+      <path id="Path_91507" data-name="Path 91507" d="M8,.571V15.428" fill="none" stroke="#03103d" strokeLinecap="round" strokeLinejoin="round" strokeWidth="1" />
+      <path id="Path_91508" data-name="Path 91508" d="M12,11.429l-4,4-4-4" fill="none" stroke="#03103d" strokeLinecap="round" strokeLinejoin="round" strokeWidth="1" />
+    </g>
+  ),
+});
+
+export const HighIcon = createIcon({
+  displayName: "HighIcon",
+  viewBox: "0 0 9.414 15.857",
+  path: (
+    <g id="Group_40465" data-name="Group 40465" transform="translate(-3.293 -0.071)">
+      <path id="Path_91505" data-name="Path 91505" d="M8,15.428V.571" fill="none" stroke="#03103d" strokeLinecap="round" strokeLinejoin="round" strokeWidth="1" />
+      <path id="Path_91506" data-name="Path 91506" d="M12,4.571l-4-4-4,4" fill="none" stroke="#03103d" strokeLinecap="round" strokeLinejoin="round" strokeWidth="1" />
+    </g>
+  ),
+});
+
+export const SwitchIcon = createIcon({
+  displayName: "SwitchIcon",
+  viewBox: "0 0 12.414 14.414",
+  path: (
+    <g id="Group_40465" data-name="Group 40465" transform="translate(-0.793 0.207)">
+      <path id="Path_91505" data-name="Path 91505" d="M1.5,8.5l8-8" fill="none" stroke="#3446ee" strokeLinecap="round" strokeLinejoin="round" strokeWidth="1" />
+      <path id="Path_91506" data-name="Path 91506" d="M9.5,4V.5H6" fill="none" stroke="#3446ee" strokeLinecap="round" strokeLinejoin="round" strokeWidth="1" />
+      <path id="Path_91507" data-name="Path 91507" d="M12.5,5.5l-8,8" fill="none" stroke="#3446ee" strokeLinecap="round" strokeLinejoin="round" strokeWidth="1" />
+      <path id="Path_91508" data-name="Path 91508" d="M4.5,10v3.5H8" fill="none" stroke="#3446ee" strokeLinecap="round" strokeLinejoin="round" strokeWidth="1" />
+    </g>
+  ),
+});
+
+export const RightArrow = createIcon({
+  displayName: "RightArrow",
+  viewBox: "0 0 19.571 11.414",
+  path: (
+    <g id="Group_40465" data-name="Group 40465" transform="translate(-0.215 -4.293)">
+      <path id="Path_91505" data-name="Path 91505" d="M.715,10H19.286" fill="none" stroke="#3446ee" strokeLinecap="round" strokeLinejoin="round" strokeWidth="1" />
+      <path id="Path_91506" data-name="Path 91506" d="M14.285,15l5-5-5-5" fill="none" stroke="#3446ee" strokeLinecap="round" strokeLinejoin="round" strokeWidth="1" />
+    </g>
+  ),
+});
+
+export const SettingIcon = createIcon({
+  displayName: "SettingIcon",
+  viewBox: "0 0 20 20",
+  path: (
+    <>
+      <defs>
+        <clipPath id="clip-path">
+          <rect id="Rectangle_23055" data-name="Rectangle 23055" width="20" height="20" fill="#fff" />
+        </clipPath>
+      </defs>
+      <g id="Group_40465" data-name="Group 40465" clip-path="url(#clip-path)">
+        <path id="Path_91505" data-name="Path 91505" d="M7.47,3.214l.614-1.586A1.429,1.429,0,0,1,9.413.714h1.171a1.429,1.429,0,0,1,1.329.914l.614,1.586,2.086,1.2L16.3,4.157a1.429,1.429,0,0,1,1.429.7l.571,1a1.428,1.428,0,0,1-.114,1.614L17.141,8.8v2.4l1.072,1.329a1.429,1.429,0,0,1,.114,1.614l-.572,1a1.428,1.428,0,0,1-1.428.7l-1.686-.257-2.086,1.2-.614,1.586a1.428,1.428,0,0,1-1.328.914h-1.2a1.428,1.428,0,0,1-1.329-.914L7.47,16.785l-2.086-1.2L3.7,15.842a1.428,1.428,0,0,1-1.429-.7l-.571-1a1.428,1.428,0,0,1,.114-1.614L2.855,11.2V8.8L1.784,7.471A1.429,1.429,0,0,1,1.67,5.857l.571-1a1.429,1.429,0,0,1,1.429-.7l1.686.257ZM7.141,10a2.857,2.857,0,1,0,.837-2.02A2.857,2.857,0,0,0,7.141,10Z" fill="none" stroke="#9696b3" stroke-linecap="round" stroke-linejoin="round" stroke-width="1" />
+      </g>
+    </>
+  ),
+});
+
+export const NoNotiIcon = createIcon({
+  displayName: "NoNotiIcon",
+  viewBox: "0 0 188 140",
+  path: (
+    <g id="Group_40468" data-name="Group 40468" transform="translate(-6)">
+      <path id="Path_91505" data-name="Path 91505" d="M42,.5H162a9.5,9.5,0,0,1,9.5,9.5V130a9.5,9.5,0,0,1-9.5,9.5H42a9.5,9.5,0,0,1-9.5-9.5V10A9.5,9.5,0,0,1,42,.5Z" fill="#f1f1ff" stroke="#f1f1ff" stroke-width="1" />
+      <g id="Group_40465" data-name="Group 40465">
+        <path id="Path_91506" data-name="Path 91506" d="M54,54H189a5,5,0,0,1,5,5V84a5,5,0,0,1-5,5H54a5,5,0,0,1-5-5V59a5,5,0,0,1,5-5Z" fill="#fff" />
+      </g>
+      <path id="Path_91507" data-name="Path 91507" d="M128,62H102a3,3,0,0,0,0,6h26a3,3,0,0,0,0-6Z" fill="#3446ee" opacity="0.3" />
+      <path id="Path_91508" data-name="Path 91508" d="M146,75H102a3,3,0,0,0,0,6h44a3,3,0,0,0,0-6Z" fill="#3446ee" opacity="0.15" />
+      <path id="Path_91509" data-name="Path 91509" d="M79.5,81A9.5,9.5,0,1,0,70,71.5,9.5,9.5,0,0,0,79.5,81Z" fill="#3446ee" />
+      <path id="Path_91510" data-name="Path 91510" d="M75.056,74l1.834-4.9h.959L79.676,74h-.861l-.462-1.211H76.344L75.889,74Zm1.512-1.9h1.561l-.784-2.135Zm5.542-3a1.933,1.933,0,0,1,.889.2,1.377,1.377,0,0,1,.6.546,1.561,1.561,0,0,1,.21.819,1.6,1.6,0,0,1-.21.826,1.436,1.436,0,0,1-.6.546,1.993,1.993,0,0,1-.889.189H80.983V74h-.805V69.1Zm-1.127,2.422H82.04a.976.976,0,0,0,.686-.231.9.9,0,0,0,.007-1.26.976.976,0,0,0-.686-.231H80.983Z" fill="#fff" />
+      <g id="Group_40466" data-name="Group 40466">
+        <path id="Path_91511" data-name="Path 91511" d="M11,97H146a5,5,0,0,1,5,5v25a5,5,0,0,1-5,5H11a5,5,0,0,1-5-5V102a5,5,0,0,1,5-5Z" fill="#fff" />
+      </g>
+      <path id="Path_91512" data-name="Path 91512" d="M85,105H59a3,3,0,0,0,0,6H85a3,3,0,0,0,0-6Z" fill="#3446ee" opacity="0.3" />
+      <path id="Path_91513" data-name="Path 91513" d="M103,118H59a3,3,0,0,0,0,6h44a3,3,0,0,0,0-6Z" fill="#3446ee" opacity="0.15" />
+      <path id="Path_91514" data-name="Path 91514" d="M23.5,124a9.5,9.5,0,1,0-9.5-9.5A9.5,9.5,0,0,0,23.5,124Z" fill="#3446ee" />
+      <path id="Path_91515" data-name="Path 91515" d="M22.149,113.1v3.682a1.206,1.206,0,0,1-.322.9,1.222,1.222,0,0,1-.9.315h-.756v-.721h.574a.606.606,0,0,0,.455-.147.642.642,0,0,0,.147-.469V113.1Zm1.506,3.3a.981.981,0,0,0,.35.7,1.286,1.286,0,0,0,.833.259,1.243,1.243,0,0,0,.721-.189.623.623,0,0,0,.28-.539.494.494,0,0,0-.154-.385.939.939,0,0,0-.406-.224,7.18,7.18,0,0,0-.728-.161,4.369,4.369,0,0,1-.819-.217,1.331,1.331,0,0,1-.553-.42,1.2,1.2,0,0,1-.21-.735,1.329,1.329,0,0,1,.217-.749,1.479,1.479,0,0,1,.616-.511,2.354,2.354,0,0,1,1.848.014,1.616,1.616,0,0,1,.651.539,1.47,1.47,0,0,1,.259.784h-.791a.875.875,0,0,0-.329-.609,1.124,1.124,0,0,0-.728-.231,1.138,1.138,0,0,0-.686.189.6.6,0,0,0-.252.518.5.5,0,0,0,.147.378.992.992,0,0,0,.406.21q.252.07.721.154a4.062,4.062,0,0,1,.819.224,1.352,1.352,0,0,1,.56.413,1.125,1.125,0,0,1,.217.721,1.36,1.36,0,0,1-.231.777,1.564,1.564,0,0,1-.644.539,2.23,2.23,0,0,1-.938.189,2.352,2.352,0,0,1-1.022-.21,1.7,1.7,0,0,1-.693-.581,1.591,1.591,0,0,1-.252-.861Z" fill="#fff" />
+      <g id="Group_40467" data-name="Group 40467">
+        <path id="Path_91516" data-name="Path 91516" d="M146,11H11a5,5,0,0,0-5,5V41a5,5,0,0,0,5,5H146a5,5,0,0,0,5-5V16A5,5,0,0,0,146,11Z" fill="#fff" />
+      </g>
+      <path id="Path_91517" data-name="Path 91517" d="M83,19H57a3,3,0,0,0,0,6H83a3,3,0,0,0,0-6Z" fill="#3446ee" opacity="0.3" />
+      <path id="Path_91518" data-name="Path 91518" d="M101,32H57a3,3,0,0,0,0,6h44a3,3,0,0,0,0-6Z" fill="#3446ee" opacity="0.15" />
+      <path id="Path_91519" data-name="Path 91519" d="M36.5,38A9.5,9.5,0,1,0,27,28.5,9.5,9.5,0,0,0,36.5,38Z" fill="#3446ee" />
+      <path id="Path_91520" data-name="Path 91520" d="M33.535,29.4a.981.981,0,0,0,.35.7,1.288,1.288,0,0,0,.833.259,1.243,1.243,0,0,0,.721-.189.623.623,0,0,0,.28-.539.494.494,0,0,0-.154-.385.941.941,0,0,0-.406-.224,7.087,7.087,0,0,0-.728-.161,4.4,4.4,0,0,1-.819-.217,1.337,1.337,0,0,1-.553-.42,1.194,1.194,0,0,1-.21-.735,1.33,1.33,0,0,1,.217-.749,1.481,1.481,0,0,1,.616-.511,2.354,2.354,0,0,1,1.848.014,1.615,1.615,0,0,1,.651.539,1.469,1.469,0,0,1,.259.784h-.791a.875.875,0,0,0-.329-.609,1.124,1.124,0,0,0-.728-.231,1.138,1.138,0,0,0-.686.189.6.6,0,0,0-.252.518.5.5,0,0,0,.147.378.986.986,0,0,0,.406.21q.252.07.721.154a4.038,4.038,0,0,1,.819.224,1.353,1.353,0,0,1,.56.413,1.125,1.125,0,0,1,.217.721,1.359,1.359,0,0,1-.231.777,1.563,1.563,0,0,1-.644.539,2.23,2.23,0,0,1-.938.189,2.352,2.352,0,0,1-1.022-.21A1.7,1.7,0,0,1,33,30.251a1.593,1.593,0,0,1-.252-.861Zm3.7-3.3h1.561a2.674,2.674,0,0,1,1.309.308,2.125,2.125,0,0,1,.861.861,2.876,2.876,0,0,1,0,2.562,2.125,2.125,0,0,1-.861.861A2.674,2.674,0,0,1,38.794,31H37.233Zm1.561,4.2a1.563,1.563,0,0,0,1.218-.469,1.847,1.847,0,0,0,.427-1.281,1.821,1.821,0,0,0-.427-1.274,1.552,1.552,0,0,0-1.218-.476h-.756v3.5Z" fill="#fff" />
+    </g>
+  )
+})

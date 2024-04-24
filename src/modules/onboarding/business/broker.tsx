@@ -6,12 +6,17 @@ import {
     Tr,
     Th,
     Td,
-    TableContainer, Box, Container, Flex, FormControl, FormLabel, Grid, Heading, Input, Select, Text
+    TableContainer, Box, Container, Flex, FormControl, FormLabel, Grid, Heading, Input, Select, Text, useDisclosure
 } from '@chakra-ui/react'
 import ButtonTheme from 'modules/shared/ButtonTheme'
+import { PencilIcon, PlusIcon, TrashIcon } from 'modules/shared/Icons'
 import React from 'react'
+import AddInsuranceModal from '../components/AddInsuranceModal'
+import AddSuretyModal from '../components/AddSuretyModal'
 
 const Broker = () => {
+    const { isOpen, onOpen, onClose } = useDisclosure()
+    const { isOpen: isOpenSurety, onOpen: onOpenSurety, onClose: onCloseSurety } = useDisclosure()
     return (
         <Container maxW={"70%"}>
             <Heading as={"h4"} mb={4} fontSize={"3xl"} color={"Primary.Navy"}>Broker information</Heading>
@@ -46,30 +51,60 @@ const Broker = () => {
             </Box>
             <Box mt={8}>
                 <Heading mb={8} color={"Primary.Navy"} fontSize={"xl"}>Insurance</Heading>
-                <TableContainer>
+                <TableContainer sx={{
+                    "th": {
+                        color: "Neutral.700",
+                        fontSize: "sm",
+                        textTransform: "capitalize",
+                        fontWeight: "400"
+                    },
+                    "td": {
+                        color: "Primary.Navt",
+                        fontSize: "sm",
+                        textTransform: "capitalize",
+                        fontWeight: "600"
+                    }
+                }}>
                     <Table variant='simple'>
                         <Thead>
                             <Tr>
-                                <Th>To convert</Th>
-                                <Th>into</Th>
-                                <Th isNumeric>multiply by</Th>
+                                <Th>Insurer</Th>
+                                <Th>Type</Th>
+                                <Th>Policy Number</Th>
+                                <Th>Start Date</Th>
+                                <Th>Expiration Date</Th>
+                                <Th></Th>
                             </Tr>
                         </Thead>
                         <Tbody>
                             <Tr>
-                                <Td>inches</Td>
-                                <Td>millimetres (mm)</Td>
-                                <Td isNumeric>25.4</Td>
+                                <Td>CNA Hardy</Td>
+                                <Td>Type</Td>
+                                <Td>1384950</Td>
+                                <Td>3/16/16</Td>
+                                <Td>3/16/26</Td>
+                                <Td>
+                                    <Flex gap={4}>
+                                        <TrashIcon />
+                                        <PencilIcon />
+                                    </Flex>
+                                </Td>
                             </Tr>
                             <Tr>
-                                <Td>feet</Td>
-                                <Td>centimetres (cm)</Td>
-                                <Td isNumeric>30.48</Td>
+                                <Td colSpan={6}>
+                                    <Text fontWeight={"400"} color={"Primary.Navy"} textAlign={"center"}>
+                                        Click on <Text as={"span"} fontWeight={"600"}>+ Add Insurance </Text>to upload documents
+                                    </Text>
+                                </Td>
                             </Tr>
                         </Tbody>
                         <Tfoot>
                             <Tr>
-                                <Th>To convert</Th>
+                                <Th colSpan={6}>
+                                    <Flex cursor={'pointer'} onClick={onOpen} gap={2} alignItems={"center"} color={"Primary.Blue"} fontSize={"md"} >
+                                        <PlusIcon /><Text> Add Insurance</Text>
+                                    </Flex>
+                                </Th>
                             </Tr>
                         </Tfoot>
                     </Table>
@@ -77,36 +112,66 @@ const Broker = () => {
             </Box>
             <Box mt={8}>
                 <Heading mb={8} color={"Primary.Navy"} fontSize={"xl"}>Surety Bond</Heading>
-                <TableContainer>
+                <TableContainer sx={{
+                    "th": {
+                        color: "Neutral.700",
+                        fontSize: "sm",
+                        textTransform: "capitalize",
+                        fontWeight: "400"
+                    },
+                    "td": {
+                        color: "Primary.Navt",
+                        fontSize: "sm",
+                        textTransform: "capitalize",
+                        fontWeight: "600"
+                    }
+                }}>
                     <Table variant='simple'>
                         <Thead>
                             <Tr>
-                                <Th>To convert</Th>
-                                <Th>into</Th>
-                                <Th isNumeric>multiply by</Th>
+                                <Th>Insurer</Th>
+                                <Th>Type</Th>
+                                <Th>Policy Number</Th>
+                                <Th>Start Date</Th>
+                                <Th>Expiration Date</Th>
+                                <Th></Th>
                             </Tr>
                         </Thead>
                         <Tbody>
                             <Tr>
-                                <Td>inches</Td>
-                                <Td>millimetres (mm)</Td>
-                                <Td isNumeric>25.4</Td>
+                                <Td>CNA Hardy</Td>
+                                <Td>Type</Td>
+                                <Td>1384950</Td>
+                                <Td>3/16/16</Td>
+                                <Td>3/16/26</Td>
+                                <Td>
+                                    <Flex gap={4}>
+                                        <TrashIcon />
+                                        <PencilIcon />
+                                    </Flex>
+                                </Td>
                             </Tr>
                             <Tr>
-                                <Td>feet</Td>
-                                <Td>centimetres (cm)</Td>
-                                <Td isNumeric>30.48</Td>
+                                <Td colSpan={6}>
+                                    <Text fontWeight={"400"} color={"Primary.Navy"} textAlign={"center"}>
+                                        Click on <Text as={"span"} fontWeight={"600"}>+ Add Surety Bond </Text>to upload documents
+                                    </Text>
+                                </Td>
                             </Tr>
                         </Tbody>
                         <Tfoot>
                             <Tr>
-                                <Th>To convert</Th>
+                                <Th colSpan={6}>
+                                    <Flex cursor={'pointer'} onClick={onOpenSurety} gap={2} alignItems={"center"} color={"Primary.Blue"} fontSize={"md"} >
+                                        <PlusIcon /><Text>Add Surety Bond</Text>
+                                    </Flex>
+                                </Th>
                             </Tr>
                         </Tfoot>
                     </Table>
                 </TableContainer>
             </Box>
-            <Flex gap={4} mt={8} maxW={"50%"} margin={"0 auto"}>
+            <Flex gap={4} maxW={"50%"} margin={"0 auto"} mt={8}>
                 <ButtonTheme btnText='Back' chakraProps={{
                     w: "100%"
                 }} />
@@ -114,7 +179,9 @@ const Broker = () => {
                     w: "100%"
                 }} />
             </Flex>
-        </Container>
+            <AddInsuranceModal isOpen={isOpen} onClose={onClose} />
+            <AddSuretyModal isOpen={isOpenSurety} onClose={onCloseSurety} />
+        </Container >
     )
 }
 
