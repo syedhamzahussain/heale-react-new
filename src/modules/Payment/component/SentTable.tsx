@@ -1,7 +1,7 @@
 import React from 'react'
 import { Avatar, Badge, Box, Flex,Button,Tabs, TabList, TabPanels, Tab, TabPanel, Grid, Heading, Select, Spacer, Table, TableContainer, Tbody, Td, Text, Th, Thead, Tr, color } from '@chakra-ui/react'
 import { FlyIcon, UserIcon } from 'modules/shared/Icons';
-const UnPaidInvoices = ({tableRows, tableHead, ...props}: { tableRows: any[]; tableHead: string[]}) => {
+const SentTable = ({tableRows, tableHead, ...props}: { tableRows: any[]; tableHead: string[]}) => {
  
   return (
       <TableContainer sx={{
@@ -35,33 +35,32 @@ const UnPaidInvoices = ({tableRows, tableHead, ...props}: { tableRows: any[]; ta
                 {tableRows.map((row:any)=> {
                     return(
                         <Tr key={row}>
-                          {row.sent_On ? 
-                           <Td rowSpan={row.rowSpan || undefined} verticalAlign={'baseline'}>{row.sent_On}</Td>
-                            :  ''
+                          {row.rowSpan ? 
+                           <Td rowSpan={row.rowSpan || undefined} verticalAlign={'baseline'}>{row.sent_on}</Td>
+                            :  '' 
                           }
                           <Td>
                             <Flex gap={2} alignItems={"center"}>
                                 {row.iconUser? <UserIcon  w={8} h={8}/> : ''}
-                                {row.to}
+                                {row.recipient}
+                               
+                            </Flex>
+                          </Td>
+                          <Td>
+                            <Flex gap={2} alignItems={"center"}>
+                                 {row.account}
                             </Flex>
                           </Td>
                           <Td>
                              <Flex gap={2} alignItems={"center"}>
-                                  {row.iconpayment? <FlyIcon  w={6} h={6}/> : ''}
+                                  {row.iconPayment? <FlyIcon  w={6} h={6}/> : ''}
                                   {row.payment_method}
-                                  {row.paymentbadge ? <Badge colorScheme='red' rounded={'full'}>{row.paymentbadge}</Badge> : ''}
-                            </Flex>
-                          
+                             </Flex>
                           </Td>
                           <Td>
-                            <Flex gap={2} alignItems={"center"}>
-                              {row.account}
-                            </Flex>
+                            {row.amount}
                           </Td>
-                          <Td>
-                              {row.amount}
-                          </Td>
-                        </Tr>
+                         </Tr>
                     );
                   })}
           </Tbody>
@@ -70,4 +69,4 @@ const UnPaidInvoices = ({tableRows, tableHead, ...props}: { tableRows: any[]; ta
   )
 }
 
-export default UnPaidInvoices;
+export default SentTable;

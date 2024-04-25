@@ -3,64 +3,166 @@ import CustomCard from 'modules/shared/CustomCard'
 import { HighIcon, InfoIcon, LowIcon, PersonalIcon, RightArrow, SwitchIcon } from 'modules/shared/Icons'
 import React from 'react'
 import ButtonTheme from 'modules/shared/ButtonTheme'
-import UnPaidInvoices from './component/UnPaidInvoices'
+import UnPaidInvoicesTable from './component/UnPaidInvoicesTable'
 import { FlyIcon, UserIcon } from 'modules/shared/Icons';
+import NeedsApprovalTable from './component/NeedsApprovalTable'
+import ScheduleTable from './component/ScheduleTable'
+import SentTable from './component/SentTable'
 
 const Payment = () => {
-  const table_head: string[] = ["sent On", "To", "Account", "Payment Method" , "Amount"];
-  const table_rows   = [
+  const approval_table_head: string[] = ["Submitted on", "Recipient", "Requested by", "Amount"];
+  const approval_table_rows   = [
     {
        rowSpan: '1',
-       sent_On: "Pending",
-       to: "Aliyah McMahon",
-       account: "Checking",
-       payment_method: "Wire",
+       submit_on: "jan 1",
+       reciptant: "Aliyah McMahon",
+       requestedby: "Guy H.",
        amount:'-$1,010.00 USD',
        iconUser: UserIcon,
-       iconpayment: FlyIcon,
+    },
+     {
+       rowSpan: '1',
+       submit_on: "jan 1",
+       reciptant: "Aliyah McMahon",
+       requestedby: "Guy H.",
+       amount:'-$1,010.00 USD',
+       iconUser: UserIcon,
+    },
+     {
+       rowSpan: '1',
+       submit_on: "jan 1",
+       reciptant: "Aliyah McMahon",
+       requestedby: "Cody F.",
+       amount:'-$1,010.00 USD',
+       requestedbybadge: 'you',
+       iconUser: UserIcon,
+    },
+  ]
+  const unpaidinv_table_head: string[] = ["Created On", "Sent By", "Invoice #", "Due Date" , "Amount"];
+  const unpaidinv_table_rows   = [
+    {
+       rowSpan: '1',
+       created_On: "jan 1",
+       sent_by: "Jason Green",
+       invoice: "INV12345",
+       due_date: "Feb 5",
+       amount:'-$1,010.00 USD',
        paymentbadge: 'Over Due',
-       requestedbadge: 'you',
+
     },
     {
-       sent_On: "Feb 1",
-       to: "Aliyah McMahon",
-       account: "Checking",
+       rowSpan: '1',
+       created_On: "jan 2",
+       sent_by: "Jason Green",
+       invoice: "INV12345",
+       due_date: "Feb 6",
+       amount:'-$1,010.00 USD',
+    },
+    {
+        rowSpan: '1',
+       created_On: "jan 3",
+       sent_by: "Jason Green",
+       invoice: "INV12345",
+       due_date: "Feb 5",
+       amount:'-$1,010.00 USD',
+       paymentbadge: 'Over Due',
+    },
+    {
+       rowSpan: '1',
+       created_On: "jan 5",
+       sent_by: "Jason Green",
+       invoice: "INV12345",
+       due_date: "Feb 5",
+       amount:'-$1,010.00 USD',
+    
+    },
+    
+  ]
+  const sch_table_head: string[] = ["Next payment", "Recipient", "Payment method", "Amount"];
+  const sch_table_rows   = [
+    {
+       rowSpan: '1',
+       next_payment: "jan 1",
+       recipient: "Jack Black",
        payment_method: "Wire",
        amount:'-$1,010.00 USD',
+       iconUser: UserIcon,
+       iconPayment: FlyIcon,
+       detailspendignbadge: 'Details Pending',
+    },
+    {
        rowSpan: '2',
+       next_payment: "Pending",
+       recipient: "Jason Green",
+       payment_method: "INV12345",
+       amount:'-$1,010.00 USD',
        iconUser: UserIcon,
-       iconpayment: FlyIcon,
+       iconPayment: FlyIcon,
     },
     {
+      
+       next_payment: "jan 2",
+       recipient: "Jason Green",
+       payment_method: "INV12345",
+       amount:'-$1,010.00 USD',
+       iconUser: UserIcon,
+       iconPayment: FlyIcon,
+    },
+    {
+      rowSpan: '1',
+       next_payment: "jan 2",
+       recipient: "Jason Green",
+       payment_method: "INV12345",
+       amount:'-$1,010.00 USD',
+       iconUser: UserIcon,
+       iconPayment: FlyIcon,
+    },
+    
+  ]
+  const sent_table_head: string[] = ["Sent On", "To", "Account", "Payment method", "Amount"];
+  const sent_table_rows   = [
+    {
        rowSpan: '1',
-       sent_On: "",
-       to: "Aliyah McMahon",
-       account: "Checking",
+       sent_on: "jan 2",
+       recipient: "Jack Black",
+       account: "checking",
        payment_method: "Wire",
        amount:'-$1,010.00 USD',
        iconUser: UserIcon,
-       iconpayment: FlyIcon,
+       iconPayment: FlyIcon,
+    },
+    {
+       rowSpan: '2',
+       sent_on: "jan 1",
+       recipient: "Jack Black",
+       account: "checking",
+       payment_method: "Wire",
+       amount:'-$1,010.00 USD',
+       iconUser: UserIcon,
+       iconPayment: FlyIcon,
+    },
+    {
+ 
+       
+       sent_on: "jan 1",
+       recipient: "Jack Black",
+       account: "checking",
+       payment_method: "Wire",
+       amount:'-$1,010.00 USD',
+       iconUser: UserIcon,
+       iconPayment: FlyIcon,
     },
     {
        rowSpan: '1',
-       sent_On: "Feb 23",
-       to: "Jordi O’Donnell",
-       account: "Checking",
-       payment_method: "Transfer",
+       sent_on: "jan 1",
+       recipient: "Jack Black",
+       account: "checking",
+       payment_method: "Wire",
        amount:'-$1,010.00 USD',
        iconUser: UserIcon,
-       iconpayment: FlyIcon,
+       iconPayment: FlyIcon,
     },
-    {
-       rowSpan: '1',
-       sent_On: "Feb 29",
-       to: "Bluewave, Inc",
-       account: "Checking",
-       payment_method: "Transfer",
-       amount:'-$1,010.00 USD',
-       iconUser: UserIcon,
-       iconpayment: FlyIcon,
-    },
+    
   ]
     return (
       <Box>
@@ -80,10 +182,16 @@ const Payment = () => {
           </TabList>
           <TabPanels>
             <TabPanel>
-               <UnPaidInvoices tableRows={table_rows} tableHead={table_head} />
+              <UnPaidInvoicesTable tableRows={unpaidinv_table_rows} tableHead={unpaidinv_table_head} />
             </TabPanel>
-            <TabPanel>
-              <p>two!</p>
+             <TabPanel>
+              <NeedsApprovalTable tableRows={approval_table_rows} tableHead={approval_table_head} />
+            </TabPanel>
+             <TabPanel>
+              <ScheduleTable tableRows={sch_table_rows} tableHead={sch_table_head} />
+            </TabPanel>
+             <TabPanel>
+              <SentTable tableRows={sent_table_rows} tableHead={sent_table_head} />
             </TabPanel>
           </TabPanels>
         </Tabs>

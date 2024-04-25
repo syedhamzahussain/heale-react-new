@@ -63,7 +63,7 @@ export interface IChildren {
 }
 
 
-export interface tableRows {
+export interface unpaidinv_table_rows {
     sent_On: string;
     to: string;
     payment_method: string;
@@ -76,9 +76,19 @@ export interface tableRows {
     requestedbadge: string;
 }
 
-export interface UnPaidInvoices{
+export interface UnPaidInvoicesTable{
   colSpan: number;
   rowSpan: number;
   tableRow: string;
   tableHead: string;
+}
+
+
+export interface approval_table_rows{
+  rowSpan: number,
+  submit_on: string,
+  reciptant: string,
+  requestedbybadge: string,
+  amount: number,
+  requestedbadge: string,
 }
