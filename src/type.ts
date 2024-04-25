@@ -61,3 +61,24 @@ export interface INavLayout {
 export interface IChildren {
   children: ReactNode;
 }
+
+
+export interface tableRows {
+    sent_On: string;
+    to: string;
+    payment_method: string;
+    amount: number;
+    account: string;
+    rowSpan: number;
+    iconUser: ComponentWithAs<'svg', IconProps>;
+    iconPayment: ComponentWithAs<'svg', IconProps>;
+    paymentbadge: string;
+    requestedbadge: string;
+}
+
+export interface UnPaidInvoices{
+  colSpan: number;
+  rowSpan: number;
+  tableRow: string;
+  tableHead: string;
+}
