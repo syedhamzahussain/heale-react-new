@@ -8,6 +8,7 @@ import { FlyIcon, UserIcon } from 'modules/shared/Icons';
 import NeedsApprovalTable from './component/NeedsApprovalTable'
 import ScheduleTable from './component/ScheduleTable'
 import SentTable from './component/SentTable'
+import EmptyTable from './component/EmptyTable'
 
 const Payment = () => {
   const approval_table_head: string[] = ["Submitted on", "Recipient", "Requested by", "Amount"];
@@ -191,6 +192,7 @@ const Payment = () => {
               <ScheduleTable tableRows={sch_table_rows} tableHead={sch_table_head} />
             </TabPanel>
              <TabPanel>
+              <EmptyTable emptyMesg="No unpaid invoices"/>
               <SentTable tableRows={sent_table_rows} tableHead={sent_table_head} />
             </TabPanel>
           </TabPanels>

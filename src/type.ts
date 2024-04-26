@@ -92,3 +92,12 @@ export interface approval_table_rows{
   amount: number,
   requestedbadge: string,
 }
+
+
+export interface EmptyTable{
+  emptyMesg: string,
+}
+
+export interface emptyMesg{
+  emptyMesg:string
+}
