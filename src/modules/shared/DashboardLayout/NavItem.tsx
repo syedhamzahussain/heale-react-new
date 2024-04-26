@@ -18,14 +18,14 @@ const NavItem = ({
     const isSubItem = subItems?.map(({ link }) => link).includes(location.pathname);
 
     const nestedItem = hasDropdown
-        ? isSubItem : isActive;
+        ? isActive || isSubItem : isActive;
 
     return (
         <ListItem cursor="pointer">
             <Box>
                 <Link
                     to={link || "#"}
-                    onClick={(event) => hasDropdown && event.preventDefault()}
+                // onClick={(event) => hasDropdown && event.preventDefault()}
                 >
                     <Flex
                         _hover={{
