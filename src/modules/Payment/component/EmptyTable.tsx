@@ -1,15 +1,16 @@
 import React from 'react'
-import { Flex, Text } from '@chakra-ui/react'
-import { EmptyTableIcon } from 'modules/shared/Icons';
+import { Box, Flex, Text } from '@chakra-ui/react'
+import { NoNotiIcon } from 'modules/shared/Icons';
 
 
-const EmpltyTable = ({ emptyMesg }: { emptyMesg: any }) => {
+const EmpltyTable = ({ title, desc }: { title: string, desc: string }) => {
   return (
-    <Flex flexDirection={'column'} justifyContent={'center'} alignItems={'center'} my={'20'}>
-      <EmptyTableIcon w={'300'} h={'300'} />
-      <Text as={'h6'} fontSize={'2xl'}>{emptyMesg}</Text>
-      <Text as={'p'} fontSize={'md'}>When you have an invoice that needs payment,</Text>
-      <Text as={'p'} fontSize={'md'}>you'll see it here</Text>
+    <Flex flexDirection={'column'} justifyContent={'center'} alignItems={'center'} my={10}>
+      <NoNotiIcon w={"188px"} h={"140px"} />
+      <Box w={"360px"} textAlign={"center"}>
+        <Text as={'h6'} mt={6} fontSize={'2xl'}>{title}</Text>
+        <Text as={'p'} fontSize={'md'}>{desc}</Text>
+      </Box>
     </Flex>
   )
 }

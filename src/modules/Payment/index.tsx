@@ -190,7 +190,7 @@ const Payment = () => {
             <ScheduleTable tableRows={sch_table_rows} tableHead={sch_table_head} />
           </TabPanel>
           <TabPanel>
-            <EmptyTable emptyMesg="No unpaid invoices" />
+            <EmptyTable title="No unpaid invoices" desc="When you have an invoice that needs payment, you'll see it here" />
             <SentTable tableRows={sent_table_rows} tableHead={sent_table_head} />
           </TabPanel>
         </TabPanels>

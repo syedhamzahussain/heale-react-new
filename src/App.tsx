@@ -16,6 +16,7 @@ import "App.css"
 import DashboardLayout from "modules/shared/DashboardLayout";
 import Dashboard from "modules/dashboard";
 import Payment from "modules/Payment";
+import Transactions from 'modules/transactions';
 
 function App() {
   return (
@@ -34,6 +35,7 @@ function App() {
           </Route>
           <Route element={<DashboardLayout />}>
             <Route path="dashboard" element={<Dashboard />} />
+            <Route path="dashboard/transactions" element={<Transactions />} />
             <Route path="dashboard/payments" element={<Payment />} />
           </Route>
         </Routes>

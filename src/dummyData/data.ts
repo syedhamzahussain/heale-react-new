@@ -51,7 +51,7 @@ export const SidebarNav = [
   {
     id: 1,
     title: 'Transactions',
-    link: '/',
+    link: '/dashboard/transactions',
     icon: TransactionIcon,
     hasDropdown: false,
   },

@@ -15,7 +15,6 @@ export interface ButtonThemeType {
   chakraProps?: ButtonProps;
   invert?: boolean;
   primary?: boolean;
-  primaryOutline?: boolean;
   isLoading?: boolean;
   isDisabled?: boolean;
 }
@@ -62,42 +61,39 @@ export interface IChildren {
   children: ReactNode;
 }
 
-
 export interface unpaidinv_table_rows {
-    sent_On: string;
-    to: string;
-    payment_method: string;
-    amount: number;
-    account: string;
-    rowSpan: number;
-    iconUser: ComponentWithAs<'svg', IconProps>;
-    iconPayment: ComponentWithAs<'svg', IconProps>;
-    paymentbadge: string;
-    requestedbadge: string;
+  sent_On: string;
+  to: string;
+  payment_method: string;
+  amount: number;
+  account: string;
+  rowSpan: number;
+  iconUser: ComponentWithAs<'svg', IconProps>;
+  iconPayment: ComponentWithAs<'svg', IconProps>;
+  paymentbadge: string;
+  requestedbadge: string;
 }
 
-export interface UnPaidInvoicesTable{
+export interface UnPaidInvoicesTable {
   colSpan: number;
   rowSpan: number;
   tableRow: string;
   tableHead: string;
 }
 
-
-export interface approval_table_rows{
-  rowSpan: number,
-  submit_on: string,
-  reciptant: string,
-  requestedbybadge: string,
-  amount: number,
-  requestedbadge: string,
+export interface approval_table_rows {
+  rowSpan: number;
+  submit_on: string;
+  reciptant: string;
+  requestedbybadge: string;
+  amount: number;
+  requestedbadge: string;
 }
 
-
-export interface EmptyTable{
-  emptyMesg: string,
+export interface EmptyTable {
+  emptyMesg: string;
 }
 
-export interface emptyMesg{
-  emptyMesg:string
+export interface emptyMesg {
+  emptyMesg: string;
 }

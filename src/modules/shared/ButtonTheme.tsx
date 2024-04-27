@@ -7,34 +7,30 @@ const ButtonTheme = ({
   chakraProps,
   primary,
   invert,
-  primaryOutline,
-  type,
   isLoading,
   isDisabled
 }: ButtonThemeType) => {
   return (
     <Button
-    isLoading={isLoading}
-    type='submit'
-    isDisabled={isDisabled}
-    //   type={type || 'button'}
+      isLoading={isLoading}
+      type='submit'
+      isDisabled={isDisabled}
+      //   type={type || 'button'}
       {...chakraProps}
       bg={
         invert
           ? 'white'
           : primary
-          ? 'Primary.Blue'
-          : primaryOutline
-          ? 'Neutral/White'
-          : 'Neutral.100'
+            ? 'Primary.Blue'
+            : 'Neutral.100'
       }
       color={primary ? 'white' : 'Primary.Blue'}
       borderRadius={'40px'}
       p={'8px 24px'}
       borderWidth={'1px'}
-      borderColor={invert ? 'Neutral.200' : primaryOutline ? 'Neutral/200' : ''}
+      borderColor={invert ? 'Neutral.200' : ''}
       transition={'all .35s ease-in-out'}
-      fontWeight={primaryOutline ? '500' : ''}
+      fontWeight={'500'}
       _hover={{
         transform: 'translateY(-2px)',
       }}
