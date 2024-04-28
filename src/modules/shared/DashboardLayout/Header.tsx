@@ -1,6 +1,6 @@
-import { Avatar, Box, Flex, Heading, Input, InputGroup, InputLeftElement, Menu, MenuButton, MenuItem, MenuList, Text } from '@chakra-ui/react'
+import { Avatar, Box, Divider, Flex, Heading, Input, InputGroup, InputLeftElement, Menu, MenuButton, MenuItem, MenuList, Text } from '@chakra-ui/react'
 import React from 'react'
-import { BellIcon, DownIcon, NoNotiIcon, SearchIcon, SettingIcon } from '../Icons'
+import { BellIcon, ConvertIcon, DownIcon, FlyIcon, LogoutIcon, NoNotiIcon, RequestIcon, SearchIcon, SettingIcon, SwitchIcon } from '../Icons'
 import ButtonTheme from '../ButtonTheme'
 import { NotiData } from 'dummyData/data'
 
@@ -18,17 +18,52 @@ const Header = () => {
                             border={"1px solid"} borderColor={"Neutral.200"} type='text' placeholder='Search' />
                     </InputGroup>
                     <Menu placement="bottom-end">
-                        <MenuButton px={4} py={2} bg={"Primary.Blue"} w={"220px"} borderRadius={"40"}>
-                            <Flex justifyContent={"space-between"} alignItems={"center"} gap={2}>
-                                <Text color={"white"}>Move Money</Text>
-                                <DownIcon />
-                            </Flex>
-                        </MenuButton>
-                        <MenuList>
-                            <MenuItem>Download</MenuItem>
-                            <MenuItem>Download</MenuItem>
-                            <MenuItem>Download</MenuItem>
-                        </MenuList>
+                        {({ isOpen }) => (
+                            <>
+                                <MenuButton px={4} py={2} bg={"Primary.Blue"} w={"220px"} borderRadius={"40"}>
+                                    <Flex justifyContent={"space-between"} alignItems={"center"} gap={2}>
+                                        <Text color={"white"}>Move Money</Text>
+                                        <DownIcon sx={{
+                                            transform: isOpen ? "rotate(180deg)" : ""
+                                        }} />
+                                    </Flex>
+                                </MenuButton>
+                                <MenuList minW={"150px"} maxW={"150px"} overflow={"hidden"} borderRadius={16} boxShadow={"1px 1px 6px 0px rgba(149, 153, 192, 0.4)"}>
+                                    <MenuItem>
+                                        <Flex alignItems={"center"} gap={2}>
+                                            <FlyIcon sx={{
+                                                path: {
+                                                    stroke: "black"
+                                                }
+                                            }} />
+                                            <Text> Send</Text>
+                                        </Flex>
+                                    </MenuItem>
+                                    <MenuItem>
+                                        <Flex alignItems={"center"} gap={2}>
+                                            <RequestIcon />
+                                            <Text> Request</Text>
+                                        </Flex>
+                                    </MenuItem>
+                                    <MenuItem>
+                                        <Flex alignItems={"center"} gap={2}>
+                                            <SwitchIcon sx={{
+                                                path: {
+                                                    stroke: "black"
+                                                }
+                                            }} />
+                                            <Text> Transfer</Text>
+                                        </Flex>
+                                    </MenuItem>
+                                    <MenuItem>
+                                        <Flex alignItems={"center"} gap={2}>
+                                            <ConvertIcon />
+                                            <Text> Convert</Text>
+                                        </Flex>
+                                    </MenuItem>
+                                </MenuList>
+                            </>
+                        )}
                     </Menu>
                 </Flex>
                 <Flex gap={4} alignItems={"center"}>
@@ -40,7 +75,7 @@ const Header = () => {
                                 <BellIcon w={5} h={5} />
                             </Flex>
                         </MenuButton>
-                        <MenuList py={0} minW={"350px"} maxW={"350px"} sx={{
+                        <MenuList overflow={"hidden"} borderRadius={16} boxShadow={"1px 1px 6px 0px rgba(149, 153, 192, 0.4)"} py={0} minW={"350px"} maxW={"350px"} sx={{
                             ".chakra-menu__menuitem": {
                                 p: 6,
                                 borderBottom: "1px solid",
@@ -104,8 +139,44 @@ const Header = () => {
                             }
                         </MenuList>
                     </Menu>
-                    {/*  */}
-                    <Avatar w={10} h={10} bgColor={"Primary.Blue"} color={"white"} name='Jeff Bezos' />
+                    <Menu placement="bottom-end">
+                        <MenuButton w={8} h={8} borderRadius={"full"} _focus={{
+                            bgColor: "Neutral.100"
+                        }}>
+                            <Avatar w={10} h={10} bgColor={"Primary.Blue"} color={"white"} name='Jeff Bezos' />
+                        </MenuButton>
+                        <MenuList overflow={"hidden"} borderRadius={16} boxShadow={"1px 1px 6px 0px rgba(149, 153, 192, 0.4)"} py={0} sx={{
+                            ".chakra-menu__menuitem": {
+                                p: 4,
+                            }
+                        }}>
+                            <MenuItem>
+                                <Box>
+                                    <Text>
+                                        Jeff Bridges
+                                    </Text>
+                                    <Text fontFamily={"CourierPrime"} fontSize={"sm"} color={"Neutral.700"}>@jbridges</Text>
+                                </Box>
+                            </MenuItem>
+                            <Divider />
+                            <MenuItem>
+                                My Profile
+                            </MenuItem>
+                            <MenuItem>
+                                Notifications
+                            </MenuItem>
+                            <MenuItem>
+                                Security
+                            </MenuItem>
+                            <Divider />
+                            <MenuItem justifyContent={"space-between"}>
+                                <Text>
+                                    Log out
+                                </Text>
+                                <LogoutIcon w={5} h={5} />
+                            </MenuItem>
+                        </MenuList>
+                    </Menu>
                 </Flex>
             </Flex>
         </Flex>
