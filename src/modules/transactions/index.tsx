@@ -2,6 +2,7 @@ import { Avatar, Badge, Box, Flex, Heading, Table, TableContainer, Tbody, Td, Te
 import EmpltyTable from 'modules/Payment/component/EmptyTable'
 import ButtonTheme from 'modules/shared/ButtonTheme'
 import { AddIcon, CardIcon, ExportIcon, FilterIcon, FlyIcon, LeftArrow, StatementIcon } from 'modules/shared/Icons'
+import Pagination from 'modules/shared/Pagination'
 import React from 'react'
 
 const Transactions = () => {
@@ -147,6 +148,7 @@ const Transactions = () => {
                     </Tbody>
                 </Table>
             </TableContainer>
+            <Pagination currentPage='1' totalPage='4' totalElements='324' element='Transactions' />
             <EmpltyTable title='No current transactions' desc="When you have current transactions, they'll be listed here" />
         </Box>
     )

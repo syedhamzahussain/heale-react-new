@@ -938,3 +938,11 @@ export const LogoutIcon = createIcon({
     </g>
   ),
 })
+
+export const LeftArrowIcon = createIcon({
+  displayName: "LeftArrowIcon",
+  viewBox: "0 0 10.209 19.986",
+  path: (
+    <path id="Path_91508" data-name="Path 91508" d="M9.5.715.715,9.5a.686.686,0,0,0,0,1L9.5,19.286" transform="translate(0.002 -0.008)" fill="none" stroke="#b9b9dc" stroke-linecap="round" stroke-linejoin="round" stroke-width="1" />
+  ),
+});
