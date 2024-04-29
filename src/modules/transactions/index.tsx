@@ -2,9 +2,10 @@ import { Avatar, Badge, Box, Flex, Grid, GridItem, Heading, Icon, List, ListItem
 import { filterData } from 'dummyData/data'
 import EmpltyTable from 'modules/Payment/component/EmptyTable'
 import ButtonTheme from 'modules/shared/ButtonTheme'
-import { AddIcon, CalendarIcon, CardIcon, ExportIcon, FilterIcon, FlyIcon, LeftArrow, SearchIcon, StatementIcon } from 'modules/shared/Icons'
+import { AddIcon, CardIcon, ExportIcon, FilterIcon, FlyIcon, LeftArrow, StatementIcon } from 'modules/shared/Icons'
 import Pagination from 'modules/shared/Pagination'
 import React, { useEffect, useRef, useState } from 'react'
+import DateFilter from './components/DateFilter'
 
 const Transactions = () => {
     const [filter, setFilter] = useState(false)
@@ -22,7 +23,6 @@ const Transactions = () => {
         }
     }, [selectedFilter]);
 
-
     const handleFilterItemClick = (index: number) => {
         setSelectedFilter(index);
     };
@@ -30,7 +30,7 @@ const Transactions = () => {
     const renderFilterComponent = () => {
         switch (selectedFilter) {
             case 0:
-                return "Calendar";
+                return <DateFilter />;
             case 1:
                 return "Keywords";
             case 2:
@@ -77,21 +77,15 @@ const Transactions = () => {
                                             alignItems={"center"}
                                             cursor="pointer"
                                             onClick={() => handleFilterItemClick(index)}
+                                            color={selectedFilter === index ? "Primary.Blue" : "Primary.Navy"}
                                         >
-                                            {item.icon === "path" ? (
-                                                <Icon as={item.iconName} w={5} h={5} />
-                                            ) : (
-                                                <Icon as={item.iconName}
-                                                    sx={{
-                                                        path: {
-                                                            stroke: "Primary.Navy",
-                                                        },
-                                                    }}
-                                                    w={5}
-                                                    h={5}
-                                                />
-                                            )}
-                                            <Text color={"Primary.Navy"}>{item.label}</Text>
+                                            <Icon as={item.iconName} w={5} h={5} sx={{
+                                                path: {
+                                                    stroke: selectedFilter === index ? "Primary.Blue" : "Primary.Navy",
+                                                },
+                                            }} />
+
+                                            <Text>{item.label}</Text>
                                         </ListItem>
                                     ))}
                                 </List>

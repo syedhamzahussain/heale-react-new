@@ -144,12 +144,12 @@ export const NotiData = [
 ];
 
 export const filterData = [
-  { icon: 'path', iconName: CalendarIcon, label: 'Date' },
-  { icon: 'stroke', iconName: SearchIcon, label: 'Keywords' },
-  { icon: 'stroke', iconName: AmountIcon, label: 'Amount' },
-  { icon: 'stroke', iconName: MethodIcon, label: 'Method' },
-  { icon: 'stroke', iconName: CardIcon, label: 'Cards' },
-  { icon: 'stroke', iconName: AccountIcon, label: 'Accounts' },
-  { icon: 'stroke', iconName: CategoriesIcon, label: 'Categories' },
-  { icon: 'stroke', iconName: StatusIcon, label: 'Status' },
+  { iconName: CalendarIcon, label: 'Date' },
+  { iconName: SearchIcon, label: 'Keywords' },
+  { iconName: AmountIcon, label: 'Amount' },
+  { iconName: MethodIcon, label: 'Method' },
+  { iconName: CardIcon, label: 'Cards' },
+  { iconName: AccountIcon, label: 'Accounts' },
+  { iconName: CategoriesIcon, label: 'Categories' },
+  { iconName: StatusIcon, label: 'Status' },
 ];
