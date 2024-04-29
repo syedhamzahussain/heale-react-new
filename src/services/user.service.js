@@ -18,6 +18,16 @@ export const verifyUser = async (body) => {
   return response;
 }
 
+export const sendSmsToUser = async (body) => {
+  const response = await POST(`${apiUrl.user}/send-phone-number-verification`, body);
+  return response;
+}
+
+export const CheckPhoneNumberVerification = async (body) => {
+  const response = await POST(`${apiUrl.user}/check-phone-number-verification`, body);
+  return response;
+}
+
 export const resendVerificationEmail = async () => {
   const response = await POST(`${apiUrl.user}/resend-email`);
   return response;

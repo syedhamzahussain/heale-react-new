@@ -19,6 +19,11 @@ export interface ButtonThemeType {
   isDisabled?: boolean;
 }
 
+export interface CountryInputType {
+  value: string;
+  handleChange?: (e: any) => void;
+}
+
 export interface MessageBoxType {
   btnText?: string;
   trust?: boolean;
