@@ -24,7 +24,10 @@ const Header = () => {
                                     <Flex justifyContent={"space-between"} alignItems={"center"} gap={2}>
                                         <Text color={"white"}>Move Money</Text>
                                         <DownIcon sx={{
-                                            transform: isOpen ? "rotate(180deg)" : ""
+                                            transform: isOpen ? "rotate(180deg)" : "",
+                                            path: {
+                                                stroke: "white"
+                                            }
                                         }} />
                                     </Flex>
                                 </MenuButton>

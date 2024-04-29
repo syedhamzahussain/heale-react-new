@@ -60,7 +60,7 @@ const Sidebar = () => {
                                     </MenuItem>
                                     <Divider />
                                     <MenuItem>
-                                        <Flex gap={4} alignItems={"center"}>
+                                        <Flex gap={2} alignItems={"center"}>
                                             <Avatar w={10} h={10} bgColor={"Primary.Blue"} color={"white"} name='NexGen Transport' />
                                             <Box>
                                                 <Heading fontSize={"md"} color={"Primary.Navy"}>NexGen Transport</Heading>
@@ -69,7 +69,7 @@ const Sidebar = () => {
                                         </Flex>
                                     </MenuItem>
                                     <MenuItem>
-                                        <Flex gap={4} alignItems={"center"}>
+                                        <Flex gap={2} alignItems={"center"}>
                                             <Avatar w={10} h={10} bgColor={"Primary.Blue"} color={"white"} name='Jeff Bridges' />
                                             <Box>
                                                 <Heading fontSize={"md"} color={"Primary.Navy"}>Jeff Bridges</Heading>
@@ -88,13 +88,6 @@ const Sidebar = () => {
                             </>
                         )}
                     </Menu>
-                    {/* <Flex gap={4} alignItems={"center"} px={4} py={3} >
-                        <Avatar w={10} h={10} bgColor={"Primary.Blue"} color={"white"} name='Knight-Swift' />
-                        <Box>
-                            <Heading fontSize={"md"} color={"Primary.Navy"}>Knight-Swift</Heading>
-                            <Text fontFamily={"CourierPrime"} fontSize={"sm"} color={"Neutral.700"}>@knight-swift</Text>
-                        </Box>
-                    </Flex> */}
                 </Box>
                 <Box>
                     <List my={10} px={4} spacing={2}>
