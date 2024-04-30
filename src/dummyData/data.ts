@@ -1,12 +1,18 @@
 import {
   AccountIcon,
+  AmountIcon,
   BusinessIcon,
+  CalendarIcon,
   CardIcon,
+  CategoriesIcon,
   DashboardIcon,
   DiamondIcon,
+  MethodIcon,
   PaymentIcon,
   PersonalIcon,
   RefferalIcon,
+  SearchIcon,
+  StatusIcon,
   TransactionIcon,
 } from 'modules/shared/Icons';
 
@@ -135,4 +141,15 @@ export const NotiData = [
     time: '1 day ago',
     status: 'read',
   },
+];
+
+export const filterData = [
+  { iconName: CalendarIcon, label: 'Date' },
+  { iconName: SearchIcon, label: 'Keywords' },
+  { iconName: AmountIcon, label: 'Amount' },
+  { iconName: MethodIcon, label: 'Method' },
+  { iconName: CardIcon, label: 'Cards' },
+  { iconName: AccountIcon, label: 'Accounts' },
+  { iconName: CategoriesIcon, label: 'Categories' },
+  { iconName: StatusIcon, label: 'Status' },
 ];
