@@ -30,12 +30,14 @@ const MessageBox = ({
       <Text mb={btnText || loader ? 8 : 0} color={'Neutral.800'}>
         {desc}
       </Text>
-      {btnText && (
+      {(btnText) && (
         <ButtonTheme
+          // isLoading={loader}
+          // isDisabled={loader}
           btnText={btnText}
-
           chakraProps={{
             onClick:() => handleClick && handleClick(),
+            isDisabled: loader,
             // onClick: () => nextStep(),
             width: 'full',
           }}
@@ -47,7 +49,7 @@ const MessageBox = ({
           Don't Trust
         </Link>
       )}
-      {loader && <LoaderIcon animation={spinAnimation} w={8} h={8} />}
+      {/* {loader && <LoaderIcon animation={spinAnimation} w={8} h={8} />} */}
     </Box>
   );
 };

@@ -34,9 +34,12 @@ const Authentication = () => {
   const [messageBoxType, setMessageBoxType] = useState(''); // Default state
   const [phoneNumber, setPhoneNumber] = useState(''); // State to store phone number
   const [phoneCode, setPhoneCode] = useState(''); // State to store phone code
-
-  const location = useLocation();
+  const [isResendingEmail, setIsResendingEmail] = useState(false);
+  const [isVerifyingPhone, setIsVerifyingPhone] = useState(false);
+  const [isCheckingPhoneVerification, setIsCheckingPhoneVerification] = useState(false);
   const [isLoading, setIsLoading] = useState(false);
+  const location = useLocation();
+
   useEffect(() => {
     verifyEmail();
   }, [location.search]);
@@ -66,25 +69,26 @@ const Authentication = () => {
   };
 
   const ResendEmail = async () => {
+    setIsResendingEmail(true);
     const response = await resendVerificationEmail();
     console.log('Resend Email Response:', response);
     if (response.status) {
       toastSuccess(response?.data?.message);
       setMessageBoxType('emailSent');
     }
-    // setIsLoading(true);
+    setIsResendingEmail(false);
   };
 
   const handlePhoneNumberChange = (value: any) => {
-    console.log('eeeeee: ', value);
     setPhoneNumber(value); // Update state when the input changes
   };
 
   const handleCheckPhoneVerification = async () => {
-    if(!phoneCode) {
+    setIsCheckingPhoneVerification(true);
+    if (!phoneCode) {
       return toastError('Please enter the code sent to your phone number');
     }
-    if(phoneCode.length < 6) {
+    if (phoneCode.length < 6) {
       return toastError('Please enter a valid 6 digit code');
     }
     const response = await CheckPhoneNumberVerification({
@@ -95,9 +99,14 @@ const Authentication = () => {
       toastSuccess(response?.data?.message);
       nextStep();
     }
+    setIsCheckingPhoneVerification(false);
   };
 
   const handlePhoneVerification = async () => {
+    setIsVerifyingPhone(true);
+    if (!phoneNumber) {
+      return toastError('Please enter your phone number');
+    }
     const response = await sendSmsToUser({
       phone_number: `+${phoneNumber}`,
     });
@@ -105,7 +114,7 @@ const Authentication = () => {
       toastSuccess(response?.data?.message);
       setMessageBoxType('phoneVerificationCodeSent');
     }
-    console.log('aaaaa: ', response);
+    setIsVerifyingPhone(false);
   };
 
   const handleUseAnotherPhoneNumber = () => {
@@ -131,12 +140,13 @@ const Authentication = () => {
       {messageBoxType === 'emailSent' && (
         <MessageBox
           handleClick={ResendEmail}
-          btnText="Resend Email"
+          btnText={isResendingEmail ? 'Resending...' : 'Resend Email'}
           desc={`We just Sent you an email to ${
             getUserFromLocalStorage()?.email
           }. check it and click the link to verify your address`}
           icon={FlyEnvelopeIcon}
           title="Verify Your Email"
+          loader={isResendingEmail}
         />
       )}
       {messageBoxType === 'emailVerified' && (
@@ -151,10 +161,11 @@ const Authentication = () => {
       {messageBoxType === 'verificationFailed' && (
         <MessageBox
           handleClick={ResendEmail}
-          btnText="Resend Email"
+          btnText={isResendingEmail ? 'Resending...' : 'Resend Email'}
           desc='The verification Link has Expired. Please Click "Resend Email". and click the link in your email within 10 mins'
           icon={alertIcon}
           title="Resend Email"
+          loader={isResendingEmail}
         />
       )}
 
@@ -189,7 +200,8 @@ const Authentication = () => {
             />
           </FormControl>
           <ButtonTheme
-            btnText={'Continue'}
+            // btnText={'Continue'}
+            btnText={isVerifyingPhone ? 'Sending Code...' : 'Continue'}
             chakraProps={{
               onClick: () => handlePhoneVerification(),
               width: 'full',
@@ -197,6 +209,7 @@ const Authentication = () => {
               marginBottom: '8',
               marginLeft: '0',
               marginRight: '0',
+              isDisabled: isVerifyingPhone,
             }}
             primary
           />
@@ -225,33 +238,41 @@ const Authentication = () => {
             <FormLabel fontSize={'sm'} fontWeight={500} color={'Primary.Navy'}>
               Enter code
             </FormLabel>
-            <Input 
-              type="number" 
-              mb={5} 
-              placeholder="6 digits" 
+            <Input
+              type="number"
+              mb={5}
+              placeholder="6 digits"
               onChange={handleCodeChange}
             />
           </FormControl>
           <ButtonTheme
-            btnText={'Submit'}
+            btnText={isCheckingPhoneVerification ? 'Verifying...' : 'Submit'}
             chakraProps={{
               onClick: () => handleCheckPhoneVerification(),
               width: 'full',
+              isDisabled: isCheckingPhoneVerification
             }}
             primary
           />
           <ButtonTheme
-            btnText={'Resent Code'}
+            // btnText={'Resent Code'}
+            btnText={isVerifyingPhone ? 'Resending Code...' : 'Resend Code'}
             chakraProps={{
               onClick: () => handlePhoneVerification(),
               width: 'full',
               marginTop: '10px',
               marginBottom: '10px',
+              isDisabled: isVerifyingPhone,
             }}
             // primaryOutline
           />
           <Box textAlign="center">
-            <Link href="#" color="Primary.Blue" display={'inline-block'} onClick={handleUseAnotherPhoneNumber}>
+            <Link
+              href="#"
+              color="Primary.Blue"
+              display={'inline-block'}
+              onClick={handleUseAnotherPhoneNumber}
+            >
               Use another phone number
             </Link>
           </Box>
