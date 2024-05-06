@@ -17,6 +17,8 @@ import DashboardLayout from "modules/shared/DashboardLayout";
 import Dashboard from "modules/dashboard";
 import Payment from "modules/Payment";
 import Transactions from 'modules/transactions';
+import Login from 'modules/login';
+import ForgotPassword from 'modules/forgot-password';
 
 function App() {
   return (
@@ -26,6 +28,8 @@ function App() {
         <Routes>
           <Route element={<AuthLayout />}>
             <Route path="/" element={<Welcome />} />
+            <Route path="/login" element={<Login />} />
+            <Route path="/forgot-password" element={<ForgotPassword />} />
             <Route path="personal" element={<PersonalAccount />} />
             <Route path="extension" element={<BrowserExtension />} />
             <Route path="business" element={<BusinessAccount />} />

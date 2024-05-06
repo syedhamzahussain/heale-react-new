@@ -1,12 +1,14 @@
 import axios from 'axios';
-import { BASE_URL } from '../utils/constants';
+// import { BASE_URL } from '../utils/constants';
 import { getErrorMessage, toastError } from 'utils/helpers';
 import { getTokenFromLocalStorage } from './localStorage.sevice';
 // import { GetToken } from "../services/auth.service";
 
-axios.defaults.baseURL = BASE_URL;
+// axios.defaults.baseURL = BASE_URL;
 
 axios.defaults.baseURL = process.env.REACT_APP_API_BASE_URL;
+
+console.log(process.env.REACT_APP_API_BASE_URL, 'env');
 
 export const axiosService = axios;
 

@@ -1,4 +1,4 @@
-import { Avatar, Badge, Box, Flex, Grid, GridItem, Heading, Icon, Link, List, ListItem, Table, TableContainer, Tbody, Td, Text, Th, Thead, Tr, useOutsideClick } from '@chakra-ui/react'
+import { Avatar, Badge, Box, Flex, Grid, GridItem, Heading, Icon, Link, List, ListItem, Table, TableContainer, Tbody, Td, Text, Th, Thead, Tr, useDisclosure, useOutsideClick } from '@chakra-ui/react'
 import { filterData } from 'dummyData/data'
 import EmpltyTable from 'modules/Payment/component/EmptyTable'
 import ButtonTheme from 'modules/shared/ButtonTheme'
@@ -13,8 +13,10 @@ import CardsFilter from './components/CardsFilter'
 import AccountsFilter from './components/AccountsFilter'
 import CategoriesFilter from './components/CategoriesFilter'
 import StatusFilter from './components/StatusFilter'
+import TransactionRequestModal from './components/TransactionRequestModal'
 
 const Transactions = () => {
+    const { isOpen, onOpen, onClose } = useDisclosure()
     const [filter, setFilter] = useState(false)
     const filterBox = useRef<HTMLDivElement>(null);
     const [selectedFilter, setSelectedFilter] = useState<number | null>(null);
@@ -58,7 +60,6 @@ const Transactions = () => {
     };
 
     console.log(renderFilterComponent());
-
 
     return (
         <Box>
@@ -125,6 +126,9 @@ const Transactions = () => {
                     textTransform: "capitalize",
                     fontWeight: "400"
                 },
+                "tr": {
+                    cursor: "pointer"
+                },
                 // "tbody tr": {
                 //     "td:first-child": {
                 //         bgColor: "white"
@@ -155,7 +159,7 @@ const Transactions = () => {
                         </Tr>
                     </Thead>
                     <Tbody>
-                        <Tr>
+                        <Tr onClick={onOpen}>
                             <Td rowSpan={2}>Jan 11</Td>
                             <Td>
                                 <Flex gap={2} alignItems={"center"}>
@@ -250,7 +254,8 @@ const Transactions = () => {
             </TableContainer>
             <Pagination currentPage='1' totalPage='4' totalElements='324' element='Transactions' />
             <EmpltyTable title='No current transactions' desc="When you have current transactions, they'll be listed here" />
-        </Box>
+            <TransactionRequestModal isOpen={isOpen} onClose={onClose} />
+        </Box >
     )
 }
 

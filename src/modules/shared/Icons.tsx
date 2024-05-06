@@ -871,22 +871,16 @@ export const AddIcon = createIcon({
 
 export const RequestIcon = createIcon({
   displayName: "RequestIcon",
-  viewBox: "0 0 20 20",
+  viewBox: "0 0 19.571 19.571",
   path: (
-    <>
-      <defs>
-        <clipPath id="clip-path">
-          <rect id="Rectangle_23055" data-name="Rectangle 23055" width="20" height="20" fill="#fff" />
-        </clipPath>
-      </defs>
-      <g id="Group_40465" data-name="Group 40465" clipPath="url(#clip-path)">
-        <path id="Path_91505" data-name="Path 91505" d="M.715,15v1.429a2.857,2.857,0,0,0,2.857,2.857H16.429a2.857,2.857,0,0,0,2.857-2.857V15" fill="none" stroke="#03103d" strokeLinecap="round" strokeLinejoin="round" strokeWidth="1" />
-        <path id="Path_91506" data-name="Path 91506" d="M5.715,5.714,10,.714l4.286,5" fill="none" stroke="#03103d" strokeLinecap="round" strokeLinejoin="round" strokeWidth="1" />
-        <path id="Path_91507" data-name="Path 91507" d="M10,.714V13.571" fill="none" stroke="#03103d" strokeLinecap="round" strokeLinejoin="round" strokeWidth="1" />
-      </g>
-    </>
+    <g id="Group_40465" data-name="Group 40465" transform="translate(-0.215 -0.214)">
+      <path id="Path_91505" data-name="Path 91505" d="M.715,15v1.429a2.857,2.857,0,0,0,2.857,2.857H16.429a2.857,2.857,0,0,0,2.857-2.857V15" fill="none" stroke="#03103d" stroke-linecap="round" stroke-linejoin="round" stroke-width="1" />
+      <path id="Path_91506" data-name="Path 91506" d="M5.715,5.714,10,.714l4.286,5" fill="none" stroke="#03103d" stroke-linecap="round" stroke-linejoin="round" stroke-width="1" />
+      <path id="Path_91507" data-name="Path 91507" d="M10,.714V13.571" fill="none" stroke="#03103d" stroke-linecap="round" stroke-linejoin="round" stroke-width="1" />
+    </g>
   ),
 })
+
 
 export const ConvertIcon = createIcon({
   displayName: "ConvertIcon",
