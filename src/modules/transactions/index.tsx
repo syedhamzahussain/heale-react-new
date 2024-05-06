@@ -1,4 +1,4 @@
-import { Avatar, Badge, Box, Flex, Grid, GridItem, Heading, Icon, List, ListItem, Table, TableContainer, Tbody, Td, Text, Th, Thead, Tr, useOutsideClick } from '@chakra-ui/react'
+import { Avatar, Badge, Box, Flex, Grid, GridItem, Heading, Icon, Link, List, ListItem, Table, TableContainer, Tbody, Td, Text, Th, Thead, Tr, useOutsideClick } from '@chakra-ui/react'
 import { filterData } from 'dummyData/data'
 import EmpltyTable from 'modules/Payment/component/EmptyTable'
 import ButtonTheme from 'modules/shared/ButtonTheme'
@@ -6,6 +6,13 @@ import { AddIcon, CardIcon, ExportIcon, FilterIcon, FlyIcon, LeftArrow, Statemen
 import Pagination from 'modules/shared/Pagination'
 import React, { useEffect, useRef, useState } from 'react'
 import DateFilter from './components/DateFilter'
+import KeywordsFilter from './components/KeywordsFilter'
+import AmountFilter from './components/AmountFilter'
+import MethodFilter from './components/MethodFilter'
+import CardsFilter from './components/CardsFilter'
+import AccountsFilter from './components/AccountsFilter'
+import CategoriesFilter from './components/CategoriesFilter'
+import StatusFilter from './components/StatusFilter'
 
 const Transactions = () => {
     const [filter, setFilter] = useState(false)
@@ -32,19 +39,19 @@ const Transactions = () => {
             case 0:
                 return <DateFilter />;
             case 1:
-                return "Keywords";
+                return <KeywordsFilter />;
             case 2:
-                return "Amount";
+                return <AmountFilter />;
             case 3:
-                return "Method";
+                return <MethodFilter />;
             case 4:
-                return "Cards";
+                return <CardsFilter />;
             case 5:
-                return "Accounts";
+                return <AccountsFilter />;
             case 6:
-                return "Categories";
+                return <CategoriesFilter />;
             case 7:
-                return "Status";
+                return <StatusFilter />;
             default:
                 return null;
         }
@@ -90,8 +97,12 @@ const Transactions = () => {
                                     ))}
                                 </List>
                             </GridItem>
-                            <GridItem px={6} py={4} colSpan={6}>
+                            <GridItem pos={"relative"} px={6} py={4} colSpan={6}>
                                 {selectedFilter !== null && renderFilterComponent()}
+                                <Flex pos={"absolute"} w={"90%"} bottom={6} alignItems={"center"} justifyContent={"space-between"}>
+                                    <Link as={"a"} color={"Primary.Blue"}>Clear</Link>
+                                    <ButtonTheme btnText='Apply' />
+                                </Flex>
                             </GridItem>
                         </Grid>
                     }
