@@ -14,6 +14,7 @@ import AccountsFilter from './components/AccountsFilter'
 import CategoriesFilter from './components/CategoriesFilter'
 import StatusFilter from './components/StatusFilter'
 import TransactionDetailModal from './components/TransactionDetailModal'
+import { Link as LinkTo } from 'react-router-dom'
 
 interface ModalData {
     icon: ComponentWithAs<'svg', IconProps>;
@@ -125,10 +126,12 @@ const Transactions = () => {
                     }
                 </Box>
                 <Flex gap={4} color={"Neutral.700"}>
-                    <Flex cursor={"pointer"} alignItems={"center"} gap={2}>
-                        <Text>View Statements</Text>
-                        <StatementIcon />
-                    </Flex>
+                    <LinkTo to={"/dashboard/transactions/statements"}>
+                        <Flex cursor={"pointer"} alignItems={"center"} gap={2}>
+                            <Text>View Statements</Text>
+                            <StatementIcon />
+                        </Flex>
+                    </LinkTo >
                     <Flex cursor={"pointer"} alignItems={"center"} gap={2}>
                         <Text>Export All</Text>
                         <ExportIcon />

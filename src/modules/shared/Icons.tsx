@@ -1023,3 +1023,15 @@ export const CloseIcon = createIcon({
     </g>
   ),
 });
+
+export const CloudDownloadIcon = createIcon({
+  displayName: "CloudDownloadIcon",
+  viewBox: "0 0 19.833 18.166",
+  path: (
+    <g id="Group_40465" data-name="Group 40465" transform="translate(-0.082 -0.75)">
+      <path id="Path_91505" data-name="Path 91505" d="M6.665,13.167h-2.5a3.333,3.333,0,1,1,.864-6.554A4.631,4.631,0,0,1,5,6.083a4.584,4.584,0,0,1,9.025-1.135A4.167,4.167,0,1,1,15,13.167H13.332" fill="none" stroke="#9696b3" stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" />
+      <path id="Path_91506" data-name="Path 91506" d="M10,9.834V16.5" fill="none" stroke="#9696b3" stroke-linecap="round" stroke-width="1.5" />
+      <path id="Path_91507" data-name="Path 91507" d="M12.5,15.666l-2.5,2.5-2.5-2.5" fill="none" stroke="#9696b3" stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" />
+    </g>
+  ),
+});

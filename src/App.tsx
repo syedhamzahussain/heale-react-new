@@ -19,6 +19,7 @@ import Payment from "modules/Payment";
 import Transactions from 'modules/transactions';
 import Login from 'modules/login';
 import ForgotPassword from 'modules/forgot-password';
+import Statements from 'modules/transactions/statements';
 
 function App() {
   return (
@@ -40,6 +41,7 @@ function App() {
           <Route element={<DashboardLayout />}>
             <Route path="dashboard" element={<Dashboard />} />
             <Route path="dashboard/transactions" element={<Transactions />} />
+            <Route path="dashboard/transactions/statements" element={<Statements />} />
             <Route path="dashboard/payments" element={<Payment />} />
           </Route>
         </Routes>
