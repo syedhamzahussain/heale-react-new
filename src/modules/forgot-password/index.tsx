@@ -1,7 +1,6 @@
-import { Box, Flex, FormControl, FormLabel, Heading, Input, Text } from '@chakra-ui/react'
+import { Box, Flex, FormControl, FormLabel, Heading, Input } from '@chakra-ui/react'
 import ButtonTheme from 'modules/shared/ButtonTheme'
 import React from 'react'
-import { Link } from 'react-router-dom'
 
 const ForgotPassword = () => {
     return (

@@ -45,6 +45,12 @@ export interface ApplicationCollabType {
   isOpen: boolean;
 }
 
+export interface TransactionDetailType extends ApplicationCollabType {
+  title: string;
+  account: string;
+  icon: ComponentWithAs<'svg', IconProps>;
+}
+
 export interface SuccessType {
   desc: string;
   percentage: string;
@@ -96,9 +102,5 @@ export interface approval_table_rows {
 }
 
 export interface EmptyTable {
-  emptyMesg: string;
-}
-
-export interface emptyMesg {
   emptyMesg: string;
 }
