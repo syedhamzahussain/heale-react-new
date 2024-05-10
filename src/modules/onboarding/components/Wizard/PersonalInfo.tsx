@@ -177,6 +177,12 @@ const PersonalInfo = () => {
                       value: 8,
                       message: 'Minimum length should be 8',
                     },
+                    // validation for strong passwords
+                    pattern: {
+                      value: /^(?=.*\d)(?=.*[a-z])(?=.*[A-Z])(?=.*[a-zA-Z]).{8,}$/,
+                      message:
+                        'Password should contain at least one uppercase letter, one lowercase letter, and one number',
+                    },
                   })}
                 />
                 <InputRightElement>
