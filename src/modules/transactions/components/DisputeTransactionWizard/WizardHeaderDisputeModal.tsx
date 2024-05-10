@@ -1,31 +1,16 @@
-import React from "react";
-import { useWizard } from "react-use-wizard";
-import { Box, Flex, Text } from "@chakra-ui/react";
-import { CheckIcon, RadioIcon, RadioIconChecked } from "../../../shared/Icons";
-import { useLocation } from "react-router-dom";
+// import { CheckIcon } from '@chakra-ui/icons';
+import { Box, Flex, Text } from '@chakra-ui/react'
+import { CheckIcon, RadioIcon, RadioIconChecked } from 'modules/shared/Icons';
+import React from 'react'
+import { useWizard } from 'react-use-wizard';
 
-
-const StepFormHeader = () => {
+const WizardHeaderDisputeModal = () => {
     const { activeStep, stepCount } = useWizard();
-    const location = useLocation();
-    const stepNames = location.pathname.includes("business")
-        ? [
-            "Personal Info",
-            "2 Factor Authentication",
-            "Verify Identity",
-            "Business Info",
-            "Application",
-            "Connect Account",
-            "Receive Card",
-            "Team Info"
-        ]
-        : [
-            "Personal Info",
-            "2 Factor Authentication",
-            "Verify Identity",
-            "Connect Account",
-            "Receive Card",
-        ];
+    const stepNames = [
+        "Confirm Transaction",
+        "Questions",
+        "Review & Submit",
+    ]
 
     const renderSteps = () => {
         const steps = [];
@@ -63,7 +48,7 @@ const StepFormHeader = () => {
         <Flex flexDir={"column"} minW={"20%"}>
             {renderSteps()}
         </Flex>
-    );
-};
+    )
+}
 
-export default StepFormHeader;
+export default WizardHeaderDisputeModal
