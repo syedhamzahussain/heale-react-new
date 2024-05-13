@@ -402,13 +402,13 @@ const VerifyIdentity = () => {
           </Flex>
         </form>
       </Box>
-      <MessageBox
+      {/* <MessageBox
         loader
         desc="Content draft team underline variant plugin editor. Arrange slice reesizing library underline team ipsum figjam."
         icon={VerifyInfoIcon}
         title="Verifying your info"
-      />
-      <Box w={'60%'} textAlign={'center'}>
+      /> */}
+      {/* <Box w={'60%'} textAlign={'center'}>
         <VerifyBusinessIcon w={16} h={16} />
         <Heading
           as={'h4'}
@@ -456,8 +456,8 @@ const VerifyIdentity = () => {
         <Link color="Primary.Blue" my={3} display={'inline-block'}>
           Close
         </Link>
-      </Box>
-      <Box w={'60%'}>
+      </Box> */}
+      {/* <Box w={'60%'}>
         <Heading as={'h4'} mb={4} fontSize={'3xl'} color={'Primary.Navy'}>
           Unable to verify your identify
         </Heading>
@@ -488,7 +488,7 @@ const VerifyIdentity = () => {
           }}
           primary
         />
-      </Box>
+      </Box> */}
     </Box>
   );
 };
