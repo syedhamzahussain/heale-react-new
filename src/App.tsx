@@ -11,15 +11,16 @@ import Broker from 'modules/onboarding/business/broker';
 import Lender from 'modules/onboarding/business/lender';
 import Carrier from 'modules/onboarding/business/carrier';
 import 'react-toastify/dist/ReactToastify.css';
-import BrowserExtension from "modules/browserExtension";
-import "App.css"
-import DashboardLayout from "modules/shared/DashboardLayout";
-import Dashboard from "modules/dashboard";
-import Payment from "modules/Payment";
+import BrowserExtension from 'modules/browserExtension';
+import 'App.css';
+import DashboardLayout from 'modules/shared/DashboardLayout';
+import Dashboard from 'modules/dashboard';
+import Payment from 'modules/Payment';
 import Transactions from 'modules/transactions';
 import Login from 'modules/login';
 import ForgotPassword from 'modules/forgot-password';
 import Statements from 'modules/transactions/statements';
+import ProtectedRoute from 'modules/onboarding/components/ProtectedRoute';
 
 function App() {
   return (
@@ -32,17 +33,73 @@ function App() {
             <Route path="/login" element={<Login />} />
             <Route path="/forgot-password" element={<ForgotPassword />} />
             <Route path="personal" element={<PersonalAccount />} />
-            <Route path="extension" element={<BrowserExtension />} />
+            <Route
+              path="extension"
+              element={
+                <ProtectedRoute>
+                  <BrowserExtension />
+                </ProtectedRoute>
+              }
+            />
             <Route path="business" element={<BusinessAccount />} />
-            <Route path="business/broker" element={<Broker />} />
-            <Route path="business/lender" element={<Lender />} />
-            <Route path="business/carrier" element={<Carrier />} />
+            <Route
+              path="business/broker"
+              element={
+                <ProtectedRoute>
+                  <Broker />
+                </ProtectedRoute>
+              }
+            />
+            <Route
+              path="business/lender"
+              element={
+                <ProtectedRoute>
+                  <Lender />
+                </ProtectedRoute>
+              }
+            />
+            <Route
+              path="business/carrier"
+              element={
+                <ProtectedRoute>
+                  <Carrier />
+                </ProtectedRoute>
+              }
+            />
           </Route>
           <Route element={<DashboardLayout />}>
-            <Route path="dashboard" element={<Dashboard />} />
-            <Route path="dashboard/transactions" element={<Transactions />} />
-            <Route path="dashboard/transactions/statements" element={<Statements />} />
-            <Route path="dashboard/payments" element={<Payment />} />
+            <Route
+              path="dashboard"
+              element={
+                <ProtectedRoute>
+                  <Dashboard />
+                </ProtectedRoute>
+              }
+            />
+            <Route
+              path="dashboard/transactions"
+              element={
+                <ProtectedRoute>
+                  <Transactions />
+                </ProtectedRoute>
+              }
+            />
+            <Route
+              path="dashboard/transactions/statements"
+              element={
+                <ProtectedRoute>
+                  <Statements />
+                </ProtectedRoute>
+              }
+            />
+            <Route
+              path="dashboard/payments"
+              element={
+                <ProtectedRoute>
+                  <Payment />
+                </ProtectedRoute>
+              }
+            />
           </Route>
         </Routes>
       </BrowserRouter>
