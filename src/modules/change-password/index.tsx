@@ -5,14 +5,12 @@ import {
   FormLabel,
   Heading,
   Input,
-  Text,
 } from '@chakra-ui/react';
 import ButtonTheme from 'modules/shared/ButtonTheme';
 import { useForm } from 'react-hook-form';
 import React, { useState } from 'react';
-import { changePassword, sendResetCode, verifyResetCode } from 'services/auth.service';
+import { changePassword } from 'services/auth.service';
 import { toastSuccess } from 'utils/helpers';
-import { Link } from 'react-router-dom';
 import FormErrorMessage from 'modules/shared/FormErrorMessage';
 import { saveTokenToLocalStorage, saveUserToLocalStorage } from 'services/localStorage.sevice';
 
@@ -23,13 +21,13 @@ const ChangePassword: React.FC<ChangePasswordProps> = () => {
     handleSubmit,
     register,
     setError,
-    formState: { errors, isSubmitting },
+    formState: { errors },
   } = useForm();
   const [loader, setLoader] = useState(false);
-  const [verifyingCode, setVerifyingCode] = useState(false);
+  // const [verifyingCode, setVerifyingCode] = useState(false);
 
   const onSubmit = async (values: any) => {
-    if(values.password !== values.confirm_password) {
+    if (values.password !== values.confirm_password) {
       setError('confirm_password', {
         type: 'manual',
         message: 'Password does not match',
@@ -54,7 +52,7 @@ const ChangePassword: React.FC<ChangePasswordProps> = () => {
         `${response?.data?.token_type} ${response?.data?.access_token}`
       );
       saveUserToLocalStorage(response?.data?.user);
-    //   // redirect to reset password page
+      //   // redirect to reset password page
       window.location.href = '/dashboard';
     }
     setLoader(false);
@@ -66,12 +64,15 @@ const ChangePassword: React.FC<ChangePasswordProps> = () => {
       alignItems={'center'}
       justifyContent={'center'}
     >
-      <Box>
+      <Box
+        w={'30%'}
+        p={8}
+        borderRadius="16px"
+        borderWidth={'2px'}
+        boxShadow="1px 1px 6px 0px rgba(149, 153, 192, 0.22)"
+      >
         <Heading
-          as={'h4'}
-          mt={4}
-          mb={2}
-          fontSize={'3xl'}
+          fontSize={'3xl'} mb={8} textAlign={'center'}
           color={'Primary.Navy'}
         >
           Change Password
@@ -81,8 +82,8 @@ const ChangePassword: React.FC<ChangePasswordProps> = () => {
           {localStorage.getItem('reset-email')}. Please enter it below.
         </Text> */}
         <form onSubmit={handleSubmit(onSubmit)}>
-          <FormControl>
-            <FormLabel htmlFor="password">Password</FormLabel>
+          <FormControl mb={4}>
+            <FormLabel>Password</FormLabel>
             <Input
               type="password"
               placeholder="Enter your password"
@@ -103,8 +104,8 @@ const ChangePassword: React.FC<ChangePasswordProps> = () => {
             />
             <FormErrorMessage message={errors?.password?.message} />
           </FormControl>
-          <FormControl>
-            <FormLabel htmlFor="confirm_password">Confirm Password</FormLabel>
+          <FormControl mb={4}>
+            <FormLabel>Confirm Password</FormLabel>
             <Input
               type="password"
               placeholder="Enter your confirm password"

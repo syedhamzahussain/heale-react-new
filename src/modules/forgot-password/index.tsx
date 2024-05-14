@@ -17,7 +17,6 @@ const ForgotPassword = () => {
   const {
     handleSubmit,
     register,
-    setError,
     formState: { errors, isSubmitting },
   } = useForm();
   const [loader, setLoader] = useState(false);
@@ -51,7 +50,7 @@ const ForgotPassword = () => {
         borderWidth={'2px'}
         boxShadow="1px 1px 6px 0px rgba(149, 153, 192, 0.22)"
       >
-        <Heading fontSize={'3xl'} mb={8} textAlign={'center'}>
+        <Heading fontSize={'3xl'} mb={8} textAlign={'center'} color={'Primary.Navy'}>
           Forgot Password
         </Heading>
         <form onSubmit={handleSubmit(onSubmit)}>

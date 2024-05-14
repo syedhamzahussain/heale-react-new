@@ -3,29 +3,35 @@ import {
   Flex,
   FormControl,
   FormLabel,
+  HStack,
   Heading,
   Input,
+  PinInput,
+  PinInputField,
   Text,
 } from '@chakra-ui/react';
 import ButtonTheme from 'modules/shared/ButtonTheme';
 import { useForm } from 'react-hook-form';
 import React, { useState } from 'react';
-import { sendResetCode, verifyResetCode } from 'services/auth.service';
+import { verifyResetCode } from 'services/auth.service';
 import { toastSuccess } from 'utils/helpers';
-import { Link } from 'react-router-dom';
 import FormErrorMessage from 'modules/shared/FormErrorMessage';
 
 const ResetCode = () => {
   const {
     handleSubmit,
-    register,
     setError,
-    formState: { errors, isSubmitting },
+    setValue,
+    clearErrors,
+    formState: { errors },
   } = useForm();
   const [loader, setLoader] = useState(false);
-  const [verifyingCode, setVerifyingCode] = useState(false);
+  // const [verifyingCode, setVerifyingCode] = useState(false);
 
   const onSubmit = async (values: any) => {
+    if (!values["code"] || values["code"]?.length < 6) {
+      return setError("code", {});
+    }
     const user = {
       email: localStorage.getItem('reset-email'),
       reset_code: values.code,
@@ -42,39 +48,47 @@ const ResetCode = () => {
     setLoader(false);
   };
 
+  const onInputChange = (code: string) => {
+    if (code.length === 6) {
+      clearErrors();
+    }
+    setValue("code", code);
+  };
+
   return (
     <Flex
       h={'calc(100vh - 260px)'}
       alignItems={'center'}
       justifyContent={'center'}
     >
-      <Box>
+      <Box
+        w={'30%'}
+        p={8}
+        borderRadius="16px"
+        borderWidth={'2px'}
+        boxShadow="1px 1px 6px 0px rgba(149, 153, 192, 0.22)"
+      >
         <Heading
-          as={'h4'}
-          mt={4}
-          mb={2}
-          fontSize={'3xl'}
+          fontSize={'3xl'} mb={8} textAlign={'center'}
           color={'Primary.Navy'}
         >
           Enter Code
         </Heading>
-        <Text fontSize={'sm'} fontWeight={500} color={'Neutral.800'}>
+        <Text fontSize={'sm'} mb={4} fontWeight={500} color={'Neutral.800'}>
           We just sent you a 6 digit code to this email{' '}
           {localStorage.getItem('reset-email')}. Please enter it below.
         </Text>
         <form onSubmit={handleSubmit(onSubmit)}>
-          <FormControl mt={4}>
+          <FormControl mb={4}>
             <FormLabel
-              htmlFor="code"
               fontSize={'sm'}
               fontWeight={500}
               color={'Primary.Navy'}
             >
               Enter code
             </FormLabel>
-            <Input
+            {/* <Input
               type="number"
-              mb={5}
               placeholder="6 digits"
               isInvalid={errors?.code?.message ? true : false}
               errorBorderColor="Secondary.Red"
@@ -89,7 +103,20 @@ const ResetCode = () => {
                   message: 'Code must be 6 digits',
                 },
               })}
-            />
+            /> */}
+            <HStack mt={4}>
+              <PinInput otp size='xl' onChange={onInputChange}>
+                {Array.from({ length: 6 }).map((i, j) => {
+                  return (
+                    <PinInputField
+                      key={j}
+                      borderColor={errors["code"] ? "red" : "brand.primary"}
+                      borderRadius={8}
+                    />
+                  );
+                })}
+              </PinInput>
+            </HStack>
             <FormErrorMessage message={errors?.code?.message} />
           </FormControl>
           <ButtonTheme
