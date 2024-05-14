@@ -19,6 +19,10 @@ import Payment from 'modules/Payment';
 import Transactions from 'modules/transactions';
 import Login from 'modules/login';
 import ForgotPassword from 'modules/forgot-password';
+import ResetCode from 'modules/reset-code';
+import ChangePassword from 'modules/change-password';
+
+
 import Statements from 'modules/transactions/statements';
 import ProtectedRoute from 'modules/onboarding/components/ProtectedRoute';
 
@@ -32,6 +36,8 @@ function App() {
             <Route path="/" element={<Welcome />} />
             <Route path="/login" element={<Login />} />
             <Route path="/forgot-password" element={<ForgotPassword />} />
+            <Route path="/verify-reset-code" element={<ResetCode />} />
+            <Route path="/change-password" element={<ChangePassword />} />
             <Route path="personal" element={<PersonalAccount />} />
             <Route
               path="extension"
