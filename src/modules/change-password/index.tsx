@@ -48,12 +48,8 @@ const ChangePassword: React.FC<ChangePasswordProps> = () => {
       toastSuccess(response?.data?.message);
       localStorage.removeItem('reset-email');
       localStorage.removeItem('reset-code');
-      saveTokenToLocalStorage(
-        `${response?.data?.token_type} ${response?.data?.access_token}`
-      );
-      saveUserToLocalStorage(response?.data?.user);
-      //   // redirect to reset password page
-      window.location.href = '/dashboard';
+      //  redirect to login
+      window.location.href = '/login';
     }
     setLoader(false);
   };
