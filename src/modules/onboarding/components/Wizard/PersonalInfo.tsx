@@ -170,12 +170,12 @@ const PersonalInfo = () => {
                   type={statePass ? 'text' : 'password'}
                   isInvalid={errors?.password?.message ? true : false}
                   errorBorderColor="Secondary.Red"
-                  placeholder="Minimum 8 characters"
+                  placeholder="Minimum 12 characters"
                   {...register('password', {
                     required: 'This field is required',
                     minLength: {
-                      value: 8,
-                      message: 'Minimum length should be 8',
+                      value: 12,
+                      message: 'Minimum length should be 12',
                     },
                     // validation for strong passwords
                     pattern: {
@@ -206,8 +206,8 @@ const PersonalInfo = () => {
                   {...register('confirm_password', {
                     required: 'This field is required',
                     minLength: {
-                      value: 8,
-                      message: 'Minimum length should be 8',
+                      value: 12,
+                      message: 'Minimum length should be 12',
                     },
                   })}
                 />

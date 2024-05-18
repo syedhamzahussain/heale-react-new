@@ -88,8 +88,8 @@ const ChangePassword: React.FC<ChangePasswordProps> = () => {
               {...register('password', {
                 required: 'This field is required',
                 minLength: {
-                  value: 8,
-                  message: 'Password must be at least 8 characters',
+                  value: 12,
+                  message: 'Password must be at least 12 characters',
                 },
                 pattern: {
                   value: /^(?=.*\d)(?=.*[a-z])(?=.*[A-Z])(?=.*[a-zA-Z]).{8,}$/,
@@ -110,8 +110,8 @@ const ChangePassword: React.FC<ChangePasswordProps> = () => {
               {...register('confirm_password', {
                 required: 'This field is required',
                 minLength: {
-                  value: 8,
-                  message: 'Password must be at least 8 characters',
+                  value: 12,
+                  message: 'Password must be at least 12 characters',
                 },
                 pattern: {
                   value: /^(?=.*\d)(?=.*[a-z])(?=.*[A-Z])(?=.*[a-zA-Z]).{8,}$/,
