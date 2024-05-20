@@ -25,6 +25,7 @@ import ChangePassword from 'modules/change-password';
 
 import Statements from 'modules/transactions/statements';
 import ProtectedRoute from 'modules/onboarding/components/ProtectedRoute';
+import Heale from 'modules/heale';
 
 function App() {
   return (
@@ -103,6 +104,14 @@ function App() {
               element={
                 <ProtectedRoute>
                   <Payment />
+                </ProtectedRoute>
+              }
+            />
+            <Route
+              path="dashboard/heale"
+              element={
+                <ProtectedRoute>
+                  <Heale />
                 </ProtectedRoute>
               }
             />

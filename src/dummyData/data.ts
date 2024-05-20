@@ -83,7 +83,7 @@ export const SidebarNav = [
   {
     id: 3,
     title: '$HEALE',
-    link: '/',
+    link: '/dashboard/heale',
     icon: DiamondIcon,
     hasDropdown: false,
   },
