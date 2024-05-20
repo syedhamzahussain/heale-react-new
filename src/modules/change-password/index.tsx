@@ -92,9 +92,9 @@ const ChangePassword: React.FC<ChangePasswordProps> = () => {
                   message: 'Password must be at least 12 characters',
                 },
                 pattern: {
-                  value: /^(?=.*\d)(?=.*[a-z])(?=.*[A-Z])(?=.*[a-zA-Z]).{8,}$/,
+                  value: /^(?=.*\d)(?=.*[A-Z])(?=.*[@$!%*?&]).{12,}$/,
                   message:
-                    'Password should contain at least one uppercase letter, one lowercase letter, and one number',
+                    'Password should contain at least one uppercase letter, one number, and one symbol',
                 },
               })}
             />
@@ -114,9 +114,9 @@ const ChangePassword: React.FC<ChangePasswordProps> = () => {
                   message: 'Password must be at least 12 characters',
                 },
                 pattern: {
-                  value: /^(?=.*\d)(?=.*[a-z])(?=.*[A-Z])(?=.*[a-zA-Z]).{8,}$/,
+                  value: /^(?=.*\d)(?=.*[A-Z])(?=.*[@$!%*?&]).{12,}$/,
                   message:
-                    'Password should contain at least one uppercase letter, one lowercase letter, and one number',
+                    'Password should contain at least one uppercase letter, one number, and one symbol',
                 },
               })}
             />
