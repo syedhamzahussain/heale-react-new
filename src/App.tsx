@@ -26,6 +26,7 @@ import ChangePassword from 'modules/change-password';
 import Statements from 'modules/transactions/statements';
 import ProtectedRoute from 'modules/onboarding/components/ProtectedRoute';
 import Heale from 'modules/heale';
+import StatementsHeale from 'modules/heale/statement';
 
 function App() {
   return (
@@ -112,6 +113,14 @@ function App() {
               element={
                 <ProtectedRoute>
                   <Heale />
+                </ProtectedRoute>
+              }
+            />
+            <Route
+              path="dashboard/heale/statements"
+              element={
+                <ProtectedRoute>
+                  <StatementsHeale />
                 </ProtectedRoute>
               }
             />

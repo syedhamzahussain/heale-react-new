@@ -1,22 +1,31 @@
-import { InfoIcon } from '@chakra-ui/icons'
-import { Avatar, Badge, Box, Flex, Grid, GridItem, Heading, Icon, Link, List, ListItem, Select, Switch, Table, TableContainer, Tbody, Td, Text, Th, Thead, Tr, useOutsideClick } from '@chakra-ui/react'
+import { Box, ComponentWithAs, Flex, Grid, GridItem, Heading, Icon, IconProps, Link, List, ListItem, Select, Switch, Table, TableContainer, Tbody, Td, Text, Th, Thead, Tr, useDisclosure, useOutsideClick } from '@chakra-ui/react'
 import { filterData } from 'dummyData/data'
 import ButtonTheme from 'modules/shared/ButtonTheme'
 import CustomCard from 'modules/shared/CustomCard'
-import { FilterIcon, HighIcon, LowIcon, StatementIcon } from 'modules/shared/Icons'
-import AccountsFilter from 'modules/transactions/components/AccountsFilter'
+import { DiamondIcon, FilterIcon, FlyIcon, HighIcon, LowIcon, RequestIcon, StatementIcon } from 'modules/shared/Icons'
 import AmountFilter from 'modules/transactions/components/AmountFilter'
-import CardsFilter from 'modules/transactions/components/CardsFilter'
-import CategoriesFilter from 'modules/transactions/components/CategoriesFilter'
 import DateFilter from 'modules/transactions/components/DateFilter'
 import KeywordsFilter from 'modules/transactions/components/KeywordsFilter'
-import MethodFilter from 'modules/transactions/components/MethodFilter'
 import StatusFilter from 'modules/transactions/components/StatusFilter'
 import React, { useEffect, useRef, useState } from 'react'
 import HealeGraph from './components/HealeGraph'
+import { Link as LinkTo } from 'react-router-dom'
+import TransactionDetailModal from 'modules/transactions/components/TransactionDetailModal'
+
+interface ModalData {
+    icon: ComponentWithAs<'svg', IconProps>;
+    title: string;
+    account: string;
+}
 
 const Heale = () => {
+    const { isOpen, onOpen, onClose } = useDisclosure()
     const [filter, setFilter] = useState(false)
+    const [modalData, setModalData] = useState<ModalData>({
+        icon: RequestIcon,
+        title: "Payment Request",
+        account: "Checking"
+    });
     const [isUSD, setIsUSD] = useState(false);
 
     const handleSwitchChange = () => {
@@ -54,6 +63,10 @@ const Heale = () => {
             default:
                 return null;
         }
+    };
+    const handleOpenModal = ({ icon, title, account }: { icon: ComponentWithAs<'svg', IconProps>, title: string, account: string }) => {
+        setModalData({ icon, title, account });
+        onOpen();
     };
     return (
         <Box>
@@ -103,12 +116,12 @@ const Heale = () => {
                     }
                 </Box>
                 <Flex gap={4} color={"Neutral.700"}>
-                    {/* <LinkTo to={"/dashboard/transactions/statements"}> */}
-                    <Flex cursor={"pointer"} alignItems={"center"} gap={2}>
-                        <Text>View Statements</Text>
-                        <StatementIcon />
-                    </Flex>
-                    {/* </LinkTo > */}
+                    <LinkTo to={"/dashboard/heale/statements"}>
+                        <Flex cursor={"pointer"} alignItems={"center"} gap={2}>
+                            <Text>View Statements</Text>
+                            <StatementIcon />
+                        </Flex>
+                    </LinkTo >
                 </Flex>
             </Flex>
             <Box >
@@ -195,7 +208,7 @@ const Heale = () => {
                         </Tr>
                     </Thead>
                     <Tbody>
-                        <Tr>
+                        <Tr onClick={() => handleOpenModal({ icon: DiamondIcon, title: 'Reward Details', account: "Checking" })}>
                             <Td rowSpan={2}>Jan 11</Td>
                             <Td>
                                 <Heading color={"Primary.Navy"} fontSize={"sm"}>Shipment 0x...N58L</Heading>
@@ -204,17 +217,19 @@ const Heale = () => {
                             <Td><Text>$715.85 <Text as={"span"} color={"Neutral.700"}>USD</Text></Text></Td>
                             <Td><Text>$715.85 <Text as={"span"} color={"Neutral.700"}>USD</Text></Text></Td>
                         </Tr>
-                        <Tr>
+                        <Tr onClick={() => handleOpenModal({ icon: DiamondIcon, title: 'Minting Details', account: "Checking" })}>
                             <Td>
                                 <Heading color={"Primary.Navy"} fontSize={"sm"}>Shipment 0x...N58L</Heading>
                             </Td>
-                            <Td>Reward</Td>
+                            <Td>Minting</Td>
                             <Td><Text>$715.85 <Text as={"span"} color={"Neutral.700"}>USD</Text></Text></Td>
                             <Td><Text>$715.85 <Text as={"span"} color={"Neutral.700"}>USD</Text></Text></Td>
                         </Tr>
                     </Tbody>
                 </Table>
             </TableContainer>
+            <TransactionDetailModal account={modalData?.account} icon={modalData?.icon}
+                title={modalData?.title} isOpen={isOpen} onClose={onClose} />
         </Box>
     )
 }

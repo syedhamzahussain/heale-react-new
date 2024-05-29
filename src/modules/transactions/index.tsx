@@ -74,8 +74,6 @@ const Transactions = () => {
     const handleOpenModal = ({ icon, title, account }: { icon: ComponentWithAs<'svg', IconProps>, title: string, account: string }) => {
         setModalData({ icon, title, account });
         onOpen();
-        console.log(modalData);
-
     };
 
     return (
