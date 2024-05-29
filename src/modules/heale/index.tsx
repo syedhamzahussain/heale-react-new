@@ -2,7 +2,7 @@ import { Box, ComponentWithAs, Flex, Grid, GridItem, Heading, Icon, IconProps, L
 import { filterData } from 'dummyData/data'
 import ButtonTheme from 'modules/shared/ButtonTheme'
 import CustomCard from 'modules/shared/CustomCard'
-import { DiamondIcon, FilterIcon, FlyIcon, HighIcon, LowIcon, RequestIcon, StatementIcon } from 'modules/shared/Icons'
+import { DiamondIcon, FilterIcon, HighIcon, LowIcon, RequestIcon, StatementIcon } from 'modules/shared/Icons'
 import AmountFilter from 'modules/transactions/components/AmountFilter'
 import DateFilter from 'modules/transactions/components/DateFilter'
 import KeywordsFilter from 'modules/transactions/components/KeywordsFilter'

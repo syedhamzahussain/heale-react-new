@@ -90,7 +90,7 @@ export const SidebarNav = [
   {
     id: 4,
     title: 'Cards',
-    link: '/',
+    link: '/dashboard/cards',
     icon: CardIcon,
     hasDropdown: false,
   },

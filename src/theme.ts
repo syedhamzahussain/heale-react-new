@@ -12,6 +12,7 @@ const theme = extendTheme({
     Primary: {
       Blue: 'rgba(52, 70, 238, 1)',
       Navy: 'rgba(3, 16, 61, 1)',
+      Navy40: 'rgba(3, 16, 61, 0.4)',
     },
     Secondary: {
       Turquoise: 'rgba(3, 204, 176, 1)',

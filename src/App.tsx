@@ -27,6 +27,7 @@ import Statements from 'modules/transactions/statements';
 import ProtectedRoute from 'modules/onboarding/components/ProtectedRoute';
 import Heale from 'modules/heale';
 import StatementsHeale from 'modules/heale/statement';
+import Cards from 'modules/cards';
 
 function App() {
   return (
@@ -121,6 +122,14 @@ function App() {
               element={
                 <ProtectedRoute>
                   <StatementsHeale />
+                </ProtectedRoute>
+              }
+            />
+            <Route
+              path="dashboard/cards"
+              element={
+                <ProtectedRoute>
+                  <Cards />
                 </ProtectedRoute>
               }
             />
