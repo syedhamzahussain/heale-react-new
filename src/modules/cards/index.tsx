@@ -1,8 +1,10 @@
-import { Badge, Box, Flex, Heading, Table, TableContainer, Tbody, Td, Text, Th, Thead, Tr } from '@chakra-ui/react'
+import { Badge, Box, Flex, Heading, Table, TableContainer, Tbody, Td, Text, Th, Thead, Tr, useDisclosure } from '@chakra-ui/react'
 import { CardIcon } from 'modules/shared/Icons'
 import React from 'react'
+import CardDetailModal from './components/CardDetailModal'
 
 const Cards = () => {
+    const { isOpen, onOpen, onClose } = useDisclosure()
     return (
         <Box>
             <Heading fontSize={"3xl"}>
@@ -48,7 +50,7 @@ const Cards = () => {
                         </Tr>
                     </Thead>
                     <Tbody>
-                        <Tr>
+                        <Tr onClick={onOpen}>
                             <Td rowSpan={2}>
                                 <Flex gap={2} alignItems={"center"}>
                                     <Heading fontSize={"sm"} color={"Primary.Navy"}>Jeff Bridges</Heading>
@@ -65,7 +67,7 @@ const Cards = () => {
                             <Td><Text color={"Neutral.700"}>Business</Text></Td>
                             <Td>Checking ••••0101</Td>
                         </Tr>
-                        <Tr>
+                        <Tr onClick={onOpen}>
                             <Td>
                                 <Flex gap={2} alignItems={"center"}>
                                     <CardIcon />
@@ -79,6 +81,7 @@ const Cards = () => {
                     </Tbody>
                 </Table>
             </TableContainer>
+            <CardDetailModal isOpen={isOpen} onClose={onClose} />
         </Box>
     )
 }
