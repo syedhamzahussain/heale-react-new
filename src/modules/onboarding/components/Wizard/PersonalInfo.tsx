@@ -21,6 +21,7 @@ import { useWizard } from 'react-use-wizard';
 import FormErrorMessage from 'modules/shared/FormErrorMessage';
 import { signUp } from 'services/auth.service';
 import {
+  getAccountTypeFromLocalStorage,
   getTokenFromLocalStorage,
   saveTokenToLocalStorage,
   saveUserToLocalStorage,
@@ -63,6 +64,7 @@ const PersonalInfo = () => {
       email,
       handle,
       password,
+      account_type: getAccountTypeFromLocalStorage(),
     };
     const response = await signUp(user);
     if (response?.status) {

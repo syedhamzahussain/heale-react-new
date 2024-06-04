@@ -28,7 +28,7 @@ export const CheckPhoneNumberVerification = async (body) => {
   return response;
 }
 
-export const resendVerificationEmail = async () => {
-  const response = await POST(`${apiUrl.users}/resend-email`);
+export const resendVerificationEmail = async (user) => {
+  const response = await POST(`${apiUrl.users}/resend-email`, user);
   return response;
 }

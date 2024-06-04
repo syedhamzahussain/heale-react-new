@@ -19,7 +19,7 @@ import MessageBox from '../MessageBox';
 import CountryInput from '../CountryInput';
 import { useLocation } from 'react-router-dom';
 import { useWizard } from 'react-use-wizard';
-import { getUserFromLocalStorage } from 'services/localStorage.sevice';
+import { getAccountTypeFromLocalStorage, getUserFromLocalStorage } from 'services/localStorage.sevice';
 import {
   CheckPhoneNumberVerification,
   resendVerificationEmail,
@@ -70,7 +70,9 @@ const Authentication = () => {
 
   const ResendEmail = async () => {
     setIsResendingEmail(true);
-    const response = await resendVerificationEmail();
+    const response = await resendVerificationEmail({
+      account_type: getAccountTypeFromLocalStorage(),
+    });
     console.log('Resend Email Response:', response);
     if (response.status) {
       toastSuccess(response?.data?.message);
