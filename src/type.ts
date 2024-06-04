@@ -15,6 +15,7 @@ export interface ButtonThemeType {
   chakraProps?: ButtonProps;
   invert?: boolean;
   primary?: boolean;
+  small?: boolean;
   isLoading?: boolean;
   isDisabled?: boolean;
 }

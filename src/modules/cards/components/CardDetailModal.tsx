@@ -1,16 +1,17 @@
-import { Box, Flex, Heading, Modal, ModalBody, ModalCloseButton, ModalContent, ModalHeader, ModalOverlay, Progress, Text, Tooltip } from '@chakra-ui/react'
+import { Box, Flex, Grid, Heading, Modal, ModalBody, ModalCloseButton, ModalContent, ModalFooter, ModalHeader, ModalOverlay, Progress, Text, Tooltip } from '@chakra-ui/react'
+import ButtonTheme from 'modules/shared/ButtonTheme'
 import { CardIcon, HealeLogoWhite, WifiIcon } from 'modules/shared/Icons'
 import React, { useState } from 'react'
 import { ApplicationCollabType } from 'type'
 
 const CardDetailModal = ({ isOpen, onClose }: ApplicationCollabType) => {
-    const [showCardNumber, setShowCardNumber] = useState(false);
-    const cardNumber = "4222 2222 2222 2222"
-
-    const maskedCardNumber = cardNumber.replace(/.(?=.{4})/g, '•');
+    const [showCardDetails, setShowCardDetails] = useState(false);
+    const cardNumber = "4242 4242 4242 4242"
+    const cardDate = "07/27"
+    const cardCVC = "123"
 
     const handleToggle = () => {
-        setShowCardNumber(!showCardNumber);
+        setShowCardDetails(!showCardDetails);
     };
     return (
         <Modal size={"xl"} isOpen={isOpen} onClose={onClose} isCentered>
@@ -41,31 +42,87 @@ const CardDetailModal = ({ isOpen, onClose }: ApplicationCollabType) => {
                         <HealeLogoWhite mt={-6} ms={-4} w={44} h={20} />
                         <Heading fontSize={"lg"}>Jeff Bridges</Heading>
                         <Flex mt={20} justifyContent={"space-between"} alignItems={"center"}>
-                            <Box>
-                                <Tooltip
-                                    py={2}
-                                    px={3}
-                                    borderRadius={8}
-                                    fontSize="xs"
-                                    placement="top"
-                                    hasArrow
-                                    label={showCardNumber ? 'Click to hide' : 'Click to reveal'}
-                                    bg="Primary.Navy"
-                                    color="white"
-                                >
-                                    <Text cursor="pointer" onClick={handleToggle}>
-                                        {showCardNumber ? cardNumber : maskedCardNumber}
+                            <Tooltip
+                                py={2}
+                                px={3}
+                                borderRadius={8}
+                                fontSize="xs"
+                                placement="top"
+                                hasArrow
+                                label={showCardDetails ? 'Click to hide' : 'Click to reveal'}
+                                bg="Primary.Navy"
+                                color="white"
+                            >
+                                <Box cursor="pointer" onClick={handleToggle}>
+                                    <Text>
+                                        {showCardDetails ? cardNumber : "•••• •••• •••• 4242"}
                                     </Text>
-                                </Tooltip>
-                                <Flex gap={2}>
-                                    <Text>EXP ••/••</Text>
-                                    <Text>CVC •••</Text>
-                                </Flex>
-                            </Box>
+                                    <Flex gap={4}>
+                                        <Text>EXP: {showCardDetails ? cardDate : "••/••"}</Text>
+                                        <Text>CVC: {showCardDetails ? cardCVC : "•••"}</Text>
+                                    </Flex>
+                                </Box>
+                            </Tooltip>
                             <WifiIcon w={8} h={8} />
                         </Flex>
                     </Box>
+                    <Flex mt={8} gap={2}>
+                        <ButtonTheme small btnText='Reset PIN' />
+                        <ButtonTheme small btnText='Lost or Damaged Card' />
+                        <ButtonTheme small btnText='Freeze Card' />
+                        <ButtonTheme small btnText='Edit Nickname' />
+                    </Flex>
+                    <Box my={8}>
+                        <Text fontSize={"sm"} color={"Neutral.700"}>Weekly Spending Limit</Text>
+                        <Heading fontSize={"md"} color={"Primary.Navy"}>$350.00</Heading>
+                    </Box>
+                    <Grid gap={2} gridTemplateColumns={"repeat(2,1fr)"} borderTop={"1px solid"} borderColor={"Neutral.200"} pt={8}>
+                        <Box>
+                            <Box mb={4}>
+                                <Text color={"Neutral.700"} fontSize={"sm"}>Card Type</Text>
+                                <Heading color={"Primary.Navy"} fontSize={"md"}>Business</Heading>
+                            </Box>
+                            <Box mb={4}>
+                                <Text color={"Neutral.700"} fontSize={"sm"}>Added on</Text>
+                                <Heading color={"Primary.Navy"} fontSize={"md"}>May 25</Heading>
+                            </Box>
+                            <Box mb={4}>
+                                <Text color={"Neutral.700"} fontSize={"sm"}>Billing Address</Text>
+                                <Heading color={"Primary.Navy"} fontSize={"md"}>525 Brannon Street Unit 24
+                                    Los Angeles, CA 90026</Heading>
+                            </Box>
+                        </Box>
+                        <Box>
+                            <Box mb={4}>
+                                <Text color={"Neutral.700"} fontSize={"sm"}>Business</Text>
+                                <Heading color={"Primary.Navy"} fontSize={"md"}>Knight-Swift</Heading>
+                            </Box>
+                            <Box mb={4}>
+                                <Text color={"Neutral.700"} fontSize={"sm"}>Created by</Text>
+                                <Heading color={"Primary.Navy"} fontSize={"md"}>Jane Brown</Heading>
+                            </Box>
+                            <Box mb={4}>
+                                <Text color={"Neutral.700"} fontSize={"sm"}>Type</Text>
+                                <Heading color={"Primary.Navy"} fontSize={"md"}>Virtual</Heading>
+                            </Box>
+                        </Box>
+                    </Grid>
+                    <Box mt={8}>
+                        <Heading fontSize={"sm"} color={"Primary.Navy"} mb={2}>Account</Heading>
+                        <Box py={3} px={4} border={"1px solid"} borderColor={"Neutral.200"} borderRadius={"8px"}>
+                            <Text color={"Primary.Navy"}>Checking ••1038</Text>
+                            <Text color={"Neutral.700"}>$2,023,267.12</Text>
+                        </Box>
+                    </Box>
                 </ModalBody>
+                <ModalFooter gap={4} p={0} mt={8}>
+                    <ButtonTheme invert btnText='Cancel Card' chakraProps={{
+                        w: "100%"
+                    }} />
+                    <ButtonTheme primary btnText='View all Transaction' chakraProps={{
+                        w: "100%"
+                    }} />
+                </ModalFooter>
             </ModalContent>
         </Modal>
     )

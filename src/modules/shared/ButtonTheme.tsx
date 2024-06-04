@@ -7,6 +7,7 @@ const ButtonTheme = ({
   chakraProps,
   primary,
   invert,
+  small,
   isLoading,
   isDisabled
 }: ButtonThemeType) => {
@@ -15,8 +16,7 @@ const ButtonTheme = ({
       isLoading={isLoading}
       type='submit'
       isDisabled={isDisabled}
-      //   type={type || 'button'}
-      {...chakraProps}
+      h={small ? 8 : 10}
       bg={
         invert
           ? 'white'
@@ -26,14 +26,17 @@ const ButtonTheme = ({
       }
       color={primary ? 'white' : 'Primary.Blue'}
       borderRadius={'40px'}
-      p={'8px 24px'}
+      px={small ? 3 : 6}
+      py={2}
       borderWidth={'1px'}
       borderColor={invert ? 'Neutral.200' : ''}
       transition={'all .35s ease-in-out'}
+      fontSize={small ? "xs" : "md"}
       fontWeight={'500'}
       _hover={{
         transform: 'translateY(-2px)',
       }}
+      {...chakraProps}
     >
       {btnText}
     </Button>
