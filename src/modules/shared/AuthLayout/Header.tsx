@@ -11,7 +11,7 @@ const AuthHeader = () => {
             <Container maxW={"80%"}>
                 <Flex justifyContent={"space-between"} alignItems={"center"}>
                     <Link to={"/"}>
-                        <HealeLogo w={52} h={20} />
+                        <HealeLogo ms={-6} w={52} h={20} />
                     </Link>
                     {location.pathname === "/login" ?
                         <Link to={"/"}>
