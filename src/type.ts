@@ -46,6 +46,10 @@ export interface ApplicationCollabType {
   isOpen: boolean;
 }
 
+export interface CardModalType extends ApplicationCollabType {
+  onOpenReset: () => void;
+}
+
 export interface TransactionDetailType extends ApplicationCollabType {
   title: string;
   account: string;

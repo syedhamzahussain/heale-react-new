@@ -1,10 +1,31 @@
-import { Badge, Box, Flex, Heading, Table, TableContainer, Tbody, Td, Text, Th, Thead, Tr, useDisclosure } from '@chakra-ui/react'
-import { CardIcon } from 'modules/shared/Icons'
-import React from 'react'
-import CardDetailModal from './components/CardDetailModal'
+import { Badge, Box, Flex, Heading, Table, TableContainer, Tbody, Td, Text, Th, Thead, Tr } from '@chakra-ui/react';
+import React, { useState } from 'react';
+import CardDetailModal from './components/CardDetailModal';
+import ResetCardPinModal from './components/ResetCardPinModal';
+import { CardIcon } from 'modules/shared/Icons';
 
 const Cards = () => {
-    const { isOpen, onOpen, onClose } = useDisclosure()
+    const [isCardModalOpen, setCardModalOpen] = useState(false);
+    const [isResetModalOpen, setResetModalOpen] = useState(false);
+
+    const openCardModal = () => {
+        setCardModalOpen(true);
+    };
+
+    const closeCardModal = () => {
+        setCardModalOpen(false);
+    };
+
+    const openResetModal = () => {
+        setCardModalOpen(false);
+        setResetModalOpen(true);
+    };
+
+    const closeResetModal = () => {
+        setResetModalOpen(false);
+        setCardModalOpen(true);
+    };
+
     return (
         <Box>
             <Heading fontSize={"3xl"}>
@@ -50,7 +71,7 @@ const Cards = () => {
                         </Tr>
                     </Thead>
                     <Tbody>
-                        <Tr onClick={onOpen}>
+                        <Tr onClick={openCardModal}>
                             <Td rowSpan={2}>
                                 <Flex gap={2} alignItems={"center"}>
                                     <Heading fontSize={"sm"} color={"Primary.Navy"}>Jeff Bridges</Heading>
@@ -67,7 +88,7 @@ const Cards = () => {
                             <Td><Text color={"Neutral.700"}>Business</Text></Td>
                             <Td>Checking ••••0101</Td>
                         </Tr>
-                        <Tr onClick={onOpen}>
+                        <Tr onClick={openCardModal}>
                             <Td>
                                 <Flex gap={2} alignItems={"center"}>
                                     <CardIcon />
@@ -81,9 +102,10 @@ const Cards = () => {
                     </Tbody>
                 </Table>
             </TableContainer>
-            <CardDetailModal isOpen={isOpen} onClose={onClose} />
+            <CardDetailModal isOpen={isCardModalOpen} onClose={closeCardModal} onOpenReset={openResetModal} />
+            <ResetCardPinModal isOpen={isResetModalOpen} onClose={closeResetModal} />
         </Box>
     )
 }
 
-export default Cards
+export default Cards;
