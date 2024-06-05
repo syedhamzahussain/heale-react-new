@@ -11,7 +11,7 @@ import ButtonTheme from 'modules/shared/ButtonTheme';
 import FormErrorMessage from 'modules/shared/FormErrorMessage';
 import React from 'react';
 import { useForm } from 'react-hook-form';
-import { Link } from 'react-router-dom';
+import { Link, useNavigate } from 'react-router-dom';
 import { signin } from 'services/auth.service';
 import {
   saveTokenToLocalStorage,
@@ -20,6 +20,7 @@ import {
 import { toastSuccess } from 'utils/helpers';
 
 const Login = () => {
+  const navigate = useNavigate();
   const {
     handleSubmit,
     register,
@@ -43,7 +44,10 @@ const Login = () => {
       );
       saveUserToLocalStorage(response?.data?.user);
       // now redirect to dashboard
-      window.location.href = '/dashboard';
+      // window.location.href = '/dashboard';
+      navigate('/dashboard');
+      console.log(response);
+
     }
   };
 

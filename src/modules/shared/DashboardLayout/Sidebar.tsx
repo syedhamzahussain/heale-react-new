@@ -187,7 +187,7 @@ const Sidebar = () => {
         borderTop={'1px solid'}
         borderColor={'Neutral.200'}
       >
-        <HealeLogo w={32} h={16} />
+        <HealeLogo ms={-4} w={32} h={16} />
       </Box>
     </Box>
   );
