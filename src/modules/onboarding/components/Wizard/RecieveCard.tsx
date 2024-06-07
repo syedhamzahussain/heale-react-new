@@ -52,8 +52,8 @@ const RecieveCard = () => {
                     w: "100%",
                     onClick: () => {
                         let type = getAccountTypeFromLocalStorage();
-                        // removeTokenFromLocalStorage();
                         if(type === 'Personal'){
+                            removeTokenFromLocalStorage();
                             window.location.href = '/extension'
                         }else{
                             nextStep()

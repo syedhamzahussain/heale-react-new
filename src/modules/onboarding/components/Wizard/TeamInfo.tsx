@@ -6,6 +6,7 @@ import { useWizard } from 'react-use-wizard';
 import axios from 'axios';
 import { saveTeamUser } from 'services/user.service';
 import { toastSuccess } from 'utils/helpers';
+import { removeTokenFromLocalStorage } from 'services/localStorage.sevice';
 
 const TeamInfo = () => {
     const { nextStep, previousStep } = useWizard();
@@ -70,7 +71,8 @@ const TeamInfo = () => {
             if(newUser){
                 return;
             }else{
-                nextStep();
+                removeTokenFromLocalStorage();
+                window.location.href = '/extension'
             }
             }
         } catch (error) {
