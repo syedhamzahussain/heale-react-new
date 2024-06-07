@@ -1,13 +1,85 @@
-import { Box, Checkbox, Flex, FormControl, FormLabel, Grid, GridItem, Heading, Input, Link, Select, Stack, Text } from '@chakra-ui/react'
-import ButtonTheme from 'modules/shared/ButtonTheme'
-import React from 'react'
-import PhoneInput from 'react-phone-input-2'
-import { useWizard } from 'react-use-wizard'
+import { Box, Checkbox, Flex, FormControl, FormLabel, Grid, GridItem, Heading, Input, Link, Select, Stack, Text } from '@chakra-ui/react';
+import ButtonTheme from 'modules/shared/ButtonTheme';
+import React, { useState } from 'react';
+import PhoneInput from 'react-phone-input-2';
+import { useWizard } from 'react-use-wizard';
+import axios from 'axios';
+import { saveTeamUser } from 'services/user.service';
+import { toastSuccess } from 'utils/helpers';
 
 const TeamInfo = () => {
-    const { previousStep } = useWizard();
+    const { nextStep, previousStep } = useWizard();
+    const [formData, setFormData] = useState({
+        role: '',
+        firstName: '',
+        lastName: '',
+        email: '',
+        phoneType: '',
+        phoneNumber: '',
+        extension: '',
+        employeeId: '',
+        permissions: {
+            accessWallet: false,
+            permissionName: false
+        },
+        agree: false
+    });
+
+    const handleChange = (e: any) => {
+        const { name, value, type, checked } = e.target;
+        setFormData(prevState => ({
+            ...prevState,
+            [name]: type === 'checkbox' ? checked : value
+        }));
+    };
+
+    const handlePhoneChange = (value: any) => {
+        setFormData(prevState => ({
+            ...prevState,
+            phoneNumber: value
+        }));
+    };
+
+    const handleCreateAnotherUser = async () => {
+        
+        await handleSubmit(true);
+        // reset the form
+        setFormData({
+            role: '',
+            firstName: '',
+            lastName: '',
+            email: '',
+            phoneType: '',
+            phoneNumber: '',
+            extension: '',
+            employeeId: '',
+            permissions: {
+                accessWallet: false,
+                permissionName: false
+            },
+            agree: false
+        });
+    };
+
+    const handleSubmit = async (newUser = false) => {
+        try {
+            // Replace the URL with your API endpoint
+            const response = await saveTeamUser(formData);
+            if (response?.status) {
+            toastSuccess(response?.data?.message);
+            if(newUser){
+                return;
+            }else{
+                nextStep();
+            }
+            }
+        } catch (error) {
+            console.error('Error creating user:', error);
+        }
+    };
+
     return (
-        <Box w={"50%"} >
+        <Box w={"50%"}>
             <Heading as={"h4"} mb={4} fontSize={"3xl"} color={"Primary.Navy"}>Create new user</Heading>
             <Text mb={8} color={"Neutral.800"}>Create a new user for your team, and select their required permissions.</Text>
             <Box sx={{
@@ -22,7 +94,7 @@ const TeamInfo = () => {
                 <Box p={"3px 16px 3px 16px"} pos={"absolute"} fontSize={"xs"} top={0} color={"white"} bgColor={"Primary.Blue"} borderRadius={"0px 0px 4px 4px"}>User 1</Box>
                 <FormControl mb={6}>
                     <FormLabel>Role</FormLabel>
-                    <Select placeholder='Select Role'>
+                    <Select name='role' value={formData.role} onChange={handleChange} placeholder='Select Role'>
                         <option value='option1'>Option 1</option>
                         <option value='option2'>Option 2</option>
                         <option value='option3'>Option 3</option>
@@ -31,22 +103,22 @@ const TeamInfo = () => {
                 <Grid gridTemplateColumns={"repeat(2,1fr)"} mb={6} gap={6}>
                     <FormControl>
                         <FormLabel>First Name <Text as={"span"} color={"Secondary.Red"}>*</Text></FormLabel>
-                        <Input type='text' placeholder='Your first name' />
+                        <Input type='text' name='firstName' value={formData.firstName} onChange={handleChange} placeholder='Your first name' />
                     </FormControl>
                     <FormControl>
                         <FormLabel>Last Name <Text as={"span"} color={"Secondary.Red"}>*</Text></FormLabel>
-                        <Input type='text' placeholder='Your last name' />
+                        <Input type='text' name='lastName' value={formData.lastName} onChange={handleChange} placeholder='Your last name' />
                     </FormControl>
                 </Grid>
                 <FormControl mb={6}>
                     <FormLabel>Email <Text as={"span"} color={"Secondary.Red"}>*</Text></FormLabel>
-                    <Input type='email' placeholder='Email address' />
+                    <Input type='email' name='email' value={formData.email} onChange={handleChange} placeholder='Email address' />
                 </FormControl>
-                <Grid mb={6} gridTemplateColumns={"repeat(7,1fr)"} gap={6} >
+                <Grid mb={6} gridTemplateColumns={"repeat(7,1fr)"} gap={6}>
                     <GridItem colSpan={2}>
                         <FormControl>
                             <FormLabel>Phone Type</FormLabel>
-                            <Select placeholder='Select'>
+                            <Select name='phoneType' value={formData.phoneType} onChange={handleChange} placeholder='Select'>
                                 <option value='option1'>Option 1</option>
                                 <option value='option2'>Option 2</option>
                                 <option value='option3'>Option 3</option>
@@ -55,10 +127,12 @@ const TeamInfo = () => {
                     </GridItem>
                     <GridItem colSpan={3}>
                         <FormControl>
-                            <FormLabel>Phone Number</FormLabel>
+                            <FormLabel>Phone Number <Text as={"span"} color={"Secondary.Red"}>*</Text></FormLabel>
                             <Box sx={{ '.react-tel-input .form-control': { height: '2.75rem !important', width: '100%', paddingLeft: '38px', borderColor: '#E3E3FA', borderRadius: '5px' }, '.react-tel-input .flag-dropdown': { borderRight: '0', borderTopLeftRadius: '5px', borderColor: '#E3E3FA', borderBottomLeftRadius: '5px' }, '.react-tel-input .selected-flag': { backgroundColor: "#fff", borderTopLeftRadius: '5px', borderBottomLeftRadius: '5px' }, '.react-tel-input .flag-dropdown .selected-flag .flag .arrow': { display: 'none' } }}>
                                 <PhoneInput
                                     country={'us'}
+                                    value={formData.phoneNumber}
+                                    onChange={handlePhoneChange}
                                 />
                             </Box>
                         </FormControl>
@@ -66,13 +140,13 @@ const TeamInfo = () => {
                     <GridItem colSpan={2}>
                         <FormControl>
                             <FormLabel>Extension</FormLabel>
-                            <Input type='text' placeholder='+1' />
+                            <Input type='text' name='extension' value={formData.extension} onChange={handleChange} placeholder='+1' />
                         </FormControl>
                     </GridItem>
                 </Grid>
                 <FormControl mb={6}>
                     <FormLabel>Employee ID</FormLabel>
-                    <Input type='text' placeholder='Enter your employee ID' />
+                    <Input type='text' name='employeeId' value={formData.employeeId} onChange={handleChange} placeholder='Enter your employee ID' />
                 </FormControl>
                 <FormControl>
                     <FormLabel>Permissions</FormLabel>
@@ -82,11 +156,11 @@ const TeamInfo = () => {
                             top: "6px"
                         }
                     }}>
-                        <Checkbox alignItems={'start'} size={"md"} >
+                        <Checkbox name='accessWallet' isChecked={formData.permissions.accessWallet} onChange={handleChange} alignItems={'start'} size={"md"}>
                             Access business wallet
                             <Text color={"Neutral.700"}>Placeholder</Text>
                         </Checkbox>
-                        <Checkbox alignItems={'start'} size={"md"} >
+                        <Checkbox name='permissionName' isChecked={formData.permissions.permissionName} onChange={handleChange} alignItems={'start'} size={"md"}>
                             Permission name
                             <Text color={"Neutral.700"}>Placeholder</Text>
                         </Checkbox>
@@ -95,20 +169,22 @@ const TeamInfo = () => {
             </Box>
             <ButtonTheme invert btnText='Create a another user' chakraProps={{
                 w: "100%",
-                my: 8
+                my: 8,
+                onClick: handleCreateAnotherUser
             }} />
-            <Checkbox color={"Primary.Navy"} size={"sm"}>I agree to the <Link color='Primary.Blue'> User Agreement</Link>, and I have read the <Link color='Primary.Blue'>Privacy Policy</Link>.</Checkbox>
+            <Checkbox name='agree' isChecked={formData.agree} onChange={handleChange} color={"Primary.Navy"} size={"sm"}>I agree to the <Link color='Primary.Blue'> User Agreement</Link>, and I have read the <Link color='Primary.Blue'>Privacy Policy</Link>.</Checkbox>
             <Flex gap={4} mt={8}>
                 <ButtonTheme btnText='Back' chakraProps={{
                     w: "100%",
                     onClick: () => previousStep(),
                 }} />
                 <ButtonTheme btnText='Submit' primary chakraProps={{
-                    w: "100%"
+                    w: "100%",
+                    onClick: () => handleSubmit(false)
                 }} />
             </Flex>
         </Box>
-    )
-}
+    );
+};
 
-export default TeamInfo
+export default TeamInfo;

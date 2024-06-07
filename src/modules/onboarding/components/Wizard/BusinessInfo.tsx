@@ -27,6 +27,7 @@ import {
   states,
 } from 'utils/constants';
 import { toastSuccess } from 'utils/helpers';
+import { getAccountTypeFromLocalStorage } from 'services/localStorage.sevice';
 
 const BusinessInfo = () => {
   const { nextStep, previousStep } = useWizard();
@@ -61,6 +62,7 @@ const BusinessInfo = () => {
       zip_code: values?.zip_code,
       business_website: values?.business_website,
       duns_number: values?.duns_number,
+      account_type: getAccountTypeFromLocalStorage(),
     };
     const response = await saveUserBusiness(userBusiness);
     if (response?.status) {

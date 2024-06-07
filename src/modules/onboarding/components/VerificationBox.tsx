@@ -1,10 +1,9 @@
-import { Box, Flex, Heading, Text } from '@chakra-ui/react'
-import ButtonTheme from 'modules/shared/ButtonTheme'
-import React from 'react'
-import { Link } from 'react-router-dom'
-import { VerificationBoxType } from 'type'
+import { Box, Flex, Heading, Text } from '@chakra-ui/react';
+import ButtonTheme from 'modules/shared/ButtonTheme';
+import React from 'react';
+import { VerificationBoxType } from 'type';
 
-const VerificationBox = ({ status, title, link }: VerificationBoxType) => {
+const VerificationBox = ({ status, title, onClick }: VerificationBoxType) => {
     return (
         <Flex gap={8} flexDir='column' bgColor={"white"} borderRadius={8} p={4} border={"1px solid"} borderColor={"Neutral.200"}>
             {status ?
@@ -14,14 +13,13 @@ const VerificationBox = ({ status, title, link }: VerificationBoxType) => {
                 <Heading fontSize={"sm"} color={"Primary.Navy"}>{title}</Heading>
                 <Text fontSize={"sm"} color={"Neutral.700"}>0 / 5 questions completed</Text>
             </Box>
-            <Link to={link}>
-                <ButtonTheme primary btnText={!status ? 'Start' : 'Edit'} chakraProps={{
-                    fontSize: "sm",
-                    w: "max-content"
-                }} />
-            </Link>
+            <ButtonTheme primary btnText={!status ? 'Start' : 'Edit'} chakraProps={{
+                fontSize: "sm",
+                w: "max-content",
+                onClick: onClick
+            }} />
         </Flex>
-    )
-}
+    );
+};
 
-export default VerificationBox
+export default VerificationBox;

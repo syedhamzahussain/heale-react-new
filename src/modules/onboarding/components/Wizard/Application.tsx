@@ -5,10 +5,16 @@ import React from 'react'
 import VerificationBox from '../VerificationBox'
 import ApplicationCollabModal from '../ApplicationCollabModal'
 import { useWizard } from 'react-use-wizard'
+import BrokerModal from 'modules/onboarding/business/broker'
+import CarrierModal from 'modules/onboarding/business/Carrier'
+import LenderModal from 'modules/onboarding/business/lender'
 
 const Application = () => {
     const { isOpen, onOpen, onClose } = useDisclosure()
     const { nextStep, previousStep } = useWizard();
+    const { isOpen: isBrokerOpen, onOpen: onBrokerOpen, onClose: onBrokerClose } = useDisclosure();
+    const { isOpen: isCarrierOpen, onOpen: onCarrierOpen, onClose: onCarrierClose } = useDisclosure();
+    const { isOpen: isLenderOpen, onOpen: onLenderOpen, onClose: onLenderClose } = useDisclosure();
     return (
         <Grid gridTemplateColumns={"repeat(3,1fr)"} gap={16}>
             <GridItem colSpan={2}>
@@ -33,9 +39,11 @@ const Application = () => {
                     </Box>
                 </Flex>
                 <Grid gridTemplateColumns={"repeat(2,1fr)"} gap={6}>
-                    <VerificationBox link='/business/broker' title='Broker' />
-                    <VerificationBox link='/business/carrier' title='Carrier' />
-                    <VerificationBox link='/business/lender' title='Lender' />
+                    <VerificationBox onClick={onBrokerOpen} title='Broker' />
+                    <VerificationBox onClick={onCarrierOpen} title='Carrier' />
+                    <VerificationBox onClick={onLenderOpen} title='Lender' />
+
+                    {/* <VerificationBox link='/business/lender' title='Lender' /> */}
                 </Grid>
                 <Flex gap={4} mt={8}>
                     <ButtonTheme btnText='Back' chakraProps={{
@@ -59,6 +67,9 @@ const Application = () => {
                 }} />
             </Flex>
             <ApplicationCollabModal isOpen={isOpen} onClose={onClose} />
+            <BrokerModal isOpen={isBrokerOpen} onClose={onBrokerClose} />
+            <CarrierModal isOpen={isCarrierOpen} onClose={onCarrierClose} />
+            <LenderModal isOpen={isLenderOpen} onClose={onLenderClose} />
         </Grid>
     )
 }

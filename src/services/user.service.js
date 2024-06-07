@@ -13,6 +13,11 @@ export const saveUserBusiness = async (userBusiness) => {
   return response;
 };
 
+export const saveTeamUser = async (user) => {
+  const response = await POST(`${apiUrl.users}/team`, user);
+  return response;
+};
+
 export const verifyUser = async (body) => {
   const response = await POST(`${apiUrl.users}/${getUserFromLocalStorage()?.id}/verify-email`, body);
   return response;

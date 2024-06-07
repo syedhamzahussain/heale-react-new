@@ -21,7 +21,7 @@ const BusinessAccount = () => {
                     <VerifyIdentity />
                     <BusinessInfo />
                     <Application />
-                    <ConnectAccount />
+                    <ConnectAccount />  
                     <RecieveCard />
                     <TeamInfo />
                 </Wizard>

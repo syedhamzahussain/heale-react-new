@@ -36,10 +36,11 @@ export interface MessageBoxType {
 }
 
 export interface VerificationBoxType {
-  title: string;
-  link: string;
   status?: boolean;
+  title: string;
+  onClick: () => void;
 }
+
 
 export interface ApplicationCollabType {
   onClose: () => void;
