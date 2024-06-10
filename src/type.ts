@@ -41,7 +41,6 @@ export interface VerificationBoxType {
   onClick: () => void;
 }
 
-
 export interface ApplicationCollabType {
   onClose: () => void;
   isOpen: boolean;
@@ -49,6 +48,7 @@ export interface ApplicationCollabType {
 
 export interface CardModalType extends ApplicationCollabType {
   onOpenReset: () => void;
+  onOpenLostDamage: () => void;
 }
 
 export interface TransactionDetailType extends ApplicationCollabType {

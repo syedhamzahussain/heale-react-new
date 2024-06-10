@@ -4,7 +4,7 @@ import { CardIcon, HealeLogoWhite, WifiIcon } from 'modules/shared/Icons';
 import React, { useState } from 'react';
 import { CardModalType } from 'type';
 
-const CardDetailModal = ({ isOpen, onClose, onOpenReset }: CardModalType) => {
+const CardDetailModal = ({ isOpen, onClose, onOpenReset, onOpenLostDamage }: CardModalType) => {
     const [showCardDetails, setShowCardDetails] = useState(false);
     const cardNumber = "4242 4242 4242 4242";
     const cardDate = "07/27";
@@ -17,6 +17,11 @@ const CardDetailModal = ({ isOpen, onClose, onOpenReset }: CardModalType) => {
     const handleResetModal = () => {
         onClose();
         onOpenReset();
+    };
+
+    const handleLostDamageModal = () => {
+        onClose();
+        onOpenLostDamage();
     };
 
     return (
@@ -74,7 +79,7 @@ const CardDetailModal = ({ isOpen, onClose, onOpenReset }: CardModalType) => {
                     </Box>
                     <Flex mt={8} gap={2}>
                         <ButtonTheme small btnText='Reset PIN' chakraProps={{ onClick: handleResetModal }} />
-                        <ButtonTheme small btnText='Lost or Damaged Card' />
+                        <ButtonTheme small btnText='Lost or Damaged Card' chakraProps={{ onClick: handleLostDamageModal }} />
                         <ButtonTheme small btnText='Freeze Card' />
                         <ButtonTheme small btnText='Edit Nickname' />
                     </Flex>
