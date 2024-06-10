@@ -9,7 +9,7 @@ import 'App.css';
 import BusinessAccount from 'modules/onboarding/business/business-account';
 import Broker from 'modules/onboarding/business/broker';
 import Lender from 'modules/onboarding/business/lender';
-import Carrier from 'modules/onboarding/business/Carrier';
+import Carrier from 'modules/onboarding/business/carrier';
 import 'react-toastify/dist/ReactToastify.css';
 import BrowserExtension from 'modules/browserExtension';
 import 'App.css';

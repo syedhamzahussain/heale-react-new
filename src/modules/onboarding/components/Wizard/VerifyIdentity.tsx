@@ -346,11 +346,11 @@ const VerifyIdentity = () => {
                   type="text"
                   isInvalid={errors?.ssn?.message ? true : false}
                   errorBorderColor="Secondary.Red"
-                  placeholder="4 digits"
+                  placeholder="(123-45-6789)"
                   {...register('ssn', {
                     required: 'This field is required',
                     maxLength: {
-                      value: 4,
+                      value: 9,
                       message: 'Maximum length should be 4',
                     },
                     pattern: {

@@ -36,22 +36,19 @@ const AddSuretyModal = ({ isOpen, onClose }: ApplicationCollabType) => {
                                 <Input type='text' placeholder='1523020' />
                             </FormControl>
                             <FormControl>
-                                <FormLabel>Type</FormLabel>
-                                <Select placeholder='Select'>
-                                    <option value='option1'>Option 1</option>
-                                    <option value='option2'>Option 2</option>
-                                    <option value='option3'>Option 3</option>
-                                </Select>
+                                <FormLabel>Amount</FormLabel>
+                                <Input type='number' placeholder='120' />
+
                             </FormControl>
                         </Grid>
                         <Grid mb={6} gridTemplateColumns={"repeat(2,1fr)"} gap={6} >
                             <FormControl>
                                 <FormLabel>Policy Number</FormLabel>
-                                <Input type='text' placeholder='MC-123456' />
+                                <Input type='text' placeholder='12345678' />
                             </FormControl>
                             <FormControl>
                                 <FormLabel>Start Date</FormLabel>
-                                <Input type='text' placeholder='MC-123456' />
+                                <Input type='text' placeholder='MM/DD/YYYY' />
                             </FormControl>
                         </Grid>
                         <Flex cursor={"pointer"} {...getRootProps()} gap={3} bgColor={"Neutral.100"} direction="column" width="100%" height="120px" border="2px dashed rgba(52, 70, 238, 1)" borderRadius={20} alignItems="center" justifyContent="center">

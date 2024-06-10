@@ -117,27 +117,55 @@ export const healUsage = [
 ]
 
 export const employmentStatus = [
-    "Option 1",
-    "Option 2",
-    "Option 3",
+    "Full-time employee",
+    "Part-time employee",
+    "Self-employed",
+    "Independent contractor",
+    "Temp worker",
+    "Seasonal employee",
+    "Leased employee",
+    "Intern",
+    "Apprentice",
+
 ]
 
 export const sourceOfFunds = [
-    "Option 1",
-    "Option 2",
-    "Option 3",
+    "Personal income",
+    "Business activities",
+    "Savings",
+    "Sale of property/assets",
+    "Loan",
+    "Inheritance",
+    "Gift or donation",
+    "Pension fund",
+    "Tax refund",
+    "Legal settlement",
 ]
 
 export const businessEntityTypes = [
-    "Option 1",
-    "Option 2",
-    "Option 3",
+    "Sole Proprietor",
+    "Limited Liability Company (LLC)",
+    "C Corporation",
+    "S Corporation",
+    "Partnership",
+    "General Partnership",
+    "Trust",
+    "Nonprofit",
+    
 ]
 
 export const businessTypes = [
-    "Option 1",
-    "Option 2",
-    "Option 3",
+    "Freight Broker",
+    "Carrier",
+    "Freight Forwarder",
+    "Lender",
+    "Retailer",
+    "Distributor",
+    "Wholesaler",
+    "Manufacturer",
+    "Courier",
+    "Last-Mile Services",
+
 ]
 
 export const phoneTypes = [

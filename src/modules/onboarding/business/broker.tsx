@@ -60,10 +60,19 @@ const BrokerModal = ({ isOpen, onClose }: any) => {
                             </FormControl>
                             <FormControl>
                                 <FormLabel>Services</FormLabel>
-                                <Select name='services' value={formData.services} onChange={handleChange} placeholder='Select'>
-                                    <option value='option1'>Option 1</option>
-                                    <option value='option2'>Option 2</option>
-                                    <option value='option3'>Option 3</option>
+                                <Select name='services' value={formData.services} onChange={handleChange} placeholder='Select' multiple>
+                                    <option value='Full Truckload (FTL)'>Full Truckload (FTL)</option>
+                                    <option value='Flatbed Trucks'>Flatbed Trucks</option>
+                                    <option value='Refrigerated Trucks (Reefers)'>Refrigerated Trucks (Reefers)</option>
+                                    <option value='3PL/4PL'>3PL/4PL</option>
+                                    <option value='Last-Mile Services'>Last-Mile Services</option>
+                                    <option value='Less-Than-Truckload (LTL)'>Less-Than-Truckload (LTL)</option>
+                                    <option value='Partial Truckload (PTL)'>Partial Truckload (PTL)</option>
+                                    <option value='Drayage'>Drayage</option>
+                                    <option value='Air Freight'>Air Freight</option>
+                                    <option value='Rail'>Rail</option>
+                                    <option value='Intermodal'>Intermodal</option>
+                                    <option value='Specialized'>Specialized</option>
                                 </Select>
                             </FormControl>
                         </Grid>
@@ -99,9 +108,9 @@ const BrokerModal = ({ isOpen, onClose }: any) => {
                                     <Tr>
                                         <Td>CNA Hardy</Td>
                                         <Td>Type</Td>
-                                        <Td>1384950</Td>
-                                        <Td>3/16/16</Td>
-                                        <Td>3/16/26</Td>
+                                        <Td>123-4567-8910</Td>
+                                        <Td>MM/DD/YYYY6</Td>
+                                        <Td>MM/DD/YYYY</Td>
                                         <Td>
                                             <Flex gap={4}>
                                                 <TrashIcon />
@@ -149,7 +158,7 @@ const BrokerModal = ({ isOpen, onClose }: any) => {
                                 <Thead>
                                     <Tr>
                                         <Th>Insurer</Th>
-                                        <Th>Type</Th>
+                                        <Th>Amount</Th>
                                         <Th>Policy Number</Th>
                                         <Th>Start Date</Th>
                                         <Th>Expiration Date</Th>
@@ -159,10 +168,10 @@ const BrokerModal = ({ isOpen, onClose }: any) => {
                                 <Tbody>
                                     <Tr>
                                         <Td>CNA Hardy</Td>
-                                        <Td>Type</Td>
-                                        <Td>1384950</Td>
-                                        <Td>3/16/16</Td>
-                                        <Td>3/16/26</Td>
+                                        <Td>Amount</Td>
+                                        <Td>12345678</Td>
+                                        <Td>MM/DD/YYYY</Td>
+                                        <Td>MM/DD/YYYY</Td>
                                         <Td>
                                             <Flex gap={4}>
                                                 <TrashIcon />

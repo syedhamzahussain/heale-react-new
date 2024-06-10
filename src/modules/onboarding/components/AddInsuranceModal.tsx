@@ -38,9 +38,21 @@ const AddInsuranceModal = ({ isOpen, onClose }: ApplicationCollabType) => {
                             <FormControl>
                                 <FormLabel>Type</FormLabel>
                                 <Select placeholder='Select'>
-                                    <option value='option1'>Option 1</option>
-                                    <option value='option2'>Option 2</option>
-                                    <option value='option3'>Option 3</option>
+                                    <option value='Commercial Auto Liability'>Commercial Auto Liability</option>
+                                    <option value='Motor Truck Cargo Insurance'>Motor Truck Cargo Insurance</option>
+                                    <option value='General Liability Insurance'>General Liability Insurance</option>
+                                    <option value="Workers’ Compensation Insurance">Workers’ Compensation Insurance</option>
+                                    <option value="Physical Damage Insurance">Physical Damage Insurance</option>
+                                    <option value="Non-Trucking Liability Insurance">Non-Trucking Liability Insurance</option>
+                                    <option value="Trailer Interchange Insurance">Trailer Interchange Insurance</option>
+                                    <option value="Cargo Legal Liability Insurance">Cargo Legal Liability Insurance</option>
+                                    <option value="Hazardous Materials Insurance">Hazardous Materials Insurance</option>
+                                    <option value="Pollution Liability Insurance">Pollution Liability Insurance</option>
+                                    <option value="Cyber Liability Insurance">Cyber Liability Insurance</option>
+                                    <option value="Commercial Property Insurance">Commercial Property Insurance</option>
+                                    <option value="Business Interruption Insurance">Business Interruption Insurance</option>
+                                    <option value="Employee Practices Liability Insurance (EPLI)">Employee Practices Liability Insurance (EPLI)</option>
+                                    <option value="Umbrella/Excess Liability Insurance">Umbrella/Excess Liability Insurance</option>
                                 </Select>
                             </FormControl>
                         </Grid>
@@ -48,19 +60,19 @@ const AddInsuranceModal = ({ isOpen, onClose }: ApplicationCollabType) => {
                             <GridItem colSpan={3}>
                                 <FormControl>
                                     <FormLabel>Policy Number</FormLabel>
-                                    <Input type='text' placeholder='MC-123456' />
+                                    <Input type='text' placeholder='123-4567-8910' />
                                 </FormControl>
                             </GridItem>
                             <GridItem colSpan={2}>
                                 <FormControl>
                                     <FormLabel>Start Date</FormLabel>
-                                    <Input type='text' placeholder='MC-123456' />
+                                    <Input type='text' placeholder='MM/DD/YYYY' />
                                 </FormControl>
                             </GridItem>
                             <GridItem colSpan={2}>
                                 <FormControl>
                                     <FormLabel>End Date</FormLabel>
-                                    <Input type='text' placeholder='MC-123456' />
+                                    <Input type='text' placeholder='MM/DD/YYYY' />
                                 </FormControl>
                             </GridItem>
                         </Grid>

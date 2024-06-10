@@ -35,7 +35,7 @@ export const bankOptions = [
   {
     id: 0,
     title: 'Personal bank account',
-    desc: 'Export invite opacity invite distribute ipsum pen boolean auto pixel. Subtract vertical clip outline follower content.',
+    desc: 'Add a personal bank account to deposit and withdraw funds and earn rewards',
     icon: PersonalIcon,
   },
   {

@@ -1,13 +1,36 @@
-import React from "react";
+import React, { useEffect, useState } from "react";
 import { useWizard } from "react-use-wizard";
 import { Box, Flex, Text } from "@chakra-ui/react";
 import { CheckIcon, RadioIcon, RadioIconChecked } from "../../../shared/Icons";
 import { useLocation } from "react-router-dom";
 
 
+export const usePersistedStep = (initialStep: number): [number, React.Dispatch<React.SetStateAction<number>>, () => void] => {
+    const [step, setStep] = useState(() => {
+      const savedStep = localStorage.getItem("onboardingStep");
+      return savedStep ? Number(savedStep) : initialStep;
+    });
+  
+    useEffect(() => {
+      localStorage.setItem("onboardingStep", step.toString());
+    }, [step]);
+  
+    const clearStep = () => {
+      localStorage.removeItem("onboardingStep");
+    };
+  
+    return [step, setStep, clearStep];
+  };
+
+
 const StepFormHeader = () => {
     const { activeStep, stepCount } = useWizard();
+    const [step, setStep, clearStep] = usePersistedStep(0);
     const location = useLocation();
+    useEffect(() => {
+        setStep(activeStep);
+    }, [activeStep, setStep]);
+
     const stepNames = location.pathname.includes("business")
         ? [
             "Personal Info",
@@ -32,8 +55,8 @@ const StepFormHeader = () => {
 
         for (let i = 0; i < stepCount; i++) {
             const stepNumber = i + 1;
-            const isActive = stepNumber <= activeStep + 1;
-            const isCompleted = stepNumber < activeStep + 1;
+            const isActive = stepNumber <= step + 1;
+            const isCompleted = stepNumber < step + 1;
 
             steps.push(
                 <Flex alignItems={"center"} gap={2} key={i} pb={4} pos={"relative"} _after={{

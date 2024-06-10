@@ -150,7 +150,7 @@ const ConnectAccount = () => {
         Add bank account
       </Heading>
       <Text mb={8} color={'Neutral.800'}>
-        Choose your Account Type
+        Select the bank account type that you would like to add to your HEALE Account
       </Text>
       <Box {...group} w={'100%'}>
         {bankOptions.map((value) => {

@@ -50,10 +50,19 @@ const CarrierModal = ({ isOpen, onClose }: any) => {
                             </FormControl>
                             <FormControl>
                                 <FormLabel>Services</FormLabel>
-                                <Select name='services' value={formData.services} onChange={handleChange} placeholder='Select'>
-                                    <option value='option1'>Option 1</option>
-                                    <option value='option2'>Option 2</option>
-                                    <option value='option3'>Option 3</option>
+                                <Select name='services' value={formData.services} onChange={handleChange} placeholder='Select' multiple>
+                                <option value='Full Truckload (FTL)'>Full Truckload (FTL)</option>
+                                    <option value='Flatbed Trucks'>Flatbed Trucks</option>
+                                    <option value='Refrigerated Trucks (Reefers)'>Refrigerated Trucks (Reefers)</option>
+                                    <option value='3PL/4PL'>3PL/4PL</option>
+                                    <option value='Last-Mile Services'>Last-Mile Services</option>
+                                    <option value='Less-Than-Truckload (LTL)'>Less-Than-Truckload (LTL)</option>
+                                    <option value='Partial Truckload (PTL)'>Partial Truckload (PTL)</option>
+                                    <option value='Drayage'>Drayage</option>
+                                    <option value='Air Freight'>Air Freight</option>
+                                    <option value='Rail'>Rail</option>
+                                    <option value='Intermodal'>Intermodal</option>
+                                    <option value='Specialized'>Specialized</option>
                                 </Select>
                             </FormControl>
                         </Grid>

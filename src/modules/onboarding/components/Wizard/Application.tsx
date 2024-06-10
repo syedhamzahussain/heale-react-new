@@ -6,7 +6,7 @@ import VerificationBox from '../VerificationBox'
 import ApplicationCollabModal from '../ApplicationCollabModal'
 import { useWizard } from 'react-use-wizard'
 import BrokerModal from 'modules/onboarding/business/broker'
-import CarrierModal from 'modules/onboarding/business/Carrier'
+import CarrierModal from 'modules/onboarding/business/carrier'
 import LenderModal from 'modules/onboarding/business/lender'
 
 const Application = () => {

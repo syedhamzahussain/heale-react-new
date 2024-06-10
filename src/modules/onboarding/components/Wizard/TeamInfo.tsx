@@ -7,9 +7,12 @@ import axios from 'axios';
 import { saveTeamUser } from 'services/user.service';
 import { toastSuccess } from 'utils/helpers';
 import { removeTokenFromLocalStorage } from 'services/localStorage.sevice';
+import { usePersistedStep } from './WizardHeader';
 
 const TeamInfo = () => {
     const { nextStep, previousStep } = useWizard();
+    const [step, setStep, clearStep] = usePersistedStep(0);
+
     const [formData, setFormData] = useState({
         role: '',
         firstName: '',
@@ -72,6 +75,7 @@ const TeamInfo = () => {
                 return;
             }else{
                 removeTokenFromLocalStorage();
+                clearStep();
                 window.location.href = '/extension'
             }
             }

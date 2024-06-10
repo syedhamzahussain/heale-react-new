@@ -77,11 +77,8 @@ const ApplicationCollabModal = ({ isOpen, onClose }: ApplicationCollabType) => {
                         </Grid>
                         <FormControl mb={6}>
                             <FormLabel>Location/Base</FormLabel>
-                            <Select placeholder='Select'>
-                                <option value='option1'>Option 1</option>
-                                <option value='option2'>Option 2</option>
-                                <option value='option3'>Option 3</option>
-                            </Select>
+                            <Input type='text' placeholder='Location' />
+
                         </FormControl>
                         <FormControl mb={6}>
                             <FormLabel>Employee ID</FormLabel>

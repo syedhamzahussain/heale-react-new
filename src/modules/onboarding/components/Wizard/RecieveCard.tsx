@@ -4,8 +4,10 @@ import { HealeLogoWhite, WifiIcon } from 'modules/shared/Icons';
 import React, { useState } from 'react';
 import { useWizard } from 'react-use-wizard';
 import { getAccountTypeFromLocalStorage, removeTokenFromLocalStorage } from 'services/localStorage.sevice';
+import { usePersistedStep } from './WizardHeader';
 
 const RecieveCard = () => {
+    const [step, setStep, clearStep] = usePersistedStep(0);
     const { nextStep, previousStep } = useWizard();
     const [showShippingAddress, setShowShippingAddress] = useState(false);
 
@@ -53,6 +55,7 @@ const RecieveCard = () => {
                     onClick: () => {
                         let type = getAccountTypeFromLocalStorage();
                         if(type === 'Personal'){
+                            clearStep();
                             removeTokenFromLocalStorage();
                             window.location.href = '/extension'
                         }else{
