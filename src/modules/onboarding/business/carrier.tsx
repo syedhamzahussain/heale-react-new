@@ -5,8 +5,9 @@ import ButtonTheme from 'modules/shared/ButtonTheme';
 import { PencilIcon, PlusIcon, TrashIcon } from 'modules/shared/Icons';
 import React, { useState } from 'react';
 import AddInsuranceModal from '../components/AddInsuranceModal';
+import { updateQuestionsInfo } from 'utils/helpers';
 
-const CarrierModal = ({ isOpen, onClose }: any) => {
+const CarrierModal = ({ isOpen, onClose, setQuestions }: any) => {
     const [formData, setFormData] = useState({
         usdotNumber: '',
         docketNumber: '',
@@ -16,7 +17,9 @@ const CarrierModal = ({ isOpen, onClose }: any) => {
 
     const handleChange = (e: any) => {
         const { name, value } = e.target;
-        setFormData({ ...formData, [name]: value });
+        const updatedFormData = { ...formData, [name]: value };
+        setFormData(updatedFormData);
+        updateQuestionsInfo(updatedFormData, setQuestions, "carrier");
     };
 
     const { isOpen: isInsuranceOpen, onOpen: onInsuranceOpen, onClose: onInsuranceClose } = useDisclosure();
@@ -51,7 +54,7 @@ const CarrierModal = ({ isOpen, onClose }: any) => {
                             <FormControl>
                                 <FormLabel>Services</FormLabel>
                                 <Select name='services' value={formData.services} onChange={handleChange} placeholder='Select' multiple>
-                                <option value='Full Truckload (FTL)'>Full Truckload (FTL)</option>
+                                    <option value='Full Truckload (FTL)'>Full Truckload (FTL)</option>
                                     <option value='Flatbed Trucks'>Flatbed Trucks</option>
                                     <option value='Refrigerated Trucks (Reefers)'>Refrigerated Trucks (Reefers)</option>
                                     <option value='3PL/4PL'>3PL/4PL</option>

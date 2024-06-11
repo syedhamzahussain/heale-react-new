@@ -3,15 +3,18 @@ import {
 } from '@chakra-ui/react';
 import ButtonTheme from 'modules/shared/ButtonTheme';
 import React, { useState } from 'react';
+import { updateQuestionsInfo } from 'utils/helpers';
 
-const LenderModal = ({ isOpen, onClose }: any) => {
+const LenderModal = ({ isOpen, onClose, setQuestions }: any) => {
     const [formData, setFormData] = useState({
         nmlsNumber: ''
     });
 
     const handleChange = (e: any) => {
         const { name, value } = e.target;
-        setFormData({ ...formData, [name]: value });
+        const updatedFormData = { ...formData, [name]: value };
+        setFormData(updatedFormData);
+        updateQuestionsInfo(updatedFormData, setQuestions, "lender");
     };
 
     return (

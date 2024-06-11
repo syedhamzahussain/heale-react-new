@@ -35,11 +35,18 @@ export interface MessageBoxType {
   handleClick?: () => void;
 }
 
+
+type questionProps = {
+  [key: string]: {
+    filled: number;
+    total: number;
+  };
+};
+
 export interface VerificationBoxType {
   status?: boolean;
   title: string;
-  answerCount: number;
-  questionCount: number;
+  questions: questionProps;
   onClick: () => void;
 }
 

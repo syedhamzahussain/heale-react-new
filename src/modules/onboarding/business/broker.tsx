@@ -8,6 +8,7 @@ import { PencilIcon, PlusIcon, TrashIcon } from 'modules/shared/Icons';
 import AddInsuranceModal from '../components/AddInsuranceModal';
 import AddSuretyModal from '../components/AddSuretyModal';
 import axios from 'axios';
+import { updateQuestionsInfo } from 'utils/helpers';
 
 interface FormData {
     usdotNumber: string;
@@ -33,7 +34,7 @@ interface SuretyBond {
     expirationDate: string;
 }
 
-const BrokerModal = ({ isOpen, onClose, onCompletionUpdate }: any) => {
+const BrokerModal = ({ isOpen, onClose, onCompletionUpdate, setQuestions }: any) => {
     const [formData, setFormData] = useState<FormData>({
         usdotNumber: '',
         docketNumber: '',
@@ -44,7 +45,9 @@ const BrokerModal = ({ isOpen, onClose, onCompletionUpdate }: any) => {
 
     const handleChange = (e: ChangeEvent<HTMLInputElement | HTMLSelectElement>) => {
         const { name, value } = e.target;
-        setFormData({ ...formData, [name]: value });
+        const updatedFormData = { ...formData, [name]: value };
+        setFormData(updatedFormData);
+        updateQuestionsInfo(updatedFormData, setQuestions, "broker");
     };
 
     const handleSelectChange = (e: ChangeEvent<HTMLSelectElement>) => {
