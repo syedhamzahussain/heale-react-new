@@ -1,15 +1,35 @@
-import { Box, Flex, FormControl, FormLabel, Grid, Heading, Input, Modal, ModalBody, ModalCloseButton, ModalContent, ModalFooter, ModalHeader, ModalOverlay, Select, Text } from '@chakra-ui/react'
-import ButtonTheme from 'modules/shared/ButtonTheme'
-import { UploadIcon } from 'modules/shared/Icons'
-import React from 'react'
-import { useDropzone } from 'react-dropzone'
-import { ApplicationCollabType } from 'type'
+import React, { useState } from 'react';
+import {
+    Box, FormControl, FormLabel, Grid, Heading, Input, Modal, ModalBody, ModalCloseButton, ModalContent, ModalFooter, ModalHeader, ModalOverlay, Select, Text, Flex, Button
+} from '@chakra-ui/react';
+import { useDropzone } from 'react-dropzone';
+import ButtonTheme from 'modules/shared/ButtonTheme';
+import { UploadIcon } from 'modules/shared/Icons';
 
-const AddSuretyModal = ({ isOpen, onClose }: ApplicationCollabType) => {
+const AddSuretyModal = ({ isOpen, onClose, onAdd }: any) => {
+    const [suretyBondData, setSuretyBondData] = useState({
+        insurer: '',
+        amount: '',
+        policyNumber: '',
+        startDate: '',
+        expirationDate: ''
+    });
+
+    const handleChange = (e: any) => {
+        const { name, value } = e.target;
+        setSuretyBondData({ ...suretyBondData, [name]: value }); 
+    };
+
+    const handleSubmit = () => {
+        onAdd(suretyBondData);
+        onClose();
+    };
+
     const {
         getRootProps,
         getInputProps,
     } = useDropzone();
+
     return (
         <Modal size={"3xl"} isOpen={isOpen} onClose={onClose} isCentered>
             <ModalOverlay />
@@ -33,22 +53,21 @@ const AddSuretyModal = ({ isOpen, onClose }: ApplicationCollabType) => {
                         <Grid gridTemplateColumns={"repeat(2,1fr)"} mb={6} gap={6}>
                             <FormControl>
                                 <FormLabel>Insurer</FormLabel>
-                                <Input type='text' placeholder='1523020' />
+                                <Input type='text' name='insurer' value={suretyBondData.insurer} onChange={handleChange} placeholder='1523020' />
                             </FormControl>
                             <FormControl>
                                 <FormLabel>Amount</FormLabel>
-                                <Input type='number' placeholder='120' />
-
+                                <Input type='number' name='amount' value={suretyBondData.amount} onChange={handleChange} placeholder='120' />
                             </FormControl>
                         </Grid>
                         <Grid mb={6} gridTemplateColumns={"repeat(2,1fr)"} gap={6} >
                             <FormControl>
                                 <FormLabel>Policy Number</FormLabel>
-                                <Input type='text' placeholder='12345678' />
+                                <Input type='text' name='policyNumber' value={suretyBondData.policyNumber} onChange={handleChange} placeholder='12345678' />
                             </FormControl>
                             <FormControl>
                                 <FormLabel>Start Date</FormLabel>
-                                <Input type='text' placeholder='MM/DD/YYYY' />
+                                <Input type='text' name='startDate' value={suretyBondData.startDate} onChange={handleChange} placeholder='MM/DD/YYYY' />
                             </FormControl>
                         </Grid>
                         <Flex cursor={"pointer"} {...getRootProps()} gap={3} bgColor={"Neutral.100"} direction="column" width="100%" height="120px" border="2px dashed rgba(52, 70, 238, 1)" borderRadius={20} alignItems="center" justifyContent="center">
@@ -61,12 +80,13 @@ const AddSuretyModal = ({ isOpen, onClose }: ApplicationCollabType) => {
 
                 <ModalFooter gap={8} p={0}>
                     <ButtonTheme primary btnText='Upload' chakraProps={{
-                        w: "100%"
+                        w: "100%",
+                        onClick: handleSubmit
                     }} />
                 </ModalFooter>
             </ModalContent>
         </Modal>
-    )
-}
+    );
+};
 
-export default AddSuretyModal
+export default AddSuretyModal;

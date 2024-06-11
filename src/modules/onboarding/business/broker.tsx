@@ -1,31 +1,74 @@
+import React, { useState, ChangeEvent } from 'react';
 import {
-    Table,
-    Thead,
-    Tbody,
-    Tfoot,
-    Tr,
-    Th,
-    Td,
-    TableContainer, Box, FormControl, FormLabel, Grid, Heading, Input, Select, Text, Flex, Modal, ModalOverlay, ModalContent, ModalHeader, ModalFooter, ModalBody, ModalCloseButton, Button, useDisclosure
+    Box, FormControl, FormLabel, Grid, Heading, Input, Select, Text, Flex, Modal, ModalOverlay, ModalContent, ModalHeader, ModalFooter, ModalBody, ModalCloseButton, Button, useDisclosure, Table, Thead, Tbody, Tr, Th, Td, TableContainer,
+    Tfoot
 } from '@chakra-ui/react';
 import ButtonTheme from 'modules/shared/ButtonTheme';
 import { PencilIcon, PlusIcon, TrashIcon } from 'modules/shared/Icons';
-import React, { useState } from 'react';
 import AddInsuranceModal from '../components/AddInsuranceModal';
 import AddSuretyModal from '../components/AddSuretyModal';
+import axios from 'axios';
 
-const BrokerModal = ({ isOpen, onClose }: any) => {
-    const [formData, setFormData] = useState({
+interface FormData {
+    usdotNumber: string;
+    docketNumber: string;
+    services: string[];
+    insurance: Insurance[];
+    suretyBond: SuretyBond[];
+}
+
+interface Insurance {
+    insurer: string;
+    type: string;
+    policyNumber: string;
+    startDate: string;
+    expirationDate: string;
+}
+
+interface SuretyBond {
+    insurer: string;
+    amount: string;
+    policyNumber: string;
+    startDate: string;
+    expirationDate: string;
+}
+
+const BrokerModal = ({ isOpen, onClose, onCompletionUpdate }: any) => {
+    const [formData, setFormData] = useState<FormData>({
         usdotNumber: '',
         docketNumber: '',
-        services: '',
+        services: [],
         insurance: [],
         suretyBond: []
     });
 
-    const handleChange = (e: any) => {
+    const handleChange = (e: ChangeEvent<HTMLInputElement | HTMLSelectElement>) => {
         const { name, value } = e.target;
         setFormData({ ...formData, [name]: value });
+    };
+
+    const handleSelectChange = (e: ChangeEvent<HTMLSelectElement>) => {
+        const { name, options } = e.target;
+        const selectedOptions = Array.from(options).filter(option => option.selected).map(option => option.value);
+        setFormData({ ...formData, [name]: selectedOptions });
+    };
+
+    const handleInsuranceAdd = (insurance: Insurance) => {
+        setFormData({ ...formData, insurance: [...formData.insurance, insurance] });
+    };
+
+    const handleSuretyBondAdd = (suretyBond: SuretyBond) => {
+        setFormData({ ...formData, suretyBond: [...formData.suretyBond, suretyBond] });
+    };
+
+    const handleSubmit = async () => {
+        try {
+            await axios.post('/api/broker', formData);
+            onCompletionUpdate('Broker', formData.usdotNumber && formData.docketNumber && formData.services.length ? 5 : 0);
+            onClose();
+        } catch (error) {
+            console.error(error);
+        }
     };
 
     const { isOpen: isInsuranceOpen, onOpen: onInsuranceOpen, onClose: onInsuranceClose } = useDisclosure();
@@ -60,7 +103,7 @@ const BrokerModal = ({ isOpen, onClose }: any) => {
                             </FormControl>
                             <FormControl>
                                 <FormLabel>Services</FormLabel>
-                                <Select name='services' value={formData.services} onChange={handleChange} placeholder='Select' multiple>
+                                <Select name='services' value={formData.services} onChange={handleSelectChange} placeholder='Select' multiple>
                                     <option value='Full Truckload (FTL)'>Full Truckload (FTL)</option>
                                     <option value='Flatbed Trucks'>Flatbed Trucks</option>
                                     <option value='Refrigerated Trucks (Reefers)'>Refrigerated Trucks (Reefers)</option>
@@ -105,19 +148,21 @@ const BrokerModal = ({ isOpen, onClose }: any) => {
                                     </Tr>
                                 </Thead>
                                 <Tbody>
-                                    <Tr>
-                                        <Td>CNA Hardy</Td>
-                                        <Td>Type</Td>
-                                        <Td>123-4567-8910</Td>
-                                        <Td>MM/DD/YYYY6</Td>
-                                        <Td>MM/DD/YYYY</Td>
-                                        <Td>
-                                            <Flex gap={4}>
-                                                <TrashIcon />
-                                                <PencilIcon />
-                                            </Flex>
-                                        </Td>
-                                    </Tr>
+                                    {formData.insurance.map((item, index) => (
+                                        <Tr key={index}>
+                                            <Td>{item.insurer}</Td>
+                                            <Td>{item.type}</Td>
+                                            <Td>{item.policyNumber}</Td>
+                                            <Td>{item.startDate}</Td>
+                                            <Td>{item.expirationDate}</Td>
+                                            <Td>
+                                                <Flex gap={4}>
+                                                    <TrashIcon />
+                                                    <PencilIcon />
+                                                </Flex>
+                                            </Td>
+                                        </Tr>
+                                    ))}
                                     <Tr>
                                         <Td colSpan={6}>
                                             <Text fontWeight={"400"} color={"Primary.Navy"} textAlign={"center"}>
@@ -166,19 +211,21 @@ const BrokerModal = ({ isOpen, onClose }: any) => {
                                     </Tr>
                                 </Thead>
                                 <Tbody>
-                                    <Tr>
-                                        <Td>CNA Hardy</Td>
-                                        <Td>Amount</Td>
-                                        <Td>12345678</Td>
-                                        <Td>MM/DD/YYYY</Td>
-                                        <Td>MM/DD/YYYY</Td>
-                                        <Td>
-                                            <Flex gap={4}>
-                                                <TrashIcon />
-                                                <PencilIcon />
-                                            </Flex>
-                                        </Td>
-                                    </Tr>
+                                    {formData.suretyBond.map((item, index) => (
+                                        <Tr key={index}>
+                                            <Td>{item.insurer}</Td>
+                                            <Td>{item.amount}</Td>
+                                            <Td>{item.policyNumber}</Td>
+                                            <Td>{item.startDate}</Td>
+                                            <Td>{item.expirationDate}</Td>
+                                            <Td>
+                                                <Flex gap={4}>
+                                                    <TrashIcon />
+                                                    <PencilIcon />
+                                                </Flex>
+                                            </Td>
+                                        </Tr>
+                                    ))}
                                     <Tr>
                                         <Td colSpan={6}>
                                             <Text fontWeight={"400"} color={"Primary.Navy"} textAlign={"center"}>
@@ -203,10 +250,12 @@ const BrokerModal = ({ isOpen, onClose }: any) => {
                 <ModalFooter>
                     <Flex gap={4} maxW={"50%"} margin={"0 auto"} mt={8}>
                         <ButtonTheme btnText='Back' chakraProps={{ w: "100%", onClick: onClose }} />
-                        <ButtonTheme btnText='Submit' primary chakraProps={{ w: "100%" }} />
+                        <ButtonTheme btnText='Submit' primary chakraProps={{ w: "100%", onClick: handleSubmit }} />
                     </Flex>
                 </ModalFooter>
             </ModalContent>
+            <AddInsuranceModal isOpen={isInsuranceOpen} onClose={onInsuranceClose} onAdd={handleInsuranceAdd} />
+            <AddSuretyModal isOpen={isSuretyOpen} onClose={onSuretyClose} onAdd={handleSuretyBondAdd} />
         </Modal>
     );
 };

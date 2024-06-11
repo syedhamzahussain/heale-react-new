@@ -28,6 +28,7 @@ import ProtectedRoute from 'modules/onboarding/components/ProtectedRoute';
 import Heale from 'modules/heale';
 import StatementsHeale from 'modules/heale/statement';
 import Cards from 'modules/cards';
+import Application from 'modules/onboarding/components/Wizard/Application';
 
 function App() {
   return (
@@ -37,6 +38,7 @@ function App() {
         <Routes>
           <Route element={<AuthLayout />}>
             <Route path="/" element={<Welcome />} />
+            <Route path="/application" element={<Application />} />
             <Route path="/login" element={<Login />} />
             <Route path="/forgot-password" element={<ForgotPassword />} />
             <Route path="/verify-reset-code" element={<ResetCode />} />

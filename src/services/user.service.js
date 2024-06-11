@@ -1,5 +1,5 @@
 import { apiUrl } from "../utils/constants";
-import { PATCH, POST, PUT } from "./api.service.wrapper";
+import { GET, PATCH, POST, PUT } from "./api.service.wrapper";
 import { getUserFromLocalStorage } from "./localStorage.sevice";
 
 export const saveProfile = async (userProfile) => {
@@ -12,6 +12,22 @@ export const saveUserBusiness = async (userBusiness) => {
   const response = await POST(`${apiUrl.users}/business`, userBusiness);
   return response;
 };
+
+export const saveBusinessApplication = async (application) => {
+  const response = await POST(`${apiUrl.users}/business/application`, application);
+  return response;
+};
+
+export const saveBusinessCollab = async (user) => {
+  const response = await POST(`${apiUrl.users}/business/collab`, user);
+  return response;
+};
+
+export const getBusinessApplication = async (businessId) => {
+  const response = await GET(`/application?business=${businessId}`);
+  return response;
+};
+
 
 export const saveTeamUser = async (user) => {
   const response = await POST(`${apiUrl.users}/team`, user);

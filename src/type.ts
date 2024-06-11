@@ -38,6 +38,8 @@ export interface MessageBoxType {
 export interface VerificationBoxType {
   status?: boolean;
   title: string;
+  answerCount: number;
+  questionCount: number;
   onClick: () => void;
 }
 

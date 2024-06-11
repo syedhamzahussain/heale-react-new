@@ -1,15 +1,37 @@
-import { Box, Flex, FormControl, FormLabel, Grid, GridItem, Heading, Input, Modal, ModalBody, ModalCloseButton, ModalContent, ModalFooter, ModalHeader, ModalOverlay, Select, Text } from '@chakra-ui/react'
-import ButtonTheme from 'modules/shared/ButtonTheme'
-import { UploadIcon } from 'modules/shared/Icons'
-import React from 'react'
-import { useDropzone } from 'react-dropzone'
-import { ApplicationCollabType } from 'type'
+// AddInsuranceModal.tsx
+import React, { useState } from 'react';
+import {
+    Box, FormControl, FormLabel, Grid, Heading, Input, Modal, ModalBody, ModalCloseButton, ModalContent, ModalFooter, ModalHeader, ModalOverlay, Select, Text, Flex, Button,
+    GridItem
+} from '@chakra-ui/react';
+import { useDropzone } from 'react-dropzone';
+import ButtonTheme from 'modules/shared/ButtonTheme';
+import { UploadIcon } from 'modules/shared/Icons';
 
-const AddInsuranceModal = ({ isOpen, onClose }: ApplicationCollabType) => {
+const AddInsuranceModal = ({ isOpen, onClose, onAdd }: any) => {
+    const [insuranceData, setInsuranceData] = useState({
+        insurer: '',
+        type: '',
+        policyNumber: '',
+        startDate: '',
+        expirationDate: ''
+    });
+
+    const handleChange = (e: any) => {
+        const { name, value } = e.target;
+        setInsuranceData({ ...insuranceData, [name]: value });
+    };
+
+    const handleSubmit = () => {
+        onAdd(insuranceData);
+        onClose();
+    };
+
     const {
         getRootProps,
         getInputProps,
     } = useDropzone();
+
     return (
         <Modal size={"3xl"} isOpen={isOpen} onClose={onClose} isCentered>
             <ModalOverlay />
@@ -33,11 +55,11 @@ const AddInsuranceModal = ({ isOpen, onClose }: ApplicationCollabType) => {
                         <Grid gridTemplateColumns={"repeat(2,1fr)"} mb={6} gap={6}>
                             <FormControl>
                                 <FormLabel>Insurer</FormLabel>
-                                <Input type='text' placeholder='1523020' />
+                                <Input type='text' name='insurer' value={insuranceData.insurer} onChange={handleChange} placeholder='1523020' />
                             </FormControl>
                             <FormControl>
                                 <FormLabel>Type</FormLabel>
-                                <Select placeholder='Select'>
+                                <Select name='type' value={insuranceData.type} onChange={handleChange} placeholder='Select'>
                                     <option value='Commercial Auto Liability'>Commercial Auto Liability</option>
                                     <option value='Motor Truck Cargo Insurance'>Motor Truck Cargo Insurance</option>
                                     <option value='General Liability Insurance'>General Liability Insurance</option>
@@ -60,19 +82,19 @@ const AddInsuranceModal = ({ isOpen, onClose }: ApplicationCollabType) => {
                             <GridItem colSpan={3}>
                                 <FormControl>
                                     <FormLabel>Policy Number</FormLabel>
-                                    <Input type='text' placeholder='123-4567-8910' />
+                                    <Input type='text' name='policyNumber' value={insuranceData.policyNumber} onChange={handleChange} placeholder='123-4567-8910' />
                                 </FormControl>
                             </GridItem>
                             <GridItem colSpan={2}>
                                 <FormControl>
                                     <FormLabel>Start Date</FormLabel>
-                                    <Input type='text' placeholder='MM/DD/YYYY' />
+                                    <Input type='text' name='startDate' value={insuranceData.startDate} onChange={handleChange} placeholder='MM/DD/YYYY' />
                                 </FormControl>
                             </GridItem>
                             <GridItem colSpan={2}>
                                 <FormControl>
                                     <FormLabel>End Date</FormLabel>
-                                    <Input type='text' placeholder='MM/DD/YYYY' />
+                                    <Input type='text' name='expirationDate' value={insuranceData.expirationDate} onChange={handleChange} placeholder='MM/DD/YYYY' />
                                 </FormControl>
                             </GridItem>
                         </Grid>
@@ -86,12 +108,13 @@ const AddInsuranceModal = ({ isOpen, onClose }: ApplicationCollabType) => {
 
                 <ModalFooter gap={8} p={0}>
                     <ButtonTheme primary btnText='Upload' chakraProps={{
-                        w: "100%"
+                        w: "100%",
+                        onClick: handleSubmit
                     }} />
                 </ModalFooter>
             </ModalContent>
         </Modal>
-    )
-}
+    );
+};
 
-export default AddInsuranceModal
+export default AddInsuranceModal;
