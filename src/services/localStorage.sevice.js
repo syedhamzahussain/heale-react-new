@@ -36,3 +36,26 @@ export const getAccountTypeFromLocalStorage = () => {
 export const removeAccountTypeFromLocalStorage = () => {
   localStorage.removeItem('accountType');
 };
+
+export const setQuestionaireToLocalStorage = (newFormData) => {
+  // Retrieve the existing data from localStorage
+  const existingData = getQuestionaireToLocalStorage() || {};
+
+  // Update the existing data with the new data
+  const updatedData = {
+    ...existingData,
+    ...newFormData
+  };
+
+  // Save the updated data back to localStorage
+  localStorage.setItem('applicationQuestionaire', JSON.stringify(updatedData));
+}
+
+
+export const getQuestionaireToLocalStorage = () => {
+  return JSON.parse(localStorage.getItem('applicationQuestionaire'));
+}
+
+export const removeQuestionaireToLocalStorage = () => {
+  localStorage.removeItem('applicationQuestionaire');
+}

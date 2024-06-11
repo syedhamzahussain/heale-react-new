@@ -29,7 +29,10 @@ export const validatePasswords = (password, confirm_password, setError) => {
   return true;
 };
 
-export const updateQuestionsInfo = (data, setQuestions, type = "") => {
+export const calculateQuestions = (data) => {
+  if (!data)
+    return null
+
   const totalQuestions = Object.keys(data).length;
   const filledQuestions = Object.values(data).filter(value => {
     if (Array.isArray(value)) {
@@ -38,6 +41,15 @@ export const updateQuestionsInfo = (data, setQuestions, type = "") => {
       return value !== '';
     }
   }).length;
+
+  return { totalQuestions, filledQuestions }
+}
+
+export const updateQuestionsInfo = (data, setQuestions, type = "") => {
+  if (!data)
+    return null
+
+  const { filledQuestions, totalQuestions } = calculateQuestions(data)
 
   setQuestions(prevState => ({
     ...prevState,

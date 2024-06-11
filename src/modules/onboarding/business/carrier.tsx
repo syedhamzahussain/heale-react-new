@@ -6,19 +6,24 @@ import { PencilIcon, PlusIcon, TrashIcon } from 'modules/shared/Icons';
 import React, { useState } from 'react';
 import AddInsuranceModal from '../components/AddInsuranceModal';
 import { updateQuestionsInfo } from 'utils/helpers';
+import { getQuestionaireToLocalStorage, setQuestionaireToLocalStorage } from 'services/localStorage.sevice';
 
 const CarrierModal = ({ isOpen, onClose, setQuestions }: any) => {
+
+    let savedValues = getQuestionaireToLocalStorage() ?? {};
+
     const [formData, setFormData] = useState({
-        usdotNumber: '',
-        docketNumber: '',
-        services: '',
-        insurance: []
+        usdotNumber: savedValues['carrier']?.usdotNumber ?? '',
+        docketNumber: savedValues['carrier']?.docketNumber ?? '',
+        services: savedValues['carrier']?.services ?? '',
+        insurance: savedValues['carrier']?.insurance ?? []
     });
 
     const handleChange = (e: any) => {
         const { name, value } = e.target;
         const updatedFormData = { ...formData, [name]: value };
         setFormData(updatedFormData);
+        setQuestionaireToLocalStorage({ carrier: updatedFormData });
         updateQuestionsInfo(updatedFormData, setQuestions, "carrier");
     };
 

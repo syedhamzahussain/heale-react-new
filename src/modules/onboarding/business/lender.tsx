@@ -3,17 +3,22 @@ import {
 } from '@chakra-ui/react';
 import ButtonTheme from 'modules/shared/ButtonTheme';
 import React, { useState } from 'react';
+import { getQuestionaireToLocalStorage, setQuestionaireToLocalStorage } from 'services/localStorage.sevice';
 import { updateQuestionsInfo } from 'utils/helpers';
 
 const LenderModal = ({ isOpen, onClose, setQuestions }: any) => {
+
+    let savedValues = getQuestionaireToLocalStorage() ?? {};
+
     const [formData, setFormData] = useState({
-        nmlsNumber: ''
+        nmlsNumber: savedValues['lender']?.nmlsNumber ?? ''
     });
 
     const handleChange = (e: any) => {
         const { name, value } = e.target;
         const updatedFormData = { ...formData, [name]: value };
         setFormData(updatedFormData);
+        setQuestionaireToLocalStorage({ lender: updatedFormData });
         updateQuestionsInfo(updatedFormData, setQuestions, "lender");
     };
 

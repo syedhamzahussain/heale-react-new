@@ -9,6 +9,7 @@ import AddInsuranceModal from '../components/AddInsuranceModal';
 import AddSuretyModal from '../components/AddSuretyModal';
 import axios from 'axios';
 import { updateQuestionsInfo } from 'utils/helpers';
+import { getQuestionaireToLocalStorage, setQuestionaireToLocalStorage } from 'services/localStorage.sevice';
 
 interface FormData {
     usdotNumber: string;
@@ -35,33 +36,46 @@ interface SuretyBond {
 }
 
 const BrokerModal = ({ isOpen, onClose, onCompletionUpdate, setQuestions }: any) => {
+
+    let savedValues = getQuestionaireToLocalStorage() ?? {};
+
     const [formData, setFormData] = useState<FormData>({
-        usdotNumber: '',
-        docketNumber: '',
-        services: [],
-        insurance: [],
-        suretyBond: []
+        usdotNumber: savedValues['broker']?.usdotNumber ?? '',
+        docketNumber: savedValues['broker']?.docketNumber ?? '',
+        services: savedValues['broker']?.services ?? [],
+        insurance: savedValues['broker']?.insurance ?? [],
+        suretyBond: savedValues['broker']?.suretyBond ?? []
     });
 
     const handleChange = (e: ChangeEvent<HTMLInputElement | HTMLSelectElement>) => {
         const { name, value } = e.target;
         const updatedFormData = { ...formData, [name]: value };
         setFormData(updatedFormData);
+        setQuestionaireToLocalStorage({ broker: updatedFormData });
         updateQuestionsInfo(updatedFormData, setQuestions, "broker");
     };
 
     const handleSelectChange = (e: ChangeEvent<HTMLSelectElement>) => {
         const { name, options } = e.target;
         const selectedOptions = Array.from(options).filter(option => option.selected).map(option => option.value);
-        setFormData({ ...formData, [name]: selectedOptions });
+        const updatedFormData = { ...formData, [name]: selectedOptions };
+        setFormData(updatedFormData);
+        setQuestionaireToLocalStorage({ broker: updatedFormData });
+        updateQuestionsInfo(updatedFormData, setQuestions, "broker");
     };
 
     const handleInsuranceAdd = (insurance: Insurance) => {
-        setFormData({ ...formData, insurance: [...formData.insurance, insurance] });
+        const updatedFormData = { ...formData, insurance: [...formData.insurance, insurance] };
+        setFormData(updatedFormData);
+        setQuestionaireToLocalStorage({ broker: updatedFormData });
+        updateQuestionsInfo(updatedFormData, setQuestions, "broker");
     };
 
     const handleSuretyBondAdd = (suretyBond: SuretyBond) => {
-        setFormData({ ...formData, suretyBond: [...formData.suretyBond, suretyBond] });
+        const updatedFormData = { ...formData, suretyBond: [...formData.suretyBond, suretyBond] };
+        setFormData(updatedFormData);
+        setQuestionaireToLocalStorage({ broker: updatedFormData });
+        updateQuestionsInfo(updatedFormData, setQuestions, "broker");
     };
 
     const handleSubmit = async () => {
