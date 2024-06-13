@@ -4,11 +4,13 @@ import CardDetailModal from './components/CardDetailModal';
 import ResetCardPinModal from './components/ResetCardPinModal';
 import { CardIcon } from 'modules/shared/Icons';
 import LostDamagedCardModal from './components/LostDamagedCardModal';
+import EditNameModal from './components/EditNameModal';
 
 const Cards = () => {
     const [isCardModalOpen, setCardModalOpen] = useState(false);
     const [isResetModalOpen, setResetModalOpen] = useState(false);
     const [isLostDamageModalOpen, setLostDamageModalOpen] = useState(false);
+    const [isEditNameModalOpen, setEditNameModalOpen] = useState(false);
 
     const openCardModal = () => {
         setCardModalOpen(true);
@@ -35,6 +37,16 @@ const Cards = () => {
 
     const openLostDamageModal = () => {
         setLostDamageModalOpen(true);
+        setCardModalOpen(false);
+    }
+
+    const closeEditNameModal = () => {
+        setEditNameModalOpen(false);
+        setCardModalOpen(true);
+    };
+
+    const openEditNameModal = () => {
+        setEditNameModalOpen(true);
         setCardModalOpen(false);
     };
 
@@ -114,9 +126,10 @@ const Cards = () => {
                     </Tbody>
                 </Table>
             </TableContainer>
-            <CardDetailModal isOpen={isCardModalOpen} onClose={closeCardModal} onOpenReset={openResetModal} onOpenLostDamage={openLostDamageModal} />
+            <CardDetailModal isOpen={isCardModalOpen} onClose={closeCardModal} onOpenReset={openResetModal} onOpenLostDamage={openLostDamageModal} onOpenEditName={openEditNameModal} />
             <ResetCardPinModal isOpen={isResetModalOpen} onClose={closeResetModal} />
             <LostDamagedCardModal isOpen={isLostDamageModalOpen} onClose={closeLostDamageModal} />
+            <EditNameModal isOpen={isEditNameModalOpen} onClose={closeEditNameModal} />
         </Box>
     )
 }

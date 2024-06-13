@@ -35,7 +35,6 @@ export interface MessageBoxType {
   handleClick?: () => void;
 }
 
-
 type questionProps = {
   [key: string]: {
     filled: number;
@@ -58,6 +57,7 @@ export interface ApplicationCollabType {
 export interface CardModalType extends ApplicationCollabType {
   onOpenReset: () => void;
   onOpenLostDamage: () => void;
+  onOpenEditName: () => void;
 }
 
 export interface TransactionDetailType extends ApplicationCollabType {

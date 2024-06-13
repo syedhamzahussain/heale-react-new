@@ -4,8 +4,10 @@ import { CardIcon, HealeLogoWhite, WifiIcon } from 'modules/shared/Icons';
 import React, { useState } from 'react';
 import { CardModalType } from 'type';
 
-const CardDetailModal = ({ isOpen, onClose, onOpenReset, onOpenLostDamage }: CardModalType) => {
+const CardDetailModal = ({ isOpen, onClose, onOpenReset, onOpenLostDamage, onOpenEditName }: CardModalType) => {
     const [showCardDetails, setShowCardDetails] = useState(false);
+    const [freezeCard, setFreezeCard] = useState(false);
+    const [activeCard, setActiveCard] = useState(false);
     const cardNumber = "4242 4242 4242 4242";
     const cardDate = "07/27";
     const cardCVC = "123";
@@ -22,6 +24,11 @@ const CardDetailModal = ({ isOpen, onClose, onOpenReset, onOpenLostDamage }: Car
     const handleLostDamageModal = () => {
         onClose();
         onOpenLostDamage();
+    };
+
+    const handleEditNameModal = () => {
+        onClose();
+        onOpenEditName();
     };
 
     return (
@@ -45,13 +52,13 @@ const CardDetailModal = ({ isOpen, onClose, onOpenReset, onOpenLostDamage }: Car
                         </Flex>
                         <Progress rounded={8} sx={{
                             ".css-1jrtelv": {
-                                bgColor: "Primary.Blue"
+                                bgColor: freezeCard || activeCard ? "transparent" : "Primary.Blue"
                             }
                         }} size='md' value={90} />
                     </Box>
-                    <Box color={"white"} mt={8} p={8} borderRadius={"22px"} bgGradient={"linear-gradient(90deg, #5976FF 0%, #3446E6 100%)"} boxShadow={"0.94px 0.94px 5.65px 0px rgba(149, 153, 192, 0.22)"}>
+                    <Box color={"white"} mt={8} p={8} borderRadius={"22px"} opacity={freezeCard || activeCard ? "50%" : "100%"} bgGradient={"linear-gradient(90deg, #5976FF 0%, #3446E6 100%)"} boxShadow={"0.94px 0.94px 5.65px 0px rgba(149, 153, 192, 0.22)"}>
                         <HealeLogoWhite mt={-6} ms={-4} w={44} h={20} />
-                        <Heading fontSize={"lg"}>Jeff Bridges</Heading>
+                        <Heading fontSize={"lg"} cursor={"pointer"} onClick={() => setActiveCard(!activeCard)}>Jeff Bridges</Heading>
                         <Flex mt={20} justifyContent={"space-between"} alignItems={"center"}>
                             <Tooltip
                                 py={2}
@@ -77,12 +84,19 @@ const CardDetailModal = ({ isOpen, onClose, onOpenReset, onOpenLostDamage }: Car
                             <WifiIcon w={8} h={8} />
                         </Flex>
                     </Box>
-                    <Flex mt={8} gap={2}>
-                        <ButtonTheme small btnText='Reset PIN' chakraProps={{ onClick: handleResetModal }} />
-                        <ButtonTheme small btnText='Lost or Damaged Card' chakraProps={{ onClick: handleLostDamageModal }} />
-                        <ButtonTheme small btnText='Freeze Card' />
-                        <ButtonTheme small btnText='Edit Nickname' />
-                    </Flex>
+                    {activeCard ?
+                        <Box m={"auto"} mt={8} textAlign={"center"} w={"235px"}>
+                            <Text mb={8} fontSize={"sm"} color={"Neutral.700"} >A card was sent to you on Feb 4. Please activate your card upon arrival.</Text>
+                            <ButtonTheme small btnText='Send Replacement' />
+                        </Box>
+                        :
+                        <Flex mt={8} gap={2}>
+                            <ButtonTheme small btnText='Reset PIN' chakraProps={{ onClick: handleResetModal }} />
+                            <ButtonTheme small btnText='Lost or Damaged Card' chakraProps={{ onClick: handleLostDamageModal }} />
+                            <ButtonTheme small primary={freezeCard ? true : false} btnText={freezeCard ? 'Un Freeze Card' : 'Freeze Card'} chakraProps={{ onClick: () => setFreezeCard(!freezeCard) }} />
+                            <ButtonTheme small btnText='Edit Nickname' chakraProps={{ onClick: handleEditNameModal }} />
+                        </Flex>
+                    }
                     <Box my={8}>
                         <Text fontSize={"sm"} color={"Neutral.700"}>Weekly Spending Limit</Text>
                         <Heading fontSize={"md"} color={"Primary.Navy"}>$350.00</Heading>
