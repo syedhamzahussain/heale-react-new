@@ -6,7 +6,7 @@ import { useWizard } from 'react-use-wizard';
 import axios from 'axios';
 import { saveTeamUser } from 'services/user.service';
 import { toastSuccess } from 'utils/helpers';
-import { removeTokenFromLocalStorage } from 'services/localStorage.sevice';
+import { removeAccountTypeFromLocalStorage, removeQuestionaireToLocalStorage, removeTokenFromLocalStorage, removeUserFromLocalStorage } from 'services/localStorage.sevice';
 import { usePersistedStep } from './WizardHeader';
 
 const TeamInfo = () => {
@@ -70,14 +70,17 @@ const TeamInfo = () => {
             // Replace the URL with your API endpoint
             const response = await saveTeamUser(formData);
             if (response?.status) {
-            toastSuccess(response?.data?.message);
-            if(newUser){
-                return;
-            }else{
-                removeTokenFromLocalStorage();
-                clearStep();
-                window.location.href = '/extension'
-            }
+                toastSuccess(response?.data?.message);
+                if(newUser){
+                    return;
+                }else{
+                    removeUserFromLocalStorage();
+                    removeAccountTypeFromLocalStorage();
+                    removeQuestionaireToLocalStorage();
+                    removeTokenFromLocalStorage();
+                    clearStep();
+                    window.location.href = '/extension'
+                }
             }
         } catch (error) {
             console.error('Error creating user:', error);
