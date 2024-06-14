@@ -18,6 +18,11 @@ export const saveBusinessApplication = async (application) => {
   return response;
 };
 
+export const updateBusinessApplication = async (application, ID) => {
+  const response = await PUT(`${apiUrl.users}/business/${ID}/application`, application);
+  return response;
+};
+
 export const saveBusinessCollab = async (user) => {
   const response = await POST(`${apiUrl.users}/business/collab`, user);
   return response;

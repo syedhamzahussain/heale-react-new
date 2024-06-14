@@ -28,22 +28,23 @@ export const validatePasswords = (password, confirm_password, setError) => {
   }
   return true;
 };
-
 export const calculateQuestions = (data) => {
-  if (!data)
-    return null
+  if (!data) return null;
 
   const totalQuestions = Object.keys(data).length;
   const filledQuestions = Object.values(data).filter(value => {
     if (Array.isArray(value)) {
       return value.length > 0;
     } else {
-      return value !== '';
+      return value !== null && value !== '';
     }
   }).length;
 
-  return { totalQuestions, filledQuestions }
+  console.log(filledQuestions);
+
+  return { totalQuestions, filledQuestions };
 }
+
 
 export const updateQuestionsInfo = (data, setQuestions, type = "") => {
   if (!data)
