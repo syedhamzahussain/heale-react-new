@@ -4,12 +4,12 @@ import { CardIcon, HealeLogoWhite, WifiIcon } from 'modules/shared/Icons';
 import React, { useState } from 'react';
 import { CardModalType } from 'type';
 
-const CardDetailModal = ({ isOpen, onClose, onOpenReset, onOpenLostDamage, onOpenEditName }: CardModalType) => {
+const CardDetailModal = ({ isOpen, onClose, onOpenReset, onOpenLostDamage, onOpenEditName, onOpenActiveCard }: CardModalType) => {
     const [showCardDetails, setShowCardDetails] = useState(false);
     const [freezeCard, setFreezeCard] = useState(false);
     const [activeCard, setActiveCard] = useState(false);
     const cardNumber = "4242 4242 4242 4242";
-    const cardDate = "07/27";
+    const cardDate = "01/26";
     const cardCVC = "123";
 
     const handleToggle = () => {
@@ -29,6 +29,11 @@ const CardDetailModal = ({ isOpen, onClose, onOpenReset, onOpenLostDamage, onOpe
     const handleEditNameModal = () => {
         onClose();
         onOpenEditName();
+    };
+
+    const handleActiveCardModal = () => {
+        onClose();
+        onOpenActiveCard();
     };
 
     return (
@@ -144,9 +149,16 @@ const CardDetailModal = ({ isOpen, onClose, onOpenReset, onOpenLostDamage, onOpe
                     <ButtonTheme invert btnText='Cancel Card' chakraProps={{
                         w: "100%"
                     }} />
-                    <ButtonTheme primary btnText='View all Transaction' chakraProps={{
-                        w: "100%"
-                    }} />
+                    {activeCard ?
+                        <ButtonTheme primary btnText='Activate Card' chakraProps={{
+                            w: "100%",
+                            onClick: handleActiveCardModal
+                        }} />
+                        :
+                        <ButtonTheme primary btnText='View all Transaction' chakraProps={{
+                            w: "100%"
+                        }} />
+                    }
                 </ModalFooter>
             </ModalContent>
         </Modal>

@@ -58,6 +58,7 @@ export interface CardModalType extends ApplicationCollabType {
   onOpenReset: () => void;
   onOpenLostDamage: () => void;
   onOpenEditName: () => void;
+  onOpenActiveCard: () => void;
 }
 
 export interface TransactionDetailType extends ApplicationCollabType {

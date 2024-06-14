@@ -5,12 +5,14 @@ import ResetCardPinModal from './components/ResetCardPinModal';
 import { CardIcon } from 'modules/shared/Icons';
 import LostDamagedCardModal from './components/LostDamagedCardModal';
 import EditNameModal from './components/EditNameModal';
+import ActivateCardModal from './components/ActivateCardModal';
 
 const Cards = () => {
     const [isCardModalOpen, setCardModalOpen] = useState(false);
     const [isResetModalOpen, setResetModalOpen] = useState(false);
     const [isLostDamageModalOpen, setLostDamageModalOpen] = useState(false);
     const [isEditNameModalOpen, setEditNameModalOpen] = useState(false);
+    const [isActivateCardModalOpen, setActivateCardModalOpen] = useState(false);
 
     const openCardModal = () => {
         setCardModalOpen(true);
@@ -47,6 +49,16 @@ const Cards = () => {
 
     const openEditNameModal = () => {
         setEditNameModalOpen(true);
+        setCardModalOpen(false);
+    };
+
+    const closeActivateCardModal = () => {
+        setActivateCardModalOpen(false);
+        setCardModalOpen(true);
+    };
+
+    const openActivateCardModal = () => {
+        setActivateCardModalOpen(true);
         setCardModalOpen(false);
     };
 
@@ -126,10 +138,11 @@ const Cards = () => {
                     </Tbody>
                 </Table>
             </TableContainer>
-            <CardDetailModal isOpen={isCardModalOpen} onClose={closeCardModal} onOpenReset={openResetModal} onOpenLostDamage={openLostDamageModal} onOpenEditName={openEditNameModal} />
+            <CardDetailModal isOpen={isCardModalOpen} onClose={closeCardModal} onOpenReset={openResetModal} onOpenLostDamage={openLostDamageModal} onOpenEditName={openEditNameModal} onOpenActiveCard={openActivateCardModal} />
             <ResetCardPinModal isOpen={isResetModalOpen} onClose={closeResetModal} />
             <LostDamagedCardModal isOpen={isLostDamageModalOpen} onClose={closeLostDamageModal} />
             <EditNameModal isOpen={isEditNameModalOpen} onClose={closeEditNameModal} />
+            <ActivateCardModal isOpen={isActivateCardModalOpen} onClose={closeActivateCardModal} />
         </Box>
     )
 }
