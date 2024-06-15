@@ -61,6 +61,10 @@ export interface CardModalType extends ApplicationCollabType {
   onOpenActiveCard: () => void;
 }
 
+export interface CreateCardModalType extends ApplicationCollabType {
+  onOpenActiveCard: () => void;
+}
+
 export interface TransactionDetailType extends ApplicationCollabType {
   title: string;
   account: string;
