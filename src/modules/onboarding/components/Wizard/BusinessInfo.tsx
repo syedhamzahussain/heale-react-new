@@ -101,9 +101,13 @@ const BusinessInfo = () => {
                   errors?.employer_identification_number?.message ? true : false
                 }
                 errorBorderColor="Secondary.Red"
-                placeholder="_ _  _ _ _ _ _ _ _"
+                placeholder="XX-XXXXXXX"
                 {...register('employer_identification_number', {
                   required: 'This field is required',
+                  pattern: {
+                    value: /^\d{2}-\d{7}$/,
+                    message: 'EIN must be in the format XX-XXXXXXX',
+                  },
                 })}
               />
               <FormErrorMessage
@@ -378,9 +382,18 @@ const BusinessInfo = () => {
               <FormLabel>DUNS Number</FormLabel>
               <Input
                 type="text"
-                placeholder="Enter name"
-                {...register('duns_number')}
+                placeholder="Enter DUNS Number"
+                isInvalid={errors?.duns_number?.message ? true : false}
+                errorBorderColor="Secondary.Red"
+                {...register('duns_number', {
+                  required: 'This field is required',
+                  pattern: {
+                    value: /^\d{9}$/,
+                    message: 'DUNS must be exactly 9 digits',
+                  },
+                })}
               />
+              <FormErrorMessage message={errors?.duns_number?.message} />
             </FormControl>
             <Flex
               cursor={'pointer'}

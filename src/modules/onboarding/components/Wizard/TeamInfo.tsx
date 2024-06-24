@@ -4,7 +4,7 @@ import React, { useState } from 'react';
 import PhoneInput from 'react-phone-input-2';
 import { useWizard } from 'react-use-wizard';
 import axios from 'axios';
-import { saveTeamUser } from 'services/user.service';
+import { saveTeamUser, sendOnboardedEmail } from 'services/user.service';
 import { toastSuccess } from 'utils/helpers';
 import { removeAccountTypeFromLocalStorage, removeQuestionaireToLocalStorage, removeTokenFromLocalStorage, removeUserFromLocalStorage } from 'services/localStorage.sevice';
 import { usePersistedStep } from './WizardHeader';
@@ -74,6 +74,7 @@ const TeamInfo = () => {
                 if(newUser){
                     return;
                 }else{
+                    await sendOnboardedEmail();
                     removeUserFromLocalStorage();
                     removeAccountTypeFromLocalStorage();
                     removeQuestionaireToLocalStorage();

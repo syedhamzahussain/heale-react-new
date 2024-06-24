@@ -13,6 +13,12 @@ export const saveUserBusiness = async (userBusiness) => {
   return response;
 };
 
+export const sendOnboardedEmail = async () => {
+  const response = await POST(`${apiUrl.users}/send_onboarded_email`);
+  return response;
+};
+
+
 export const saveBusinessApplication = async (application) => {
   const response = await POST(`${apiUrl.users}/business/application`, application);
   return response;

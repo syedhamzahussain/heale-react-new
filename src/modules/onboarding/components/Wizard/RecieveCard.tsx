@@ -5,6 +5,7 @@ import React, { useState } from 'react';
 import { useWizard } from 'react-use-wizard';
 import { getAccountTypeFromLocalStorage, removeTokenFromLocalStorage } from 'services/localStorage.sevice';
 import { usePersistedStep } from './WizardHeader';
+import { sendOnboardedEmail } from 'services/user.service';
 
 const RecieveCard = () => {
     const [step, setStep, clearStep] = usePersistedStep(0);
@@ -52,10 +53,11 @@ const RecieveCard = () => {
                 }} />
                 <ButtonTheme btnText='Get started' primary chakraProps={{
                     w: "100%",
-                    onClick: () => {
+                    onClick: async () => {
                         let type = getAccountTypeFromLocalStorage();
                         if(type === 'Personal'){
                             clearStep();
+                            await sendOnboardedEmail();
                             removeTokenFromLocalStorage();
                             window.location.href = '/extension'
                         }else{

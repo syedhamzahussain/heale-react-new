@@ -47,6 +47,9 @@ const Authentication = () => {
     debounce(async () => {
       const searchParams = new URLSearchParams(location.search);
       const token = searchParams.get('token');
+      const tab = searchParams.get('tab');
+
+     
       if (token) {
         setIsLoading(true);
         const verifyEmailResponse = await verifyUser({
@@ -57,7 +60,11 @@ const Authentication = () => {
         setIsLoading(false);
         console.log('verifyEmailResponse:', verifyEmailResponse);
       } else {
-        setMessageBoxType('emailSent');
+        if(tab === 'phone'){
+          setMessageBoxType('phoneVerificationCodeSent');
+        }else{
+          setMessageBoxType('emailSent');
+        }
       }
     }, 500),
     []
