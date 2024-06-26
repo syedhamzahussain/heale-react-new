@@ -27,23 +27,42 @@ import FormErrorMessage from 'modules/shared/FormErrorMessage';
 import {
   countries,
   employmentStatus,
-  healUsage,
   sourceOfFunds,
   states,
 } from 'utils/constants';
 import { formatDateToISO, toastSuccess } from 'utils/helpers';
 import { getAccountTypeFromLocalStorage } from 'services/localStorage.sevice';
 import { saveProfile } from 'services/user.service';
-import { useEffect } from 'react';
+import { useEffect, useState } from 'react';
+
+interface Country {
+  value: string;
+  label: string;
+}
 
 const VerifyIdentity = () => {
   const { nextStep, previousStep } = useWizard();
   const {
-    handleSubmit,
     register,
-    setError,
+    handleSubmit,
+    setValue,
     formState: { errors, isSubmitting },
   } = useForm();
+  const [selectedCountries, setSelectedCountries] = useState<string[]>([]);
+
+  const handleSelectChange = (event: React.ChangeEvent<HTMLSelectElement>) => {
+    const values: string[] = Array.from(
+      event.target.selectedOptions,
+      (option) => option.value
+    );
+    setSelectedCountries(values);
+    setValue('heal_usage', values); // Manually update the value for react-hook-form
+  };
+
+  // Destructure and omit 'onChange' from register output
+  const { onChange, ref, ...rest } = register('heal_usage', {
+    required: 'This field is required',
+  });
 
   console.log('errors', errors);
 
@@ -66,11 +85,13 @@ const VerifyIdentity = () => {
       address_2,
     } = values;
     const formattedDob = formatDateToISO(day, month, year);
+    // Convert the heal_usage array to a JSON string
+    const healUsageJson = JSON.stringify(heal_usage);
     const userProfile = {
       account_type: getAccountTypeFromLocalStorage(),
       legal_first_name,
       legal_last_name,
-      heal_usage,
+      heal_usage: healUsageJson,
       citizenship,
       source_of_funds,
       employment_status,
@@ -147,23 +168,26 @@ const VerifyIdentity = () => {
             </FormControl>
             <FormControl>
               <FormLabel htmlFor="heal_usage">
-                What will you use HEALE for?
+                What countries do you operate in?
               </FormLabel>
               <Select
-                isInvalid={errors?.heal_usage?.message ? true : false}
-                errorBorderColor="Secondary.Red"
-                placeholder="Select"
-                {...register('heal_usage', {
-                  required: 'This field is required',
-                })}
+                id="heal_usage"
+                multiple
+                value={selectedCountries}
+                onChange={handleSelectChange} // Manually handle onChange
+                ref={ref} // Apply ref from register
+                {...rest} // Spread the rest of the register properties except onChange
+                isInvalid={!!errors.heal_usage}
               >
-                {healUsage.map((usage, index) => (
-                  <option key={index} value={usage}>
-                    {usage}
+                {countries.map((country: Country) => (
+                  <option key={country.value} value={country.value}>
+                    {country.label}
                   </option>
                 ))}
               </Select>
-              <FormErrorMessage message={errors?.heal_usage?.message} />
+              <FormErrorMessage>
+                {errors.heal_usage && errors.heal_usage.message}
+              </FormErrorMessage>
             </FormControl>
           </Grid>
           <Grid mb={6} gridTemplateColumns={'repeat(3,1fr)'} gap={6}>
@@ -349,18 +373,15 @@ const VerifyIdentity = () => {
                   placeholder="(123-45-6789)"
                   {...register('ssn', {
                     required: 'This field is required',
-                    maxLength: {
-                      value: 9,
-                      message: 'Maximum length should be 4',
-                    },
                     pattern: {
-                      value: /^[0-9]*$/,
-                      message: 'Only numbers are allowed',
+                      value: /^\d{9}$/,
+                      message: 'SSN must be exactly 9 digits',
                     },
                   })}
                 />
                 <FormErrorMessage message={errors?.ssn?.message} />
               </FormControl>
+
               <FormControl>
                 <FormLabel>Citizenship</FormLabel>
                 <Select

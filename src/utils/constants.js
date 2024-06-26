@@ -169,13 +169,7 @@ export const businessTypes = [
 ]
 
 export const phoneTypes = [
-    "Option 1",
-    "Option 2",
-    "Option 3",
-]
-
-export const businessIncorporationState = [
-    "Option 1",
-    "Option 2",
-    "Option 3",
+    "Business",
+    "Home",
+    "Cell",
 ]

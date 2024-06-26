@@ -10,7 +10,7 @@ import {
 } from '@chakra-ui/react';
 import ButtonTheme from 'modules/shared/ButtonTheme';
 import { InfoIcon } from 'modules/shared/Icons';
-import React, { useEffect, useState } from 'react';
+import React, { useEffect, useMemo, useState } from 'react';
 import VerificationBox from '../VerificationBox';
 import ApplicationCollabModal from '../ApplicationCollabModal';
 import { useWizard } from 'react-use-wizard';
@@ -21,9 +21,20 @@ import { getQuestionaireToLocalStorage } from 'services/localStorage.sevice';
 import { calculateQuestions } from 'utils/helpers';
 import { useLocation } from 'react-router-dom';
 import { getBusinessApplication } from 'services/user.service';
+import { useBusiness } from 'context/BusinessContext';
+
+
+interface Questions {
+  [key: string]: {
+    filled: number;
+    total: number;
+  };
+}
 
 const Application = () => {
   const { isOpen, onOpen, onClose } = useDisclosure();
+  const { selectedTypes } = useBusiness();
+  console.log(selectedTypes);
   const {
     isOpen: isBrokerOpen,
     onOpen: onBrokerOpen,
@@ -47,7 +58,7 @@ const Application = () => {
   const [brokerData, setBrokerData] = useState(null);
   const [carrierData, setCarrierData] = useState(null);
   const [lenderData, setLenderData] = useState(null);
-  const [questions, setQuestions] = useState({
+  const [questions, setQuestions] = useState<Questions>({
     broker: { filled: 0, total: 6 },
     carrier: { filled: 0, total: 5 },
     lender: { filled: 0, total: 1 },
@@ -124,12 +135,34 @@ const Application = () => {
     }
   }, [location.search]);
 
-  let progress =
-    (questions.broker.filled +
-      questions.carrier.filled +
-      questions.lender.filled) /
-    (questions.broker.total + questions.carrier.total + questions.lender.total);
+  const progress = useMemo(() => {
+    let totalFilled = 0;
+    let totalQuestions = 0;
 
+    const updateProgress = (type: keyof Questions) => {
+      totalFilled += questions[type].filled;
+      totalQuestions += questions[type].total;
+    };
+
+    if (selectedTypes.length > 0) {
+      selectedTypes.forEach(type => {
+        if (type === 'Freight Broker' && questions.broker) {
+          updateProgress('broker');
+        } else if (type === 'Carrier' && questions.carrier) {
+          updateProgress('carrier');
+        } else if (type === 'Lender' && questions.lender) {
+          updateProgress('lender');
+        }
+      });
+    } else {
+      // Default to including all if no types are explicitly selected
+      updateProgress('broker');
+      updateProgress('carrier');
+      updateProgress('lender');
+    }
+
+    return totalQuestions > 0 ? (totalFilled / totalQuestions) : 0;
+  }, [selectedTypes, questions]);
   return (
     <Grid gridTemplateColumns={'repeat(3,1fr)'} gap={16}>
       <GridItem colSpan={2}>
@@ -173,21 +206,27 @@ const Application = () => {
           </Box>
         </Flex>
         <Grid gridTemplateColumns={'repeat(2,1fr)'} gap={6}>
-          <VerificationBox
-            onClick={onBrokerOpen}
-            questions={questions}
-            title="Broker"
-          />
-          <VerificationBox
-            onClick={onCarrierOpen}
-            questions={questions}
-            title="Carrier"
-          />
-          <VerificationBox
-            onClick={onLenderOpen}
-            questions={questions}
-            title="Lender"
-          />
+        {selectedTypes.includes('Freight Broker') && (
+            <VerificationBox
+              onClick={onBrokerOpen}
+              questions={questions} // Use actual data or state
+              title="Broker"
+            />
+          )}
+          {selectedTypes.includes('Carrier') && (
+            <VerificationBox
+              onClick={onCarrierOpen}
+              questions={questions} // Use actual data or state
+              title="Carrier"
+            />
+          )}
+          {selectedTypes.includes('Lender') && (
+            <VerificationBox
+              onClick={onLenderOpen}
+              questions={questions} // Use actual data or state
+              title="Lender"
+            />
+          )}
         </Grid>
         {!businessParam && (
           <Flex gap={4} mt={8}>

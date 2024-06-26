@@ -146,9 +146,19 @@ const ApplicationCollabModal = ({ isOpen, onClose }: ApplicationCollabType) => {
                 onChange={handleChange}
                 placeholder="Select Role"
               >
-                <option value="option1">Option 1</option>
-                <option value="option2">Option 2</option>
-                <option value="option3">Option 3</option>
+                <option value="Owner">Owner</option>
+                <option value="Admin">Admin</option>
+                <option value="Manager">Manager</option>
+                <option value="Driver">Driver</option>
+                <option value="Dispatcher">Dispatcher</option>
+                <option value="Billing">Billing</option>
+                <option value="Contributor">Contributor</option>
+                
+
+
+
+
+
               </Select>
             </FormControl>
             <Grid gridTemplateColumns={'repeat(2,1fr)'} mb={6} gap={6}>

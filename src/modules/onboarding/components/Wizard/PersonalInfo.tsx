@@ -41,8 +41,6 @@ const PersonalInfo = () => {
     formState: { errors, isSubmitting },
   } = useForm();
 
-
-
   useEffect(() => {
     if (getTokenFromLocalStorage()) nextStep();
   }, []);
@@ -161,10 +159,13 @@ const PersonalInfo = () => {
                 placeholder="Enter a unique name"
                 {...register('handle', {
                   required: 'This field is required',
+                  validate: (value) =>
+                    !/\s/.test(value) || 'Handle cannot contain spaces', // Add this line
                 })}
               />
               <FormErrorMessage message={errors?.handle?.message} />
             </FormControl>
+
             <FormControl>
               <FormLabel htmlFor="password">Password</FormLabel>
               <InputGroup>

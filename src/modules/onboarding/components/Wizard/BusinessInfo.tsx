@@ -21,26 +21,38 @@ import FormErrorMessage from 'modules/shared/FormErrorMessage';
 import { saveUserBusiness } from 'services/user.service';
 import {
   businessEntityTypes,
-  businessIncorporationState,
   businessTypes,
   phoneTypes,
   states,
 } from 'utils/constants';
 import { toastSuccess } from 'utils/helpers';
 import { getAccountTypeFromLocalStorage } from 'services/localStorage.sevice';
+import { useBusiness } from 'context/BusinessContext';
 
 const BusinessInfo = () => {
   const { nextStep, previousStep } = useWizard();
   const { getRootProps, getInputProps } = useDropzone();
 
   const {
-    handleSubmit,
     register,
-    setError,
     control,
+    handleSubmit,
     formState: { errors, isSubmitting },
   } = useForm();
+  const { setBusinessTypes, selectedTypes } = useBusiness();
 
+  const handleSelectChange = (event: React.ChangeEvent<HTMLSelectElement>) => {
+    const values = Array.from(
+      event.target.selectedOptions,
+      (option) => option.value
+    );
+    console.log(values);
+    setBusinessTypes(values);
+  };
+
+  const { onChange, ref, ...rest } = register('type', {
+    required: 'This field is required',
+  });
   console.log('errorrrs: ', errors);
 
   const onSubmit = async (values: any) => {
@@ -48,7 +60,7 @@ const BusinessInfo = () => {
       employer_identification_number: values?.employer_identification_number,
       business_legal_name: values?.business_legal_name,
       entity_type: values?.entity_type,
-      type: values?.type,
+      type: JSON.stringify(values?.type),
       business_email: values?.business_email,
       business_handle: values?.business_handle,
       phone_type: values?.phone_type,
@@ -150,12 +162,13 @@ const BusinessInfo = () => {
             <FormControl>
               <FormLabel>Type</FormLabel>
               <Select
-                placeholder="Select your account type"
-                isInvalid={errors?.type?.message ? true : false}
+                multiple
+                value={selectedTypes}
+                onChange={handleSelectChange}
+                ref={ref} // Apply ref from register
+                {...rest} // Spread the rest of the register properties except onChange
+                isInvalid={!!errors.type}
                 errorBorderColor="Secondary.Red"
-                {...register('type', {
-                  required: 'This field is required',
-                })}
               >
                 {businessTypes.map((type) => (
                   <option key={type} value={type}>
@@ -163,7 +176,7 @@ const BusinessInfo = () => {
                   </option>
                 ))}
               </Select>
-              <FormErrorMessage message={errors?.type?.message} />
+              <FormErrorMessage message={errors.type?.message} />
             </FormControl>
             <FormControl>
               <FormLabel>Email</FormLabel>
@@ -280,9 +293,9 @@ const BusinessInfo = () => {
                   required: 'This field is required',
                 })}
               >
-                {businessIncorporationState.map((state) => (
-                  <option key={state} value={state}>
-                    {state}
+                {states.map((state, index) => (
+                  <option key={index} value={state.label}>
+                    {state.label}
                   </option>
                 ))}
               </Select>
