@@ -153,7 +153,7 @@ const ApplicationCollabModal = ({ isOpen, onClose }: ApplicationCollabType) => {
                 <option value="Dispatcher">Dispatcher</option>
                 <option value="Billing">Billing</option>
                 <option value="Contributor">Contributor</option>
-                
+
 
 
 
