@@ -11,8 +11,8 @@ import WizardHeader, { usePersistedStep } from '../components/Wizard/WizardHeade
 const PersonalAccount = () => {
     const [step] = usePersistedStep(0);
     return (
-        <Container maxW={"80%"}>
-            <Flex gap={8}>
+        <Container maxW={{ lg: "80%", sm: "90%", base: "100%" }}>
+            <Flex gap={{ md: 8, base: 4 }} flexDir={{ md: "row", base: "column" }}>
                 <Wizard startIndex={step} header={<WizardHeader />}>
                     <PersonalInfo />
                     <Authentication />

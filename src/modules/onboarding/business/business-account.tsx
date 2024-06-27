@@ -18,8 +18,8 @@ const BusinessAccount = () => {
   const [step] = usePersistedStep(0);
 
   return (
-    <Container maxW={'80%'}>
-      <Flex gap={8}>
+    <Container maxW={{ lg: '80%', base: '90%' }}>
+      <Flex gap={{ md: 8, base: 4 }} flexDir={{ md: "row", base: "column" }}>
         <BusinessProvider>
           <Wizard startIndex={step} header={<WizardHeader />}>
             <PersonalInfo />

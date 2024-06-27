@@ -18,7 +18,7 @@ const RecieveCard = () => {
 
 
     return (
-        <Box w={"50%"} >
+        <Box w={{ lg: '50%', md: "60%", base: "100%" }}>
             <Box textAlign={"center"}>
                 <Heading as={"h4"} mb={4} fontSize={"3xl"} color={"Primary.Navy"}>Personal HEALE Virtual Card</Heading>
                 <Text mb={8} color={"Neutral.800"}>User receives personal bank account and decides if they want to select to receive a physical copy of the card</Text>
@@ -55,12 +55,12 @@ const RecieveCard = () => {
                     w: "100%",
                     onClick: async () => {
                         let type = getAccountTypeFromLocalStorage();
-                        if(type === 'Personal'){
+                        if (type === 'Personal') {
                             clearStep();
                             await sendOnboardedEmail();
                             removeTokenFromLocalStorage();
                             window.location.href = '/extension'
-                        }else{
+                        } else {
                             nextStep()
                         }
                     }

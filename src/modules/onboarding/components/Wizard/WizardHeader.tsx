@@ -7,20 +7,20 @@ import { useLocation } from "react-router-dom";
 
 export const usePersistedStep = (initialStep: number): [number, React.Dispatch<React.SetStateAction<number>>, () => void] => {
     const [step, setStep] = useState(() => {
-      const savedStep = localStorage.getItem("onboardingStep");
-      return savedStep ? Number(savedStep) : initialStep;
+        const savedStep = localStorage.getItem("onboardingStep");
+        return savedStep ? Number(savedStep) : initialStep;
     });
-  
+
     useEffect(() => {
-      localStorage.setItem("onboardingStep", step.toString());
+        localStorage.setItem("onboardingStep", step.toString());
     }, [step]);
-  
+
     const clearStep = () => {
-      localStorage.removeItem("onboardingStep");
+        localStorage.removeItem("onboardingStep");
     };
-  
+
     return [step, setStep, clearStep];
-  };
+};
 
 
 const StepFormHeader = () => {
@@ -59,8 +59,8 @@ const StepFormHeader = () => {
             const isCompleted = stepNumber < step + 1;
 
             steps.push(
-                <Flex alignItems={"center"} gap={2} key={i} pb={4} pos={"relative"} _after={{
-                    content: "''",
+                <Flex w={"100%"} alignItems={"center"} gap={2} key={i} pb={4} pos={"relative"} _after={{
+                    content: { md: "''", base: "unset" },
                     pos: "absolute",
                     w: "2px",
                     h: "8px",
@@ -76,14 +76,14 @@ const StepFormHeader = () => {
                     <Box>
                         {isCompleted ? <CheckIcon /> : isActive ? <RadioIconChecked /> : <RadioIcon mb={1} />}
                     </Box>
-                    <Text color={isCompleted ? "Primary.Navy" : isActive ? "Primary.Blue" : "Neutral.700"}>{stepNames[i]}</Text>
+                    <Text w={"max-content"} color={isCompleted ? "Primary.Navy" : isActive ? "Primary.Blue" : "Neutral.700"}>{stepNames[i]}</Text>
                 </Flex>
             );
         }
         return steps;
     };
     return (
-        <Flex flexDir={"column"} minW={"20%"}>
+        <Flex flexDir={{ md: "column", base: "row" }} gap={{ md: 0, base: 4 }} minW={"25%"} overflowX={"auto"}>
             {renderSteps()}
         </Flex>
     );

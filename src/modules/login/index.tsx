@@ -53,18 +53,18 @@ const Login = () => {
 
   return (
     <Flex
-      h={'calc(100vh - 260px)'}
+      h={{ md: 'calc(100vh - 260px)', base: "calc(100vh - 160px)" }}
       alignItems={'center'}
       justifyContent={'center'}
     >
       <Box
-        w={'30%'}
-        p={8}
+        w={{ xl: '30%', lg: "40%", md: "50%", sm: "70%", base: "90%" }}
+        p={{ sm: 8, base: 4 }}
         borderRadius="16px"
         borderWidth={'2px'}
         boxShadow="1px 1px 6px 0px rgba(149, 153, 192, 0.22)"
       >
-        <Heading fontSize={'3xl'} mb={8} textAlign={'center'}>
+        <Heading fontSize={{ md: '3xl', base: "2xl" }} mb={8} textAlign={'center'}>
           Login your account
         </Heading>
         <form onSubmit={handleSubmit(onSubmit)}>

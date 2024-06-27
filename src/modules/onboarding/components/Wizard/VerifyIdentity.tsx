@@ -131,7 +131,7 @@ const VerifyIdentity = () => {
       >
         {' '}
         <form onSubmit={handleSubmit(onSubmit)}>
-          <Grid mb={6} gridTemplateColumns={'repeat(3,1fr)'} gap={6}>
+          <Grid mb={6} gridTemplateColumns={{ lg: 'repeat(3,1fr)', base: 'repeat(1,1fr)' }} gap={{ lg: 6, base: 0 }} rowGap={{ lg: 0, base: 6 }}>
             <FormControl>
               <FormLabel htmlFor="legal_first_name">Legal First Name</FormLabel>
               <Input
@@ -190,7 +190,7 @@ const VerifyIdentity = () => {
               </FormErrorMessage>
             </FormControl>
           </Grid>
-          <Grid mb={6} gridTemplateColumns={'repeat(3,1fr)'} gap={6}>
+          <Grid mb={6} gridTemplateColumns={{ lg: 'repeat(3,1fr)', base: 'repeat(1,1fr)' }} gap={{ lg: 6, base: 0 }} rowGap={{ lg: 0, base: 6 }}>
             <GridItem colSpan={2}>
               <FormControl>
                 <FormLabel htmlFor="dob">Date of birth</FormLabel>
@@ -274,7 +274,7 @@ const VerifyIdentity = () => {
               <FormErrorMessage message={errors?.source_of_funds?.message} />
             </FormControl>
           </Grid>
-          <Grid mb={6} gridTemplateColumns={'repeat(3,1fr)'} gap={6}>
+          <Grid mb={6} gridTemplateColumns={{ lg: 'repeat(3,1fr)', base: 'repeat(1,1fr)' }} gap={{ lg: 6, base: 0 }} rowGap={{ lg: 0, base: 6 }}>
             <GridItem colSpan={2}>
               <FormControl>
                 <FormLabel htmlFor="">Street address</FormLabel>

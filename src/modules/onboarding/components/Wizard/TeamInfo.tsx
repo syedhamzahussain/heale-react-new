@@ -107,7 +107,7 @@ const TeamInfo = () => {
   };
 
   return (
-    <Box w={'50%'}>
+    <Box w={{ lg: '50%', md: "60%", base: "100%" }}>
       <Heading as={'h4'} mb={4} fontSize={'3xl'} color={'Primary.Navy'}>
         Create new user
       </Heading>
@@ -205,7 +205,7 @@ const TeamInfo = () => {
           />
         </FormControl>
         <Grid mb={6} gridTemplateColumns={'repeat(7,1fr)'} gap={6}>
-          <GridItem colSpan={2}>
+          <GridItem colSpan={{ sm: 2, base: 7 }}>
             <FormControl>
               <FormLabel>Phone Type</FormLabel>
               <Select
@@ -224,7 +224,7 @@ const TeamInfo = () => {
               </Select>
             </FormControl>
           </GridItem>
-          <GridItem colSpan={3}>
+          <GridItem colSpan={{ sm: 3, base: 4 }}>
             <FormControl>
               <FormLabel>
                 Phone Number{' '}
@@ -264,7 +264,7 @@ const TeamInfo = () => {
               </Box>
             </FormControl>
           </GridItem>
-          <GridItem colSpan={2}>
+          <GridItem colSpan={{ sm: 2, base: 3 }}>
             <FormControl>
               <FormLabel>Extension</FormLabel>
               <Input

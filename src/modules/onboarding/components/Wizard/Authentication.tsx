@@ -49,7 +49,7 @@ const Authentication = () => {
       const token = searchParams.get('token');
       const tab = searchParams.get('tab');
 
-     
+
       if (token) {
         setIsLoading(true);
         const verifyEmailResponse = await verifyUser({
@@ -60,9 +60,9 @@ const Authentication = () => {
         setIsLoading(false);
         console.log('verifyEmailResponse:', verifyEmailResponse);
       } else {
-        if(tab === 'phone'){
+        if (tab === 'phone') {
           setMessageBoxType('phoneVerificationCodeSent');
-        }else{
+        } else {
           setMessageBoxType('emailSent');
         }
       }
@@ -140,8 +140,7 @@ const Authentication = () => {
     return <p>Loading...</p>;
   }
   return (
-    <Box
-      w={'50%'}
+    <Box w={{ lg: '50%', md: "60%", base: "100%" }}
       display={'flex'}
       flexDirection="column"
       justifyContent={'Center'}
@@ -150,9 +149,8 @@ const Authentication = () => {
         <MessageBox
           handleClick={ResendEmail}
           btnText={isResendingEmail ? 'Resending...' : 'Resend Email'}
-          desc={`We just Sent you an email to ${
-            getUserFromLocalStorage()?.email
-          }. check it and click the link to verify your address`}
+          desc={`We just Sent you an email to ${getUserFromLocalStorage()?.email
+            }. check it and click the link to verify your address`}
           icon={FlyEnvelopeIcon}
           title="Verify Your Email"
           loader={isResendingEmail}
@@ -273,7 +271,7 @@ const Authentication = () => {
               marginBottom: '10px',
               isDisabled: isVerifyingPhone,
             }}
-            // primaryOutline
+          // primaryOutline
           />
           <Box textAlign="center">
             <Link

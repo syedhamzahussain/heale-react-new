@@ -30,9 +30,9 @@ const RadioCard: React.FC<RadioCardProps> = ({ ...props }) => {
       <input {...input} />
       <Flex
         mb={4}
-        gap={6}
+        gap={{ md: 6, base: 2 }}
         {...checkbox}
-        p={8}
+        p={{ md: 8, base: 4 }}
         cursor="pointer"
         borderRadius="16px"
         borderWidth={'2px'}
@@ -48,15 +48,19 @@ const RadioCard: React.FC<RadioCardProps> = ({ ...props }) => {
           p={4}
           justifyContent={'center'}
           alignItems={'center'}
-          w={'56px'}
-          h={'56px'}
+          w={{ md: '56px', base: 10 }}
+          h={{ md: '56px', base: 10 }}
           bgColor={'Neutral.100'}
           borderRadius={'full'}
         >
           <Icon
             as={props.icon}
-            w={6}
-            h={6}
+            w={{
+              md: 6, base: 4
+            }}
+            h={{
+              md: 6, base: 4
+            }}
             sx={{
               path: {
                 stroke: 'Primary.Blue',
@@ -65,14 +69,19 @@ const RadioCard: React.FC<RadioCardProps> = ({ ...props }) => {
           />
         </Flex>
         <Box w={'90%'} h={'100px'}>
-          <Heading color={'Primary.Navy'} fontSize={'xl'} mb={4} as={'h6'}>
+          <Heading color={'Primary.Navy'} fontSize={{ md: 'xl', sm: "lg", base: "md" }} mb={{ md: 4, base: 2 }} as={'h6'}>
             {props.title}
           </Heading>
-          <Text color={'Neutral.800'} fontSize={'sm'}>
+          <Text color={'Neutral.800'} fontSize={{ md: 'sm', base: "xs" }}>
             {props.desc}
           </Text>
         </Box>
-        <RightIcon w={6} h={6} />
+        <RightIcon w={{
+          md: 6, base: 4
+        }}
+          h={{
+            md: 6, base: 4
+          }} />
       </Flex>
     </Box>
   );
@@ -145,7 +154,7 @@ const ConnectAccount = () => {
   }, [open, ready]);
 
   return (
-    <Box w={'50%'}>
+    <Box w={{ lg: '50%', md: "60%", base: "100%" }}>
       <Heading as={'h4'} mb={4} fontSize={'3xl'} color={'Primary.Navy'}>
         Add bank account
       </Heading>

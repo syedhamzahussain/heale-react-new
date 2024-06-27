@@ -7,7 +7,7 @@ import Application from '../components/Wizard/Application'
 const CollabApplication = () => {
 
     return (
-        <Container maxW={"80%"}>
+        <Container maxW={{ lg: "80%", sm: "90%", base: "100%" }}>
             <Flex gap={8}>
                 <Wizard header={<WizardHeader />}>
                     <Application />

@@ -53,11 +53,11 @@ const Welcome = () => {
     console.log(radioValue);
 
     return (
-        <Container maxW={"80%"}>
+        <Container maxW={{ lg: "80%", sm: "90%", base: "100%" }}>
             <Heading mb={4} as={"h4"} fontSize={"3xl"} color={"Primary.Navy"}>Welcome to HEALE</Heading>
             <Text mb={8} color={"Neutral.800"}>Choose your Account Type</Text>
-            <Grid gridTemplateColumns={"repeat(2,1fr)"} gap={16}>
-                <Box {...group} w={"80%"}>
+            <Grid gridTemplateColumns={{ lg: "repeat(2,1fr)", base: "repeat(1,1fr)" }} gap={{ md: 16, base: 8 }}>
+                <Box {...group} w={{ xl: "80%", base: "100%" }}>
                     {options.map((value) => {
                         const radio = getRadioProps({ value: String(value?.id) });
                         return (
@@ -71,7 +71,7 @@ const Welcome = () => {
                         }} />
                     </Link>
                 </Box>
-                <Flex flexDir={"column"} w={"80%"} marginLeft={"auto"}>
+                <Flex flexDir={"column"} w={{ xl: "80%", base: "100%" }} marginLeft={"auto"}>
                     {radioValue === "0" ?
                         <>
                             <Heading fontSize={"xl"} color={"Primary.Navy"} as={"h6"} mb={8}>Title goes here</Heading>

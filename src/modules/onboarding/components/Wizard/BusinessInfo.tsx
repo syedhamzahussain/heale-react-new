@@ -84,7 +84,7 @@ const BusinessInfo = () => {
   };
 
   return (
-    <Box w={'50%'}>
+    <Box w={{ lg: '50%', md: "60%", base: "100%" }}>
       <Heading as={'h4'} mb={4} fontSize={'3xl'} color={'Primary.Navy'}>
         Create an account
       </Heading>

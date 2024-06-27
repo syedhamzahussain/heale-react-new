@@ -8,10 +8,10 @@ const AuthHeader = () => {
     const location = useLocation();
     return (
         <Box as='header' borderBottom={"1px solid rgba(241, 241, 255, 1)"}>
-            <Container maxW={"80%"}>
+            <Container maxW={{ lg: "80%", sm: "90%", base: "100%" }}>
                 <Flex justifyContent={"space-between"} alignItems={"center"}>
                     <Link to={"/"}>
-                        <HealeLogo ms={-6} w={52} h={20} />
+                        <HealeLogo ms={{ md: -6, base: -2 }} w={{ lg: 52, md: 44, base: 36 }} h={{ md: 20, base: 16 }} />
                     </Link>
                     {location.pathname === "/login" ?
                         <Link to={"/"}>
