@@ -13,7 +13,7 @@ import {
   MenuList,
   Text,
 } from '@chakra-ui/react';
-import React from 'react';
+import React, { useEffect } from 'react';
 import {
   BellIcon,
   ConvertIcon,
@@ -32,6 +32,19 @@ import { useNavigate } from 'react-router-dom';
 
 const Header = () => {
   const navigate = useNavigate();
+
+  useEffect(() => {
+    const accountType = localStorage.getItem('accountType');
+    const onboardingStep = localStorage.getItem('onboardingStep');
+    const token = localStorage.getItem('token');
+    if (accountType && onboardingStep && token) {
+      if (accountType === 'Personal') {
+        navigate('/personal');
+      } else if (accountType === 'Business') {
+        navigate('/business');
+      }
+    }
+  }, [navigate]);
 
   const handleLogout = () => {
     localStorage.clear();
