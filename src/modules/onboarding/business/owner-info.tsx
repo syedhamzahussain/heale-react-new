@@ -16,14 +16,14 @@ const OwnerInfo = () => {
                 <Text mb={8} color={'Neutral.800'}>
                     Enter required documentation for your Freight Broker application
                 </Text>
-                <Box mb={6} textAlign={"left"} p={6} border={"1px solid"} borderColor={"Neutral.200"} borderRadius={24}>
+                <Box mb={6} textAlign={"left"} p={{ md: 6, base: 3 }} border={"1px solid"} borderColor={"Neutral.200"} borderRadius={24}>
                     <Flex gap={2} alignItems={"center"} mb={6}>
                         <ProfileIcon w={5} h={5} />
                         <Heading color={"Primary.Navy"} fontSize={"xl"}>Owner details</Heading>
                     </Flex>
                     <form>
                         <RadioGroup mb={6} defaultValue='1' onChange={(value) => setSelectedValue(value)}>
-                            <Grid gridTemplateColumns={"repeat(2,1fr)"} gap={6}>
+                            <Grid gridTemplateColumns={"repeat(2,1fr)"} gap={{ md: 6, base: 3 }}>
                                 <Box p={4} border={"1px solid"} borderColor={"Neutral.200"} borderRadius={8} bg={selectedValue === 'Personal' ? 'Neutral.100' : ''}>
                                     <Radio colorScheme='blue' value='Personal'>
                                         Personal
@@ -36,7 +36,7 @@ const OwnerInfo = () => {
                                 </Box>
                             </Grid>
                         </RadioGroup>
-                        <Grid gridTemplateColumns={"repeat(2,1fr)"} gap={6} mb={6}>
+                        <Grid gridTemplateColumns={"repeat(2,1fr)"} gap={{ md: 6, base: 3 }} mb={6}>
                             <FormControl>
                                 <FormLabel>Legal First Name</FormLabel>
                                 <Input
@@ -56,7 +56,7 @@ const OwnerInfo = () => {
                         </Grid>
                         <FormControl mb={6}>
                             <FormLabel htmlFor="dob">Date of birth</FormLabel>
-                            <Grid gridTemplateColumns={'repeat(3,1fr)'} gap={6}>
+                            <Grid gridTemplateColumns={'repeat(3,1fr)'} gap={{ md: 6, base: 3 }}>
                                 <Box>
                                     <Select
                                         placeholder="Month"
@@ -146,7 +146,7 @@ const OwnerInfo = () => {
                                 </option>
 
                             </Select>
-                            <Grid gridTemplateColumns={"repeat(3,1fr)"} gap={6} mb={6}>
+                            <Grid gridTemplateColumns={"repeat(3,1fr)"} gap={{ md: 6, base: 3 }} mb={6}>
                                 <Input
                                     type="text"
                                     errorBorderColor="Secondary.Red"
@@ -169,7 +169,7 @@ const OwnerInfo = () => {
                                 />
                             </Grid>
                         </FormControl>
-                        <Grid mb={6} gridTemplateColumns={'repeat(7,1fr)'} gap={6}>
+                        <Grid mb={6} gridTemplateColumns={'repeat(7,1fr)'} gap={{ md: 6, base: 3 }}>
                             <GridItem colSpan={2}>
                                 <FormControl>
                                     <FormLabel>Phone Type</FormLabel>
@@ -257,7 +257,7 @@ const OwnerInfo = () => {
                         </Flex>
                     </form>
                 </Box>
-                <Box mb={6} textAlign={"left"} p={6} border={"1px solid"} borderColor={"Neutral.200"} borderRadius={24}>
+                <Box mb={6} textAlign={"left"} p={{ md: 6, base: 3 }} border={"1px solid"} borderColor={"Neutral.200"} borderRadius={24}>
                     <Flex justifyContent={"space-between"} mb={6}>
                         <Flex gap={2} alignItems={"center"}>
                             <Avatar name='Jeff Bridges' src='https://bit.ly/broken-link' />
@@ -298,14 +298,14 @@ const OwnerInfo = () => {
                         <Text w={"50%"} color={"Primary.Navy"}>492-948-2884</Text>
                     </Flex>
                 </Box>
-                <Box mb={6} textAlign={"left"} p={6} border={"1px solid"} borderColor={"Neutral.200"} borderRadius={24}>
+                <Box mb={6} textAlign={"left"} p={{ md: 6, base: 3 }} border={"1px solid"} borderColor={"Neutral.200"} borderRadius={24}>
                     <Flex gap={2} alignItems={"center"}>
                         <AddIcon w={8} h={8} />
                         <Heading fontSize={"md"} color={"Primary.Navy"}>Add owner</Heading>
                     </Flex>
                 </Box>
                 <Box px={6} >
-                    <Flex justifyContent={"center"} gap={6} alignItems={"center"} flexDir={"column"}>
+                    <Flex justifyContent={"center"} gap={{ md: 6, base: 3 }} alignItems={"center"} flexDir={"column"}>
                         <ButtonTheme btnText='Continue' chakraProps={{
                             isDisabled: true,
                             w: "50%",
