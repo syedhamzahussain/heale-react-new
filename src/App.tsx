@@ -79,12 +79,7 @@ function App() {
                 </ProtectedRoute>
               }
             />
-            <Route
-              path="business/owner-info"
-              element={
-                <OwnerInfo />
-              }
-            />
+            
           </Route>
 
           <Route element={<DashboardLayout />}>

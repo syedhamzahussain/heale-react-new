@@ -10,8 +10,7 @@ const ButtonTheme = ({
   small,
   isLoading,
   isDisabled,
-  onClick
-  
+  onClick,
 }: ButtonThemeType) => {
   return (
     <Button

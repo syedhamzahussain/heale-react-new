@@ -14,6 +14,14 @@ export const saveUserToLocalStorage = (user) => {
   localStorage.setItem('user', JSON.stringify(user));
 };
 
+export const saveOwnersToLocalStorage = (updatedOwners) => {
+  localStorage.setItem('owners', JSON.stringify(updatedOwners));
+}
+
+export const removeOwnersFromLocalStorage = () => {
+  localStorage.removeItem('owners');
+};
+
 export const getUserFromLocalStorage = () => {
   return JSON.parse(localStorage.getItem('user'));
 };
