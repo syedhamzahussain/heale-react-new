@@ -1035,3 +1035,15 @@ export const CloudDownloadIcon = createIcon({
     </g>
   ),
 });
+
+export const ProfileIcon = createIcon({
+  displayName: "ProfileIcon",
+  viewBox: "0 0 19.405 19.405",
+  path: (
+    <g id="Group_40465" data-name="Group 40465" transform="translate(-0.298 -0.298)">
+      <path id="Path_91497" data-name="Path 91497" d="M10,11.429A3.571,3.571,0,1,0,6.43,7.857,3.571,3.571,0,0,0,10,11.429Z" fill="none" stroke="#9696b3" stroke-linecap="round" stroke-linejoin="round" stroke-width="0.833" />
+      <path id="Path_91498" data-name="Path 91498" d="M3.9,17a7.143,7.143,0,0,1,12.2,0" fill="none" stroke="#9696b3" stroke-linecap="round" stroke-linejoin="round" stroke-width="0.833" />
+      <path id="Path_91499" data-name="Path 91499" d="M10,19.286A9.286,9.286,0,1,0,.715,10,9.286,9.286,0,0,0,10,19.286Z" fill="none" stroke="#9696b3" stroke-linecap="round" stroke-linejoin="round" stroke-width="0.833" />
+    </g>
+  ),
+});

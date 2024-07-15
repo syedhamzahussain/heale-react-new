@@ -24,6 +24,11 @@ export const saveBusinessApplication = async (application) => {
   return response;
 };
 
+export const saveBusinessOwnership = async (ownership) => {
+  const response = await POST(`${apiUrl.users}/business/ownership`, ownership);
+  return response;
+};
+
 export const updateBusinessApplication = async (application, ID) => {
   const response = await PUT(`${apiUrl.users}/business/${ID}/application`, application);
   return response;
