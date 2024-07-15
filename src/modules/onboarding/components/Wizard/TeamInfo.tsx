@@ -22,6 +22,7 @@ import { saveTeamUser, sendOnboardedEmail } from 'services/user.service';
 import { toastSuccess } from 'utils/helpers';
 import {
   removeAccountTypeFromLocalStorage,
+  removeOwnersFromLocalStorage,
   removeQuestionaireToLocalStorage,
   removeTokenFromLocalStorage,
   removeUserFromLocalStorage,
@@ -97,6 +98,7 @@ const TeamInfo = () => {
           removeAccountTypeFromLocalStorage();
           removeQuestionaireToLocalStorage();
           removeTokenFromLocalStorage();
+          removeOwnersFromLocalStorage();
           clearStep();
           window.location.href = '/extension';
         }
