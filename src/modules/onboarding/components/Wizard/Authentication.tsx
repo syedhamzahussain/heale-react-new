@@ -19,7 +19,7 @@ import MessageBox from '../MessageBox';
 import CountryInput from '../CountryInput';
 import { useLocation } from 'react-router-dom';
 import { useWizard } from 'react-use-wizard';
-import { getAccountTypeFromLocalStorage, getUserFromLocalStorage } from 'services/localStorage.sevice';
+import { getAccountTypeFromLocalStorage, getUserFromLocalStorage, saveEmailStatusToLocalStorage } from 'services/localStorage.sevice';
 import {
   CheckPhoneNumberVerification,
   resendVerificationEmail,
@@ -55,7 +55,10 @@ const Authentication = () => {
         const verifyEmailResponse = await verifyUser({
           token,
         });
-        if (verifyEmailResponse.status) setMessageBoxType('emailVerified');
+        if (verifyEmailResponse.status){
+          setMessageBoxType('emailVerified');
+          saveEmailStatusToLocalStorage();
+        } 
         else setMessageBoxType('verificationFailed');
         setIsLoading(false);
         console.log('verifyEmailResponse:', verifyEmailResponse);

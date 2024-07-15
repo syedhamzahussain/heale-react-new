@@ -5,7 +5,8 @@ import { RadioCardProps } from 'type';
 import ButtonTheme from './shared/ButtonTheme';
 import { CheckIcon } from './shared/Icons';
 import { Link } from 'react-router-dom';
-import { saveAccountTypeToLocalStorage } from 'services/localStorage.sevice';
+import { useNavigate } from 'react-router-dom';
+import { removeStepFromLocalStorage, removeTokenFromLocalStorage, removeUserFromLocalStorage, saveAccountTypeToLocalStorage } from 'services/localStorage.sevice';
 
 const RadioCard: React.FC<RadioCardProps> = ({ ...props }) => {
     const { getInputProps, getRadioProps } = useRadio(props);
@@ -41,6 +42,8 @@ const RadioCard: React.FC<RadioCardProps> = ({ ...props }) => {
 };
 
 const Welcome = () => {
+    
+    const navigate = useNavigate();
     const { getRootProps, getRadioProps, setValue: setRadioValue, value: radioValue } = useRadioGroup({
         name: 'accountType',
         defaultValue: '0',
@@ -48,9 +51,16 @@ const Welcome = () => {
             setRadioValue(value);
         },
     })
+    
     const group = getRootProps()
-    saveAccountTypeToLocalStorage(radioValue);
-    console.log(radioValue);
+    const handleButtonClick = () => {
+        saveAccountTypeToLocalStorage(radioValue);
+        removeUserFromLocalStorage();
+        removeTokenFromLocalStorage();
+        removeStepFromLocalStorage();
+        
+        navigate(radioValue === "0" ? "/personal" : "/business");
+    };
 
     return (
         <Container maxW={{ lg: "80%", sm: "90%", base: "100%" }}>
@@ -64,12 +74,15 @@ const Welcome = () => {
                             <RadioCard children id={value?.id} key={value?.id} value={value?.title} icon={value?.icon} title={value?.title} desc={value?.desc} {...radio} />
                         )
                     })}
-                    <Link to={radioValue === "0" ? "/personal" : "/business"}>
-                        <ButtonTheme btnText='Get Started' primary chakraProps={{
+                    <ButtonTheme
+                        btnText='Get Started'
+                        primary
+                        chakraProps={{
                             mt: 4,
                             w: "100%"
-                        }} />
-                    </Link>
+                        }}
+                        onClick={handleButtonClick}
+                    />
                 </Box>
                 <Flex flexDir={"column"} w={{ xl: "80%", base: "100%" }} marginLeft={"auto"}>
                     {radioValue === "0" ?

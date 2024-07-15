@@ -22,6 +22,23 @@ export const removeUserFromLocalStorage = () => {
   localStorage.removeItem('user');
 };
 
+export const saveEmailStatusToLocalStorage = (user) => {
+  localStorage.setItem('emailStatus', 1);
+};
+
+export const getEmailStatusFromLocalStorage = () => {
+  return JSON.parse(localStorage.getItem('emailStatus'));
+};
+
+export const removeEmailStatusFromLocalStorage = () => {
+  localStorage.removeItem('emailStatus');
+};
+
+export const removeStepFromLocalStorage = () => {
+  localStorage.removeItem("onboardingStep");
+};
+
+
 export const saveAccountTypeToLocalStorage = (accountType) => {
   localStorage.setItem(
     'accountType',

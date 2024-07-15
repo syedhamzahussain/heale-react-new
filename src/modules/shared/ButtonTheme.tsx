@@ -9,12 +9,15 @@ const ButtonTheme = ({
   invert,
   small,
   isLoading,
-  isDisabled
+  isDisabled,
+  onClick
+  
 }: ButtonThemeType) => {
   return (
     <Button
       isLoading={isLoading}
       type='submit'
+      onClick={onClick}
       isDisabled={isDisabled}
       h={small ? 8 : 10}
       bg={

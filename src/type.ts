@@ -18,6 +18,7 @@ export interface ButtonThemeType {
   small?: boolean;
   isLoading?: boolean;
   isDisabled?: boolean;
+  onClick?: () => void;
 }
 
 export interface CountryInputType {
