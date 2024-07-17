@@ -1035,3 +1035,14 @@ export const CloudDownloadIcon = createIcon({
     </g>
   ),
 });
+
+export const CrossIcon = createIcon({
+  displayName: "CrossIcon",
+  viewBox: "0 0 8.843 8.843",
+  path: (
+    <g id="Group_40465" data-name="Group 40465" transform="translate(0.421 0.422)">
+      <path id="Path_91497" data-name="Path 91497" d="M7.714.286.286,7.714" fill="none" stroke="#3446ee" stroke-linecap="round" stroke-linejoin="round" stroke-width="1" />
+      <path id="Path_91498" data-name="Path 91498" d="M.286.286,7.714,7.714" fill="none" stroke="#3446ee" stroke-linecap="round" stroke-linejoin="round" stroke-width="1" />
+    </g>
+  ),
+});

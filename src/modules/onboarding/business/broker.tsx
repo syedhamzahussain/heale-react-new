@@ -27,8 +27,8 @@ import {
   Tfoot,
 } from '@chakra-ui/react';
 import ButtonTheme from 'modules/shared/ButtonTheme';
-import { Select as ChakraSelect } from 'chakra-react-select';
-import { PencilIcon, PlusIcon, TrashIcon } from 'modules/shared/Icons';
+// import { Select as ChakraSelect } from 'chakra-react-select';
+import { CloseIcon, CrossIcon, PencilIcon, PlusIcon, TrashIcon } from 'modules/shared/Icons';
 import AddInsuranceModal from '../components/AddInsuranceModal';
 import AddSuretyModal from '../components/AddSuretyModal';
 import axios from 'axios';
@@ -41,6 +41,7 @@ import {
   saveBusinessApplication,
   updateBusinessApplication,
 } from 'services/user.service';
+import { MultiSelect } from "react-multi-select-component";
 
 interface FormData {
   application_type: string;
@@ -66,6 +67,11 @@ interface surety_bond {
   startDate: string;
   expirationDate: string;
 }
+
+export type ServiceOption = {
+  label: string;
+  value: string;
+};
 
 const BrokerModal = ({
   isOpen,
@@ -188,8 +194,31 @@ const BrokerModal = ({
     onOpen: onSuretyOpen,
     onClose: onSuretyClose,
   } = useDisclosure();
+
+  const customValueRenderer = (
+    selected: ServiceOption[],
+    handleRemove: (option: ServiceOption) => void
+  ) => {
+    return selected.length ? (
+      selected.map(({ label, value }) => (
+        <Text color={"Primary.Blue"} bgColor={"Neutral.100"} py={1} px={2} borderRadius={40} fontSize={"xs"} cursor={"pointer"} display={"inline-flex"} key={value} alignItems={"center"} gap={1} mr={1}>
+          {label}
+          <CrossIcon w={2} h={2}
+            onClick={() => handleRemove({ label, value })}
+          />
+        </Text>
+      ))
+    ) : (
+      <span>No Items Selected</span>
+    );
+  };
+
+  const handleRemove = (optionToRemove: ServiceOption) => {
+    const updatedServices = formData.services.filter(value => value !== optionToRemove.value);
+    setFormData({ ...formData, services: updatedServices });
+  };
   return (
-    <Modal isOpen={isOpen} onClose={onClose} size="xl">
+    <Modal isOpen={isOpen} onClose={onClose} size="6xl">
       <ModalOverlay />
       <ModalContent>
         <ModalHeader>Broker Information</ModalHeader>
@@ -235,15 +264,15 @@ const BrokerModal = ({
               </FormControl>
               <FormControl>
                 <FormLabel>Services</FormLabel>
-                <ChakraSelect
-                  name="services"
+                <MultiSelect
+                  options={serviceOptions}
+                  hasSelectAll={true}
                   value={serviceOptions.filter((option) =>
                     formData.services.includes(option.value)
                   )}
                   onChange={handleSelectChange}
-                  options={serviceOptions}
-                  isMulti
-                  placeholder="Select"
+                  labelledBy={"Select"}
+                  valueRenderer={(selected, options) => customValueRenderer(selected as ServiceOption[], handleRemove)}
                 />
               </FormControl>
             </Grid>
@@ -363,7 +392,7 @@ const BrokerModal = ({
                   </Tr>
                 </Thead>
                 <Tbody>
-                {Array.isArray(formData.surety_bond) ? formData.surety_bond.map((item, index) => (
+                  {Array.isArray(formData.surety_bond) ? formData.surety_bond.map((item, index) => (
                     <Tr key={index}>
                       <Td>{item.insurer}</Td>
                       <Td>{item.amount}</Td>
@@ -386,7 +415,7 @@ const BrokerModal = ({
                       </Td>
                     </Tr>
                   )}
-                 
+
                 </Tbody>
                 <Tfoot>
                   <Tr>

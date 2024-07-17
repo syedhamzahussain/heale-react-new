@@ -12,7 +12,6 @@ import Lender from 'modules/onboarding/business/lender';
 import Carrier from 'modules/onboarding/business/carrier';
 import 'react-toastify/dist/ReactToastify.css';
 import BrowserExtension from 'modules/browserExtension';
-import 'App.css';
 import DashboardLayout from 'modules/shared/DashboardLayout';
 import Dashboard from 'modules/dashboard';
 import Payment from 'modules/Payment';
@@ -30,6 +29,7 @@ import StatementsHeale from 'modules/heale/statement';
 import Cards from 'modules/cards';
 import Application from 'modules/onboarding/components/Wizard/Application';
 import CollabApplication from 'modules/onboarding/business/collab-application';
+import 'App.css';
 
 function App() {
   return (

@@ -5,11 +5,13 @@ import {
 } from '@chakra-ui/react';
 import { Select as ChakraSelect } from 'chakra-react-select';
 import ButtonTheme from 'modules/shared/ButtonTheme';
-import { PencilIcon, PlusIcon, TrashIcon } from 'modules/shared/Icons';
+import { CrossIcon, PencilIcon, PlusIcon, TrashIcon } from 'modules/shared/Icons';
 import AddInsuranceModal from '../components/AddInsuranceModal';
 import { toastSuccess, updateQuestionsInfo } from 'utils/helpers';
 import { getQuestionaireToLocalStorage, setQuestionaireToLocalStorage } from 'services/localStorage.sevice';
 import { saveBusinessApplication, updateBusinessApplication } from 'services/user.service';
+import { MultiSelect } from 'react-multi-select-component';
+import { ServiceOption } from './broker';
 
 interface FormData {
   application_type: string;
@@ -108,8 +110,31 @@ const CarrierModal = ({ isOpen, onClose, setQuestions, carrierData, applicationI
 
   const { isOpen: isInsuranceOpen, onOpen: onInsuranceOpen, onClose: onInsuranceClose } = useDisclosure();
 
+  const customValueRenderer = (
+    selected: ServiceOption[],
+    handleRemove: (option: ServiceOption) => void
+  ) => {
+    return selected.length ? (
+      selected.map(({ label, value }) => (
+        <Text color={"Primary.Blue"} bgColor={"Neutral.100"} py={1} px={2} borderRadius={40} fontSize={"xs"} cursor={"pointer"} display={"inline-flex"} key={value} alignItems={"center"} gap={1} mr={1}>
+          {label}
+          <CrossIcon w={2} h={2}
+            onClick={() => handleRemove({ label, value })}
+          />
+        </Text>
+      ))
+    ) : (
+      <span>No Items Selected</span>
+    );
+  };
+
+  const handleRemove = (optionToRemove: ServiceOption) => {
+    const updatedServices = formData.services.filter(value => value !== optionToRemove.value);
+    setFormData({ ...formData, services: updatedServices });
+  };
+
   return (
-    <Modal isOpen={isOpen} onClose={onClose} size="xl">
+    <Modal isOpen={isOpen} onClose={onClose} size="6xl">
       <ModalOverlay />
       <ModalContent>
         <ModalHeader>Carrier Information</ModalHeader>
@@ -137,13 +162,13 @@ const CarrierModal = ({ isOpen, onClose, setQuestions, carrierData, applicationI
               </FormControl>
               <FormControl>
                 <FormLabel>Services</FormLabel>
-                <ChakraSelect
-                  name='services'
+                <MultiSelect
+                  options={serviceOptions}
+                  hasSelectAll={true}
                   value={serviceOptions.filter(option => formData.services.includes(option.value))}
                   onChange={handleSelectChange}
-                  options={serviceOptions}
-                  isMulti
-                  placeholder='Select'
+                  labelledBy={"Select"}
+                  valueRenderer={(selected, options) => customValueRenderer(selected as ServiceOption[], handleRemove)}
                 />
               </FormControl>
             </Grid>

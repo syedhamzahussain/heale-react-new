@@ -13,7 +13,7 @@ import {
 } from '@chakra-ui/react';
 import { useForm, Controller } from 'react-hook-form';
 import ButtonTheme from 'modules/shared/ButtonTheme';
-import { LockIcon, UploadIcon } from 'modules/shared/Icons';
+import { CrossIcon, LockIcon, UploadIcon } from 'modules/shared/Icons';
 import { useDropzone } from 'react-dropzone';
 import PhoneInput from 'react-phone-input-2';
 import { useWizard } from 'react-use-wizard';
@@ -28,11 +28,14 @@ import {
 import { toastSuccess } from 'utils/helpers';
 import { getAccountTypeFromLocalStorage } from 'services/localStorage.sevice';
 import { useBusiness } from 'context/BusinessContext';
+import { MultiSelect } from 'react-multi-select-component';
+import { useState } from 'react';
+import { ServiceOption } from 'modules/onboarding/business/broker';
 
 const BusinessInfo = () => {
   const { nextStep, previousStep } = useWizard();
   const { getRootProps, getInputProps } = useDropzone();
-
+  const [selected, setSelected] = useState([]);
   const {
     register,
     control,
@@ -81,6 +84,29 @@ const BusinessInfo = () => {
       toastSuccess(response?.data?.message);
       nextStep();
     }
+  };
+
+  const customValueRenderer = (
+    selected: ServiceOption[],
+    handleRemove: (option: ServiceOption) => void
+  ) => {
+    return selected.length ? (
+      selected.map(({ label, value }) => (
+        <Text color={"Primary.Blue"} bgColor={"Neutral.100"} py={1} px={2} borderRadius={40} fontSize={"xs"} cursor={"pointer"} display={"inline-flex"} key={value} alignItems={"center"} gap={1} mr={1}>
+          {label}
+          <CrossIcon w={2} h={2}
+            onClick={() => handleRemove({ label, value })}
+          />
+        </Text>
+      ))
+    ) : (
+      <span>No Items Selected</span>
+    );
+  };
+
+  const handleRemove = (optionToRemove: ServiceOption) => {
+    // const updatedServices = formData.services.filter(value => value !== optionToRemove.value);
+    // setFormData({ ...formData, services: updatedServices });
   };
 
   return (
@@ -161,21 +187,15 @@ const BusinessInfo = () => {
             </FormControl>
             <FormControl>
               <FormLabel>Type</FormLabel>
-              <Select
-                multiple
-                value={selectedTypes}
-                onChange={handleSelectChange}
-                ref={ref} // Apply ref from register
-                {...rest} // Spread the rest of the register properties except onChange
-                isInvalid={!!errors.type}
-                errorBorderColor="Secondary.Red"
-              >
-                {businessTypes.map((type) => (
-                  <option key={type} value={type}>
-                    {type}
-                  </option>
-                ))}
-              </Select>
+              <MultiSelect
+                className='custom-multi-select'
+                options={businessTypes}
+                hasSelectAll={true}
+                value={selected}
+                onChange={setSelected}
+                labelledBy={"Select"}
+                valueRenderer={(selected, options) => customValueRenderer(selected as ServiceOption[], handleRemove)}
+              />
               <FormErrorMessage message={errors.type?.message} />
             </FormControl>
             <FormControl>

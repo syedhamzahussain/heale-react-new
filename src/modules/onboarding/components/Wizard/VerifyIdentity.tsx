@@ -18,6 +18,7 @@ import ButtonTheme from 'modules/shared/ButtonTheme';
 import { useWizard } from 'react-use-wizard';
 import MessageBox from '../MessageBox';
 import {
+  CrossIcon,
   OfficeIcon,
   PersonalIcon,
   VerifyBusinessIcon,
@@ -34,6 +35,8 @@ import { formatDateToISO, toastSuccess } from 'utils/helpers';
 import { getAccountTypeFromLocalStorage } from 'services/localStorage.sevice';
 import { saveProfile } from 'services/user.service';
 import { useEffect, useState } from 'react';
+import { MultiSelect } from 'react-multi-select-component';
+import { ServiceOption } from 'modules/onboarding/business/broker';
 
 interface Country {
   value: string;
@@ -41,6 +44,30 @@ interface Country {
 }
 
 const VerifyIdentity = () => {
+  const [selected, setSelected] = useState([]);
+
+  const customValueRenderer = (
+    selected: ServiceOption[],
+    handleRemove: (option: ServiceOption) => void
+  ) => {
+    return selected.length ? (
+      selected.map(({ label, value }) => (
+        <Text color={"Primary.Blue"} bgColor={"Neutral.100"} py={1} px={2} borderRadius={40} fontSize={"xs"} cursor={"pointer"} display={"inline-flex"} key={value} alignItems={"center"} gap={1} mr={1}>
+          {label}
+          <CrossIcon w={2} h={2}
+            onClick={() => handleRemove({ label, value })}
+          />
+        </Text>
+      ))
+    ) : (
+      <span>No Items Selected</span>
+    );
+  };
+
+  const handleRemove = (optionToRemove: ServiceOption) => {
+    // const updatedServices = formData.services.filter(value => value !== optionToRemove.value);
+    // setFormData({ ...formData, services: updatedServices });
+  };
   const { nextStep, previousStep } = useWizard();
   const {
     register,
@@ -170,21 +197,15 @@ const VerifyIdentity = () => {
               <FormLabel htmlFor="heal_usage">
                 What countries do you operate in?
               </FormLabel>
-              <Select
-                id="heal_usage"
-                multiple
-                value={selectedCountries}
-                onChange={handleSelectChange} // Manually handle onChange
-                ref={ref} // Apply ref from register
-                {...rest} // Spread the rest of the register properties except onChange
-                isInvalid={!!errors.heal_usage}
-              >
-                {countries.map((country: Country) => (
-                  <option key={country.value} value={country.value}>
-                    {country.label}
-                  </option>
-                ))}
-              </Select>
+              <MultiSelect
+                className='custom-multi-select2'
+                options={countries}
+                hasSelectAll={true}
+                value={selected}
+                onChange={setSelected}
+                labelledBy={"Select"}
+                valueRenderer={(selected, options) => customValueRenderer(selected as ServiceOption[], handleRemove)}
+              />
               <FormErrorMessage>
                 {errors.heal_usage && errors.heal_usage.message}
               </FormErrorMessage>
