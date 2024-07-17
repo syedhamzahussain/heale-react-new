@@ -1,3 +1,4 @@
+import React, { useState, useEffect, useMemo } from 'react';
 import {
   Box,
   Flex,
@@ -10,7 +11,6 @@ import {
 } from '@chakra-ui/react';
 import ButtonTheme from 'modules/shared/ButtonTheme';
 import { InfoIcon } from 'modules/shared/Icons';
-import React, { useEffect, useMemo, useState } from 'react';
 import VerificationBox from '../VerificationBox';
 import ApplicationCollabModal from '../ApplicationCollabModal';
 import { useWizard } from 'react-use-wizard';
@@ -22,7 +22,7 @@ import { calculateQuestions } from 'utils/helpers';
 import { useLocation } from 'react-router-dom';
 import { getBusinessApplication } from 'services/user.service';
 import { useBusiness } from 'context/BusinessContext';
-
+import OwnerInfo from 'modules/onboarding/business/owner-info';
 
 interface Questions {
   [key: string]: {
@@ -34,7 +34,6 @@ interface Questions {
 const Application = () => {
   const { isOpen, onOpen, onClose } = useDisclosure();
   const { selectedTypes } = useBusiness();
-  console.log(selectedTypes);
   const {
     isOpen: isBrokerOpen,
     onOpen: onBrokerOpen,
@@ -64,6 +63,8 @@ const Application = () => {
     lender: { filled: 0, total: 1 },
   });
 
+  const [showOwnerInfo, setShowOwnerInfo] = useState(false); // Add state to control view
+
   useEffect(() => {
     const params = new URLSearchParams(location.search);
     const business = params.get('business');
@@ -75,22 +76,28 @@ const Application = () => {
             setApplicationId(data.data.application.id);
             const brokerDataObj = data.data.brokerData
               ? {
-                ...data.data.brokerData,
-                services: JSON.parse(data.data.brokerData.services || '[]'),
-                insurance: JSON.parse(data.data.brokerData.insurance || '[]'),
-                surety_bond: JSON.parse(data.data.brokerData.surety_bond || '[]'),
-              }
+                  ...data.data.brokerData,
+                  services: JSON.parse(data.data.brokerData.services || '[]'),
+                  insurance: JSON.parse(data.data.brokerData.insurance || '[]'),
+                  surety_bond: JSON.parse(
+                    data.data.brokerData.surety_bond || '[]'
+                  ),
+                }
               : null;
 
             const carrierDataObj = data.data.carrierData
               ? {
-                ...data.data.carrierData,
-                services: JSON.parse(data.data.carrierData.services || '[]'),
-                insurance: JSON.parse(data.data.carrierData.insurance || '[]'),
-              }
+                  ...data.data.carrierData,
+                  services: JSON.parse(data.data.carrierData.services || '[]'),
+                  insurance: JSON.parse(
+                    data.data.carrierData.insurance || '[]'
+                  ),
+                }
               : null;
 
-            const lenderDataObj = data.data.lenderData ? { ...data.data.lenderData } : null;
+            const lenderDataObj = data.data.lenderData
+              ? { ...data.data.lenderData }
+              : null;
 
             setBrokerData(brokerDataObj);
             setCarrierData(carrierDataObj);
@@ -101,7 +108,8 @@ const Application = () => {
                 total: calculateQuestions(brokerDataObj)?.totalQuestions ?? 6,
               },
               carrier: {
-                filled: calculateQuestions(carrierDataObj)?.filledQuestions ?? 0,
+                filled:
+                  calculateQuestions(carrierDataObj)?.filledQuestions ?? 0,
                 total: calculateQuestions(carrierDataObj)?.totalQuestions ?? 5,
               },
               lender: {
@@ -145,7 +153,7 @@ const Application = () => {
     };
 
     if (selectedTypes.length > 0) {
-      selectedTypes.forEach(type => {
+      selectedTypes.forEach((type) => {
         if (type === 'Freight Broker' && questions.broker) {
           updateProgress('broker');
         } else if (type === 'Carrier' && questions.carrier) {
@@ -161,18 +169,31 @@ const Application = () => {
       updateProgress('lender');
     }
 
-    return totalQuestions > 0 ? (totalFilled / totalQuestions) : 0;
+    return totalQuestions > 0 ? totalFilled / totalQuestions : 0;
   }, [selectedTypes, questions]);
+
+  if (showOwnerInfo) {
+    return (
+      <OwnerInfo
+        onBack={() => setShowOwnerInfo(false)} // Add onBack prop
+        onContinue={() => nextStep()} // Add onContinue prop
+      />
+    );
+  }
+
   return (
     <Box>
-      <Grid gridTemplateColumns={{ md: "repeat(3,1fr)", base: 'repeat(2,1fr)' }} gap={{ md: 16, base: 6 }}>
+      <Grid
+        gridTemplateColumns={{ md: 'repeat(3,1fr)', base: 'repeat(2,1fr)' }}
+        gap={{ md: 16, base: 6 }}
+      >
         <GridItem colSpan={{ sm: 2, base: 3 }}>
           <Heading as={'h4'} mb={4} fontSize={'3xl'} color={'Primary.Navy'}>
             Start a new application
           </Heading>
           <Text mb={8} color={'Neutral.800'}>
-            Choose the type of application for your business below. A business may
-            have multiple types if required.
+            Choose the type of application for your business below. A business
+            may have multiple types if required.
           </Text>
           <Flex gap={2} mb={8} alignItems={'center'}>
             <Progress
@@ -229,7 +250,6 @@ const Application = () => {
               />
             )}
           </Grid>
-
         </GridItem>
         {!businessParam && (
           <GridItem colSpan={{ sm: 1, base: 3 }}>
@@ -248,7 +268,8 @@ const Application = () => {
                   Add application collaborators
                 </Heading>
                 <Text fontSize={'sm'} color={'Neutral.700'}>
-                  Invite a team member to collaborate and finish your applications.
+                  Invite a team member to collaborate and finish your
+                  applications.
                 </Text>
               </Box>
               <ButtonTheme
@@ -284,22 +305,25 @@ const Application = () => {
           applicationId={applicationId}
         />
       </Grid>
-      <Grid gridTemplateColumns={{ md: "repeat(3,1fr)", base: 'repeat(2,1fr)' }} gap={{ md: 16, base: 6 }}>
+      <Grid
+        gridTemplateColumns={{ md: 'repeat(3,1fr)', base: 'repeat(2,1fr)' }}
+        gap={{ md: 16, base: 6 }}
+      >
         <GridItem colSpan={2}>
           {!businessParam && (
-            <Flex gap={4} flexDir={{ lg: "row", base: "column" }} mt={8}>
+            <Flex gap={4} flexDir={{ lg: 'row', base: 'column' }} mt={8}>
               <ButtonTheme
                 btnText="Back"
                 chakraProps={{ w: '100%', onClick: previousStep }}
               />
               <ButtonTheme
-                btnText="Submit Application"
+                btnText="Continue"
                 primary
-                chakraProps={{ w: '100%', onClick: nextStep }}
+                chakraProps={{ w: '100%' }}
+                onClick={() => setShowOwnerInfo(true)} // Switch to OwnerInfo view
               />
             </Flex>
           )}
-
         </GridItem>
       </Grid>
     </Box>
