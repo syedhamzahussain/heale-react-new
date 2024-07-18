@@ -92,25 +92,23 @@ const BusinessInfo = () => {
 
   const { setBusinessTypes, selectedTypes } = useBusiness();
 
-  const handleSelectChange = (event: React.ChangeEvent<HTMLSelectElement>) => {
-    const values = Array.from(
-      event.target.selectedOptions,
-      (option) => option.value
-    );
-    console.log(values);
-    setBusinessTypes(values);
-  };
 
-  const { onChange, ref, ...rest } = register('type', {
-    required: 'This field is required',
-  });
+  const [typeError, setTypeError] = useState<any>(null);
+
+  
 
   const onSubmit = async (values: any) => {
+    if(selected.length === 0){
+      setTypeError('Atleast one type is required');
+      return;
+    }
+    const valuesArray = selected.map((item: any) => item.value);
+    setBusinessTypes(valuesArray);
     const userBusiness = {
       employer_identification_number: values?.employer_identification_number,
       business_legal_name: values?.business_legal_name,
       entity_type: values?.entity_type,
-      type: JSON.stringify(values?.type),
+      type: JSON.stringify(valuesArray),
       business_email: values?.business_email,
       business_handle: values?.business_handle,
       phone_type: values?.phone_type,
@@ -243,7 +241,8 @@ const BusinessInfo = () => {
                 labelledBy={"Select"}
                 valueRenderer={(selected, options) => customValueRenderer(selected as ServiceOption[], handleRemove)}
               />
-              <FormErrorMessage message={errors.type?.message} />
+              <FormErrorMessage message={typeError ? typeError : ''} />
+
             </FormControl>
             <FormControl>
               <FormLabel>Email</FormLabel>

@@ -45,6 +45,7 @@ interface Country {
 
 const VerifyIdentity = () => {
   const [selected, setSelected] = useState([]);
+  const [countriesError, setCountriesError] = useState<any>(null);
 
   const customValueRenderer = (
     selected: ServiceOption[],
@@ -75,29 +76,17 @@ const VerifyIdentity = () => {
     setValue,
     formState: { errors, isSubmitting },
   } = useForm();
-  const [selectedCountries, setSelectedCountries] = useState<string[]>([]);
 
-  const handleSelectChange = (event: React.ChangeEvent<HTMLSelectElement>) => {
-    const values: string[] = Array.from(
-      event.target.selectedOptions,
-      (option) => option.value
-    );
-    setSelectedCountries(values);
-    setValue('heal_usage', values); // Manually update the value for react-hook-form
-  };
 
-  // Destructure and omit 'onChange' from register output
-  const { onChange, ref, ...rest } = register('heal_usage', {
-    required: 'This field is required',
-  });
-
-  console.log('errors', errors);
 
   const onSubmit = async (values: any) => {
+    if(selected.length === 0){
+      setCountriesError('Atleast one country is required');
+      return;
+    }
     const {
       legal_first_name,
       legal_last_name,
-      heal_usage,
       citizenship,
       source_of_funds,
       employment_status,
@@ -112,8 +101,11 @@ const VerifyIdentity = () => {
       address_2,
     } = values;
     const formattedDob = formatDateToISO(day, month, year);
-    // Convert the heal_usage array to a JSON string
-    const healUsageJson = JSON.stringify(heal_usage);
+    
+    const valuesArray = selected.map((item: any) => item.value);
+
+    // Stringify the array of values
+    const healUsageJson = JSON.stringify(valuesArray);
     const userProfile = {
       account_type: getAccountTypeFromLocalStorage(),
       legal_first_name,
@@ -206,9 +198,8 @@ const VerifyIdentity = () => {
                 labelledBy={"Select"}
                 valueRenderer={(selected, options) => customValueRenderer(selected as ServiceOption[], handleRemove)}
               />
-              <FormErrorMessage>
-                {errors.heal_usage && errors.heal_usage.message}
-              </FormErrorMessage>
+              <FormErrorMessage message={countriesError ? countriesError : ''} />
+                
             </FormControl>
           </Grid>
           <Grid mb={6} gridTemplateColumns={{ lg: 'repeat(3,1fr)', base: 'repeat(1,1fr)' }} gap={{ lg: 6, base: 0 }} rowGap={{ lg: 0, base: 6 }}>
