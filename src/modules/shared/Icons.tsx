@@ -499,13 +499,14 @@ export const HealLogoHexagonIcon = createIcon({
 
 export const TrashIcon = createIcon({
   displayName: "TrashIcon",
-  viewBox: "0 0 16.667 18.167",
+  viewBox: "0 0 18.143 19.571",
   path: (
-    <g id="Group_40466" data-name="Group 40466" transform="translate(-1.668 -0.917)">
-      <path id="Path_91509" data-name="Path 91509" d="M4.168,5.833v10.84a1.665,1.665,0,0,0,1.672,1.66h8.324a1.667,1.667,0,0,0,1.672-1.66V5.833" fill="none" stroke="#9696b3" strokeWidth="1.5" />
-      <path id="Path_91510" data-name="Path 91510" d="M17.5,3.333H2.5A.833.833,0,0,0,2.5,5h15a.833.833,0,0,0,0-1.667Z" fill="#9696b3" />
-      <path id="Path_91511" data-name="Path 91511" d="M7.5,9.164a.833.833,0,0,1,1.667,0v5a.833.833,0,0,1-1.667,0Zm3.333,0a.833.833,0,0,1,1.667,0v5a.833.833,0,0,1-1.667,0Z" fill="#9696b3" fill-rule="evenodd" />
-      <path id="Path_91512" data-name="Path 91512" d="M7.5,4.167V2.5a.833.833,0,0,1,.826-.832h3.349A.827.827,0,0,1,12.5,2.5V4.167" fill="none" stroke="#9696b3" strokeLinejoin="round" strokeWidth="1.5" />
+    <g id="Group_40465" data-name="Group 40465" transform="translate(-0.929 -0.214)">
+      <path id="Path_91497" data-name="Path 91497" d="M1.429,5H18.572" fill="none" stroke="#03103d" stroke-linecap="round" stroke-linejoin="round" stroke-width="1" />
+      <path id="Path_91498" data-name="Path 91498" d="M3.571,5H16.428V17.857A1.429,1.429,0,0,1,15,19.286H5a1.429,1.429,0,0,1-1.429-1.429Z" fill="none" stroke="#03103d" stroke-linecap="round" stroke-linejoin="round" stroke-width="1" />
+      <path id="Path_91499" data-name="Path 91499" d="M6.429,5V4.286a3.571,3.571,0,0,1,7.143,0V5" fill="none" stroke="#03103d" stroke-linecap="round" stroke-linejoin="round" stroke-width="1" />
+      <path id="Path_91500" data-name="Path 91500" d="M7.857,7.857v7.857" fill="none" stroke="#03103d" stroke-linecap="round" stroke-linejoin="round" stroke-width="1" />
+      <path id="Path_91501" data-name="Path 91501" d="M12.143,7.857v7.857" fill="none" stroke="#03103d" stroke-linecap="round" stroke-linejoin="round" stroke-width="1" />
     </g>
   ),
 });
@@ -1055,6 +1056,17 @@ export const CrossIcon = createIcon({
     <g id="Group_40465" data-name="Group 40465" transform="translate(0.421 0.422)">
       <path id="Path_91497" data-name="Path 91497" d="M7.714.286.286,7.714" fill="none" stroke="#3446ee" stroke-linecap="round" stroke-linejoin="round" stroke-width="1" />
       <path id="Path_91498" data-name="Path 91498" d="M.286.286,7.714,7.714" fill="none" stroke="#3446ee" stroke-linecap="round" stroke-linejoin="round" stroke-width="1" />
+    </g>
+  ),
+});
+
+export const DocIcon = createIcon({
+  displayName: "DocIcon",
+  viewBox: "0 0 16.714 19.571",
+  path: (
+    <g id="Group_40465" data-name="Group 40465" transform="translate(-0.643 -0.214)">
+      <path id="Path_91497" data-name="Path 91497" d="M16.857,17.857a1.429,1.429,0,0,1-1.429,1.428H2.571a1.429,1.429,0,0,1-1.429-1.428V2.143A1.429,1.429,0,0,1,2.571.714H9.714l7.143,7.143Z" fill="none" stroke="#3446ee" stroke-linecap="round" stroke-linejoin="round" stroke-width="1" />
+      <path id="Path_91498" data-name="Path 91498" d="M9.714.714V7.857h7.143" fill="none" stroke="#3446ee" stroke-linecap="round" stroke-linejoin="round" stroke-width="1" />
     </g>
   ),
 });

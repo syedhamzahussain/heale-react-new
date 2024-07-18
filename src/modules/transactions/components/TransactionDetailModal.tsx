@@ -1,16 +1,58 @@
-import { Box, Flex, FormControl, FormLabel, Heading, Icon, Menu, MenuButton, MenuItem, MenuList, Modal, ModalBody, ModalCloseButton, ModalContent, ModalHeader, ModalOverlay, Select, Text, Textarea, Tooltip, useDisclosure } from '@chakra-ui/react'
-import { ClipBoardIcon, CloseIcon, RadioIcon, RadioIconChecked, ThreeDotsIcon, UploadIcon } from 'modules/shared/Icons'
-import React, { ChangeEvent, useState } from 'react'
+import { Box, Flex, FormControl, FormLabel, Heading, Icon, List, ListItem, Menu, MenuButton, MenuItem, MenuList, Modal, ModalBody, ModalCloseButton, ModalContent, ModalHeader, ModalOverlay, Select, Text, Textarea, Tooltip, useDisclosure } from '@chakra-ui/react'
+import { ClipBoardIcon, CloseIcon, ConvertIcon, DocIcon, RadioIcon, RadioIconChecked, ThreeDotsIcon, TrashIcon, UploadIcon } from 'modules/shared/Icons'
+import React, { ChangeEvent, useCallback, useState } from 'react'
 import { useDropzone } from 'react-dropzone'
 import { TransactionDetailType } from 'type'
 import DisputeTransactionModal from './DisputeTransactionModal'
 
 const TransactionDetailModal = ({ isOpen, onClose, account, icon, title }: TransactionDetailType) => {
     const { isOpen: isOpenDispute, onOpen: onOpenDispute, onClose: onCloseDispute } = useDisclosure()
-    const {
-        getRootProps,
-        getInputProps,
-    } = useDropzone();
+    const [acceptedFiles, setAcceptedFiles] = useState<File[]>([]);
+
+    const onDrop = useCallback((acceptedFiles: File[]) => {
+        setAcceptedFiles(prevFiles => [...prevFiles, ...acceptedFiles]);
+    }, []);
+
+    const { getRootProps, getInputProps } = useDropzone({ onDrop });
+
+    const handleDelete = (fileName: string) => {
+        setAcceptedFiles(prevFiles => prevFiles.filter(file => file.name !== fileName));
+    };
+
+    const files = acceptedFiles.map(file => (
+        <ListItem
+            justifyContent="space-between"
+            bgColor="Neutral.100"
+            px={4}
+            py={2}
+            borderRadius={8}
+            display="flex"
+            key={file.name}
+        >
+            <Flex gap={2} alignItems="center">
+                <DocIcon />
+                <Text>{file.name}</Text>
+            </Flex>
+            <Flex gap={4} alignItems="center">
+                <ConvertIcon
+                    sx={{
+                        path: {
+                            stroke: 'Primary.Navy',
+                        },
+                    }}
+                />
+                <TrashIcon
+                    onClick={() => handleDelete(file.name)}
+                    sx={{
+                        path: {
+                            stroke: 'Primary.Navy',
+                        },
+                        cursor: 'pointer',
+                    }}
+                />
+            </Flex>
+        </ListItem>
+    ));
     const [note, setNote] = useState('');
     const [desc, setDesc] = useState('');
     const maxLength = 140;
@@ -151,11 +193,21 @@ const TransactionDetailModal = ({ isOpen, onClose, account, icon, title }: Trans
                                     <Text fontSize={"xs"} color={"Neutral.700"} bottom={2} right={2} pos={"absolute"}>{desc.length}/{maxLength}</Text>
                                 </Box>
                             </FormControl>
-                            <Flex cursor={"pointer"} {...getRootProps()} gap={3} bgColor={"Neutral.100"} direction="column" width="100%" height="120px" border="2px dashed rgba(52, 70, 238, 1)" borderRadius={20} alignItems="center" justifyContent="center">
+                            <Flex {...getRootProps()} cursor={'pointer'} gap={3}
+                                bgColor={'Neutral.100'}
+                                direction="column"
+                                width="100%"
+                                height="120px"
+                                border="1px solid"
+                                borderColor={"Neutral.200"}
+                                borderRadius={20}
+                                alignItems="center"
+                                justifyContent="center">
                                 <input {...getInputProps()} />
                                 <UploadIcon w={6} h={6} />
-                                <Text>Drag and drop your files here, or click to browse</Text>
+                                <Text>Drag and drop your W9 files here, or click to <Text as={"span"} color={"Primary.Blue"}>browse</Text></Text>
                             </Flex>
+                            <List>{files}</List>
                         </Box>
                     </ModalBody>
                 </ModalContent>

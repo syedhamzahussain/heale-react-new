@@ -10,10 +10,12 @@ import {
   Text,
   Flex,
   Link,
+  ListItem,
+  List,
 } from '@chakra-ui/react';
 import { useForm, Controller } from 'react-hook-form';
 import ButtonTheme from 'modules/shared/ButtonTheme';
-import { CrossIcon, LockIcon, UploadIcon } from 'modules/shared/Icons';
+import { ConvertIcon, CrossIcon, DocIcon, LockIcon, TrashIcon, UploadIcon } from 'modules/shared/Icons';
 import { useDropzone } from 'react-dropzone';
 import PhoneInput from 'react-phone-input-2';
 import { useWizard } from 'react-use-wizard';
@@ -29,12 +31,57 @@ import { toastSuccess } from 'utils/helpers';
 import { getAccountTypeFromLocalStorage } from 'services/localStorage.sevice';
 import { useBusiness } from 'context/BusinessContext';
 import { MultiSelect } from 'react-multi-select-component';
-import { useState } from 'react';
+import { useCallback, useState } from 'react';
 import { ServiceOption } from 'modules/onboarding/business/broker';
 
 const BusinessInfo = () => {
   const { nextStep, previousStep } = useWizard();
-  const { getRootProps, getInputProps } = useDropzone();
+  const [acceptedFiles, setAcceptedFiles] = useState<File[]>([]);
+
+  const onDrop = useCallback((acceptedFiles: File[]) => {
+    setAcceptedFiles(prevFiles => [...prevFiles, ...acceptedFiles]);
+  }, []);
+
+  const { getRootProps, getInputProps } = useDropzone({ onDrop });
+
+  const handleDelete = (fileName: string) => {
+    setAcceptedFiles(prevFiles => prevFiles.filter(file => file.name !== fileName));
+  };
+
+  const files = acceptedFiles.map(file => (
+    <ListItem
+      justifyContent="space-between"
+      bgColor="Neutral.100"
+      px={4}
+      py={2}
+      borderRadius={8}
+      display="flex"
+      key={file.name}
+    >
+      <Flex gap={2} alignItems="center">
+        <DocIcon />
+        <Text>{file.name}</Text>
+      </Flex>
+      <Flex gap={4} alignItems="center">
+        <ConvertIcon
+          sx={{
+            path: {
+              stroke: 'Primary.Navy',
+            },
+          }}
+        />
+        <TrashIcon
+          onClick={() => handleDelete(file.name)}
+          sx={{
+            path: {
+              stroke: 'Primary.Navy',
+            },
+            cursor: 'pointer',
+          }}
+        />
+      </Flex>
+    </ListItem>
+  ));
   const [selected, setSelected] = useState([]);
   const {
     register,
@@ -42,6 +89,7 @@ const BusinessInfo = () => {
     handleSubmit,
     formState: { errors, isSubmitting },
   } = useForm();
+
   const { setBusinessTypes, selectedTypes } = useBusiness();
 
   const handleSelectChange = (event: React.ChangeEvent<HTMLSelectElement>) => {
@@ -56,7 +104,6 @@ const BusinessInfo = () => {
   const { onChange, ref, ...rest } = register('type', {
     required: 'This field is required',
   });
-  console.log('errorrrs: ', errors);
 
   const onSubmit = async (values: any) => {
     const userBusiness = {
@@ -428,23 +475,21 @@ const BusinessInfo = () => {
               />
               <FormErrorMessage message={errors?.duns_number?.message} />
             </FormControl>
-            <Flex
-              cursor={'pointer'}
-              {...getRootProps()}
-              gap={3}
+            <Flex {...getRootProps()} cursor={'pointer'} gap={3}
               bgColor={'Neutral.100'}
               direction="column"
               width="100%"
               height="120px"
-              border="2px dashed rgba(52, 70, 238, 1)"
+              border="1px solid"
+              borderColor={"Neutral.200"}
               borderRadius={20}
               alignItems="center"
-              justifyContent="center"
-            >
+              justifyContent="center">
               <input {...getInputProps()} />
               <UploadIcon w={6} h={6} />
-              <Text>Drag and drop your W9 files here, or click to browse</Text>
+              <Text>Drag and drop your W9 files here, or click to <Text as={"span"} color={"Primary.Blue"}>browse</Text></Text>
             </Flex>
+            <List>{files}</List>
           </Grid>
           <Flex gap={4}>
             <ButtonTheme

@@ -27,7 +27,6 @@ import {
   Tfoot,
 } from '@chakra-ui/react';
 import ButtonTheme from 'modules/shared/ButtonTheme';
-// import { Select as ChakraSelect } from 'chakra-react-select';
 import { CloseIcon, CrossIcon, PencilIcon, PlusIcon, TrashIcon } from 'modules/shared/Icons';
 import AddInsuranceModal from '../components/AddInsuranceModal';
 import AddSuretyModal from '../components/AddSuretyModal';

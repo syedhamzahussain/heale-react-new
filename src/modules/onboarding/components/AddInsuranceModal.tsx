@@ -1,12 +1,14 @@
 // AddInsuranceModal.tsx
-import React, { useState } from 'react';
+import React, { useCallback, useState } from 'react';
 import {
     Box, FormControl, FormLabel, Grid, Heading, Input, Modal, ModalBody, ModalCloseButton, ModalContent, ModalFooter, ModalHeader, ModalOverlay, Select, Text, Flex, Button,
-    GridItem
+    GridItem,
+    List,
+    ListItem
 } from '@chakra-ui/react';
 import { useDropzone } from 'react-dropzone';
 import ButtonTheme from 'modules/shared/ButtonTheme';
-import { UploadIcon } from 'modules/shared/Icons';
+import { ConvertIcon, DocIcon, TrashIcon, UploadIcon } from 'modules/shared/Icons';
 
 const AddInsuranceModal = ({ isOpen, onClose, onAdd }: any) => {
     const [insuranceData, setInsuranceData] = useState({
@@ -27,10 +29,52 @@ const AddInsuranceModal = ({ isOpen, onClose, onAdd }: any) => {
         onClose();
     };
 
-    const {
-        getRootProps,
-        getInputProps,
-    } = useDropzone();
+    const [acceptedFiles, setAcceptedFiles] = useState<File[]>([]);
+
+    const onDrop = useCallback((acceptedFiles: File[]) => {
+        setAcceptedFiles(prevFiles => [...prevFiles, ...acceptedFiles]);
+    }, []);
+
+    const { getRootProps, getInputProps } = useDropzone({ onDrop });
+
+    const handleDelete = (fileName: string) => {
+        setAcceptedFiles(prevFiles => prevFiles.filter(file => file.name !== fileName));
+    };
+
+    const files = acceptedFiles.map(file => (
+        <ListItem
+            justifyContent="space-between"
+            bgColor="Neutral.100"
+            px={4}
+            py={2}
+            borderRadius={8}
+            display="flex"
+            key={file.name}
+        >
+            <Flex gap={2} alignItems="center">
+                <DocIcon />
+                <Text>{file.name}</Text>
+            </Flex>
+            <Flex gap={4} alignItems="center">
+                <ConvertIcon
+                    sx={{
+                        path: {
+                            stroke: 'Primary.Navy',
+                        },
+                    }}
+                />
+                <TrashIcon
+                    onClick={() => handleDelete(file.name)}
+                    sx={{
+                        path: {
+                            stroke: 'Primary.Navy',
+                        },
+                        cursor: 'pointer',
+                    }}
+                />
+            </Flex>
+        </ListItem>
+    ));
 
     return (
         <Modal size={"3xl"} isOpen={isOpen} onClose={onClose} isCentered>
@@ -98,11 +142,21 @@ const AddInsuranceModal = ({ isOpen, onClose, onAdd }: any) => {
                                 </FormControl>
                             </GridItem>
                         </Grid>
-                        <Flex cursor={"pointer"} {...getRootProps()} gap={3} bgColor={"Neutral.100"} direction="column" width="100%" height="120px" border="2px dashed rgba(52, 70, 238, 1)" borderRadius={20} alignItems="center" justifyContent="center">
+                        <Flex {...getRootProps()} cursor={'pointer'} gap={3}
+                            bgColor={'Neutral.100'}
+                            direction="column"
+                            width="100%"
+                            height="120px"
+                            border="1px solid"
+                            borderColor={"Neutral.200"}
+                            borderRadius={20}
+                            alignItems="center"
+                            justifyContent="center">
                             <input {...getInputProps()} />
                             <UploadIcon w={6} h={6} />
-                            <Text>Drag and drop your W9 files here, or click to browse</Text>
+                            <Text>Drag and drop your W9 files here, or click to <Text as={"span"} color={"Primary.Blue"}>browse</Text></Text>
                         </Flex>
+                        <List>{files}</List>
                     </Box>
                 </ModalBody>
 

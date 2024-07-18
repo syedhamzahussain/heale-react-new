@@ -3,7 +3,6 @@ import {
   Box, FormControl, FormLabel, Grid, Heading, Input, Text, Flex, Modal, ModalOverlay, ModalContent, ModalHeader, ModalFooter, ModalBody, ModalCloseButton, Button, useDisclosure, Table, Thead, Tbody, Tr, Th, Td, TableContainer,
   Tfoot
 } from '@chakra-ui/react';
-import { Select as ChakraSelect } from 'chakra-react-select';
 import ButtonTheme from 'modules/shared/ButtonTheme';
 import { CrossIcon, PencilIcon, PlusIcon, TrashIcon } from 'modules/shared/Icons';
 import AddInsuranceModal from '../components/AddInsuranceModal';
