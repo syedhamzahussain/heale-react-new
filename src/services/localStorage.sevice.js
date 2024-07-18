@@ -84,3 +84,25 @@ export const getQuestionaireToLocalStorage = () => {
 export const removeQuestionaireToLocalStorage = () => {
   localStorage.removeItem('applicationQuestionaire');
 }
+
+export const setFieldValueToLocalStorage = (newFormData) => {
+  // Retrieve the existing data from localStorage
+  const existingData = getFieldValueToLocalStorage() || {};
+
+  // Update the existing data with the new data
+  const updatedData = {
+    ...existingData,
+    ...newFormData
+  };
+
+  // Save the updated data back to localStorage
+  localStorage.setItem('applicationFieldValue', JSON.stringify(updatedData));
+}
+
+export const getFieldValueToLocalStorage = () => {
+  return JSON.parse(localStorage.getItem('applicationFieldValue'));
+}
+
+export const removeFieldValueToLocalStorage = () => {
+  localStorage.removeItem('applicationFieldValue');
+}

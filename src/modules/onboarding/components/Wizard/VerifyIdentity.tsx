@@ -32,11 +32,12 @@ import {
   states,
 } from 'utils/constants';
 import { formatDateToISO, toastSuccess } from 'utils/helpers';
-import { getAccountTypeFromLocalStorage } from 'services/localStorage.sevice';
+import { getAccountTypeFromLocalStorage, setFieldValueToLocalStorage } from 'services/localStorage.sevice';
 import { saveProfile } from 'services/user.service';
 import { useEffect, useState } from 'react';
 import { MultiSelect } from 'react-multi-select-component';
 import { ServiceOption } from 'modules/onboarding/business/broker';
+import useFormLocalStorage from 'hooks/useFormLocalStorage';
 
 interface Country {
   value: string;
@@ -77,6 +78,7 @@ const VerifyIdentity = () => {
     formState: { errors, isSubmitting },
   } = useForm();
 
+  const [selectedCountries, setSelectedCountries] = useState<string[]>([]);
 
 
   const onSubmit = async (values: any) => {
@@ -128,6 +130,27 @@ const VerifyIdentity = () => {
       nextStep();
     }
   };
+
+  const { handleChange, getInitialValues } = useFormLocalStorage('verifyIdentity', setValue);
+
+  // Initialize form values from localStorage
+  useEffect(() => {
+    const initialValues = getInitialValues();
+    Object.keys(initialValues).forEach((key) => {
+      if(key === 'heale_usage'){
+        console.log('Setting Selected:', initialValues[key]);
+        setSelected(initialValues[key]);
+      }else{
+        setValue(key, initialValues[key]);
+      }
+    });
+  }, []);
+
+  const handleSelectChange = (selectedOptions: any) => {
+    setSelected(selectedOptions);
+    handleChange('heale_usage', selectedOptions);
+  };
+
   return (
     <Box>
       <Heading as={'h4'} mb={4} fontSize={'3xl'} color={'Primary.Navy'}>
@@ -164,6 +187,7 @@ const VerifyIdentity = () => {
                     value: 4,
                     message: 'Minimum length should be 4',
                   },
+                  onChange: (e) => handleChange('legal_first_name', e.target.value)
                 })}
               />
               <FormErrorMessage message={errors?.legal_first_name?.message} />
@@ -181,6 +205,7 @@ const VerifyIdentity = () => {
                     value: 4,
                     message: 'Minimum length should be 4',
                   },
+                  onChange: (e) => handleChange('legal_last_name', e.target.value)
                 })}
               />
               <FormErrorMessage message={errors?.legal_last_name?.message} />
@@ -194,7 +219,7 @@ const VerifyIdentity = () => {
                 options={countries}
                 hasSelectAll={true}
                 value={selected}
-                onChange={setSelected}
+                onChange={handleSelectChange}
                 labelledBy={"Select"}
                 valueRenderer={(selected, options) => customValueRenderer(selected as ServiceOption[], handleRemove)}
               />
@@ -214,6 +239,7 @@ const VerifyIdentity = () => {
                       errorBorderColor="Secondary.Red"
                       {...register('month', {
                         required: 'This field is required',
+                        onChange: (e) => handleChange('month', e.target.value)
                       })}
                     >
                       {Array.from({ length: 12 }, (_, i) => i + 1).map(
@@ -233,6 +259,7 @@ const VerifyIdentity = () => {
                       errorBorderColor="Secondary.Red"
                       {...register('day', {
                         required: 'This field is required',
+                        onChange: (e) => handleChange('day', e.target.value)
                       })}
                     >
                       {Array.from({ length: 31 }, (_, i) => i + 1).map(
@@ -252,6 +279,7 @@ const VerifyIdentity = () => {
                       errorBorderColor="Secondary.Red"
                       {...register('year', {
                         required: 'This field is required',
+                        onChange: (e) => handleChange('year', e.target.value)
                       })}
                     >
                       {Array.from({ length: 100 }, (_, i) => 2020 - i).map(
@@ -275,6 +303,7 @@ const VerifyIdentity = () => {
                 placeholder="Select"
                 {...register('source_of_funds', {
                   required: 'This field is required',
+                  onChange: (e) => handleChange('source_of_funds', e.target.value)
                 })}
               >
                 {sourceOfFunds.map((source, index) => (
@@ -299,6 +328,7 @@ const VerifyIdentity = () => {
                       placeholder="Address line 1"
                       {...register('address_1', {
                         required: 'This field is required',
+                        onChange: (e) => handleChange('address_1', e.target.value)
                       })}
                     />
                     <FormErrorMessage message={errors?.address_1?.message} />
@@ -308,7 +338,9 @@ const VerifyIdentity = () => {
                       type="text"
                       // errorBorderColor="Secondary.Red"
                       placeholder="Address line 2"
-                      {...register('address_2')}
+                      {...register('address_2', {
+                        onChange: (e) => handleChange('address_2', e.target.value)
+                      })}
                     />
                   </GridItem>
                   <GridItem colSpan={2}>
@@ -319,6 +351,7 @@ const VerifyIdentity = () => {
                       placeholder="City"
                       {...register('city', {
                         required: 'This field is required',
+                        onChange: (e) => handleChange('city', e.target.value)
                       })}
                     />
                     <FormErrorMessage message={errors?.city?.message} />
@@ -330,6 +363,7 @@ const VerifyIdentity = () => {
                       placeholder="State"
                       {...register('state', {
                         required: 'This field is required',
+                        onChange: (e) => handleChange('state', e.target.value)
                       })}
                     >
                       {states.map((state, index) => (
@@ -348,6 +382,7 @@ const VerifyIdentity = () => {
                       placeholder="Zip code"
                       {...register('zip_code', {
                         required: 'This field is required',
+                        onChange: (e) => handleChange('zip_code', e.target.value)
                       })}
                     />
                     <FormErrorMessage message={errors?.zip_code?.message} />
@@ -364,6 +399,7 @@ const VerifyIdentity = () => {
                   placeholder="Select"
                   {...register('employment_status', {
                     required: 'This field is required',
+                    onChange: (e) => handleChange('employment_status', e.target.value)
                   })}
                 >
                   {employmentStatus.map((status, index) => (
@@ -389,6 +425,7 @@ const VerifyIdentity = () => {
                       value: /^\d{9}$/,
                       message: 'SSN must be exactly 9 digits',
                     },
+                    onChange: (e) => handleChange('ssn', e.target.value)
                   })}
                 />
                 <FormErrorMessage message={errors?.ssn?.message} />
@@ -402,6 +439,7 @@ const VerifyIdentity = () => {
                   placeholder="Select"
                   {...register('citizenship', {
                     required: 'This field is required',
+                    onChange: (e) => handleChange('citizenship', e.target.value)
                   })}
                 >
                   {countries.map((country) => (

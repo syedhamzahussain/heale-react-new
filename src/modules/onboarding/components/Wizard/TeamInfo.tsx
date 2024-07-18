@@ -14,7 +14,7 @@ import {
   Text,
 } from '@chakra-ui/react';
 import ButtonTheme from 'modules/shared/ButtonTheme';
-import React, { useState } from 'react';
+import React, { useEffect, useState } from 'react';
 import PhoneInput from 'react-phone-input-2';
 import { useWizard } from 'react-use-wizard';
 import axios from 'axios';
@@ -22,18 +22,36 @@ import { saveTeamUser, sendOnboardedEmail } from 'services/user.service';
 import { toastSuccess } from 'utils/helpers';
 import {
   removeAccountTypeFromLocalStorage,
+  removeFieldValueToLocalStorage,
   removeOwnersFromLocalStorage,
   removeQuestionaireToLocalStorage,
   removeTokenFromLocalStorage,
   removeUserFromLocalStorage,
 } from 'services/localStorage.sevice';
 import { usePersistedStep } from './WizardHeader';
+import useFormLocalStorage from 'hooks/useFormLocalStorage';
+
+interface FormData {
+  role: string;
+  firstName: string;
+  lastName: string;
+  email: string;
+  phoneType: string;
+  phoneNumber: string;
+  extension: string;
+  employeeId: string;
+  accessWallet: boolean;
+  permissionName: boolean;
+  agree: boolean;
+}
 
 const TeamInfo = () => {
   const { nextStep, previousStep } = useWizard();
   const [step, setStep, clearStep] = usePersistedStep(0);
 
-  const [formData, setFormData] = useState({
+  const { handleChange: handleLocalStorageChange, getInitialValues } = useFormLocalStorage<FormData>('teamInfo');
+
+  const [formData, setFormData] = useState<FormData>({
     role: '',
     firstName: '',
     lastName: '',
@@ -42,19 +60,24 @@ const TeamInfo = () => {
     phoneNumber: '',
     extension: '',
     employeeId: '',
-    permissions: {
-      accessWallet: false,
-      permissionName: false,
-    },
+    accessWallet: false,
+    permissionName: false,
     agree: false,
   });
 
+  useEffect(() => {
+    const initialValues = getInitialValues();
+    setFormData(initialValues);
+  }, [getInitialValues]);
+
   const handleChange = (e: any) => {
     const { name, value, type, checked } = e.target;
+    const newValue = type === 'checkbox' ? checked : value;
     setFormData((prevState) => ({
       ...prevState,
-      [name]: type === 'checkbox' ? checked : value,
+      [name]: newValue,
     }));
+    handleLocalStorageChange(name, newValue); // Update local storage
   };
 
   const handlePhoneChange = (value: any) => {
@@ -62,6 +85,7 @@ const TeamInfo = () => {
       ...prevState,
       phoneNumber: value,
     }));
+    handleLocalStorageChange('phoneNumber', value); // Update local storage
   };
 
   const handleCreateAnotherUser = async () => {
@@ -76,10 +100,8 @@ const TeamInfo = () => {
       phoneNumber: '',
       extension: '',
       employeeId: '',
-      permissions: {
-        accessWallet: false,
-        permissionName: false,
-      },
+      accessWallet: false,
+      permissionName: false,
       agree: false,
     });
   };
@@ -99,6 +121,7 @@ const TeamInfo = () => {
           removeQuestionaireToLocalStorage();
           removeTokenFromLocalStorage();
           removeOwnersFromLocalStorage();
+          removeFieldValueToLocalStorage();
           clearStep();
           window.location.href = '/extension';
         }
@@ -107,6 +130,7 @@ const TeamInfo = () => {
       console.error('Error creating user:', error);
     }
   };
+
 
   return (
     <Box w={{ lg: '50%', md: "60%", base: "100%" }}>
@@ -150,7 +174,7 @@ const TeamInfo = () => {
           <FormLabel>Role</FormLabel>
           <Select
             name="role"
-            value={formData.role}
+            value={formData?.role}
             onChange={handleChange}
             placeholder="Select Role"
           >
@@ -170,7 +194,7 @@ const TeamInfo = () => {
             <Input
               type="text"
               name="firstName"
-              value={formData.firstName}
+              value={formData?.firstName}
               onChange={handleChange}
               placeholder="Your first name"
             />
@@ -185,7 +209,7 @@ const TeamInfo = () => {
             <Input
               type="text"
               name="lastName"
-              value={formData.lastName}
+              value={formData?.lastName}
               onChange={handleChange}
               placeholder="Your last name"
             />
@@ -201,7 +225,7 @@ const TeamInfo = () => {
           <Input
             type="email"
             name="email"
-            value={formData.email}
+            value={formData?.email}
             onChange={handleChange}
             placeholder="Email address"
           />
@@ -212,7 +236,7 @@ const TeamInfo = () => {
               <FormLabel>Phone Type</FormLabel>
               <Select
                 name="phoneType"
-                value={formData.phoneType}
+                value={formData?.phoneType}
                 onChange={handleChange}
                 placeholder="Select"
               >
@@ -260,7 +284,7 @@ const TeamInfo = () => {
               >
                 <PhoneInput
                   country={'us'}
-                  value={formData.phoneNumber}
+                  value={formData?.phoneNumber}
                   onChange={handlePhoneChange}
                 />
               </Box>
@@ -272,7 +296,7 @@ const TeamInfo = () => {
               <Input
                 type="text"
                 name="extension"
-                value={formData.extension}
+                value={formData?.extension}
                 onChange={handleChange}
                 placeholder="+1"
               />
@@ -284,7 +308,7 @@ const TeamInfo = () => {
           <Input
             type="text"
             name="employeeId"
-            value={formData.employeeId}
+            value={formData?.employeeId}
             onChange={handleChange}
             placeholder="Enter your employee ID"
           />
@@ -301,7 +325,7 @@ const TeamInfo = () => {
           >
             <Checkbox
               name="accessWallet"
-              isChecked={formData.permissions.accessWallet}
+              isChecked={formData?.accessWallet}
               onChange={handleChange}
               alignItems={'start'}
               size={'md'}
@@ -311,7 +335,7 @@ const TeamInfo = () => {
             </Checkbox>
             <Checkbox
               name="permissionName"
-              isChecked={formData.permissions.permissionName}
+              isChecked={formData?.permissionName}
               onChange={handleChange}
               alignItems={'start'}
               size={'md'}
@@ -333,7 +357,7 @@ const TeamInfo = () => {
       />
       <Checkbox
         name="agree"
-        isChecked={formData.agree}
+        isChecked={formData?.agree}
         onChange={handleChange}
         color={'Primary.Navy'}
         size={'sm'}

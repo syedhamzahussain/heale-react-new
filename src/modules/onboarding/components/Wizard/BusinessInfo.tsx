@@ -31,8 +31,9 @@ import { toastSuccess } from 'utils/helpers';
 import { getAccountTypeFromLocalStorage } from 'services/localStorage.sevice';
 import { useBusiness } from 'context/BusinessContext';
 import { MultiSelect } from 'react-multi-select-component';
-import { useCallback, useState } from 'react';
+import { useCallback, useEffect, useState } from 'react';
 import { ServiceOption } from 'modules/onboarding/business/broker';
+import useFormLocalStorage from 'hooks/useFormLocalStorage';
 
 const BusinessInfo = () => {
   const { nextStep, previousStep } = useWizard();
@@ -87,6 +88,7 @@ const BusinessInfo = () => {
     register,
     control,
     handleSubmit,
+    setValue,
     formState: { errors, isSubmitting },
   } = useForm();
 
@@ -95,7 +97,11 @@ const BusinessInfo = () => {
 
   const [typeError, setTypeError] = useState<any>(null);
 
-  
+  const handleSelectChange = (selectedOptions: any) => {
+    setSelected(selectedOptions);
+    handleChange('bussinessType', selectedOptions);
+  };
+
 
   const onSubmit = async (values: any) => {
     if(selected.length === 0){
@@ -153,6 +159,21 @@ const BusinessInfo = () => {
     // const updatedServices = formData.services.filter(value => value !== optionToRemove.value);
     // setFormData({ ...formData, services: updatedServices });
   };
+  const { handleChange, getInitialValues } = useFormLocalStorage('businessInfo', setValue);
+
+  // Initialize form values from localStorage
+  useEffect(() => {
+    const initialValues = getInitialValues();
+    Object.keys(initialValues).forEach((key) => {
+      if(key === 'bussinessType'){
+        setSelected(initialValues[key]);
+      }else{
+        setValue(key, initialValues[key]);
+      }
+    });
+  }, [setValue, getInitialValues]);
+
+
 
   return (
     <Box w={{ lg: '50%', md: "60%", base: "100%" }}>
@@ -191,6 +212,7 @@ const BusinessInfo = () => {
                     value: /^\d{2}-\d{7}$/,
                     message: 'EIN must be in the format XX-XXXXXXX',
                   },
+                  onChange: (e) => handleChange('employer_identification_number', e.target.value)
                 })}
               />
               <FormErrorMessage
@@ -206,6 +228,7 @@ const BusinessInfo = () => {
                 errorBorderColor="Secondary.Red"
                 {...register('business_legal_name', {
                   required: 'This field is required',
+                  onChange: (e) => handleChange('business_legal_name', e.target.value)
                 })}
               />
               <FormErrorMessage
@@ -220,6 +243,7 @@ const BusinessInfo = () => {
                 errorBorderColor="Secondary.Red"
                 {...register('entity_type', {
                   required: 'This field is required',
+                  onChange: (e) => handleChange('entity_type', e.target.value)
                 })}
               >
                 {businessEntityTypes.map((entityType) => (
@@ -237,7 +261,7 @@ const BusinessInfo = () => {
                 options={businessTypes}
                 hasSelectAll={true}
                 value={selected}
-                onChange={setSelected}
+                onChange={handleSelectChange}
                 labelledBy={"Select"}
                 valueRenderer={(selected, options) => customValueRenderer(selected as ServiceOption[], handleRemove)}
               />
@@ -257,6 +281,7 @@ const BusinessInfo = () => {
                     value: /\S+@\S+\.\S+/,
                     message: 'Invalid email address',
                   },
+                  onChange: (e) => handleChange('business_email', e.target.value)
                 })}
               />
               <FormErrorMessage message={errors?.business_email?.message} />
@@ -270,6 +295,7 @@ const BusinessInfo = () => {
                 placeholder="_ _  _ _ _ _ _ _ _"
                 {...register('business_handle', {
                   required: 'This field is required',
+                  onChange: (e) => handleChange('business_handle', e.target.value)
                 })}
               />
               <FormErrorMessage message={errors?.business_handle?.message} />
@@ -279,7 +305,13 @@ const BusinessInfo = () => {
             <GridItem colSpan={2}>
               <FormControl>
                 <FormLabel>Phone Type</FormLabel>
-                <Select placeholder="Select">
+                <Select 
+                  placeholder="Select" 
+                  {...register('phoneType', {
+                    required: 'This field is required',
+                    onChange: (e) => handleChange('phoneType', e.target.value)
+                  })}
+                >
                   {phoneTypes.map((phoneType) => (
                     <option key={phoneType} value={phoneType}>
                       {phoneType}
@@ -326,7 +358,10 @@ const BusinessInfo = () => {
                       <PhoneInput
                         country={'us'}
                         value={value}
-                        onChange={onChange}
+                        onChange={(phone) => {
+                          onChange(phone);
+                          handleChange('phone_number', phone); // Update localStorage
+                        }}
                         // If you need to apply custom styles based on validation state
                         inputStyle={
                           error
@@ -344,7 +379,14 @@ const BusinessInfo = () => {
             <GridItem colSpan={2}>
               <FormControl>
                 <FormLabel>Extension</FormLabel>
-                <Input type="text" placeholder="+1" />
+                <Input 
+                  type="text" 
+                  placeholder="+1" 
+                  {...register('extension', {
+                    required: 'This field is required',
+                    onChange: (e) => handleChange('extension', e.target.value)
+                  })}
+                />
               </FormControl>
             </GridItem>
           </Grid>
@@ -357,6 +399,7 @@ const BusinessInfo = () => {
                 errorBorderColor="Secondary.Red"
                 {...register('incorporation_state', {
                   required: 'This field is required',
+                  onChange: (e) => handleChange('incorporation_state', e.target.value)
                 })}
               >
                 {states.map((state, index) => (
@@ -377,6 +420,7 @@ const BusinessInfo = () => {
                 errorBorderColor="Secondary.Red"
                 {...register('incorporation_year', {
                   required: 'This field is required',
+                  onChange: (e) => handleChange('incorporation_year', e.target.value)
                 })}
               >
                 {Array.from({ length: 30 }, (_, i) => 2024 - i).map((year) => (
@@ -402,13 +446,16 @@ const BusinessInfo = () => {
                   errorBorderColor="Secondary.Red"
                   {...register('address', {
                     required: 'This field is required',
-                  })}
+                    onChange: (e) => handleChange('address', e.target.value)
+                })}
                 />
                 <FormErrorMessage message={errors?.address?.message} />
                 <Input
                   placeholder="Address line 2"
                   type="text"
-                  {...register('address1')}
+                  {...register('address1', {
+                    onChange: (e) => handleChange('address1', e.target.value)
+                  })}
                 />
               </FormControl>
             </GridItem>
@@ -419,6 +466,7 @@ const BusinessInfo = () => {
               errorBorderColor="Secondary.Red"
               {...register('city', {
                 required: 'This field is required',
+                onChange: (e) => handleChange('city', e.target.value)
               })}
             />
             <FormErrorMessage message={errors?.city?.message} />
@@ -428,6 +476,7 @@ const BusinessInfo = () => {
               errorBorderColor="Secondary.Red"
               {...register('state', {
                 required: 'This field is required',
+                onChange: (e) => handleChange('state', e.target.value)
               })}
             >
               {states.map((state, index) => (
@@ -444,6 +493,7 @@ const BusinessInfo = () => {
               errorBorderColor="Secondary.Red"
               {...register('zip_code', {
                 required: 'This field is required',
+                onChange: (e) => handleChange('zip_code', e.target.value)
               })}
             />
             <FormErrorMessage message={errors?.zip_code?.message} />
@@ -454,7 +504,9 @@ const BusinessInfo = () => {
               <Input
                 type="text"
                 placeholder="Enter name"
-                {...register('business_website')}
+                {...register('business_website', {
+                  onChange: (e) => handleChange('business_website', e.target.value)
+                })}
               />
             </FormControl>
             <FormControl>
@@ -470,6 +522,7 @@ const BusinessInfo = () => {
                     value: /^\d{9}$/,
                     message: 'DUNS must be exactly 9 digits',
                   },
+                  onChange: (e) => handleChange('duns_number', e.target.value)
                 })}
               />
               <FormErrorMessage message={errors?.duns_number?.message} />
