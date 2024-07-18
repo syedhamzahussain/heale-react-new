@@ -31,6 +31,7 @@ import Application from 'modules/onboarding/components/Wizard/Application';
 import CollabApplication from 'modules/onboarding/business/collab-application';
 import 'App.css';
 import OwnerInfo from 'modules/onboarding/business/owner-info';
+import ReviewInfo from 'modules/onboarding/business/review-info';
 
 function App() {
   return (
@@ -79,7 +80,12 @@ function App() {
                 </ProtectedRoute>
               }
             />
-
+            <Route
+              path="business/review-info"
+              element={
+                <ReviewInfo />
+              }
+            />
           </Route>
 
           <Route element={<DashboardLayout />}>
