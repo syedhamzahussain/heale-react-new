@@ -47,6 +47,16 @@ interface Country {
 const VerifyIdentity = () => {
   const [selected, setSelected] = useState([]);
   const [countriesError, setCountriesError] = useState<any>(null);
+  const [ssn, setSSN] = useState('');
+
+  const formatSSN = (value: any) => {
+    const digits = value.replace(/\D/g, '').slice(0, 9);
+    const formatted = digits
+      .replace(/(\d{3})(\d{2})(\d{4})/, '$1-$2-$3')
+      .replace(/(\d{3})(\d{2})(\d{0,4})/, '$1-$2-$3');
+    return formatted;
+
+  };
 
   const customValueRenderer = (
     selected: ServiceOption[],
@@ -150,6 +160,17 @@ const VerifyIdentity = () => {
     setSelected(selectedOptions);
     handleChange('heale_usage', selectedOptions);
   };
+
+  const {
+    onChange: ssnOnChange,
+    ref: ssnRef,
+    ...ssnRest
+  } = register('ssn', {
+    required: 'This field is required',
+    onChange: (e) => handleChange('ssn', e.target.value),
+    validate: (value) =>
+      value.replace(/\D/g, '').length === 9 || 'SSN must be exactly 9 digits',
+  });
 
   return (
     <Box>
@@ -418,15 +439,19 @@ const VerifyIdentity = () => {
                   type="text"
                   isInvalid={errors?.ssn?.message ? true : false}
                   errorBorderColor="Secondary.Red"
-                  placeholder="(123-45-6789)"
-                  {...register('ssn', {
-                    required: 'This field is required',
-                    pattern: {
-                      value: /^\d{9}$/,
-                      message: 'SSN must be exactly 9 digits',
-                    },
-                    onChange: (e) => handleChange('ssn', e.target.value)
-                  })}
+                  value={ssn}
+                  onChange={(event) => {
+                    const formattedSSN = formatSSN(event.target.value);
+                    setSSN(formattedSSN);
+                    ssnOnChange({
+                      target: {
+                        name: 'ssn',
+                        value: formattedSSN,
+                      },
+                    });
+                  }}
+                  ref={ssnRef}
+                  {...ssnRest}
                 />
                 <FormErrorMessage message={errors?.ssn?.message} />
               </FormControl>

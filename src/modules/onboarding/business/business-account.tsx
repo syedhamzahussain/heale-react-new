@@ -22,7 +22,7 @@ const BusinessAccount = () => {
       <Flex gap={{ md: 8, base: 4 }} flexDir={{ md: "row", base: "column" }}>
         <BusinessProvider>
           <Wizard startIndex={step} header={<WizardHeader />}>
-            <PersonalInfo />
+            <PersonalInfo type={'business'}/>
             <Authentication />
             <VerifyIdentity />
             <BusinessInfo />

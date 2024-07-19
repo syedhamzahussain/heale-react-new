@@ -38,6 +38,8 @@ import useFormLocalStorage from 'hooks/useFormLocalStorage';
 const BusinessInfo = () => {
   const { nextStep, previousStep } = useWizard();
   const [acceptedFiles, setAcceptedFiles] = useState<File[]>([]);
+  const [employerIdentificationNumber, setEmployerIdentificationNumber] =
+    useState('');
 
   const onDrop = useCallback((acceptedFiles: File[]) => {
     setAcceptedFiles(prevFiles => [...prevFiles, ...acceptedFiles]);
@@ -173,6 +175,24 @@ const BusinessInfo = () => {
     });
   }, [setValue, getInitialValues]);
 
+  const formatEIN = (value: any) => {
+    const digits = value.replace(/\D/g, '').slice(0, 9);
+    const formatted = digits
+      .replace(/(\d{2})(\d{7})/, '$1-$2')
+      .replace(/(\d{2})(\d{0,7})/, '$1-$2');
+    return formatted;
+  };
+
+  const {
+    onChange: einOnChange,
+    ref: einRef,
+    ...einRest
+  } = register('employer_identification_number', {
+    required: 'This field is required',
+    onChange: (e) => handleChange('employer_identification_number', e.target.value),
+    validate: (value) =>
+      value.replace(/\D/g, '').length === 9 || 'EIN must be exactly 9 digits',
+  });
 
 
   return (
@@ -206,14 +226,19 @@ const BusinessInfo = () => {
                 }
                 errorBorderColor="Secondary.Red"
                 placeholder="XX-XXXXXXX"
-                {...register('employer_identification_number', {
-                  required: 'This field is required',
-                  pattern: {
-                    value: /^\d{2}-\d{7}$/,
-                    message: 'EIN must be in the format XX-XXXXXXX',
-                  },
-                  onChange: (e) => handleChange('employer_identification_number', e.target.value)
-                })}
+                value={employerIdentificationNumber}
+                onChange={(event) => {
+                  const formattedEIN = formatEIN(event.target.value);
+                  setEmployerIdentificationNumber(formattedEIN);
+                  einOnChange({
+                    target: {
+                      name: 'employer_identification_number',
+                      value: formattedEIN,
+                    },
+                  });
+                }}
+                ref={einRef}
+                {...einRest}
               />
               <FormErrorMessage
                 message={errors?.employer_identification_number?.message}
@@ -503,7 +528,7 @@ const BusinessInfo = () => {
               <FormLabel>Website</FormLabel>
               <Input
                 type="text"
-                placeholder="Enter name"
+                placeholder="Enter website address"
                 {...register('business_website', {
                   onChange: (e) => handleChange('business_website', e.target.value)
                 })}
