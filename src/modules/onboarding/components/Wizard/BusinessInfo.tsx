@@ -34,6 +34,26 @@ import { MultiSelect } from 'react-multi-select-component';
 import { useCallback, useEffect, useState } from 'react';
 import { ServiceOption } from 'modules/onboarding/business/broker';
 import useFormLocalStorage from 'hooks/useFormLocalStorage';
+import {
+  useConnect,
+  useSendTransaction,
+  useSetActiveWallet,
+} from 'thirdweb/react';
+import {
+  inAppWallet,
+  privateKeyToAccount,
+  createWallet,
+} from 'thirdweb/wallets';
+import { client } from '../../../../twclient';
+
+import { polygonAmoy } from 'thirdweb/chains';
+
+import {
+  Address,
+  prepareContractCall,
+  sendAndConfirmTransaction,
+  getContract,
+} from 'thirdweb';
 
 const BusinessInfo = () => {
   const { nextStep, previousStep } = useWizard();
@@ -41,51 +61,120 @@ const BusinessInfo = () => {
   const [employerIdentificationNumber, setEmployerIdentificationNumber] =
     useState('');
 
-  const onDrop = useCallback((acceptedFiles: File[]) => {
-    setAcceptedFiles(prevFiles => [...prevFiles, ...acceptedFiles]);
-  }, []);
+    const onDrop = useCallback((acceptedFiles: File[]) => {
+      setAcceptedFiles(prevFiles => [...prevFiles, ...acceptedFiles]);
+    }, []);
+  
+    const { getRootProps, getInputProps } = useDropzone({ onDrop });
+  
+    const handleDelete = (fileName: string) => {
+      setAcceptedFiles(prevFiles => prevFiles.filter(file => file.name !== fileName));
+    };
+  
+    const files = acceptedFiles.map(file => (
+      <ListItem
+        justifyContent="space-between"
+        bgColor="Neutral.100"
+        px={4}
+        py={2}
+        borderRadius={8}
+        display="flex"
+        key={file.name}
+      >
+        <Flex gap={2} alignItems="center">
+          <DocIcon />
+          <Text>{file.name}</Text>
+        </Flex>
+        <Flex gap={4} alignItems="center">
+          <ConvertIcon
+            sx={{
+              path: {
+                stroke: 'Primary.Navy',
+              },
+            }}
+          />
+          <TrashIcon
+            onClick={() => handleDelete(file.name)}
+            sx={{
+              path: {
+                stroke: 'Primary.Navy',
+              },
+              cursor: 'pointer',
+            }}
+          />
+        </Flex>
+      </ListItem>
+    ));
+    const [selected, setSelected] = useState([]);
 
-  const { getRootProps, getInputProps } = useDropzone({ onDrop });
+  const { connect } = useConnect({
+    client: client,
+    accountAbstraction: {
+      chain: polygonAmoy,
+      sponsorGas: true,
+      factoryAddress: process.env.REACT_APP_FACTORY_ADDRESS,
+    },
+  });
 
-  const handleDelete = (fileName: string) => {
-    setAcceptedFiles(prevFiles => prevFiles.filter(file => file.name !== fileName));
+  const adminAccount = privateKeyToAccount({
+    client,
+    privateKey: process.env.REACT_APP_ADMIN_WALLET_KEY as Address,
+  });
+
+  const contract = getContract({
+    client,
+    chain: polygonAmoy,
+    address: process.env.REACT_APP_CONTRACT_ADDRESS ?? '',
+  });
+
+  const handlePostLogin = async (userId: string) => {
+    console.log('Sending userId to thirdweb:', userId); // Log the userId being sent
+    const wallet = await connect(async () => {
+      const wallet = inAppWallet();
+      await wallet.connect({
+        client: client,
+        strategy: 'auth_endpoint',
+        payload: userId.toString(), // Ensure userId is a string
+        encryptionKey: 'Test', // Leave blank for now
+      });
+      console.log('NEW WALLET ADDRESS', wallet.getAccount()?.address);
+      return wallet;
+    });
+    // Call mintIdentityNFT with the new wallet address
+    const walletAddress = wallet?.getAccount()?.address;
+    if (walletAddress) {
+      await mintIdentityNFT(walletAddress, parseInt(userId, 10));
+    }
+
+    return wallet;
   };
 
-  const files = acceptedFiles.map(file => (
-    <ListItem
-      justifyContent="space-between"
-      bgColor="Neutral.100"
-      px={4}
-      py={2}
-      borderRadius={8}
-      display="flex"
-      key={file.name}
-    >
-      <Flex gap={2} alignItems="center">
-        <DocIcon />
-        <Text>{file.name}</Text>
-      </Flex>
-      <Flex gap={4} alignItems="center">
-        <ConvertIcon
-          sx={{
-            path: {
-              stroke: 'Primary.Navy',
-            },
-          }}
-        />
-        <TrashIcon
-          onClick={() => handleDelete(file.name)}
-          sx={{
-            path: {
-              stroke: 'Primary.Navy',
-            },
-            cursor: 'pointer',
-          }}
-        />
-      </Flex>
-    </ListItem>
-  ));
-  const [selected, setSelected] = useState([]);
+  const mintIdentityNFT = async (toAddress: string, userId: number) => {
+    const tx = await prepareContractCall({
+      contract,
+      method: 'function mintTo(address to, uint256 tokenId)',
+      params: [toAddress as `0x${string}`, BigInt(userId)],
+    });
+
+    try {
+      await sendAndConfirmTransaction({
+        transaction: tx,
+        account: adminAccount,
+      });
+      console.log('Identity NFT minted successfully', tx);
+    } catch (error) {
+      console.error(error);
+    }
+  };
+
+  const formatEIN = (value: any) => {
+    const digits = value.replace(/\D/g, '').slice(0, 9);
+    const formatted = digits
+      .replace(/(\d{2})(\d{7})/, '$1-$2')
+      .replace(/(\d{2})(\d{0,7})/, '$1-$2');
+    return formatted;
+  };
+
   const {
     register,
     control,
@@ -175,14 +264,7 @@ const BusinessInfo = () => {
     });
   }, [setValue, getInitialValues]);
 
-  const formatEIN = (value: any) => {
-    const digits = value.replace(/\D/g, '').slice(0, 9);
-    const formatted = digits
-      .replace(/(\d{2})(\d{7})/, '$1-$2')
-      .replace(/(\d{2})(\d{0,7})/, '$1-$2');
-    return formatted;
-  };
-
+ 
   const {
     onChange: einOnChange,
     ref: einRef,
@@ -196,7 +278,7 @@ const BusinessInfo = () => {
 
 
   return (
-    <Box w={{ lg: '50%', md: "60%", base: "100%" }}>
+    <Box w={{ lg: '50%', md: '60%', base: '100%' }}>
       <Heading as={'h4'} mb={4} fontSize={'3xl'} color={'Primary.Navy'}>
         Create an account
       </Heading>
@@ -244,6 +326,7 @@ const BusinessInfo = () => {
                 message={errors?.employer_identification_number?.message}
               />
             </FormControl>
+
             <FormControl>
               <FormLabel>Legal Name</FormLabel>
               <Input
