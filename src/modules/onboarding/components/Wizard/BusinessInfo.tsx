@@ -15,7 +15,14 @@ import {
 } from '@chakra-ui/react';
 import { useForm, Controller } from 'react-hook-form';
 import ButtonTheme from 'modules/shared/ButtonTheme';
-import { ConvertIcon, CrossIcon, DocIcon, LockIcon, TrashIcon, UploadIcon } from 'modules/shared/Icons';
+import {
+  ConvertIcon,
+  CrossIcon,
+  DocIcon,
+  LockIcon,
+  TrashIcon,
+  UploadIcon,
+} from 'modules/shared/Icons';
 import { useDropzone } from 'react-dropzone';
 import PhoneInput from 'react-phone-input-2';
 import { useWizard } from 'react-use-wizard';
@@ -61,51 +68,53 @@ const BusinessInfo = () => {
   const [employerIdentificationNumber, setEmployerIdentificationNumber] =
     useState('');
 
-    const onDrop = useCallback((acceptedFiles: File[]) => {
-      setAcceptedFiles(prevFiles => [...prevFiles, ...acceptedFiles]);
-    }, []);
-  
-    const { getRootProps, getInputProps } = useDropzone({ onDrop });
-  
-    const handleDelete = (fileName: string) => {
-      setAcceptedFiles(prevFiles => prevFiles.filter(file => file.name !== fileName));
-    };
-  
-    const files = acceptedFiles.map(file => (
-      <ListItem
-        justifyContent="space-between"
-        bgColor="Neutral.100"
-        px={4}
-        py={2}
-        borderRadius={8}
-        display="flex"
-        key={file.name}
-      >
-        <Flex gap={2} alignItems="center">
-          <DocIcon />
-          <Text>{file.name}</Text>
-        </Flex>
-        <Flex gap={4} alignItems="center">
-          <ConvertIcon
-            sx={{
-              path: {
-                stroke: 'Primary.Navy',
-              },
-            }}
-          />
-          <TrashIcon
-            onClick={() => handleDelete(file.name)}
-            sx={{
-              path: {
-                stroke: 'Primary.Navy',
-              },
-              cursor: 'pointer',
-            }}
-          />
-        </Flex>
-      </ListItem>
-    ));
-    const [selected, setSelected] = useState([]);
+  const onDrop = useCallback((acceptedFiles: File[]) => {
+    setAcceptedFiles((prevFiles) => [...prevFiles, ...acceptedFiles]);
+  }, []);
+
+  const { getRootProps, getInputProps } = useDropzone({ onDrop });
+
+  const handleDelete = (fileName: string) => {
+    setAcceptedFiles((prevFiles) =>
+      prevFiles.filter((file) => file.name !== fileName)
+    );
+  };
+
+  const files = acceptedFiles.map((file) => (
+    <ListItem
+      justifyContent="space-between"
+      bgColor="Neutral.100"
+      px={4}
+      py={2}
+      borderRadius={8}
+      display="flex"
+      key={file.name}
+    >
+      <Flex gap={2} alignItems="center">
+        <DocIcon />
+        <Text>{file.name}</Text>
+      </Flex>
+      <Flex gap={4} alignItems="center">
+        <ConvertIcon
+          sx={{
+            path: {
+              stroke: 'Primary.Navy',
+            },
+          }}
+        />
+        <TrashIcon
+          onClick={() => handleDelete(file.name)}
+          sx={{
+            path: {
+              stroke: 'Primary.Navy',
+            },
+            cursor: 'pointer',
+          }}
+        />
+      </Flex>
+    </ListItem>
+  ));
+  const [selected, setSelected] = useState([]);
 
   const { connect } = useConnect({
     client: client,
@@ -185,7 +194,6 @@ const BusinessInfo = () => {
 
   const { setBusinessTypes, selectedTypes } = useBusiness();
 
-
   const [typeError, setTypeError] = useState<any>(null);
 
   const handleSelectChange = (selectedOptions: any) => {
@@ -193,9 +201,8 @@ const BusinessInfo = () => {
     handleChange('bussinessType', selectedOptions);
   };
 
-
   const onSubmit = async (values: any) => {
-    if(selected.length === 0){
+    if (selected.length === 0) {
       setTypeError('Atleast one type is required');
       return;
     }
@@ -234,9 +241,24 @@ const BusinessInfo = () => {
   ) => {
     return selected.length ? (
       selected.map(({ label, value }) => (
-        <Text color={"Primary.Blue"} bgColor={"Neutral.100"} py={1} px={2} borderRadius={40} fontSize={"xs"} cursor={"pointer"} display={"inline-flex"} key={value} alignItems={"center"} gap={1} mr={1}>
+        <Text
+          color={'Primary.Blue'}
+          bgColor={'Neutral.100'}
+          py={1}
+          px={2}
+          borderRadius={40}
+          fontSize={'xs'}
+          cursor={'pointer'}
+          display={'inline-flex'}
+          key={value}
+          alignItems={'center'}
+          gap={1}
+          mr={1}
+        >
           {label}
-          <CrossIcon w={2} h={2}
+          <CrossIcon
+            w={2}
+            h={2}
             onClick={() => handleRemove({ label, value })}
           />
         </Text>
@@ -250,32 +272,34 @@ const BusinessInfo = () => {
     // const updatedServices = formData.services.filter(value => value !== optionToRemove.value);
     // setFormData({ ...formData, services: updatedServices });
   };
-  const { handleChange, getInitialValues } = useFormLocalStorage('businessInfo', setValue);
+  const { handleChange, getInitialValues } = useFormLocalStorage(
+    'businessInfo',
+    setValue
+  );
 
   // Initialize form values from localStorage
   useEffect(() => {
     const initialValues = getInitialValues();
     Object.keys(initialValues).forEach((key) => {
-      if(key === 'bussinessType'){
+      if (key === 'bussinessType') {
         setSelected(initialValues[key]);
-      }else{
+      } else {
         setValue(key, initialValues[key]);
       }
     });
   }, [setValue, getInitialValues]);
 
- 
   const {
     onChange: einOnChange,
     ref: einRef,
     ...einRest
   } = register('employer_identification_number', {
     required: 'This field is required',
-    onChange: (e) => handleChange('employer_identification_number', e.target.value),
+    onChange: (e) =>
+      handleChange('employer_identification_number', e.target.value),
     validate: (value) =>
       value.replace(/\D/g, '').length === 9 || 'EIN must be exactly 9 digits',
   });
-
 
   return (
     <Box w={{ lg: '50%', md: '60%', base: '100%' }}>
@@ -336,7 +360,8 @@ const BusinessInfo = () => {
                 errorBorderColor="Secondary.Red"
                 {...register('business_legal_name', {
                   required: 'This field is required',
-                  onChange: (e) => handleChange('business_legal_name', e.target.value)
+                  onChange: (e) =>
+                    handleChange('business_legal_name', e.target.value),
                 })}
               />
               <FormErrorMessage
@@ -351,7 +376,7 @@ const BusinessInfo = () => {
                 errorBorderColor="Secondary.Red"
                 {...register('entity_type', {
                   required: 'This field is required',
-                  onChange: (e) => handleChange('entity_type', e.target.value)
+                  onChange: (e) => handleChange('entity_type', e.target.value),
                 })}
               >
                 {businessEntityTypes.map((entityType) => (
@@ -365,16 +390,17 @@ const BusinessInfo = () => {
             <FormControl>
               <FormLabel>Type</FormLabel>
               <MultiSelect
-                className='custom-multi-select'
+                className="custom-multi-select"
                 options={businessTypes}
                 hasSelectAll={true}
                 value={selected}
                 onChange={handleSelectChange}
-                labelledBy={"Select"}
-                valueRenderer={(selected, options) => customValueRenderer(selected as ServiceOption[], handleRemove)}
+                labelledBy={'Select'}
+                valueRenderer={(selected, options) =>
+                  customValueRenderer(selected as ServiceOption[], handleRemove)
+                }
               />
               <FormErrorMessage message={typeError ? typeError : ''} />
-
             </FormControl>
             <FormControl>
               <FormLabel>Email</FormLabel>
@@ -389,7 +415,8 @@ const BusinessInfo = () => {
                     value: /\S+@\S+\.\S+/,
                     message: 'Invalid email address',
                   },
-                  onChange: (e) => handleChange('business_email', e.target.value)
+                  onChange: (e) =>
+                    handleChange('business_email', e.target.value),
                 })}
               />
               <FormErrorMessage message={errors?.business_email?.message} />
@@ -403,7 +430,8 @@ const BusinessInfo = () => {
                 placeholder="_ _  _ _ _ _ _ _ _"
                 {...register('business_handle', {
                   required: 'This field is required',
-                  onChange: (e) => handleChange('business_handle', e.target.value)
+                  onChange: (e) =>
+                    handleChange('business_handle', e.target.value),
                 })}
               />
               <FormErrorMessage message={errors?.business_handle?.message} />
@@ -413,11 +441,11 @@ const BusinessInfo = () => {
             <GridItem colSpan={2}>
               <FormControl>
                 <FormLabel>Phone Type</FormLabel>
-                <Select 
-                  placeholder="Select" 
+                <Select
+                  placeholder="Select"
                   {...register('phoneType', {
                     required: 'This field is required',
-                    onChange: (e) => handleChange('phoneType', e.target.value)
+                    onChange: (e) => handleChange('phoneType', e.target.value),
                   })}
                 >
                   {phoneTypes.map((phoneType) => (
@@ -487,12 +515,12 @@ const BusinessInfo = () => {
             <GridItem colSpan={2}>
               <FormControl>
                 <FormLabel>Extension</FormLabel>
-                <Input 
-                  type="text" 
-                  placeholder="+1" 
+                <Input
+                  type="text"
+                  placeholder="+1"
                   {...register('extension', {
                     required: 'This field is required',
-                    onChange: (e) => handleChange('extension', e.target.value)
+                    onChange: (e) => handleChange('extension', e.target.value),
                   })}
                 />
               </FormControl>
@@ -507,7 +535,8 @@ const BusinessInfo = () => {
                 errorBorderColor="Secondary.Red"
                 {...register('incorporation_state', {
                   required: 'This field is required',
-                  onChange: (e) => handleChange('incorporation_state', e.target.value)
+                  onChange: (e) =>
+                    handleChange('incorporation_state', e.target.value),
                 })}
               >
                 {states.map((state, index) => (
@@ -528,7 +557,8 @@ const BusinessInfo = () => {
                 errorBorderColor="Secondary.Red"
                 {...register('incorporation_year', {
                   required: 'This field is required',
-                  onChange: (e) => handleChange('incorporation_year', e.target.value)
+                  onChange: (e) =>
+                    handleChange('incorporation_year', e.target.value),
                 })}
               >
                 {Array.from({ length: 30 }, (_, i) => 2024 - i).map((year) => (
@@ -554,15 +584,15 @@ const BusinessInfo = () => {
                   errorBorderColor="Secondary.Red"
                   {...register('address', {
                     required: 'This field is required',
-                    onChange: (e) => handleChange('address', e.target.value)
-                })}
+                    onChange: (e) => handleChange('address', e.target.value),
+                  })}
                 />
                 <FormErrorMessage message={errors?.address?.message} />
                 <Input
                   placeholder="Address line 2"
                   type="text"
                   {...register('address1', {
-                    onChange: (e) => handleChange('address1', e.target.value)
+                    onChange: (e) => handleChange('address1', e.target.value),
                   })}
                 />
               </FormControl>
@@ -574,7 +604,7 @@ const BusinessInfo = () => {
               errorBorderColor="Secondary.Red"
               {...register('city', {
                 required: 'This field is required',
-                onChange: (e) => handleChange('city', e.target.value)
+                onChange: (e) => handleChange('city', e.target.value),
               })}
             />
             <FormErrorMessage message={errors?.city?.message} />
@@ -584,7 +614,7 @@ const BusinessInfo = () => {
               errorBorderColor="Secondary.Red"
               {...register('state', {
                 required: 'This field is required',
-                onChange: (e) => handleChange('state', e.target.value)
+                onChange: (e) => handleChange('state', e.target.value),
               })}
             >
               {states.map((state, index) => (
@@ -601,7 +631,7 @@ const BusinessInfo = () => {
               errorBorderColor="Secondary.Red"
               {...register('zip_code', {
                 required: 'This field is required',
-                onChange: (e) => handleChange('zip_code', e.target.value)
+                onChange: (e) => handleChange('zip_code', e.target.value),
               })}
             />
             <FormErrorMessage message={errors?.zip_code?.message} />
@@ -613,7 +643,8 @@ const BusinessInfo = () => {
                 type="text"
                 placeholder="Enter website address"
                 {...register('business_website', {
-                  onChange: (e) => handleChange('business_website', e.target.value)
+                  onChange: (e) =>
+                    handleChange('business_website', e.target.value),
                 })}
               />
             </FormControl>
@@ -630,24 +661,33 @@ const BusinessInfo = () => {
                     value: /^\d{9}$/,
                     message: 'DUNS must be exactly 9 digits',
                   },
-                  onChange: (e) => handleChange('duns_number', e.target.value)
+                  onChange: (e) => handleChange('duns_number', e.target.value),
                 })}
               />
               <FormErrorMessage message={errors?.duns_number?.message} />
             </FormControl>
-            <Flex {...getRootProps()} cursor={'pointer'} gap={3}
+            <Flex
+              {...getRootProps()}
+              cursor={'pointer'}
+              gap={3}
               bgColor={'Neutral.100'}
               direction="column"
               width="100%"
               height="120px"
               border="1px solid"
-              borderColor={"Neutral.200"}
+              borderColor={'Neutral.200'}
               borderRadius={20}
               alignItems="center"
-              justifyContent="center">
+              justifyContent="center"
+            >
               <input {...getInputProps()} />
               <UploadIcon w={6} h={6} />
-              <Text>Drag and drop your W9 files here, or click to <Text as={"span"} color={"Primary.Blue"}>browse</Text></Text>
+              <Text>
+                Drag and drop your W9 files here, or click to{' '}
+                <Text as={'span'} color={'Primary.Blue'}>
+                  browse
+                </Text>
+              </Text>
             </Flex>
             <List>{files}</List>
           </Grid>

@@ -20,13 +20,13 @@ export const options = [
   {
     id: 0,
     title: 'Personal',
-    desc: "I'm signing up to access my company's logistics features and tools.",
+    desc: "For individuals who want to access their company's account or contribute to the network to earn rewards",
     icon: PersonalIcon,
   },
   {
     id: 1,
     title: 'Business',
-    desc: "I'm setting up my business account to manage logistics operations and team collaboration. This includes Owner Operators.",
+    desc: "For business owners who want to set up their organization whether large or small including owner-operators.",
     icon: BusinessIcon,
   },
 ];
