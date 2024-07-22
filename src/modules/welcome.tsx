@@ -48,7 +48,7 @@ const RadioCard: React.FC<RadioCardProps> = ({ ...props }) => {
           },
         }}
       >
-        <Box w={'90%'} h={'100px'}>
+        <Box w={'90%'}>
           <Heading color={'Primary.Navy'} fontSize={'xl'} mb={4} as={'h6'}>
             {props.title}
           </Heading>
