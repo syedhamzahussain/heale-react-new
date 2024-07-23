@@ -23,13 +23,27 @@ const RecieveCard = () => {
                 <Heading as={"h4"} mb={4} fontSize={"3xl"} color={"Primary.Navy"}>Personal HEALE Virtual Card</Heading>
                 <Text mb={8} color={"Neutral.800"}>User receives personal bank account and decides if they want to select to receive a physical copy of the card</Text>
             </Box>
-            <Flex mb={8} flexDir={"column"} justifyContent={"space-between"} h={72} bgGradient={"linear(to-r, #5976FF 0%, #3446E6 100%)"} borderRadius={"24px"} p={8} pt={2}>
-                <Box>
-                    <HealeLogoWhite w={52} h={20} />
-                    <Heading ps={5} color={"white"} fontSize={"xl"}>Jeff Bridges</Heading>
-                </Box>
-                <Flex justifyContent={"end"}>
+            <Flex mb={8} flexDir={"column"} justifyContent={"space-between"} h={80}
+                bgColor={"Primary.Blue"}
+                bgImage={"/noise.png"}
+                bgSize={"cover"}
+                borderRadius={"24px"} p={8} pt={2}>
+                <Flex justifyContent={"space-between"} alignItems={"center"}>
+                    <Box>
+                        <HealeLogoWhite ms={-5} w={52} h={20} />
+                    </Box>
                     <WifiIcon w={10} h={10} />
+                </Flex>
+                <Flex mt={-5} justifyContent={"space-between"} color={"white"} alignItems={"center"}>
+                    <Heading fontSize={"3xl"}>•••• •••• ••••  3090</Heading>
+                    <Text fontSize={"3xl"}>CCV 341</Text>
+                </Flex>
+                <Flex justifyContent={"space-between"} alignItems={"center"} fontSize={"xl"} color={"white"}>
+                    <Flex gap={4}>
+                        <Text >Jeff Bridges</Text>
+                        <Text >09/25</Text>
+                    </Flex>
+                    <Text>Personal</Text>
                 </Flex>
             </Flex>
             <Checkbox color={"Primary.Navy"} size={"sm"} onChange={handleCheckboxChange}>Option to order a physical copy of your personal & business cards</Checkbox>
