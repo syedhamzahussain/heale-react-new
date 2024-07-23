@@ -86,6 +86,12 @@ function App() {
                 <ReviewInfo />
               }
             />
+            <Route
+              path="business/browser-extension"
+              element={
+                <BrowserExtension />
+              }
+            />
           </Route>
 
           <Route element={<DashboardLayout />}>
