@@ -20,7 +20,7 @@ export const options = [
   {
     id: 0,
     title: 'Personal',
-    desc: "For individuals who want to access their company's account or contribute to the network to earn rewards",
+    desc: "For individuals who want to access their company's account or contribute to the network to earn rewards.",
     icon: PersonalIcon,
   },
   {

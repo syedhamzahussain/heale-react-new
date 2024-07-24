@@ -177,11 +177,17 @@ const BusinessInfo = () => {
   };
 
   const formatEIN = (value: any) => {
+    // Remove non-digit characters and limit to 9 digits
     const digits = value.replace(/\D/g, '').slice(0, 9);
-    const formatted = digits
-      .replace(/(\d{2})(\d{7})/, '$1-$2')
-      .replace(/(\d{2})(\d{0,7})/, '$1-$2');
-    return formatted;
+  
+    // Apply formatting only once
+    if (digits.length <= 2) {
+      return digits;
+    } else if (digits.length > 2 && digits.length <= 9) {
+      return digits.replace(/(\d{2})(\d{0,7})/, '$1-$2');
+    } else {
+      return digits;
+    }
   };
 
   const {
@@ -266,6 +272,23 @@ const BusinessInfo = () => {
     ) : (
       <span>No Items Selected</span>
     );
+  };
+
+  const validateHandle = async (value: any) => {
+    if (/\s/.test(value)) {
+      return 'Handle cannot contain spaces';
+    }
+    if (value.length < 4 || value.length > 15) {
+      return 'Handle must be between 4 and 15 characters long';
+    }
+    if (!/^[a-zA-Z0-9_]+$/.test(value)) {
+      return 'Handle can only contain alphanumeric characters and underscores';
+    }
+    if (/HEALE/i.test(value) || /Admin/i.test(value)) {
+      return 'Handle cannot contain reserved words "HEALE" or "Admin"';
+    }
+
+    return true;
   };
 
   const handleRemove = (optionToRemove: ServiceOption) => {
@@ -422,7 +445,7 @@ const BusinessInfo = () => {
               <FormErrorMessage message={errors?.business_email?.message} />
             </FormControl>
             <FormControl>
-              <FormLabel>@ Handle</FormLabel>
+              <FormLabel>Business Handle</FormLabel>
               <Input
                 type="text"
                 isInvalid={errors?.business_handle?.message ? true : false}
@@ -430,6 +453,7 @@ const BusinessInfo = () => {
                 placeholder="_ _  _ _ _ _ _ _ _"
                 {...register('business_handle', {
                   required: 'This field is required',
+                  validate: validateHandle,
                   onChange: (e) =>
                     handleChange('business_handle', e.target.value),
                 })}
@@ -519,7 +543,6 @@ const BusinessInfo = () => {
                   type="text"
                   placeholder="+1"
                   {...register('extension', {
-                    required: 'This field is required',
                     onChange: (e) => handleChange('extension', e.target.value),
                   })}
                 />
@@ -656,7 +679,6 @@ const BusinessInfo = () => {
                 isInvalid={errors?.duns_number?.message ? true : false}
                 errorBorderColor="Secondary.Red"
                 {...register('duns_number', {
-                  required: 'This field is required',
                   pattern: {
                     value: /^\d{9}$/,
                     message: 'DUNS must be exactly 9 digits',

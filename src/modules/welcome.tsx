@@ -52,7 +52,7 @@ const RadioCard: React.FC<RadioCardProps> = ({ ...props }) => {
           <Heading color={'Primary.Navy'} fontSize={'xl'} mb={4} as={'h6'}>
             {props.title}
           </Heading>
-          <Text color={'Neutral.800'} fontSize={'sm'}>
+          <Text color={'Neutral.800'} fontSize={'sm'} textTransform="none">
             {props.desc}
           </Text>
         </Box>
@@ -134,7 +134,7 @@ const Welcome = () => {
             <>
               <Heading fontSize={'xl'} color={'Primary.Navy'} as={'h6'} mb={8}>
                 An individual account is the best way to manage your personal
-                wallet and rewards wallet
+                wallet and rewards.
               </Heading>
               <List spacing={8} color={'Primary.Navy'} fontSize={'sm'}>
                 <ListItem display={'flex'} gap={3}>

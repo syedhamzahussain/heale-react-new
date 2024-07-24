@@ -256,7 +256,7 @@ const PersonalInfo = ({ type = 'personal' }) => {
             </FormControl>
             <FormControl>
               <FormLabel htmlFor="handle">
-                {type === 'business' ? 'Business Handle' : 'Personal Handle'}
+                Personal Handle
               </FormLabel>
               <Input
                 type="text"
