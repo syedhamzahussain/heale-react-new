@@ -426,7 +426,7 @@ const BusinessInfo = () => {
               <FormErrorMessage message={typeError ? typeError : ''} />
             </FormControl>
             <FormControl>
-              <FormLabel>Email</FormLabel>
+              <FormLabel>Business Email</FormLabel>
               <Input
                 type="email"
                 placeholder="Email address"
@@ -450,7 +450,7 @@ const BusinessInfo = () => {
                 type="text"
                 isInvalid={errors?.business_handle?.message ? true : false}
                 errorBorderColor="Secondary.Red"
-                placeholder="_ _  _ _ _ _ _ _ _"
+                placeholder="Enter a unique business @handle"
                 {...register('business_handle', {
                   required: 'This field is required',
                   validate: validateHandle,
@@ -705,7 +705,7 @@ const BusinessInfo = () => {
               <input {...getInputProps()} />
               <UploadIcon w={6} h={6} />
               <Text>
-                Drag and drop your W9 files here, or click to{' '}
+                Drag and drop your files here, or click to{' '}
                 <Text as={'span'} color={'Primary.Blue'}>
                   browse
                 </Text>

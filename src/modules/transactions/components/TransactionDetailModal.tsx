@@ -205,7 +205,7 @@ const TransactionDetailModal = ({ isOpen, onClose, account, icon, title }: Trans
                                 justifyContent="center">
                                 <input {...getInputProps()} />
                                 <UploadIcon w={6} h={6} />
-                                <Text>Drag and drop your W9 files here, or click to <Text as={"span"} color={"Primary.Blue"}>browse</Text></Text>
+                                <Text>Drag and drop your files here, or click to <Text as={"span"} color={"Primary.Blue"}>browse</Text></Text>
                             </Flex>
                             <List>{files}</List>
                         </Box>
