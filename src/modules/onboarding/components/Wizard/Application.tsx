@@ -49,6 +49,11 @@ const Application = () => {
     onOpen: onLenderOpen,
     onClose: onLenderClose,
   } = useDisclosure();
+  const {
+    isOpen: isOwnerOpen,
+    onOpen: onOwnerOpen,
+    onClose: onOwnerClose,
+  } = useDisclosure();
   const [businessParam, setBusinessParam] = useState<string | null>(null);
   const { nextStep, previousStep } = useWizard();
 
@@ -63,7 +68,6 @@ const Application = () => {
     lender: { filled: 0, total: 1 },
   });
 
-  const [showOwnerInfo, setShowOwnerInfo] = useState(false); // Add state to control view
 
   useEffect(() => {
     const params = new URLSearchParams(location.search);
@@ -172,14 +176,7 @@ const Application = () => {
     return totalQuestions > 0 ? totalFilled / totalQuestions : 0;
   }, [selectedTypes, questions]);
 
-  if (showOwnerInfo) {
-    return (
-      <OwnerInfo
-        onBack={() => setShowOwnerInfo(false)} // Add onBack prop
-        onContinue={() => nextStep()} // Add onContinue prop
-      />
-    );
-  }
+
 
   return (
     <Box>
@@ -249,6 +246,11 @@ const Application = () => {
                 title="Lender"
               />
             )}
+            <VerificationBox
+                onClick={onOwnerOpen}
+                questions={questions} // Use actual data or state
+                title="Owner"
+              />
           </Grid>
         </GridItem>
         {!businessParam && (
@@ -304,6 +306,10 @@ const Application = () => {
           lenderData={lenderData}
           applicationId={applicationId}
         />
+         <OwnerInfo
+          isOpen={isOwnerOpen}
+          onClose={onOwnerClose}
+        />
       </Grid>
       <Grid
         gridTemplateColumns={{ md: 'repeat(3,1fr)', base: 'repeat(2,1fr)' }}
@@ -320,7 +326,7 @@ const Application = () => {
                 btnText="Continue"
                 primary
                 chakraProps={{ w: '100%' }}
-                onClick={() => setShowOwnerInfo(true)} // Switch to OwnerInfo view
+                onClick={() => nextStep()} // Switch to OwnerInfo view
               />
             </Flex>
           )}

@@ -132,13 +132,13 @@ const AddInsuranceModal = ({ isOpen, onClose, onAdd }: any) => {
                             <GridItem colSpan={2}>
                                 <FormControl>
                                     <FormLabel>Start Date</FormLabel>
-                                    <Input type='text' name='startDate' value={insuranceData.startDate} onChange={handleChange} placeholder='MM/DD/YYYY' />
+                                    <Input type='date' name='startDate' value={insuranceData.startDate} onChange={handleChange} placeholder='MM/DD/YYYY' />
                                 </FormControl>
                             </GridItem>
                             <GridItem colSpan={2}>
                                 <FormControl>
                                     <FormLabel>End Date</FormLabel>
-                                    <Input type='text' name='expirationDate' value={insuranceData.expirationDate} onChange={handleChange} placeholder='MM/DD/YYYY' />
+                                    <Input type='date' name='expirationDate' value={insuranceData.expirationDate} onChange={handleChange} placeholder='MM/DD/YYYY' />
                                 </FormControl>
                             </GridItem>
                         </Grid>
@@ -154,7 +154,7 @@ const AddInsuranceModal = ({ isOpen, onClose, onAdd }: any) => {
                             justifyContent="center">
                             <input {...getInputProps()} />
                             <UploadIcon w={6} h={6} />
-                            <Text>Drag and drop your W9 files here, or click to <Text as={"span"} color={"Primary.Blue"}>browse</Text></Text>
+                            <Text>Drag and drop your files here, or click to <Text as={"span"} color={"Primary.Blue"}>browse</Text></Text>
                         </Flex>
                         <List>{files}</List>
                     </Box>

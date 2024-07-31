@@ -20,16 +20,9 @@ import { useWizard } from 'react-use-wizard';
 import axios from 'axios';
 import { saveTeamUser, sendOnboardedEmail } from 'services/user.service';
 import { toastSuccess } from 'utils/helpers';
-import {
-  removeAccountTypeFromLocalStorage,
-  removeFieldValueToLocalStorage,
-  removeOwnersFromLocalStorage,
-  removeQuestionaireToLocalStorage,
-  removeTokenFromLocalStorage,
-  removeUserFromLocalStorage,
-} from 'services/localStorage.sevice';
 import { usePersistedStep } from './WizardHeader';
 import useFormLocalStorage from 'hooks/useFormLocalStorage';
+import { phoneTypes } from 'utils/constants';
 
 interface FormData {
   role: string;
@@ -47,9 +40,9 @@ interface FormData {
 
 const TeamInfo = () => {
   const { nextStep, previousStep } = useWizard();
-  const [step, setStep, clearStep] = usePersistedStep(0);
 
-  const { handleChange: handleLocalStorageChange, getInitialValues } = useFormLocalStorage<FormData>('teamInfo');
+  const { handleChange: handleLocalStorageChange, getInitialValues } =
+    useFormLocalStorage<FormData>('teamInfo');
 
   const [formData, setFormData] = useState<FormData>({
     role: '',
@@ -89,51 +82,39 @@ const TeamInfo = () => {
   };
 
   const handleCreateAnotherUser = async () => {
-    await handleSubmit(true);
-    // reset the form
-    setFormData({
-      role: '',
-      firstName: '',
-      lastName: '',
-      email: '',
-      phoneType: '',
-      phoneNumber: '',
-      extension: '',
-      employeeId: '',
-      accessWallet: false,
-      permissionName: false,
-      agree: false,
-    });
+    const response = await saveTeamUser(formData);
+    if (response?.status) {
+      toastSuccess(response?.data?.message);
+
+      // reset the form
+      setFormData({
+        role: '',
+        firstName: '',
+        lastName: '',
+        email: '',
+        phoneType: '',
+        phoneNumber: '',
+        extension: '',
+        employeeId: '',
+        accessWallet: false,
+        permissionName: false,
+        agree: false,
+      });
+    }
   };
 
   const handleSubmit = async (newUser = false) => {
     try {
-      // Replace the URL with your API endpoint
-      const response = await saveTeamUser(formData);
-      if (response?.status) {
-        toastSuccess(response?.data?.message);
-        if (newUser) {
-          return;
-        } else {
-          await sendOnboardedEmail();
-          removeUserFromLocalStorage();
-          removeAccountTypeFromLocalStorage();
-          removeQuestionaireToLocalStorage();
-          removeTokenFromLocalStorage();
-          removeOwnersFromLocalStorage();
-          removeFieldValueToLocalStorage();
-          clearStep();
-          window.location.href = '/extension';
-        }
-      }
+      await sendOnboardedEmail();
+
+      window.location.href = '/extension';
     } catch (error) {
       console.error('Error creating user:', error);
     }
   };
 
-
   return (
-    <Box w={{ lg: '50%', md: "60%", base: "100%" }}>
+    <Box w={{ lg: '50%', md: '60%', base: '100%' }}>
       <Heading as={'h4'} mb={4} fontSize={'3xl'} color={'Primary.Navy'}>
         Create new user
       </Heading>
@@ -178,9 +159,13 @@ const TeamInfo = () => {
             onChange={handleChange}
             placeholder="Select Role"
           >
-            <option value="option1">Option 1</option>
-            <option value="option2">Option 2</option>
-            <option value="option3">Option 3</option>
+            <option value="Owner">Owner</option>
+            <option value="Admin">Admin</option>
+            <option value="Manager">Manager</option>
+            <option value="Driver">Driver</option>
+            <option value="Dispatcher">Dispatcher</option>
+            <option value="Billing">Billing</option>
+            <option value="Contributor">Contributor</option>
           </Select>
         </FormControl>
         <Grid gridTemplateColumns={'repeat(2,1fr)'} mb={6} gap={6}>
@@ -240,13 +225,11 @@ const TeamInfo = () => {
                 onChange={handleChange}
                 placeholder="Select"
               >
-                <option value="Owner">Owner</option>
-                <option value="Admin">Admin</option>
-                <option value="Manager">Manager</option>
-                <option value="Driver">Driver</option>
-                <option value="Dispatcher">Dispatcher</option>
-                <option value="Billing">Billing</option>
-                <option value="Contributor">Contributor</option>
+                {phoneTypes.map((phoneType) => (
+                  <option key={phoneType} value={phoneType}>
+                    {phoneType}
+                  </option>
+                ))}
               </Select>
             </FormControl>
           </GridItem>
@@ -346,15 +329,6 @@ const TeamInfo = () => {
           </Stack>
         </FormControl>
       </Box>
-      <ButtonTheme
-        invert
-        btnText="Create a another user"
-        chakraProps={{
-          w: '100%',
-          my: 8,
-          onClick: handleCreateAnotherUser,
-        }}
-      />
       <Checkbox
         name="agree"
         isChecked={formData?.agree}
@@ -365,6 +339,16 @@ const TeamInfo = () => {
         I agree to the <Link color="Primary.Blue"> User Agreement</Link>, and I
         have read the <Link color="Primary.Blue">Privacy Policy</Link>.
       </Checkbox>
+      <ButtonTheme
+        invert
+        btnText="Create user"
+        chakraProps={{
+          w: '100%',
+          my: 8,
+          onClick: handleCreateAnotherUser,
+        }}
+      />
+
       <Flex gap={4} mt={8}>
         <ButtonTheme
           btnText="Back"
@@ -374,7 +358,7 @@ const TeamInfo = () => {
           }}
         />
         <ButtonTheme
-          btnText="Submit"
+          btnText="Continue"
           primary
           chakraProps={{
             w: '100%',

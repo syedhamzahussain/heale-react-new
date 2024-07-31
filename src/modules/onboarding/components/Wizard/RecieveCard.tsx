@@ -72,7 +72,6 @@ const RecieveCard = () => {
                         if (type === 'Personal') {
                             clearStep();
                             await sendOnboardedEmail();
-                            removeTokenFromLocalStorage();
                             window.location.href = '/extension'
                         } else {
                             nextStep()

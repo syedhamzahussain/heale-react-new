@@ -6,6 +6,15 @@ import { CheckIcon, ExtensionIcon } from './shared/Icons';
 import { DownloadIcon } from './shared/Icons';
 import Success from './onboarding/components/Success';
 import { HealLogoHexagonIcon } from 'modules/shared/Icons';
+import {
+  removeAccountTypeFromLocalStorage,
+  removeFieldValueToLocalStorage,
+  removeOwnersFromLocalStorage,
+  removeQuestionaireToLocalStorage,
+  removeTokenFromLocalStorage,
+  removeUserFromLocalStorage,
+} from 'services/localStorage.sevice';
+import { usePersistedStep } from './onboarding/components/Wizard/WizardHeader';
 
 const successSteps = [
   { icon: HealLogoHexagonIcon, percentage: "48% complete", title: "Creating Account", desc: "We're creating your HEALE Network account" },
@@ -16,6 +25,7 @@ const successSteps = [
 const BrowserExtension = () => {
   const [currentStep, setCurrentStep] = useState(0);
   const [showStep, setShowStep] = useState(false);
+  const [step, setStep, clearStep] = usePersistedStep(0);
   const navigate = useNavigate();
 
   useEffect(() => {
@@ -26,6 +36,13 @@ const BrowserExtension = () => {
       }, 2000); // Display each success step for 2 seconds
       return () => clearTimeout(timer);
     } else if (currentStep === successSteps.length + 1) {
+      removeUserFromLocalStorage();
+      removeAccountTypeFromLocalStorage();
+      removeQuestionaireToLocalStorage();
+      removeTokenFromLocalStorage();
+      removeOwnersFromLocalStorage();
+      removeFieldValueToLocalStorage();
+      clearStep();
       navigate('/login');
     }
   }, [currentStep, navigate]);

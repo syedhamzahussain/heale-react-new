@@ -107,11 +107,11 @@ const AddSuretyModal = ({ isOpen, onClose, onAdd }: any) => {
                         <Grid mb={6} gridTemplateColumns={"repeat(2,1fr)"} gap={6} >
                             <FormControl>
                                 <FormLabel>Policy Number</FormLabel>
-                                <Input type='text' name='policyNumber' value={suretyBondData.policyNumber} onChange={handleChange} placeholder='12345678' />
+                                <Input type='date' name='policyNumber' value={suretyBondData.policyNumber} onChange={handleChange} placeholder='12345678' />
                             </FormControl>
                             <FormControl>
                                 <FormLabel>Start Date</FormLabel>
-                                <Input type='text' name='startDate' value={suretyBondData.startDate} onChange={handleChange} placeholder='MM/DD/YYYY' />
+                                <Input type='date' name='startDate' value={suretyBondData.startDate} onChange={handleChange} placeholder='MM/DD/YYYY' />
                             </FormControl>
                         </Grid>
                         <Flex {...getRootProps()} cursor={'pointer'} gap={3}
@@ -126,7 +126,7 @@ const AddSuretyModal = ({ isOpen, onClose, onAdd }: any) => {
                             justifyContent="center">
                             <input {...getInputProps()} />
                             <UploadIcon w={6} h={6} />
-                            <Text>Drag and drop your W9 files here, or click to <Text as={"span"} color={"Primary.Blue"}>browse</Text></Text>
+                            <Text>Drag and drop your files here, or click to <Text as={"span"} color={"Primary.Blue"}>browse</Text></Text>
                         </Flex>
                         <List>{files}</List>
                     </Box>
